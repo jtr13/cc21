@@ -18,8 +18,8 @@ DESCRIPTION
 index.Rmd                       
 sample_project.Rmd
 /.github
-/sample_project
-/tutorial_pull_request_mergers
+/resources/sample_project
+/resources/tutorial_pull_request_mergers
 ```
 
 3. Set up Secrets for GitHub Actions
