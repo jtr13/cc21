@@ -4,7 +4,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 github-repo: jtr13/cc21
-description: "This book contains community contributions for STAT GR 5702 Spring 2021 at Columbia University"
+description: "This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University"
 ---
 
 ```{r, include=FALSE}
