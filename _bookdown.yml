@@ -1,0 +1,41 @@
+book_filename: "cc21"
+new_session: yes
+delete_merged_file: true
+edit: https://github.com/jtr13/cc21/edit/master/%s
+view: https://github.com/jtr13/cc21/blob/master/%s
+language:
+  ui:
+    chapter_name: "Chapter "
+
+
+# Chapter ordering
+rmd_files: [
+  # Part: Introduction
+  'index.Rmd', # must be first chapter
+  'sample_project.Rmd',
+
+  # Part: Data Processing and Wrangling
+
+  # Part: Data Visualization
+
+  # Part: Results Reporting
+
+  # Part: Complete Analyses
+
+  # Part: Cheatsheets and Video Tutorials
+
+  # Part: Live Tutorials
+
+  # Part: Data Visualization
+
+  # Part: Translations
+
+  # Part: Other Topics
+
+
+  # Part: Appendices
+  'appendix_initial_setup.Rmd', # contains PART header
+  'appendix_pull_request_tutorial.Rmd'
+]
+
+before_chapter_script: "_common.R"
