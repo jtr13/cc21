@@ -4,3 +4,6 @@
 .Ruserdata
 .DS_Store
 cc21.Rproj
+_book/
+_bookdown_files/
+cc21.rds
