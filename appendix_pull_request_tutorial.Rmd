@@ -93,9 +93,9 @@ Why? Because it will be easier to fix the merge conflicts this way. (A better wa
 
 - Cut the new filename and paste it into the proper location. Then delete the lines with `<<<<<<< xxxx`, `=======` and `>>>>>>>> master`. In short, the file should look correct when you're done. Click the "Marked as resolved" button and then the green "Commit merge" button.
 
-### Add chapter names to `.Rmd` for every first article in each chapter (Chapter Organization)
+### PR Leaders only: Add chapter names to `.Rmd` for every first article in each chapter (Chapter Organization)
 
-**Only do this if you are adding the first chapter in a PART.**
+Only do this if you are adding the first chapter in a PART.
 
 For every first article of each part, add the chapter name on the top of the `.Rmd` file, then propose changes. The example is like this.
 <img src="resources/tutorial_pull_request_mergers/chap_1.png" width="700">
