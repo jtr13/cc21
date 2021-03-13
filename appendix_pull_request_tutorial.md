@@ -114,4 +114,6 @@ https://github.com/jtr13/cc20/pull/23#issuecomment-728506101
 Leave comments for congratulations 🎉 (type `:tada:`) and then click on the green button for merge.
 <br/> 
 
+### Check Updated Version
 
+A successful merge means that the addition file or files were added to the project with no merge conflicts. It does not mean that the book will render and deploy to GitHub pages without issues. After the merge, it will take about 5-10 minutes for GitHub Actions to render the book and deploy the updated version. You can check the progress by clicking Actions at the top of the repo. If there's a problem (a red circle) please request a review from @jtr13 in the closed pull request.

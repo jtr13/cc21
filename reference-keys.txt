@@ -20,3 +20,4 @@ merge-the-pull-request
 add-chapter-filename-to-_bookdown.yml-in-prs-branch
 pr-leaders-only-add-chapter-names-to-.rmd-for-every-first-article-in-each-chapter-chapter-organization
 merge-pr-and-leave-a-comment
+check-updated-version
