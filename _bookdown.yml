@@ -1,8 +1,8 @@
 book_filename: "cc21"
 new_session: yes
 delete_merged_file: true
-edit: https://github.com/jtr13/cc21/edit/master/%s
-view: https://github.com/jtr13/cc21/blob/master/%s
+edit: https://github.com/jtr13/cc21/edit/main/%s
+view: https://github.com/jtr13/cc21/blob/main/%s
 language:
   ui:
     chapter_name: "Chapter "
