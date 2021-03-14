@@ -1,4 +1,8 @@
-instructions
+community-contribution-assignment
+logistics
+groups
+submitting-your-assignment
+github-submission-instructions
 background
 preparing-your-.rmd-file
 submission-steps
@@ -10,6 +14,10 @@ what-if-i-catch-mistakes-after-my-pull-request-is-merged
 other-questions
 sample-project
 github-initial-setup
+github-actions
+secrets
+create-a-gh-pages-branch
+github-pages-in-repo-settings
 tutorial-for-pull-request-mergers
 check-branch
 examine-files-that-were-added-or-modified
