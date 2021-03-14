@@ -7,9 +7,15 @@ PR should be submitted from a **non-main** branch.
 <img src="resources/tutorial_pull_request_mergers/1.png" width="700">
 <br/>
 
-If PR was submitted from the **main** branch, you can link to this explanation of what to do to fix it: 
+If PR was submitted from the **main** branch, provide these instructions on how to fix the problem:
 
-https://edav.info/github#fixing-mistakes.
+1. Close this PR.
+
+2. Follow the instructions here for forgetting to branch if you committed and pushed to GitHub: https://edav.info/github#fixing-mistakes
+
+3. If you have trouble with 2., then delete the local folder of the cc21 project and reclone. (In other words, start over.)
+
+4. Open a new PR.
 
 <br/>
 <img src="resources/tutorial_pull_request_mergers/2.png" width="700">
