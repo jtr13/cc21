@@ -72,7 +72,6 @@ Imports:
     tidygraph,
     tidyquant,
     tidyr,
-    tidytext,
     tidyverse,
     timetk,
     tm,
