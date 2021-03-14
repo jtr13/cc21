@@ -1,9 +1,0 @@
-# My plot
-
-This is a plot.
-
-```{r}
-library(ggplot2)
-ggplot(mtcars, aes(hp, mpg)) + geom_point()
-```
-
