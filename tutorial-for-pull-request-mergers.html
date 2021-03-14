@@ -196,10 +196,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> Tutorial for pull request mergers</h1>
 <div id="check-branch" class="section level2">
 <h2><span class="header-section-number">5.1</span> Check branch</h2>
-<p>PR should be submitted from a <strong>non-master</strong> branch.</p>
+<p>PR should be submitted from a <strong>non-main</strong> branch.</p>
 <p><img src="resources/tutorial_pull_request_mergers/1.png" width="700">
 <br/></p>
-<p>If PR was submitted from the <strong>master</strong> branch, you can link to this explanation of what to do to fix it:</p>
+<p>If PR was submitted from the <strong>main</strong> branch, you can link to this explanation of what to do to fix it:</p>
 <p><a href="https://edav.info/github#fixing-mistakes" class="uri">https://edav.info/github#fixing-mistakes</a>.</p>
 <p><br/>
 <img src="resources/tutorial_pull_request_mergers/2.png" width="700"></p>
@@ -232,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Other hashtag headers should <strong>not</strong> be followed by numbers since the hashtags will create numbered subheadings. Correct: <code>## Subheading</code>. Incorrect: <code>## 3. Subheading</code>.</li>
 <li>If the file contains a setup chunk in <code>.Rmd</code> file, it should <strong>not</strong> contain a <code>setup</code> label. (The bookdown render will fail if there are duplicate chunk labels.)
 <br/>i.e. use <code>{r, include=FALSE}</code> instead of <code>{r setup, include=FALSE}</code>.
-<br/><a href="https://github.com/jtr13/cc21/blob/master/sample_project.Rmd">See sample <code>.Rmd</code></a></li>
+<br/><a href="https://github.com/jtr13/cc21/blob/main/sample_project.Rmd">See sample <code>.Rmd</code></a></li>
 <li>Links to internal files must contain <code>resources/&lt;project_name&gt;/</code> in the path, such as: <code>![Test Photo](resources/sample_project/election.jpg)</code></li>
 <li>The file should not contain any <code>install.packages()</code>, <code>write</code> functions, <code>setwd()</code>, or <code>getwd()</code>.</li>
 <li>If there’s anything else that looks odd but you’re not sure, assign <code>jtr13</code> to review and explain the issue.</li>
@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><img src="resources/tutorial_pull_request_mergers/3.png" width="700"></p>
 <ul>
-<li>Make sure you are on the PR branch by checking that the PR branch name is shown (not <code>master</code>):</li>
+<li>Make sure you are on the PR branch by checking that the PR branch name is shown (not <code>main</code>):</li>
 </ul>
 <p><img src="resources/tutorial_pull_request_mergers/4.png" width="700"></p>
 <ul>
@@ -267,14 +267,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>delete everything in the file beginning with <code>rmd_files: [</code> and then add the name of the new file in single quotes followed by a comma:</strong></p></li>
 </ul>
 <p><img src="resources/tutorial_pull_request_mergers/delete_most_of_bookdown_yml.png" width="700"></p>
-<p>Why? Because it will be easier to fix the merge conflicts this way. (A better way to do this is to merge master into the PR branch <em>before</em> adding the new file but this can’t be done on GitHub. If there’s interest I will explain how to do this locally.)</p>
+<p>Why? Because it will be easier to fix the merge conflicts this way. (A better way to do this is to merge main into the PR branch <em>before</em> adding the new file but this can’t be done on GitHub. If there’s interest I will explain how to do this locally.)</p>
 <ul>
 <li><p>Save the edited version.</p></li>
 <li><p>Click the resolve conflicts button:</p></li>
 </ul>
 <p><img src="resources/tutorial_pull_request_mergers/resolve_conflicts.png" width="700"></p>
 <ul>
-<li>Cut the new filename and paste it into the proper location. Then delete the lines with <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; xxxx</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; master</code>. In short, the file should look correct when you’re done. Click the “Marked as resolved” button and then the green “Commit merge” button.</li>
+<li>Cut the new filename and paste it into the proper location. Then delete the lines with <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; xxxx</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</code>. In short, the file should look correct when you’re done. Click the “Marked as resolved” button and then the green “Commit merge” button.</li>
 </ul>
 </div>
 <div id="pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part" class="section level3">
