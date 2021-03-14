@@ -12,6 +12,7 @@ language:
 rmd_files: [
   # Part: Introduction
   'index.Rmd', # must be first chapter
+  'instructions.Rmd',
   'sample_project.Rmd',
 
   # Part: Appendices

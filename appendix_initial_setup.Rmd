@@ -22,7 +22,11 @@ sample_project.Rmd
 /resources/tutorial_pull_request_mergers
 ```
 
-3. Set up Secrets for GitHub Actions
+## GitHub Actions
+
+### Secrets
+
+https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e
 
 * Secret #1: Create a token here https://github.com/settings/tokens and paste it in a secret in the repo named `GH_PAT`
 
@@ -31,6 +35,12 @@ sample_project.Rmd
 See: https://github.com/r-lib/actions/tree/master/examples#managing-secrets
 
 
-4. Create a `gh-pages` branch:
+### Create a `gh-pages` branch:
 
 https://jiafulow.github.io/blog/2020/07/09/create-gh-pages-branch-in-existing-repo/
+
+(May happen automatically???)
+
+### GitHub Pages in repo settings
+
+(May happen automatically???)
