@@ -2,12 +2,12 @@
 
 ## Check branch
 
-PR should be submitted from a **non-master** branch.
+PR should be submitted from a **non-main** branch.
 
 <img src="resources/tutorial_pull_request_mergers/1.png" width="700">
 <br/>
 
-If PR was submitted from the **master** branch, you can link to this explanation of what to do to fix it: 
+If PR was submitted from the **main** branch, you can link to this explanation of what to do to fix it: 
 
 https://edav.info/github#fixing-mistakes.
 
@@ -42,7 +42,7 @@ https://edav.info/github#fixing-mistakes.
 - Other hashtag headers should **not** be followed by numbers since the hashtags will create numbered subheadings. Correct: `## Subheading`. Incorrect: `## 3. Subheading`.
 - If the file contains a setup chunk in `.Rmd` file, it should **not** contain a `setup` label. (The bookdown render will fail if there are duplicate chunk labels.)
 <br/>i.e. use `{r, include=FALSE}` instead of `{r setup, include=FALSE}`.
-<br/>[See sample `.Rmd`](https://github.com/jtr13/cc21/blob/master/sample_project.Rmd)
+<br/>[See sample `.Rmd`](https://github.com/jtr13/cc21/blob/main/sample_project.Rmd)
 - Links to internal files must contain `resources/<project_name>/` in the path, such as: `![Test Photo](resources/sample_project/election.jpg)`
 - The file should not contain any `install.packages()`, `write` functions, `setwd()`, or `getwd()`. 
 - If there's anything else that looks odd but you're not sure, assign `jtr13` to review and explain the issue.
@@ -73,7 +73,7 @@ If all is good to go, it's time to merge the pull request. There are several ste
 
 <img src="resources/tutorial_pull_request_mergers/3.png" width="700">
 
-- Make sure you are on the PR branch by checking that the PR branch name is shown (not `master`):
+- Make sure you are on the PR branch by checking that the PR branch name is shown (not `main`):
 
 <img src="resources/tutorial_pull_request_mergers/4.png" width="700">
 
@@ -83,7 +83,7 @@ If all is good to go, it's time to merge the pull request. There are several ste
 
 <img src="resources/tutorial_pull_request_mergers/delete_most_of_bookdown_yml.png" width="700">
 
-Why? Because it will be easier to fix the merge conflicts this way. (A better way to do this is to merge master into the PR branch *before* adding the new file but this can't be done on GitHub. If there's interest I will explain how to do this locally.)
+Why? Because it will be easier to fix the merge conflicts this way. (A better way to do this is to merge main into the PR branch *before* adding the new file but this can't be done on GitHub. If there's interest I will explain how to do this locally.)
 
 - Save the edited version.
 
@@ -91,7 +91,7 @@ Why? Because it will be easier to fix the merge conflicts this way. (A better wa
 
 <img src="resources/tutorial_pull_request_mergers/resolve_conflicts.png" width="700">
 
-- Cut the new filename and paste it into the proper location. Then delete the lines with `<<<<<<< xxxx`, `=======` and `>>>>>>>> master`. In short, the file should look correct when you're done. Click the "Marked as resolved" button and then the green "Commit merge" button.
+- Cut the new filename and paste it into the proper location. Then delete the lines with `<<<<<<< xxxx`, `=======` and `>>>>>>>> main`. In short, the file should look correct when you're done. Click the "Marked as resolved" button and then the green "Commit merge" button.
 
 ### PR Leaders only: Add part names to `.Rmd` for every first article in part
 
