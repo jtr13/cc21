@@ -1,4 +1,4 @@
-# Tutorial for Pull Request Mergers
+# Tutorial for pull request mergers
 
 ## Check branch
 
@@ -39,7 +39,7 @@ https://edav.info/github#fixing-mistakes.
 - The second line should be blank, followed by the author name(s).
 - The first line should start with a **single hashtag `#`**, followed by a **single whitespace**, and then the title.
 - There should be no additional single hashtag headers in the chapter. (If there are, new chapters will be created.)
-- NEW: Other hashtag headers should **not** be followed by numbers since the hashtags will create numbered subheadings. Correct: `## Subheading`. Incorrect: `## 3. Subheading`.
+- Other hashtag headers should **not** be followed by numbers since the hashtags will create numbered subheadings. Correct: `## Subheading`. Incorrect: `## 3. Subheading`.
 - If the file contains a setup chunk in `.Rmd` file, it should **not** contain a `setup` label. (The bookdown render will fail if there are duplicate chunk labels.)
 <br/>i.e. use `{r, include=FALSE}` instead of `{r setup, include=FALSE}`.
 <br/>[See sample `.Rmd`](https://github.com/jtr13/cc21/blob/master/sample_project.Rmd)
@@ -79,7 +79,7 @@ If all is good to go, it's time to merge the pull request. There are several ste
 
 - Open the `_bookdown.yml` file.
 
-- NEW: **delete everything in the file beginning with `rmd_files: [` and then add the name of the new file in single quotes followed by a comma:**
+- **delete everything in the file beginning with `rmd_files: [` and then add the name of the new file in single quotes followed by a comma:**
 
 <img src="resources/tutorial_pull_request_mergers/delete_most_of_bookdown_yml.png" width="700">
 
@@ -93,7 +93,7 @@ Why? Because it will be easier to fix the merge conflicts this way. (A better wa
 
 - Cut the new filename and paste it into the proper location. Then delete the lines with `<<<<<<< xxxx`, `=======` and `>>>>>>>> master`. In short, the file should look correct when you're done. Click the "Marked as resolved" button and then the green "Commit merge" button.
 
-### PR Leaders only: Add chapter names to `.Rmd` for every first article in each chapter (Chapter Organization)
+### PR Leaders only: Add part names to `.Rmd` for every first article in part
 
 Only do this if you are adding the first chapter in a PART.
 
@@ -114,6 +114,6 @@ https://github.com/jtr13/cc20/pull/23#issuecomment-728506101
 Leave comments for congratulations 🎉 (type `:tada:`) and then click on the green button for merge.
 <br/> 
 
-### Check Updated Version
+### Check updated version
 
 A successful merge means that the addition file or files were added to the project with no merge conflicts. It does not mean that the book will render and deploy to GitHub pages without issues. After the merge, it will take about 5-10 minutes for GitHub Actions to render the book and deploy the updated version. You can check the progress by clicking Actions at the top of the repo. If there's a problem (a red circle) please request a review from @jtr13 in the closed pull request.
