@@ -2,7 +2,9 @@
 
 This chapter contains additional information regarding how to setup the Github to build the book. 
 
-# Github Initial Setup
+# Github initial setup
+
+Joyce Robbins
 
 1. Create a new repository. (For `cc21` I started with a new repo on GitHub since I wanted the main branch to be called `main` and that did not seem possible with **usethis** functions or RStudio "
 
