@@ -7,3 +7,6 @@ cc21.Rproj
 _book/
 _bookdown_files/
 cc21.rds
+.Rdata
+.httr-oauth
+sample_project.utf8.md
