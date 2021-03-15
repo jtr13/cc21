@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>4.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
 <li class="chapter" data-level="4.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>4.1.3</b> GitHub Pages in repo settings</a></li>
 </ul></li>
+<li class="chapter" data-level="4.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>4.2</b> DESCRIPTION file</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>5</b> Tutorial for pull request mergers</a><ul>
 <li class="chapter" data-level="5.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>5.1</b> Check branch</a></li>
@@ -229,8 +230,22 @@ sample_project.Rmd
 <div id="github-pages-in-repo-settings" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> GitHub Pages in repo settings</h3>
 <p>(May happen automatically???)</p>
-
 </div>
+</div>
+<div id="description-file" class="section level2">
+<h2><span class="header-section-number">4.2</span> DESCRIPTION file</h2>
+<p><em>Need a better process…</em></p>
+<p>Downloaded submissions from CourseWorks</p>
+<p>Create DESCRIPTION file. Add add dependencies with <code>projthis::proj_update_deps()</code></p>
+<p><a href="https://twitter.com/ijlyttle/status/1370776366585614342" class="uri">https://twitter.com/ijlyttle/status/1370776366585614342</a></p>
+<p>Add these Imports to the real DESCRIPTION file.</p>
+<p>Found problematic packages by looking at reverse dependencies of the packages that failed to install:</p>
+<p><code>devtools::revdep()</code></p>
+<p>Also used <code>pak::pkg_deps_tree()</code></p>
+<p>Problems:</p>
+<p><code>magick</code></p>
+<p><code>rJava</code> dependency of <code>qdap</code></p>
+
 </div>
 </div>
             </section>

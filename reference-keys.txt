@@ -18,6 +18,7 @@ github-actions
 secrets
 create-a-gh-pages-branch
 github-pages-in-repo-settings
+description-file
 tutorial-for-pull-request-mergers
 check-branch
 examine-files-that-were-added-or-modified
