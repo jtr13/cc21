@@ -10,6 +10,7 @@ language:
 
 # Chapter ordering
 rmd_files: [
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -20,7 +21,7 @@ rmd_files: [
 
   # Part: Cheatsheets
   'date_time_handling_cheatsheet.Rmd', # contains PART header
-
+  'tidydata_cheatsheet.Rmd',
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
