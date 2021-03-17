@@ -1,4 +1,6 @@
-# Barbara Bettencourt
+# Introduction to Rstudio in Portuguese
+
+Barbara Bettencourt
 
 For my community contribution I translated a document on an introduction to Rstudio from Princeton University to Portuguese.  
 
