@@ -32,6 +32,7 @@ finding-a-dataset-in-quandl
 example-search-for-japan
 example
 date-time-handling-in-r-cheatsheet
+tidy-data-cheatsheet
 github-initial-setup
 github-actions
 secrets

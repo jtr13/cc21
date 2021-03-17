@@ -1,0 +1,8 @@
+# Tidy data Cheatsheet
+
+Yifan Jing
+
+This project includes a pdf version cheatsheet for tidy data. It includes functions in tidyr and dplyr.
+
+The link is below:
+https://github.com/JackJing001/STAT5702/blob/main/Tidy%20data%20cheat%20sheet.pdf
