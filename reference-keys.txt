@@ -33,6 +33,13 @@ example-search-for-japan
 example
 date-time-handling-in-r-cheatsheet
 tidy-data-cheatsheet
+colors_in_r_chinese_translation
+在r中使用颜色
+r自带的指定颜色名称
+使用十六进制编码指定颜色
+使用-rcolorbrewer-调色盘
+使用-wes-anderson-调色盘
+创建一个n个连续颜色的矢量
 github-initial-setup
 github-actions
 secrets
