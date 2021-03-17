@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Introduction to Quandl() | Spring 2021 EDAV Community Contributions</title>
+  <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Introduction to Quandl() | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="github-repo" content="jtr13/cc21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Introduction to Quandl() | Spring 2021 EDAV Community Contributions" />
+  
+  <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  
+
+
+
+<meta name="date" content="2021-03-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sample-project.html"/>
+<link rel="next" href="date-time-handling-in-r-cheatsheet.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">cc for EDAV 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Community contribution assignment</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#logistics"><i class="fa fa-check"></i><b>1.1</b> Logistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#groups"><i class="fa fa-check"></i><b>1.1.1</b> Groups</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#submitting-your-assignment"><i class="fa fa-check"></i><b>1.1.2</b> Submitting your assignment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html"><i class="fa fa-check"></i><b>2</b> GitHub submission instructions</a><ul>
+<li class="chapter" data-level="2.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#background"><i class="fa fa-check"></i><b>2.1</b> Background</a></li>
+<li class="chapter" data-level="2.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#preparing-your-.rmd-file"><i class="fa fa-check"></i><b>2.2</b> Preparing your <code>.Rmd</code> file</a></li>
+<li class="chapter" data-level="2.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#submission-steps"><i class="fa fa-check"></i><b>2.3</b> Submission steps</a></li>
+<li class="chapter" data-level="2.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#optional-tweaks"><i class="fa fa-check"></i><b>2.4</b> Optional tweaks</a></li>
+<li class="chapter" data-level="2.5" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#faq"><i class="fa fa-check"></i><b>2.5</b> FAQ</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-should-i-expect-after-creating-a-pull-request"><i class="fa fa-check"></i><b>2.5.1</b> What should I expect after creating a pull request?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-before-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.2</b> What if I catch mistakes before my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-after-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.3</b> What if I catch mistakes after my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#other-questions"><i class="fa fa-check"></i><b>2.5.4</b> Other questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sample-project.html"><a href="sample-project.html"><i class="fa fa-check"></i><b>3</b> Sample project</a></li>
+<li class="part"><span><b>I Package Recommendation</b></span></li>
+<li class="chapter" data-level="4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html"><i class="fa fa-check"></i><b>4</b> Introduction to Quandl()</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#introduction"><i class="fa fa-check"></i><b>4.1</b> INTRODUCTION</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#installation"><i class="fa fa-check"></i><b>4.1.1</b> Installation :</a></li>
+<li class="chapter" data-level="4.1.2" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#load-package"><i class="fa fa-check"></i><b>4.1.2</b> Load Package</a></li>
+<li class="chapter" data-level="4.1.3" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#set-api-key"><i class="fa fa-check"></i><b>4.1.3</b> Set API key</a></li>
+<li class="chapter" data-level="4.1.4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#loading-data"><i class="fa fa-check"></i><b>4.1.4</b> Loading Data</a></li>
+<li class="chapter" data-level="4.1.5" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#type"><i class="fa fa-check"></i><b>4.1.5</b> Type</a></li>
+<li class="chapter" data-level="4.1.6" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#transform"><i class="fa fa-check"></i><b>4.1.6</b> Transform</a></li>
+<li class="chapter" data-level="4.1.7" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#order"><i class="fa fa-check"></i><b>4.1.7</b> Order</a></li>
+<li class="chapter" data-level="4.1.8" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#collapse"><i class="fa fa-check"></i><b>4.1.8</b> collapse</a></li>
+<li class="chapter" data-level="4.1.9" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#slicing-data"><i class="fa fa-check"></i><b>4.1.9</b> Slicing data</a></li>
+<li class="chapter" data-level="4.1.10" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#finding-a-dataset-in-quandl"><i class="fa fa-check"></i><b>4.1.10</b> Finding a dataset in Quandl</a></li>
+<li class="chapter" data-level="4.1.11" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#example"><i class="fa fa-check"></i><b>4.1.11</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Cheatsheets</b></span></li>
+<li class="chapter" data-level="5" data-path="date-time-handling-in-r-cheatsheet.html"><a href="date-time-handling-in-r-cheatsheet.html"><i class="fa fa-check"></i><b>5</b> Date-Time Handling in R Cheatsheet</a></li>
+<li class="part"><span><b>III Appendices</b></span></li>
+<li class="chapter" data-level="6" data-path="github-initial-setup.html"><a href="github-initial-setup.html"><i class="fa fa-check"></i><b>6</b> Github initial setup</a><ul>
+<li class="chapter" data-level="6.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-actions"><i class="fa fa-check"></i><b>6.1</b> GitHub Actions</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#secrets"><i class="fa fa-check"></i><b>6.1.1</b> Secrets</a></li>
+<li class="chapter" data-level="6.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>6.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
+<li class="chapter" data-level="6.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>6.1.3</b> GitHub Pages in repo settings</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>6.2</b> DESCRIPTION file</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>7</b> Tutorial for pull request mergers</a><ul>
+<li class="chapter" data-level="7.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>7.1</b> Check branch</a></li>
+<li class="chapter" data-level="7.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#examine-files-that-were-added-or-modified"><i class="fa fa-check"></i><b>7.2</b> Examine files that were added or modified</a></li>
+<li class="chapter" data-level="7.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-filename"><i class="fa fa-check"></i><b>7.3</b> Check <code>.Rmd</code> filename</a></li>
+<li class="chapter" data-level="7.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-file-contents"><i class="fa fa-check"></i><b>7.4</b> Check <code>.Rmd</code> file contents</a></li>
+<li class="chapter" data-level="7.5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#request-changes"><i class="fa fa-check"></i><b>7.5</b> Request changes</a></li>
+<li class="chapter" data-level="7.6" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-the-pull-request"><i class="fa fa-check"></i><b>7.6</b> Merge the pull request</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#add-chapter-filename-to-_bookdown.yml-in-prs-branch"><i class="fa fa-check"></i><b>7.6.1</b> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></a></li>
+<li class="chapter" data-level="7.6.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part"><i class="fa fa-check"></i><b>7.6.2</b> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</a></li>
+<li class="chapter" data-level="7.6.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-pr-and-leave-a-comment"><i class="fa fa-check"></i><b>7.6.3</b> Merge PR and leave a comment</a></li>
+<li class="chapter" data-level="7.6.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-updated-version"><i class="fa fa-check"></i><b>7.6.4</b> Check updated version</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spring 2021 EDAV Community Contributions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-quandl" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Introduction to Quandl()</h1>
+<p>Aiqi Zhou (az2638)</p>
+<p>Quandl::Quandl()</p>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">4.1</span> INTRODUCTION</h2>
+<p>Quandl is a source of financial, economic and alternative data. It is acquired by Nasdaq in 2018 and has 20+ million data sets available. Users can acquire free data, purchase data or sell data at Quandl.</p>
+<p>You can find data on a large variety of types of data from company data to the demographics data of a country.
+More can be explored on Quandl’s website. <a href="https://www.quandl.com/search" class="uri">https://www.quandl.com/search</a></p>
+<p>The data is readily available in json, csv, xml formats and can be loaded in MatLab, R, Python, etc.</p>
+<p>All the data can be loaded in R through the package Quandl.</p>
+<div id="installation" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Installation :</h3>
+<ul>
+<li>install.packages(“Quandl”)</li>
+</ul>
+</div>
+<div id="load-package" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Load Package</h3>
+<ul>
+<li>library(Quandl)</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-quandl.html#cb6-1"></a><span class="kw">library</span>(Quandl)</span></code></pre></div>
+</div>
+<div id="set-api-key" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Set API key</h3>
+<p>Quandl allows 50 calls a day for anonymous users.
+Sign up for a free account to make unlimited calls every day.</p>
+<p>Set up your own account and copy your api_key into the following function</p>
+<p>Quandl.api_key(‘your_key’)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-quandl.html#cb7-1"></a><span class="kw">Quandl.api_key</span>(<span class="st">&#39;JrvHzZcnakybdzAUChjn&#39;</span>)</span></code></pre></div>
+</div>
+<div id="loading-data" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> Loading Data</h3>
+<p>All available data can be found and viewed on <a href="https://www.quandl.com/search" class="uri">https://www.quandl.com/search</a>.
+This package includes many free datasets, however, some datasets requires an account or is for paid use only.</p>
+<p>To call on a data set in R. You must find the Quandl code of the data set. The codes can be found in the documentation page of the data set.</p>
+<div id="for-example" class="section level4">
+<h4><span class="header-section-number">4.1.4.1</span> For example</h4>
+<p>The follow dataset is called the “Federal Reserve Economic Data”, which has the code FRED.
+This dataset has 335,000+ time-series data.</p>
+<p>To call on certain aspect like the GDP of this data set, the Quandl code is “FRED/GDP”.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-quandl.html#cb8-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>)</span>
+<span id="cb8-2"><a href="introduction-to-quandl.html#cb8-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date    Value
+## 1 2020-10-01 21487.90
+## 2 2020-07-01 21170.25
+## 3 2020-04-01 19520.11
+## 4 2020-01-01 21561.14
+## 5 2019-10-01 21747.39
+## 6 2019-07-01 21540.33</code></pre>
+<p>To call on another aspect like disposable personal income, the Quandl code is “FRED/DSPI”</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduction-to-quandl.html#cb10-1"></a>mydata=<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/DSPI&quot;</span>)</span>
+<span id="cb10-2"><a href="introduction-to-quandl.html#cb10-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date   Value
+## 1 2021-01-01 19217.7
+## 2 2020-12-01 17254.5
+## 3 2020-11-01 17151.4
+## 4 2020-10-01 17398.9
+## 5 2020-09-01 17546.8
+## 6 2020-08-01 17430.4</code></pre>
+</div>
+</div>
+<div id="type" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> Type</h3>
+<p>The data can be called in different formats.
+The default of the data is data frame, which can have an argument type = “raw”</p>
+<ul>
+<li>“raw”</li>
+<li>“ts”</li>
+<li>“zoo”</li>
+<li>“xts”</li>
+<li>“timeSeries”</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-to-quandl.html#cb12-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">type=</span><span class="st">&quot;xts&quot;</span>)</span>
+<span id="cb12-2"><a href="introduction-to-quandl.html#cb12-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##            [,1]
+## 1947 Q1 243.164
+## 1947 Q2 245.968
+## 1947 Q3 249.585
+## 1947 Q4 259.745
+## 1948 Q1 265.742
+## 1948 Q2 272.567</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-quandl.html#cb14-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">type=</span><span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb14-2"><a href="introduction-to-quandl.html#cb14-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>## [1] 243.164 245.968 249.585 259.745 265.742 272.567</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-quandl.html#cb16-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">type=</span><span class="st">&quot;zoo&quot;</span>)</span>
+<span id="cb16-2"><a href="introduction-to-quandl.html#cb16-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>## 1947 Q1 1947 Q2 1947 Q3 1947 Q4 1948 Q1 1948 Q2 
+## 243.164 245.968 249.585 259.745 265.742 272.567</code></pre>
+</div>
+<div id="transform" class="section level3">
+<h3><span class="header-section-number">4.1.6</span> Transform</h3>
+<p>There are some preprocessing can be done when loading the data. By adding a transform argument in Quandl(), the data can have the following types of transformations.</p>
+<ul>
+<li>"" = Default original data</li>
+<li>“diff” = row on row change in value</li>
+<li>“rdiff” = row on row percentage change</li>
+<li>“normalize” = scale to start at 100</li>
+<li>“cumul” = cumulative sum</li>
+<li>“rdiff_from” = latest value as % increment</li>
+</ul>
+<div id="for-example-the-percentage-change-of-gdp-by-year" class="section level4">
+<h4><span class="header-section-number">4.1.6.1</span> For example the percentage change of GDP by year</h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-quandl.html#cb18-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>,<span class="dt">transform =</span> <span class="st">&quot;rdiff&quot;</span> )</span>
+<span id="cb18-2"><a href="introduction-to-quandl.html#cb18-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date        Value
+## 1 2020-10-01  0.015004262
+## 2 2020-07-01  0.084535264
+## 3 2020-04-01 -0.094662207
+## 4 2020-01-01 -0.008564474
+## 5 2019-10-01  0.009613086
+## 6 2019-07-01  0.009866349</code></pre>
+</div>
+</div>
+<div id="order" class="section level3">
+<h3><span class="header-section-number">4.1.7</span> Order</h3>
+<p>The data can be ordered by date upon it is loaded.
+Default is descending order by date.
+- “desc”
+- “asc”</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-quandl.html#cb20-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">order =</span> <span class="st">&quot;asc&quot;</span>)</span>
+<span id="cb20-2"><a href="introduction-to-quandl.html#cb20-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date   Value
+## 1 1947-01-01 243.164
+## 2 1947-04-01 245.968
+## 3 1947-07-01 249.585
+## 4 1947-10-01 259.745
+## 5 1948-01-01 265.742
+## 6 1948-04-01 272.567</code></pre>
+</div>
+<div id="collapse" class="section level3">
+<h3><span class="header-section-number">4.1.8</span> collapse</h3>
+<p>Since all data have a time associated. Quandl allows you to preprocess the data by specifying the frequency of the data.</p>
+<ul>
+<li>’’</li>
+<li>‘daily’</li>
+<li>‘weekly’</li>
+<li>‘monthly’</li>
+<li>‘quarterly’</li>
+<li>‘annual’</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introduction-to-quandl.html#cb22-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;quarterly&quot;</span>)</span>
+<span id="cb22-2"><a href="introduction-to-quandl.html#cb22-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date    Value
+## 1 2020-12-31 21487.90
+## 2 2020-09-30 21170.25
+## 3 2020-06-30 19520.11
+## 4 2020-03-31 21561.14
+## 5 2019-12-31 21747.39
+## 6 2019-09-30 21540.33</code></pre>
+</div>
+<div id="slicing-data" class="section level3">
+<h3><span class="header-section-number">4.1.9</span> Slicing data</h3>
+<div id="rows" class="section level4">
+<h4><span class="header-section-number">4.1.9.1</span> Rows</h4>
+<p>Because the data we are using is time series data, we can specify the range of row of the data set, using the start and end date arguments.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction-to-quandl.html#cb24-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">start_date=</span><span class="st">&quot;2001-12-31&quot;</span>, <span class="dt">end_date=</span><span class="st">&quot;2005-12-31&quot;</span>)</span>
+<span id="cb24-2"><a href="introduction-to-quandl.html#cb24-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date    Value
+## 1 2005-10-01 13332.32
+## 2 2005-07-01 13142.87
+## 3 2005-04-01 12910.02
+## 4 2005-01-01 12761.34
+## 5 2004-10-01 12522.42
+## 6 2004-07-01 12303.34</code></pre>
+</div>
+<div id="columns" class="section level4">
+<h4><span class="header-section-number">4.1.9.2</span> Columns</h4>
+<p>To get multiple columns of data from Quandl, the data can be called in the format: Quandl(c(“col_1”, “col_2”))</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduction-to-quandl.html#cb26-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="kw">c</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="st">&quot;FRED/DSPI&quot;</span>),<span class="dt">start_date=</span><span class="st">&quot;2001-12-31&quot;</span>, <span class="dt">end_date=</span><span class="st">&quot;2005-12-31&quot;</span>)</span>
+<span id="cb26-2"><a href="introduction-to-quandl.html#cb26-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date FRED.GDP - Value FRED.DSPI - Value
+## 1 2002-01-01         10788.95            7962.4
+## 2 2002-02-01               NA            7981.9
+## 3 2002-03-01               NA            8003.6
+## 4 2002-04-01         10893.21            8066.8
+## 5 2002-05-01               NA            8099.5
+## 6 2002-06-01               NA            8127.2</code></pre>
+</div>
+</div>
+<div id="finding-a-dataset-in-quandl" class="section level3">
+<h3><span class="header-section-number">4.1.10</span> Finding a dataset in Quandl</h3>
+<p>You can look for certain data sets within R using Quandl.search()</p>
+<p>Format:</p>
+<p>Quandl.search(query = “search keyword”,
+page = # ,
+source = “source to search from if known”,
+silent = TRUE/FALSE)</p>
+<ul>
+<li>query: mandatory argument that you want to search for</li>
+<li>page: which page of search result you want. Default page = 1.</li>
+<li>source: specific source you want to search from.</li>
+<li>silent: print the results when FALSE. Nothing prints when true.</li>
+</ul>
+<div id="example-search-for-japan" class="section level4">
+<h4><span class="header-section-number">4.1.10.1</span> Example search for Japan</h4>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introduction-to-quandl.html#cb28-1"></a><span class="kw">Quandl.search</span>(<span class="dt">query =</span> <span class="st">&quot;Japan&quot;</span>, </span>
+<span id="cb28-2"><a href="introduction-to-quandl.html#cb28-2"></a>              <span class="dt">page =</span> <span class="dv">1</span> , </span>
+<span id="cb28-3"><a href="introduction-to-quandl.html#cb28-3"></a>              <span class="dt">silent =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<pre><code>## Japanese Intervention: Japanese Bank purchases of USD against JPY
+## Code: FRED/JPINTDUSDJPY
+## Desc: 100 Million Yen Not Seasonally Adjusted, (+) numbers mean purchases of the USD (sell Yen), (-) numbers mean sales of USD (buy Yen). Unpublished data. 
+## Freq: daily
+## Cols: DATE | VALUE
+## 
+## NASDAQ Japan Retail JPY Index (NQJP5300JPY)
+## Code: NASDAQOMX/NQJP5300JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5300JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5300JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Media JPY Index (NQJP5500JPY)
+## Code: NASDAQOMX/NQJP5500JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Tech JPY Index (NQJP9000JPY)
+## Code: NASDAQOMX/NQJP9000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Telecom JPY Index (NQJP6000JPY)
+## Code: NASDAQOMX/NQJP6000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Utilities JPY Index (NQJP7000JPY)
+## Code: NASDAQOMX/NQJP7000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP7000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP7000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Banks JPY Index (NQJP8300JPY)
+## Code: NASDAQOMX/NQJP8300JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8300JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8300JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Inds JPY Index (NQJP2000JPY)
+## Code: NASDAQOMX/NQJP2000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Ins JPY Index (NQJP8500JPY)
+## Code: NASDAQOMX/NQJP8500JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Financials JPY Index (NQJP8000JPY)
+## Code: NASDAQOMX/NQJP8000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value</code></pre>
+<p>You can pick which data set to use from the search result.</p>
+</div>
+</div>
+<div id="example" class="section level3">
+<h3><span class="header-section-number">4.1.11</span> Example</h3>
+<p>The following is a quick example of getting data from the data set United Nations Industrial Commodities.
+From the documentation of this data set, we can learn what we are interested in. <a href="https://www.quandl.com/data/UINC-United-Nations-Industrial-Commodities" class="uri">https://www.quandl.com/data/UINC-United-Nations-Industrial-Commodities</a></p>
+<p>Here I want to plot the time series data of Beer production of Germany. The code for this information is “UINC/BEER_DEU”.
+I want to plot the time series, then the data need to be in the form of “ts”</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="introduction-to-quandl.html#cb30-1"></a>beer =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;UINC/BEER_DEU&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb30-2"><a href="introduction-to-quandl.html#cb30-2"></a><span class="kw">head</span>(beer)</span></code></pre></div>
+<pre><code>##      Beer (Mil. USD) Beer (Thousand hectolitres)
+## [1,]       10021.504                    111875.4
+## [2,]        9468.029                    108937.5
+## [3,]        8258.888                    108729.5
+## [4,]        7873.553                    106993.0
+## [5,]        7625.868                    107479.3
+## [6,]        6420.827                    106877.4</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="introduction-to-quandl.html#cb32-1"></a>beer =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;UINC/BEER_DEU&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb32-2"><a href="introduction-to-quandl.html#cb32-2"></a><span class="kw">plot.ts</span>(beer)</span></code></pre></div>
+<p><img src="cc_intro_to_quandl_az2638_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
+If I want to see the yearly percentage change of the data, we need to add a transform argument “rdiff”</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introduction-to-quandl.html#cb33-1"></a>beer_per_change =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;UINC/BEER_DEU&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;ts&quot;</span>,<span class="dt">transform =</span> <span class="st">&#39;rdiff&#39;</span>)</span>
+<span id="cb33-2"><a href="introduction-to-quandl.html#cb33-2"></a><span class="kw">plot.ts</span>(beer_per_change)</span></code></pre></div>
+<p><img src="cc_intro_to_quandl_az2638_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sample-project.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="date-time-handling-in-r-cheatsheet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtr13/cc21/edit/main/cc_intro_to_quandl_az2638.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jtr13/cc21/blob/main/cc_intro_to_quandl_az2638.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
