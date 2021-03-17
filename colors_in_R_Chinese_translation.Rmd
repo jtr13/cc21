@@ -1,3 +1,5 @@
+# (PART) Translations {-}
+
 # Colors_in_R_Chinese_translation
 
 Xiaoyan Li
@@ -6,6 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(grid)
 ```
 Source: http://www.sthda.com/english/wiki/colors-in-r
+
 
 ## 在R中使用颜色
 
