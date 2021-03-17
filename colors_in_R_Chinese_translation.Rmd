@@ -5,7 +5,7 @@ Xiaoyan Li
 knitr::opts_chunk$set(echo = TRUE)
 library(grid)
 ```
-#### Source: http://www.sthda.com/english/wiki/colors-in-r
+Source: http://www.sthda.com/english/wiki/colors-in-r
 
 ## 在R中使用颜色
 
