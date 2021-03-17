@@ -18,6 +18,10 @@ rmd_files: [
   # Part: Package Recommendation
   'cc_intro_to_quandl_az2638.Rmd',
 
+  # Part: Cheatsheets
+  'date_time_handling_cheatsheet.Rmd', # contains PART header
+
+
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'  
