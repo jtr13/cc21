@@ -24,7 +24,6 @@ Imports:
     ggeasy,
     ggnetwork,
     ggplot2,
-    ggraph,
     ggthemes,
     ggvis,
     glue,
@@ -40,7 +39,6 @@ Imports:
     leaflet,
     lubridate,
     magrittr,
-    mschart,
     network,
     networkD3,
     officer,
@@ -79,6 +77,10 @@ Imports:
     wesanderson,
     widyr,
     wordcloud
+Remotes:
+    ardata-fr/mschart,
+    thomasp85/ggraph,
+    thomasp85/patchwork
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
