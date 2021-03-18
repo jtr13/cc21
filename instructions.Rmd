@@ -12,7 +12,7 @@ If your community contribution is in a different format, then create a short `.R
 
 You should only submit **ONE** `Rmd` file. 
 
-After completing these modifications, your `.Rmd` should look like this [sample `.Rmd`.](https://github.com/jtr13/cc21/blob/master/sample_project.Rmd){target="_blank"}
+After completing these modifications, your `.Rmd` should look like this [sample `.Rmd`.](https://github.com/jtr13/cc21/blob/main/sample_project.Rmd){target="_blank"}
 
 1. Create a concise, descriptive name for your project. For instance, name it `base_r_ggplot_graph` or something similar if your work is about contrasting/working with base R graphics and **ggplot2** graphics. Check the `.Rmd` filenames in [the project repo](https://github.com/jtr13/cc21){target="_blank"} to make sure your name isn't already taken. Your project name should be words only and joined with underscores, **no white space**. Use `.Rmd` not `.rmd`. In addition, all letters must be **lowercase**. Create a copy of your `.Rmd` file with the new name. 
 
@@ -45,7 +45,7 @@ After completing these modifications, your `.Rmd` should look like this [sample 
    {r setup, include=FALSE}
    ```
 
-7. If your project requires libraries to be installed and included in the document, please adhere to the following conventions. Do not evaluate any `install.packages()` statements in your document. Consumers of an `Rmd` file won't want packages to get installed when they knit your document. Include any `library()` statements at the top of your `Rmd` file, below the title, name, and `setup`, but above any content. If your chapter requires the installation of a package from source (is a GitHub installation), please add a comment identifying it as such. Here is an example `library()` section with install statements that won't be evaluated:
+7. If your project requires libraries to be installed and included in the document, please adhere to the following conventions. Do not evaluate any `install.packages()` statements in your document. Consumers of an `.Rmd` file won't want packages to get installed when they knit your document. Include any `library()` statements at the top of your `Rmd` file, below the title, name, and `setup`, but above any content. If your chapter requires the installation of a package from source (is a GitHub installation), **please add a comment identifying it as such. Please mention this as well in your PR.** Here is an example `library()` section with install statements that won't be evaluated:
 
    ```{r, eval=FALSE}
    install.packages("devtools") # used for installation from source
@@ -100,7 +100,7 @@ To submit your work, we will be following "Workflow #4" -- that is submitting a 
 
 2. Note that your headers (`##`, `###`, etc.) will be converted to numbered headings as such: <br> `##`  --> 3.1 <br> `###` --> 3.1.1 <br> These headings will appear as chapter subheadings and sub-subheadings in the navigation panel on the left. Think about a logical structure for users to navigate your chapter. We recommend using only `##` and `###` headings since "sub-sub-subheadings" such as 4.1.3.4 are generally unnecessary and look messy.
 
-3. Unfortunately, there's no simple way to preview your chapter before it's actually merged into the project. (**bookdown** has  `preview_chapter()` option but it only works after the entire book has been rendered at least once and that will become more and more complex and require more and more packages as the project grows.) If you really want to preview it, fork and clone this [minimal bookdown repo](https://github.com/yihui/bookdown-minimal){target="_blank"}, add your `.Rmd` file, click the "Build book" button on the Build tab (next to Git), and then open any of the `.html` files in the `_book` folder in a web browser to see the rendered book. (**Do not click the Knit button as it will not build a bookdown book.**) <br><br> If you're interested in more **bookdown** options, see the [official reference book](https://bookdown.org/yihui/bookdown/){target="_blank"}. <br><br> Have more useful tweaks to share? Submit an issue or PR.
+3. Unfortunately, there's no simple way to preview your chapter before it's actually merged into the project. (**bookdown** has  `preview_chapter()` option but it only works after the entire book has been rendered at least once and that will become more and more complex and require more and more packages as the project grows.) If you really want to preview it, fork and clone this [minimal bookdown repo](https://github.com/yihui/bookdown-minimal){target="_blank"}, add your `.Rmd` file, click the "Build book" button on the Build tab (next to Git), and then open any of the `.html` files in the `_book` folder in a web browser to see the rendered book. <br><br> If you're interested in more **bookdown** options, see the [official reference book](https://bookdown.org/yihui/bookdown/){target="_blank"}. <br><br> Have more useful tweaks to share? Submit an issue or PR.
 
 
 ## FAQ

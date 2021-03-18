@@ -2,7 +2,9 @@
 title: "Spring 2021 EDAV Community Contributions"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: 
+  bookdown::gitbook:
+    anchor_sections: TRUE
 github-repo: jtr13/cc21
 description: "This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University"
 ---
