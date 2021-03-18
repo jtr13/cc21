@@ -42,7 +42,6 @@ Imports:
     network,
     networkD3,
     officer,
-    patchwork,
     plot3D,
     plotly,
     plyr,
