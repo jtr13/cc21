@@ -204,4 +204,4 @@ set.seed(617)
 comparison.cloud(term.matrix = wordcloudData2,scale = c(2,0.5),max.words = 200, rot.per=0)
 ```
 
-
+Hope you can enjoy this tutorial and explore more on text mining.
