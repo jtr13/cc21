@@ -1,11 +1,11 @@
----
-title: "rvest: web scraping in R"
-output: html_document
-author: Hang Luo
----
+# An introduction of web scrapping using rvest
 
-```{r setup, include=FALSE, warning=FALSE}
+Hang Luo
+
+
+```{r, include=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library("rvest")
 ```
 
 ## 1.Introduction
