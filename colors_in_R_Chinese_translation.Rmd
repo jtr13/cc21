@@ -1,0 +1,159 @@
+# (PART) Translations {-}
+
+# Colors_in_R_Chinese_translation
+
+Xiaoyan Li
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(grid)
+```
+Source: http://www.sthda.com/english/wiki/colors-in-r
+
+
+## 在R中使用颜色
+
+在 R 中，颜色可以使用指定名称（例如 **col = "red"**）或使用十六进制编码（如 **col ="#FFCC00"**）。您还可以使用其他颜色系统，例如从 R 包 **RColorBrewer** 中获取的彩色系统。
+
+### R自带的指定颜色名称
+
+我们将使用以下自定义 R 函数生成一张包含 R 中可用的颜色名称的图：
+
+
+```{r}
+# 生成一张包含R自带颜色名称的图片
+#++++++++++++++++++++++++++++++++++++++++++++
+# cl : 要绘制的颜色矢量
+# bg: 图片背景
+# rot: 字体旋转角度
+# usage = showCols(bg="gray33")
+showCols <- function(cl=colors(), bg = "grey",
+                     cex = 0.75, rot = 30) {
+    m <- ceiling(sqrt(n <-length(cl)))
+    length(cl) <- m*m; cm <- matrix(cl, m)
+    require("grid")
+    grid.newpage(); vp <- viewport(w = .92, h = .92)
+    grid.rect(gp=gpar(fill=bg))
+    grid.text(cm, x = col(cm)/m, y = rev(row(cm))/m, rot = rot,
+              vp=vp, gp=gpar(cex = cex, col = cm))
+  }
+```
+
+下图包含前60种颜色的名称：
+
+```{r}
+# 前60种颜色的名称
+showCols(bg="gray20",cl=colors()[1:60], rot=30, cex=0.9)
+# 使用颜色名称绘制柱状图
+barplot(c(2,5), col=c("chartreuse", "blue4"))
+```
+
+要查看 R 的所有内置颜色名称（n = 657），请使用以下 R 代码：
+
+```{r eval=FALSE}
+showCols(cl= colors(), bg="gray33", rot=30, cex=0.75)
+```
+
+### 使用十六进制编码指定颜色
+
+颜色可以通过十六进制编码指定，例如“**#FFC00**”
+
+<img src="https://s3.ax1x.com/2021/03/09/63fM2F.png" width = "600" height = "500" alt="" align=center />
+
+（来源：[http://www.visibone.com](http://www.visibone.com)）
+
+```{r}
+# 用十六进制编码绘制柱状图
+barplot(c(2,5), col=c("#009999", "#0000FF"))
+```
+
+### 使用 RColorBrewer 调色盘
+
+你需要安装 **RColorBrewer** 包：
+```{r}
+# install.packages("RColorBrewer")
+```
+
+与 **RColorBrewer** 包关联的调色板可以使用 **display.brewer.all（）**绘制，如下：
+
+```{r fig.height=15, fig.width=8}
+library("RColorBrewer")
+display.brewer.all()
+```
+
+
+调色板有3种类型：**循序、发散和定性**。
+
+1. **循序**调色板适合用于从低到高（梯度）的有序数据。调色板名称分别是是： Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu YlOrBr, YlOrRd。
+
+2. **发散**调色板重点强调了数据范围的两极和中间值。调色板分别有：BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral。
+
+3. **定性**调色板最适合表示名义数据或分类数据，并不表明群体之间的幅度差异。调色板名称是： Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3。
+
+
+你也可以指定查看单个的RColorBrewer调色盘：
+```{r}
+# 查看单个调色板
+display.brewer.pal(n = 8, name = 'RdBu')
+```
+
+```{r}
+# 查看单个调色板中颜色的十六进制编码
+brewer.pal(n = 8, name = "RdBu")
+```
+
+```{r}
+# 用 RColorBrewer 绘制柱状图
+barplot(c(2,5,7), col=brewer.pal(n = 3, name = "RdBu"))
+```
+
+
+### 使用 Wes Anderson 调色盘
+
+此调色板可以安装和加载如下：
+
+```{r}
+# 安装
+# install.packages("wesanderson")
+# 加载
+library(wesanderson)
+```
+
+提供调色盘如下：
+<img src="https://s3.ax1x.com/2021/03/09/63b6de.png" alt="" align=center />
+
+使用调色板：
+
+```{r}
+# 一个简单的柱状图
+barplot(c(2,5,7), col=wes_palette(n=3, name="GrandBudapest1"))
+```
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
+  geom_point(size = 2) + 
+  scale_color_manual(values = wes_palette(n=3, name="GrandBudapest1"))
+```
+
+### 创建一个n个连续颜色的矢量
+
+你也可以使用函数**rainbow(n), heat.colors(n), terrain.colors(n), topo.colors(n), and cm.colors(n)**创建一个包含n个连续的颜色的矢量。
+
+```{r}
+# 使用彩虹的颜色
+barplot(1:5, col=rainbow(5))
+# 使用热量图的颜色
+barplot(1:5, col=heat.colors(5))
+```
+
+
+```{r}
+# 使用 terrain.colors
+barplot(1:5, col=terrain.colors(5))
+# 使用 topo.colors
+barplot(1:5, col=topo.colors(5))
+# 使用 cm.colors
+barplot(1:5, col=cm.colors(5))
+```
+
+
