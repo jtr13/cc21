@@ -24,6 +24,7 @@ rmd_files: [
   
   # Part: Translation
   'colors_in_R_Chinese_translation.Rmd',
+  'dplyr_tutorial_in_chinese.Rmd',
   'introduction_rstudio_portuguese.Rmd',
 
   # Part: Appendices
