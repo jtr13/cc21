@@ -5,6 +5,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # Introduction to Topology Data Analysis
 
+Yiwei Ren
+
 For the Class Contribution, I made a YouTube video about Topology Data Analysis. In the 
 video, I talked about basic elements of Topology Data Analysis as well as how this tool related 
 to data visualization. This 10-minute talk will give you an overall idea about what Topology Data 
