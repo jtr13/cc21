@@ -1,5 +1,5 @@
 
-## Creating R Packages
+# Creating R Packages
 
 Sam Gabor
 
