@@ -1,4 +1,4 @@
-# Final Project Zoom Meetup - Sports
+# Final project Zoom meetup - sports
 
 Santos Hernandez
 
@@ -11,8 +11,4 @@ including myself! I also made a followup post with some notes/resources that
 were gathered during the meeting. This document also had contact information in 
 case someone missed the meeting and still needed a partner.
 
-The document is here:
-
-https://docs.google.com/document/d/1ZYeUcwlqhr5Aw1I2k4L-sUSxZEINgkhSxJwT_SjgMsM/edit?usp=sharing
-
-
+The resource document lives [here.](https://docs.google.com/document/d/1ZYeUcwlqhr5Aw1I2k4L-sUSxZEINgkhSxJwT_SjgMsM/edit?usp=sharing){target="_blank"}
