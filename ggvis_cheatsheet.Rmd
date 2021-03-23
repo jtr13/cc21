@@ -1,11 +1,8 @@
----
-title: "GGvis-cheatsheet"
-author: "Mao chenhui (cm4054)"
-date: "2021/3/9"
-output: html_document
----
+# GGvis cheatsheet
 
-```{r setup, include=FALSE}
+Chenhui Mao
+
+```{r, include=FALSE}
 # keep this chunk in your .Rmd file
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```
@@ -23,6 +20,9 @@ ggvis is a visualization package that can:
 First thing first, we shall import some necessary packages
 
 ```{r}
+install.packages("dplyr")
+install.packages("ggvis")
+
 library(ggvis)
 library(dplyr)
 ```
