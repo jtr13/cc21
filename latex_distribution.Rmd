@@ -1,0 +1,17 @@
+---
+title: "LaTeX Distribution"
+author: "Wenzhou Ma"
+date: "3/23/2021"
+output: html_document
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# LaTeX Distribution
+
+Wenzhou Ma
+A guide on how to setup LaTeX Distribution on R and Jupyter Notebook. 
+
+https://github.com/ainiyo123/LaTeX-Distribution.git
