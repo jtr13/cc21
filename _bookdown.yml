@@ -10,8 +10,30 @@ language:
 
 # Chapter ordering
 rmd_files: [
+
+  # Part: Introduction
+  'index.Rmd', # must be first chapter
+  'instructions.Rmd',
+  'sample_project.Rmd',
+  
+  # Part: Package Recommendation
+  'cc_intro_to_quandl_az2638.Rmd',
+
+  # Part: Cheatsheets
+  'date_time_handling_cheatsheet.Rmd', # contains PART header
+  'tidydata_cheatsheet.Rmd',
+  
+  # Part: Translation
+  'colors_in_R_Chinese_translation.Rmd',
+  'dplyr_tutorial_in_chinese.Rmd',
+  'introduction_rstudio_portuguese.Rmd',
+
   # Part: Tutorials
   'CreatingRPackages.Rmd'
+
+  # Part: Appendices
+  'appendix_initial_setup.Rmd', # contains PART header
+  'appendix_pull_request_tutorial.Rmd'  
 ]
 
 before_chapter_script: "_common.R"
