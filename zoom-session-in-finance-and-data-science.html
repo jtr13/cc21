@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Creating R Packages | Spring 2021 EDAV Community Contributions</title>
+  <title>Chapter 12 Zoom session in Finance and Data-Science | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Creating R Packages | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:title" content="Chapter 12 Zoom session in Finance and Data-Science | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jtr13/cc21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Creating R Packages | Spring 2021 EDAV Community Contributions" />
+  <meta name="twitter:title" content="Chapter 12 Zoom session in Finance and Data-Science | Spring 2021 EDAV Community Contributions" />
   
   <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction-to-rstudio-in-portuguese.html"/>
-<link rel="next" href="zoom-session-in-finance-and-data-science.html"/>
+<link rel="prev" href="creating-r-packages.html"/>
+<link rel="next" href="github-initial-setup.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -272,24 +272,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-r-packages" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Creating R Packages</h1>
-<p>Sam Gabor</p>
-<p>Creating custom R packages allows users to exchange code logic and data effortlessly. In addition, even if R packages are not shared with others, they still provide utility for the R user because they group related functionality into clean, easily maintained and tested units.</p>
-<p>I created a tutorial that illustrates the creation of a non-trivial R package covering all the steps that constitute a good work flow. It culminates in publishing the created package on GitHub where it can be shared with other users using <code>devtools::install_github("atsats/PCD")</code>.</p>
-<p>The finished package as well as the Tutorial markdown, html and pdf files can be found here: <a href="https://github.com/atsats/PCD" class="uri">https://github.com/atsats/PCD</a></p>
+<div id="zoom-session-in-finance-and-data-science" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Zoom session in Finance and Data-Science</h1>
+<p>Minwoo Choi</p>
+<p>This Zoom session was held on Wed (Mar 18) at 4:00 EST</p>
+<p>(Food for thought) Systemic approach and its application in finance has a very long history.
+Systemic trading, ML driven factor / alpha engine has been around quite a while even though no
+one really knows what is actually going on in the industry, it is a very secretive world !
+Financial industry, especially trading and investment management business, is an extremely
+closed community that is entirely competition driven. Hence, it is very rare to experience other
+company’s in-house research and models. Also, in my opinion, there is a huge gap between
+what we learn in school and cutting-edge models being used in secretive quantitative trading
+firms.</p>
+<p>This is one reason I am not a big fan of finance anymore. Based on my short experience outside
+of the financial industry, I feel that other data science communities are more open and
+collaboration based. (e.g. think about Stackoverflow… and TensorFlow is free, but Bloomberg
+terminal costs 30k per year)</p>
+<p>Second big difference is, data in finance is not static and much more vulnerable to a sudden
+regime change. For example, global macro situations, market liquidity can be purely driven by
+sudden change in central bank policy. Unlike natural phenomena, the market is man-made and
+driven by unnatural forces. Market intervention, manipulation is more often than outsiders
+believe.</p>
+<p>So, I hear many times (even though mine is at best second hand opinions) that looking into
+‘mean-reversion’, ‘overbought, oversold’ indicators will provide a better opportunity than just
+looking at ‘static’ price data.</p>
+<p>Darko Matovski, CEO of CausaLens, explained two major pitfalls of applying ML in finance data
+during the AI and DS in Trading event held this week.
+‘Let’s imagine applying deep-learning to US mortgage data that had never failed for 100 years,
+and make a prediction. And recall what happened during a financial crisis in a sudden shift in
+price dynamics.’ He also emphasized that finance data frequently shows sudden regime
+change, and having a proper ‘state status’ setup is crucial for reinforcement learning. (Of
+course, he did not reveal his way of building a better simulator, his proprietary models are
+reserved for clients only !)
+Also, another common problem in ML in finance is people tend to confuse ‘correlation’ to
+‘causality’.</p>
+<p>Jeff Wecker, CTO of TwoSigma, made another good point during the conference about financial
+data. What is special about financial data and its usefulness? In a typical ML or data-science
+problem, we strive to make a better prediction using our data. One major problem of using data
+for solving financial problems in pursuit of maximizing profit is decaying value of data. First user
+who developed a fancy data model takes the most benefit, and then naturally the industry is
+being crowded as other users jump in and make a similar prediction based on the same data.
+Therefore, the benefit of making a similar prediction and solving a similar financial problem is
+rapidly decaying. This is not always the case in other technology fields.</p>
+<p>Of course, there’s lots of areas where we can apply data-science, ML techniques in finance.
+Any classification, NLP can help operations perform better and save costs. Document sorting,
+classification, or making credit decisions, providing a financial planning solution can be rather
+easily automated using ML techniques.</p>
+<p>One other interesting area could be using K-mean clustering for categorizing financial assets
+into multiple groups. This simple technique could be used for liquidity monitoring based on daily
+trading volume or volatility, also for categorizing assets into different risk groups for better
+portfolio management as well.</p>
 
 </div>
 
 
 
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction-to-rstudio-in-portuguese.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="zoom-session-in-finance-and-data-science.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="creating-r-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github-initial-setup.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +365,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jtr13/cc21/edit/main/CreatingRPackages.Rmd",
+"link": "https://github.com/jtr13/cc21/edit/main/zoom_in_finance.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -328,7 +373,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/jtr13/cc21/blob/main/CreatingRPackages.Rmd",
+"link": "https://github.com/jtr13/cc21/blob/main/zoom_in_finance.Rmd",
 "text": null
 },
 "download": null,

@@ -76,6 +76,7 @@ section
 cited-resourses
 introduction-to-rstudio-in-portuguese
 creating-r-packages
+zoom-session-in-finance-and-data-science
 github-initial-setup
 github-actions
 secrets
