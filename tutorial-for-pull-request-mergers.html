@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Tutorial for pull request mergers | Spring 2021 EDAV Community Contributions</title>
+  <title>Chapter 13 Tutorial for pull request mergers | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Tutorial for pull request mergers | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:title" content="Chapter 13 Tutorial for pull request mergers | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   <meta name="github-repo" content="jtr13/cc21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Tutorial for pull request mergers | Spring 2021 EDAV Community Contributions" />
+  <meta name="twitter:title" content="Chapter 13 Tutorial for pull request mergers | Spring 2021 EDAV Community Contributions" />
   
   <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   
 
 
 
-<meta name="date" content="2021-03-22" />
+<meta name="date" content="2021-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,15 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
 
 
 <style type="text/css">
@@ -173,56 +182,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>II Cheatsheets</b></span></li>
 <li class="chapter" data-level="5" data-path="date-time-handling-in-r-cheatsheet.html"><a href="date-time-handling-in-r-cheatsheet.html"><i class="fa fa-check"></i><b>5</b> Date-Time Handling in R Cheatsheet</a></li>
 <li class="chapter" data-level="6" data-path="tidy-data-cheatsheet.html"><a href="tidy-data-cheatsheet.html"><i class="fa fa-check"></i><b>6</b> Tidy data Cheatsheet</a></li>
+<li class="chapter" data-level="7" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html"><i class="fa fa-check"></i><b>7</b> GGvis cheatsheet</a><ul>
+<li class="chapter" data-level="7.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#ggvis"><i class="fa fa-check"></i><b>7.1</b> ggvis</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#getting-start"><i class="fa fa-check"></i><b>7.1.1</b> Getting start</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#aesthetics"><i class="fa fa-check"></i><b>7.2</b> aesthetics</a></li>
+<li class="chapter" data-level="7.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#interaction"><i class="fa fa-check"></i><b>7.3</b> Interaction</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#basic-interaction"><i class="fa fa-check"></i><b>7.3.1</b> basic interaction</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#input-option"><i class="fa fa-check"></i><b>7.3.2</b> Input option</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#map"><i class="fa fa-check"></i><b>7.3.3</b> Map</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#layers"><i class="fa fa-check"></i><b>7.4</b> Layers</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#simple-layers"><i class="fa fa-check"></i><b>7.4.1</b> Simple layers</a></li>
+<li class="chapter" data-level="7.4.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#compound-layers"><i class="fa fa-check"></i><b>7.4.2</b> Compound layers</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>III Translations</b></span></li>
-<li class="chapter" data-level="7" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html"><i class="fa fa-check"></i><b>7</b> Colors_in_R_Chinese_translation</a><ul>
-<li class="chapter" data-level="7.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>7.1</b> 在R中使用颜色</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>7.1.1</b> R自带的指定颜色名称</a></li>
-<li class="chapter" data-level="7.1.2" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>7.1.2</b> 使用十六进制编码指定颜色</a></li>
-<li class="chapter" data-level="7.1.3" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>7.1.3</b> 使用 RColorBrewer 调色盘</a></li>
-<li class="chapter" data-level="7.1.4" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>7.1.4</b> 使用 Wes Anderson 调色盘</a></li>
-<li class="chapter" data-level="7.1.5" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>7.1.5</b> 创建一个n个连续颜色的矢量</a></li>
+<li class="chapter" data-level="8" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html"><i class="fa fa-check"></i><b>8</b> Colors_in_R_Chinese_translation</a><ul>
+<li class="chapter" data-level="8.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>8.1</b> 在R中使用颜色</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>8.1.1</b> R自带的指定颜色名称</a></li>
+<li class="chapter" data-level="8.1.2" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>8.1.2</b> 使用十六进制编码指定颜色</a></li>
+<li class="chapter" data-level="8.1.3" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>8.1.3</b> 使用 RColorBrewer 调色盘</a></li>
+<li class="chapter" data-level="8.1.4" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>8.1.4</b> 使用 Wes Anderson 调色盘</a></li>
+<li class="chapter" data-level="8.1.5" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>8.1.5</b> 创建一个n个连续颜色的矢量</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html"><i class="fa fa-check"></i><b>8</b> Managing Data Frames with dplyr Package in Chinese</a><ul>
-<li class="chapter" data-level="8.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#short-description-of-my-contribution"><i class="fa fa-check"></i><b>8.1</b> Short Description of My Contribution</a></li>
-<li class="chapter" data-level="8.2" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#数据表"><i class="fa fa-check"></i><b>8.2</b> 数据表</a></li>
-<li class="chapter" data-level="8.3" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr包"><i class="fa fa-check"></i><b>8.3</b> dplyr包</a></li>
-<li class="chapter" data-level="8.4" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr语法"><i class="fa fa-check"></i><b>8.4</b> dplyr语法</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#通用dplyr函数属性"><i class="fa fa-check"></i><b>8.4.1</b> 通用dplyr函数属性</a></li>
+<li class="chapter" data-level="9" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html"><i class="fa fa-check"></i><b>9</b> Managing Data Frames with dplyr Package in Chinese</a><ul>
+<li class="chapter" data-level="9.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#short-description-of-my-contribution"><i class="fa fa-check"></i><b>9.1</b> Short Description of My Contribution</a></li>
+<li class="chapter" data-level="9.2" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#数据表"><i class="fa fa-check"></i><b>9.2</b> 数据表</a></li>
+<li class="chapter" data-level="9.3" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr包"><i class="fa fa-check"></i><b>9.3</b> dplyr包</a></li>
+<li class="chapter" data-level="9.4" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr语法"><i class="fa fa-check"></i><b>9.4</b> dplyr语法</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#通用dplyr函数属性"><i class="fa fa-check"></i><b>9.4.1</b> 通用dplyr函数属性</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#安装dplyr包"><i class="fa fa-check"></i><b>8.5</b> 安装dplyr包</a></li>
-<li class="chapter" data-level="8.6" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#select"><i class="fa fa-check"></i><b>8.6</b> select()</a></li>
-<li class="chapter" data-level="8.7" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#filter"><i class="fa fa-check"></i><b>8.7</b> filter()</a></li>
-<li class="chapter" data-level="8.8" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#arrange"><i class="fa fa-check"></i><b>8.8</b> arrange()</a></li>
-<li class="chapter" data-level="8.9" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#rename"><i class="fa fa-check"></i><b>8.9</b> rename()</a></li>
-<li class="chapter" data-level="8.10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#mutate"><i class="fa fa-check"></i><b>8.10</b> mutate()</a></li>
-<li class="chapter" data-level="8.11" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#group_by"><i class="fa fa-check"></i><b>8.11</b> group_by()</a></li>
-<li class="chapter" data-level="8.12" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#section"><i class="fa fa-check"></i><b>8.12</b> %&gt;%</a></li>
-<li class="chapter" data-level="8.13" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#总结"><i class="fa fa-check"></i><b>8.13</b> 总结</a></li>
-<li class="chapter" data-level="8.14" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#cited-resourses"><i class="fa fa-check"></i><b>8.14</b> Cited Resourses</a></li>
+<li class="chapter" data-level="9.5" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#安装dplyr包"><i class="fa fa-check"></i><b>9.5</b> 安装dplyr包</a></li>
+<li class="chapter" data-level="9.6" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#select"><i class="fa fa-check"></i><b>9.6</b> select()</a></li>
+<li class="chapter" data-level="9.7" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#filter"><i class="fa fa-check"></i><b>9.7</b> filter()</a></li>
+<li class="chapter" data-level="9.8" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#arrange"><i class="fa fa-check"></i><b>9.8</b> arrange()</a></li>
+<li class="chapter" data-level="9.9" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#rename"><i class="fa fa-check"></i><b>9.9</b> rename()</a></li>
+<li class="chapter" data-level="9.10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#mutate"><i class="fa fa-check"></i><b>9.10</b> mutate()</a></li>
+<li class="chapter" data-level="9.11" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#group_by"><i class="fa fa-check"></i><b>9.11</b> group_by()</a></li>
+<li class="chapter" data-level="9.12" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#section"><i class="fa fa-check"></i><b>9.12</b> %&gt;%</a></li>
+<li class="chapter" data-level="9.13" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#总结"><i class="fa fa-check"></i><b>9.13</b> 总结</a></li>
+<li class="chapter" data-level="9.14" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#cited-resourses"><i class="fa fa-check"></i><b>9.14</b> Cited Resourses</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="introduction-to-rstudio-in-portuguese.html"><a href="introduction-to-rstudio-in-portuguese.html"><i class="fa fa-check"></i><b>9</b> Introduction to Rstudio in Portuguese</a></li>
-<li class="part"><span><b>IV Appendices</b></span></li>
-<li class="chapter" data-level="10" data-path="github-initial-setup.html"><a href="github-initial-setup.html"><i class="fa fa-check"></i><b>10</b> Github initial setup</a><ul>
-<li class="chapter" data-level="10.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-actions"><i class="fa fa-check"></i><b>10.1</b> GitHub Actions</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#secrets"><i class="fa fa-check"></i><b>10.1.1</b> Secrets</a></li>
-<li class="chapter" data-level="10.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>10.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
-<li class="chapter" data-level="10.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>10.1.3</b> GitHub Pages in repo settings</a></li>
+<li class="chapter" data-level="10" data-path="introduction-to-rstudio-in-portuguese.html"><a href="introduction-to-rstudio-in-portuguese.html"><i class="fa fa-check"></i><b>10</b> Introduction to Rstudio in Portuguese</a></li>
+<li class="part"><span><b>IV Tutorials</b></span></li>
+<li class="chapter" data-level="11" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>11</b> Creating R Packages</a></li>
+<li class="part"><span><b>V Appendices</b></span></li>
+<li class="chapter" data-level="12" data-path="github-initial-setup.html"><a href="github-initial-setup.html"><i class="fa fa-check"></i><b>12</b> Github initial setup</a><ul>
+<li class="chapter" data-level="12.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-actions"><i class="fa fa-check"></i><b>12.1</b> GitHub Actions</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#secrets"><i class="fa fa-check"></i><b>12.1.1</b> Secrets</a></li>
+<li class="chapter" data-level="12.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>12.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
+<li class="chapter" data-level="12.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>12.1.3</b> GitHub Pages in repo settings</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>10.2</b> DESCRIPTION file</a></li>
+<li class="chapter" data-level="12.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>12.2</b> DESCRIPTION file</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>11</b> Tutorial for pull request mergers</a><ul>
-<li class="chapter" data-level="11.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#general"><i class="fa fa-check"></i><b>11.1</b> General</a></li>
-<li class="chapter" data-level="11.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>11.2</b> Check branch</a></li>
-<li class="chapter" data-level="11.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#examine-files-that-were-added-or-modified"><i class="fa fa-check"></i><b>11.3</b> Examine files that were added or modified</a></li>
-<li class="chapter" data-level="11.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-filename"><i class="fa fa-check"></i><b>11.4</b> Check <code>.Rmd</code> filename</a></li>
-<li class="chapter" data-level="11.5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-file-contents"><i class="fa fa-check"></i><b>11.5</b> Check <code>.Rmd</code> file contents</a></li>
-<li class="chapter" data-level="11.6" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#request-changes"><i class="fa fa-check"></i><b>11.6</b> Request changes</a></li>
-<li class="chapter" data-level="11.7" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-the-pull-request"><i class="fa fa-check"></i><b>11.7</b> Merge the pull request</a><ul>
-<li class="chapter" data-level="11.7.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#add-chapter-filename-to-_bookdown.yml-in-prs-branch"><i class="fa fa-check"></i><b>11.7.1</b> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></a></li>
-<li class="chapter" data-level="11.7.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part"><i class="fa fa-check"></i><b>11.7.2</b> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</a></li>
-<li class="chapter" data-level="11.7.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-pr-and-leave-a-comment"><i class="fa fa-check"></i><b>11.7.3</b> Merge PR and leave a comment</a></li>
-<li class="chapter" data-level="11.7.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-updated-version"><i class="fa fa-check"></i><b>11.7.4</b> Check updated version</a></li>
+<li class="chapter" data-level="13" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>13</b> Tutorial for pull request mergers</a><ul>
+<li class="chapter" data-level="13.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#general"><i class="fa fa-check"></i><b>13.1</b> General</a></li>
+<li class="chapter" data-level="13.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>13.2</b> Check branch</a></li>
+<li class="chapter" data-level="13.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#examine-files-that-were-added-or-modified"><i class="fa fa-check"></i><b>13.3</b> Examine files that were added or modified</a></li>
+<li class="chapter" data-level="13.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-filename"><i class="fa fa-check"></i><b>13.4</b> Check <code>.Rmd</code> filename</a></li>
+<li class="chapter" data-level="13.5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-file-contents"><i class="fa fa-check"></i><b>13.5</b> Check <code>.Rmd</code> file contents</a></li>
+<li class="chapter" data-level="13.6" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#request-changes"><i class="fa fa-check"></i><b>13.6</b> Request changes</a></li>
+<li class="chapter" data-level="13.7" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-the-pull-request"><i class="fa fa-check"></i><b>13.7</b> Merge the pull request</a><ul>
+<li class="chapter" data-level="13.7.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#add-chapter-filename-to-_bookdown.yml-in-prs-branch"><i class="fa fa-check"></i><b>13.7.1</b> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></a></li>
+<li class="chapter" data-level="13.7.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part"><i class="fa fa-check"></i><b>13.7.2</b> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</a></li>
+<li class="chapter" data-level="13.7.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-pr-and-leave-a-comment"><i class="fa fa-check"></i><b>13.7.3</b> Merge PR and leave a comment</a></li>
+<li class="chapter" data-level="13.7.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-updated-version"><i class="fa fa-check"></i><b>13.7.4</b> Check updated version</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -245,13 +271,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="tutorial-for-pull-request-mergers" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Tutorial for pull request mergers</h1>
+<h1><span class="header-section-number">Chapter 13</span> Tutorial for pull request mergers</h1>
 <div id="general" class="section level2">
-<h2><span class="header-section-number">11.1</span> General</h2>
+<h2><span class="header-section-number">13.1</span> General</h2>
 <p>The following is a checklist of steps to perform before merging the pull request. At any point, if you’re not sure what to do, request a review from one of the PR leaders.</p>
 </div>
 <div id="check-branch" class="section level2">
-<h2><span class="header-section-number">11.2</span> Check branch</h2>
+<h2><span class="header-section-number">13.2</span> Check branch</h2>
 <p>PR should be submitted from a <strong>non-main</strong> branch.</p>
 <p><img src="resources/tutorial_pull_request_mergers/1.png" width="700">
 <br/></p>
@@ -267,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br/></p>
 </div>
 <div id="examine-files-that-were-added-or-modified" class="section level2">
-<h2><span class="header-section-number">11.3</span> Examine files that were added or modified</h2>
+<h2><span class="header-section-number">13.3</span> Examine files that were added or modified</h2>
 <p><img src="resources/tutorial_pull_request_mergers/files_changed.png" width="700">
 <br/><br/></p>
 <ul>
@@ -277,14 +303,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="check-.rmd-filename" class="section level2">
-<h2><span class="header-section-number">11.4</span> Check <code>.Rmd</code> filename</h2>
+<h2><span class="header-section-number">13.4</span> Check <code>.Rmd</code> filename</h2>
 <ul>
 <li>The <code>.Rmd</code> filename should be words only and joined with underscores, no white space. (Update: It does not need to be the same as the branch name.)</li>
 <li>The <code>.Rmd</code> filename can only contain <strong>lowercase letters</strong>. (Otherwise the filenames do not sort nicely on the repo home page.)</li>
 </ul>
 </div>
 <div id="check-.rmd-file-contents" class="section level2">
-<h2><span class="header-section-number">11.5</span> Check <code>.Rmd</code> file contents</h2>
+<h2><span class="header-section-number">13.5</span> Check <code>.Rmd</code> file contents</h2>
 <ul>
 <li>The file should <strong>not</strong> contain a YAML header nor a <code>---</code> line.</li>
 <li>The second line should be blank, followed by the author name(s).</li>
@@ -300,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="request-changes" class="section level2">
-<h2><span class="header-section-number">11.6</span> Request changes</h2>
+<h2><span class="header-section-number">13.6</span> Request changes</h2>
 <p>If there are problems with any of the checks listed above, explain why the pull request cannot be merged and request changes by following these steps:</p>
 <p><img src="resources/tutorial_pull_request_mergers/check_format.png" width="700">
 <img src="resources/tutorial_pull_request_mergers/request_change_lines.png" width="700">
@@ -311,10 +337,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br/></p>
 </div>
 <div id="merge-the-pull-request" class="section level2">
-<h2><span class="header-section-number">11.7</span> Merge the pull request</h2>
+<h2><span class="header-section-number">13.7</span> Merge the pull request</h2>
 <p>If all is good to go, it’s time to merge the pull request. There are several steps.</p>
 <div id="add-chapter-filename-to-_bookdown.yml-in-prs-branch" class="section level3">
-<h3><span class="header-section-number">11.7.1</span> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></h3>
+<h3><span class="header-section-number">13.7.1</span> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></h3>
 <ul>
 <li>To access the PR branch:</li>
 </ul>
@@ -339,14 +365,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part" class="section level3">
-<h3><span class="header-section-number">11.7.2</span> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</h3>
+<h3><span class="header-section-number">13.7.2</span> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</h3>
 <p>Only do this if you are adding the first chapter in a PART.</p>
 <p>For every first article of each part, add the chapter name on the top of the <code>.Rmd</code> file, then propose changes. The example is like this.
 <img src="resources/tutorial_pull_request_mergers/chap_1.png" width="700">
 <br/><br/></p>
 </div>
 <div id="merge-pr-and-leave-a-comment" class="section level3">
-<h3><span class="header-section-number">11.7.3</span> Merge PR and leave a comment</h3>
+<h3><span class="header-section-number">13.7.3</span> Merge PR and leave a comment</h3>
 <p>Now comes the final step.</p>
 <p><strong>If you’re not sure that you did things correctly, assign one of the PR merge leaders or <span class="citation">@jtr13</span> to review before you merge the PR.</strong></p>
 <p>Go back to the conversation tab of the pull requests page, for example:</p>
@@ -355,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <br/></p>
 </div>
 <div id="check-updated-version" class="section level3">
-<h3><span class="header-section-number">11.7.4</span> Check updated version</h3>
+<h3><span class="header-section-number">13.7.4</span> Check updated version</h3>
 <p>A successful merge means that the addition file or files were added to the project with no merge conflicts. It does not mean that the book will render and deploy to GitHub pages without issues. After the merge, it will take about 5-10 minutes for GitHub Actions to render the book and deploy the updated version. If there’s a problem I will be notified by email and will address it. In other words, your job is done. However if you’re interested, you can check the progress by clicking Actions at the top of the repo.</p>
 
 </div>
