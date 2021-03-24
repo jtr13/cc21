@@ -10,6 +10,7 @@ language:
 
 # Chapter ordering
 rmd_files: [
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -26,6 +27,9 @@ rmd_files: [
   'colors_in_R_Chinese_translation.Rmd',
   'dplyr_tutorial_in_chinese.Rmd',
   'introduction_rstudio_portuguese.Rmd',
+
+  # Part: Tutorials
+  'CreatingRPackages.Rmd'
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
