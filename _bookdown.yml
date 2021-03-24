@@ -10,6 +10,7 @@ language:
 
 # Chapter ordering
 rmd_files: [
+  # Part: Tutorials
   'CreatingRPackages.Rmd'
 ]
 
