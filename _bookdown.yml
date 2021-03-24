@@ -24,7 +24,6 @@ rmd_files: [
   'tidydata_cheatsheet.Rmd',
   'ggvis_cheatsheet.Rmd',
 
-  
   # Part: Translation
   'colors_in_R_Chinese_translation.Rmd',
   'dplyr_tutorial_in_chinese.Rmd',
@@ -32,10 +31,14 @@ rmd_files: [
 
   # Part: Tutorials
   'CreatingRPackages.Rmd',
+  
+  # Part: Topical Discussions
+  'zoom_in_finance.Rmd',  
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'  
+
 ]
 
 before_chapter_script: "_common.R"
