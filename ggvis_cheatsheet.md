@@ -4,6 +4,8 @@ Chenhui Mao
 
 
 
+![Link to the cheatsheet](resources/ggvis_cheatsheet/categorical_cheat_sheet.pdf)
+
 ## ggvis
 
 Official website: <http://ggvis.rstudio.com/>
