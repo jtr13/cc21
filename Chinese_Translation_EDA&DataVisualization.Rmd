@@ -6,9 +6,11 @@ output: html_document
 ---
 
 #Chinese Translation Exploratory Data Analysis and Data Visualization
-#Original Author:Chong-ho Yu, Ph.Ds.
 
-Ruoxi Li & Jiaxi Liu
+Original Author:Chong-ho Yu, Ph.Ds.
+
+Translators: Jiaxi Liu & Ruoxi Li
+
 You can find the pdf here:
 https://github.com/Ruoxiiiii/Translation-Script-Exploratory-data-analysis-and-Data-visualization/blob/main/EDA%26Visualization%20Translation%20Script.pdf
 
