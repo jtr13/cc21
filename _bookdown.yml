@@ -22,6 +22,8 @@ rmd_files: [
   # Part: Cheatsheets
   'date_time_handling_cheatsheet.Rmd', # contains PART header
   'tidydata_cheatsheet.Rmd',
+  'ggvis_cheatsheet.Rmd',
+
   
   # Part: Translation
   'colors_in_R_Chinese_translation.Rmd',
