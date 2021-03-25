@@ -20,8 +20,8 @@ First thing first, we shall import some necessary packages
 
 
 ```r
-install.packages("dplyr")
-install.packages("ggvis")
+#install.packages("dplyr")
+#install.packages("ggvis")
 
 library(ggvis)
 library(dplyr)
