@@ -13,6 +13,7 @@ what-if-i-catch-mistakes-before-my-pull-request-is-merged
 what-if-i-catch-mistakes-after-my-pull-request-is-merged
 other-questions
 sample-project
+introduction-to-pyecharts
 introduction-to-quandl
 introduction
 installation
@@ -51,6 +52,7 @@ example-with-value-map-function
 layers
 simple-layers
 compound-layers
+statistical_hypothesis_testing_cheatsheet
 colors_in_r_chinese_translation
 在r中使用颜色
 r自带的指定颜色名称
@@ -124,6 +126,11 @@ application
 reference
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
+absentee-ballot-voting-in-2020-presidental-election
+background-and-research-idea
+analyze-ballot-rejection-data
+categorize-16-main-ballot-rejection-reasons
+show-participation-rate-and-ballot-non-accepted-rate-on-a-georgia-map
 github-initial-setup
 github-actions
 secrets
