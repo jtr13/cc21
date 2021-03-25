@@ -83,7 +83,8 @@ Imports:
 Remotes:
     ardata-fr/mschart,
     thomasp85/ggraph,
-    thomasp85/patchwork
+    thomasp85/patchwork,
+    s-u/rJava
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
