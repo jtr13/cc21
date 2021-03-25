@@ -59,7 +59,6 @@ Imports:
     reshape2,
     rgdal,
     rgl,
-    rJava,
     rmarkdown,
     ROAuth,
     rtweet,
