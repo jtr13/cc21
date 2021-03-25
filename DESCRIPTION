@@ -49,6 +49,7 @@ Imports:
     plyr,
     png,
     prettydoc,
+    qdap,
     Quandl,
     quantmod,
     RColorBrewer,
