@@ -7,7 +7,7 @@ Source: https://edav.info/bar.html<br/>
 
 ## 1.图表：条形图
 
-![](resources/EDAV_info_Categorical_Variables_Chinese_Translation/banner_bargraph_bar_chart.png)
+![](resources/edav_info_categorical_variables_Chinese_translation/banner_bargraph_bar_chart.png)
 
 ### 1.1 综述
 
@@ -173,7 +173,7 @@ ggplot(colors, aes(x = Sex, y = Freq)) +
 
 ## 2. 图表：克利夫兰点图
 
-![](resources/EDAV_info_Categorical_Variables_Chinese_Translation/banner_cleveland.png)
+![](resources/edav_info_categorical_variables_Chinese_translation/banner_cleveland.png)
 
 这个页面是一项正在进行的工作，我们感谢任何你可能有的贡献。如果你想帮助改进这个页面，请考虑对[我们的版本库做出贡献](https://edav.info/contribute.html)。
 
@@ -251,7 +251,7 @@ ggplot(tidydf, aes(Mean, `School Name`, color = Test)) +
   ggtitle("Schools are sorted alphabetically", sub = "not the best option") + ylab("") +
   theme_dotplot
 ```
-![](resources/EDAV_info_Categorical_Variables_Chinese_Translation/default.png)
+![](resources/edav_info_categorical_variables_Chinese_translation/default.png)
 
 注意`School Name`是按照因子层次排序的，默认是首字母顺序。一个更好的选择是通过一个`Test`中的层次集来排序。通常最好是尝试通过不同的层次集来排序，然后观察出现的模式。 <br/> <br/>
 为了执行双重排序，就是先通过`Test`然后再通过`Mean`来排列`School Name`，我们会使用`forcats::fct_reorder2()`。这个函数会通过对两个矢量的排序来对`.f`(一个因子或者字符矢量)进行排序。对于这种图形，`.x`是彩色的点所表示的变量，`.y`是投射到y轴的连续变量。<br/> <br/>
@@ -263,7 +263,7 @@ ggplot(tidydf,
   geom_point() + ggtitle("Schools sorted by Reading mean") + ylab("") +
   theme_dotplot 
 ```
-![](resources/EDAV_info_Categorical_Variables_Chinese_Translation/reading_mean.png)
+![](resources/edav_info_categorical_variables_Chinese_translation/reading_mean.png)
 <br/> <br/>
 （非常感谢Zeyu Qiu对于直接在因子层次上对`.x`进行设置的小建议，这是一个更好的方式相较于我们下面讨论的，顺应`fct_reorder2()`的默认对因子层次进行重新排列。）<br/> <br/>
 虽然这是首选方法，但有些情况下直接指明你希望通过对于第一个变量（`Test`）的第一个因子层次或者最后一个因子层次排序,而不用把它拼写出来会更加简单。<br/> <br/>
@@ -275,7 +275,7 @@ ggplot(tidydf,
   geom_point() + ggtitle("Schools sorted by Writing mean") + ylab("") +
   theme_dotplot
 ```
-![](resources/EDAV_info_Categorical_Variables_Chinese_Translation/writing_mean.png)
+![](resources/edav_info_categorical_variables_Chinese_translation/writing_mean.png)
 <br/> <br/>
 如果你想要通过对`.x`的第一个因子层次进行排序，在这里是“数学”，你需要forcats的开发版本，你可以通过：`devtools::install_github("tidyverse/forcats")`来安装。<br/>
 把默认排序函数`last2()`改为`first2()`：
@@ -286,4 +286,4 @@ ggplot(tidydf,
   geom_point() + ggtitle("Schools sorted by Math mean") + ylab("") +
   theme_dotplot
 ```
-![](resources/EDAV_info_Categorical_Variables_Chinese_Translation/math_mean.png)
+![](resources/edav_info_categorical_variables_Chinese_translation/math_mean.png)
