@@ -27,7 +27,8 @@ rmd_files: [
   'date_time_handling_cheatsheet.Rmd', # contains PART header
   'tidydata_cheatsheet.Rmd',
   'ggvis_cheatsheet.Rmd',
-
+  'statistical_hypothesi_testing_cheatsheet.Rmd',
+  
   # Part: Translation
   'colors_in_R_Chinese_translation.Rmd', # contains PART header
   'dplyr_tutorial_in_chinese.Rmd',
