@@ -40,6 +40,7 @@ Imports:
     leaflet,
     lubridate,
     magrittr,
+    maps,
     network,
     networkD3,
     officer,
