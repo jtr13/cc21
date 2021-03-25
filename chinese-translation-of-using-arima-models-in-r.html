@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Colors_in_R_Chinese_translation | Spring 2021 EDAV Community Contributions</title>
+  <title>Chapter 11 Chinese translation of using ARIMA models in R | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Colors_in_R_Chinese_translation | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:title" content="Chapter 11 Chinese translation of using ARIMA models in R | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jtr13/cc21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Colors_in_R_Chinese_translation | Spring 2021 EDAV Community Contributions" />
+  <meta name="twitter:title" content="Chapter 11 Chinese translation of using ARIMA models in R | Spring 2021 EDAV Community Contributions" />
   
   <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ggvis-cheatsheet.html"/>
-<link rel="next" href="managing-data-frames-with-dplyr-package-in-chinese.html"/>
+<link rel="prev" href="introduction-to-rstudio-in-portuguese.html"/>
+<link rel="next" href="creating-r-packages.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -303,125 +303,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="colors_in_r_chinese_translation" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Colors_in_R_Chinese_translation</h1>
-<p>Xiaoyan Li</p>
-<p>Source: <a href="http://www.sthda.com/english/wiki/colors-in-r" class="uri">http://www.sthda.com/english/wiki/colors-in-r</a></p>
-<div id="在r中使用颜色" class="section level2">
-<h2><span class="header-section-number">8.1</span> 在R中使用颜色</h2>
-<p>在 R 中，颜色可以使用指定名称（例如 <strong>col = “red”</strong>）或使用十六进制编码（如 <strong>col =“#FFCC00”</strong>）。您还可以使用其他颜色系统，例如从 R 包 <strong>RColorBrewer</strong> 中获取的彩色系统。</p>
-<div id="r自带的指定颜色名称" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> R自带的指定颜色名称</h3>
-<p>我们将使用以下自定义 R 函数生成一张包含 R 中可用的颜色名称的图：</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="colors-in-r-chinese-translation.html#cb68-1"></a><span class="co"># 生成一张包含R自带颜色名称的图片</span></span>
-<span id="cb68-2"><a href="colors-in-r-chinese-translation.html#cb68-2"></a><span class="co">#++++++++++++++++++++++++++++++++++++++++++++</span></span>
-<span id="cb68-3"><a href="colors-in-r-chinese-translation.html#cb68-3"></a><span class="co"># cl : 要绘制的颜色矢量</span></span>
-<span id="cb68-4"><a href="colors-in-r-chinese-translation.html#cb68-4"></a><span class="co"># bg: 图片背景</span></span>
-<span id="cb68-5"><a href="colors-in-r-chinese-translation.html#cb68-5"></a><span class="co"># rot: 字体旋转角度</span></span>
-<span id="cb68-6"><a href="colors-in-r-chinese-translation.html#cb68-6"></a><span class="co"># usage = showCols(bg=&quot;gray33&quot;)</span></span>
-<span id="cb68-7"><a href="colors-in-r-chinese-translation.html#cb68-7"></a>showCols &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">cl=</span><span class="kw">colors</span>(), <span class="dt">bg =</span> <span class="st">&quot;grey&quot;</span>,</span>
-<span id="cb68-8"><a href="colors-in-r-chinese-translation.html#cb68-8"></a>                     <span class="dt">cex =</span> <span class="fl">0.75</span>, <span class="dt">rot =</span> <span class="dv">30</span>) {</span>
-<span id="cb68-9"><a href="colors-in-r-chinese-translation.html#cb68-9"></a>    m &lt;-<span class="st"> </span><span class="kw">ceiling</span>(<span class="kw">sqrt</span>(n &lt;-<span class="kw">length</span>(cl)))</span>
-<span id="cb68-10"><a href="colors-in-r-chinese-translation.html#cb68-10"></a>    <span class="kw">length</span>(cl) &lt;-<span class="st"> </span>m<span class="op">*</span>m; cm &lt;-<span class="st"> </span><span class="kw">matrix</span>(cl, m)</span>
-<span id="cb68-11"><a href="colors-in-r-chinese-translation.html#cb68-11"></a>    <span class="kw">require</span>(<span class="st">&quot;grid&quot;</span>)</span>
-<span id="cb68-12"><a href="colors-in-r-chinese-translation.html#cb68-12"></a>    <span class="kw">grid.newpage</span>(); vp &lt;-<span class="st"> </span><span class="kw">viewport</span>(<span class="dt">w =</span> <span class="fl">.92</span>, <span class="dt">h =</span> <span class="fl">.92</span>)</span>
-<span id="cb68-13"><a href="colors-in-r-chinese-translation.html#cb68-13"></a>    <span class="kw">grid.rect</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>bg))</span>
-<span id="cb68-14"><a href="colors-in-r-chinese-translation.html#cb68-14"></a>    <span class="kw">grid.text</span>(cm, <span class="dt">x =</span> <span class="kw">col</span>(cm)<span class="op">/</span>m, <span class="dt">y =</span> <span class="kw">rev</span>(<span class="kw">row</span>(cm))<span class="op">/</span>m, <span class="dt">rot =</span> rot,</span>
-<span id="cb68-15"><a href="colors-in-r-chinese-translation.html#cb68-15"></a>              <span class="dt">vp=</span>vp, <span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">cex =</span> cex, <span class="dt">col =</span> cm))</span>
-<span id="cb68-16"><a href="colors-in-r-chinese-translation.html#cb68-16"></a>  }</span></code></pre></div>
-<p>下图包含前60种颜色的名称：</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="colors-in-r-chinese-translation.html#cb69-1"></a><span class="co"># 前60种颜色的名称</span></span>
-<span id="cb69-2"><a href="colors-in-r-chinese-translation.html#cb69-2"></a><span class="kw">showCols</span>(<span class="dt">bg=</span><span class="st">&quot;gray20&quot;</span>,<span class="dt">cl=</span><span class="kw">colors</span>()[<span class="dv">1</span><span class="op">:</span><span class="dv">60</span>], <span class="dt">rot=</span><span class="dv">30</span>, <span class="dt">cex=</span><span class="fl">0.9</span>)</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="colors-in-r-chinese-translation.html#cb70-1"></a><span class="co"># 使用颜色名称绘制柱状图</span></span>
-<span id="cb70-2"><a href="colors-in-r-chinese-translation.html#cb70-2"></a><span class="kw">barplot</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;chartreuse&quot;</span>, <span class="st">&quot;blue4&quot;</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-3-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>要查看 R 的所有内置颜色名称（n = 657），请使用以下 R 代码：</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="colors-in-r-chinese-translation.html#cb71-1"></a><span class="kw">showCols</span>(<span class="dt">cl=</span> <span class="kw">colors</span>(), <span class="dt">bg=</span><span class="st">&quot;gray33&quot;</span>, <span class="dt">rot=</span><span class="dv">30</span>, <span class="dt">cex=</span><span class="fl">0.75</span>)</span></code></pre></div>
+<div id="chinese-translation-of-using-arima-models-in-r" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Chinese translation of using ARIMA models in R</h1>
+<p>Kehao Guo</p>
+<p>Source: <a href="https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html#arima-models">link</a></p>
+<div id="arima模型" class="section level2">
+<h2><span class="header-section-number">11.1</span> ARIMA模型</h2>
+<p>指数平滑方法对于预测很有用，并且不对时间序列中的相邻数据作假设。但是，如果你想用指数平滑方法作预测区间，预测区间会需要不相关的、正态分布的、零均值化的且水平方差的预测误差。</p>
+<p>虽然指数平滑方法不对时间序列中的相邻数据作假设，在某些情况下你可以通过考虑数据间的相关性来做出更好的预测模型。差分整合移动平均自回归模型（ARIMA）包含了一个允许异常成分中非零自相关性的统计模型。</p>
+<div id="差异化一组时间序列" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> 差异化一组时间序列</h3>
+<p>ARIMA模型是为平稳时间序列定义的。所以如果需要处理一组非平稳时间序列，你首先需要‘差异化’时间序列直至获得一组平稳时间序列。如果你需要差异化d次来获得平稳时间序列，那你就会用ARIMA(p,d,q)模型，d代表差异次数。</p>
+<p>你可以在R中使用‘diff()’函数来差异化时间序列。比如，1866年至1911年女士裙子的直径均值上下浮动且不平稳：</p>
+<p><img src="pics/1.png" /></p>
+<p>我们可以输入以下指令来差异化一次时间序列并且对差异化后的系列作图：</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb140-1"></a>skirtsseriesdiff1 &lt;-<span class="st"> </span><span class="kw">diff</span>(skirtsseries, <span class="dt">differences=</span><span class="dv">1</span>)</span>
+<span id="cb140-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb140-2"></a><span class="kw">plot.ts</span>(skirtsseriesdiff1)</span></code></pre></div>
+<p><img src="pics/2.PNG" /></p>
+<p>以上的一次差异化时间序列不像是有稳定均值的。所以，我们可以作两次差异化以检测结果是否是稳定时间序列：</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb141-1"></a>skirtsseriesdiff2 &lt;-<span class="st"> </span><span class="kw">diff</span>(skirtsseries, <span class="dt">differences=</span><span class="dv">2</span>)</span>
+<span id="cb141-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb141-2"></a><span class="kw">plot.ts</span>(skirtsseriesdiff2)</span></code></pre></div>
+<p><img src="pics/3.PNG" /></p>
+<p>以上的二次差异化时间序列看上去是有稳定均值和方差的，因为序列的水平大致保持一致。所以，我们需要作二次差异化以得到裙子直径的稳定平稳时间序列。</p>
+<p>如果你需要对原数据作d次差异化来得到平稳时间序列，那你可以使用ARIMA(p,d,q)模型，d代表差异化次数。在女裙直径的时间序列的例子中，我们可以使用ARIMA(p,2,q)模型，因为差异化次数应为2。下一步我们需要求得p与q的值。</p>
+<p>另一例子是英格兰国王死亡岁数的时间序列：</p>
+<p><img src="pics/4.PNG" /></p>
+<p>从以上图表可以看出，该时间序列没有平稳均值。我们输入以下代码以计算一次差异化的时间序列并作图：</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb142-1"></a>kingtimeseriesdiff1 &lt;-<span class="st"> </span><span class="kw">diff</span>(kingstimeseries, <span class="dt">differences=</span><span class="dv">1</span>)</span>
+<span id="cb142-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb142-2"></a><span class="kw">plot.ts</span>(kingtimeseriesdiff1)</span></code></pre></div>
+<p><img src="pics/5.PNG" /></p>
+<p>一次差异化的该时间序列像是有平稳均值和方差的，所以ARIMA(p,1,q)应是一个合适的模型。一次差异化祛除了英格兰国王死亡岁数的时间序列的趋势成分，只留下了不规则成分。我们现在可以检查相邻的不规则成分间是否存在相关性；如果有，这会帮助我们找出一个预测国王死亡岁数的模型。</p>
 </div>
-<div id="使用十六进制编码指定颜色" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> 使用十六进制编码指定颜色</h3>
-<p>颜色可以通过十六进制编码指定，例如“<strong>#FFC00</strong>”</p>
-<p><img src="https://s3.ax1x.com/2021/03/09/63fM2F.png" width = "600" height = "500" alt="" align=center /></p>
-<p>（来源：<a href="http://www.visibone.com">http://www.visibone.com</a>）</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="colors-in-r-chinese-translation.html#cb72-1"></a><span class="co"># 用十六进制编码绘制柱状图</span></span>
-<span id="cb72-2"><a href="colors-in-r-chinese-translation.html#cb72-2"></a><span class="kw">barplot</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;#009999&quot;</span>, <span class="st">&quot;#0000FF&quot;</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="选择arima候选模型" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> 选择ARIMA候选模型</h3>
+<p>如果时间序列是平稳的，或通过差异化d次得到一个平稳的时间序列，那下一步则为选择一个合适的ARIMA模型，也就是找出合适的p和q的值。为此还需要检验平稳时间序列的相关图和部分相关图。</p>
+<p>我们需要R中的“acf()”和“pacf()”函数来分别作出相关图和部分相关图。为了得到自相关和偏自相关的实际值，我们设“acf()”和“pacf()”函数中“plot=FALSE”。</p>
+<div id="例英格兰国王死亡岁数" class="section level4">
+<h4><span class="header-section-number">11.1.2.1</span> 例：英格兰国王死亡岁数</h4>
+<p>比如，要对一次差异化的英格兰国王死亡岁数的时间序列的1-20滞后作相关图，并得到自相关的值，我们输入：</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-1"></a><span class="kw">acf</span>(kingtimeseriesdiff1, <span class="dt">lag.max=</span><span class="dv">20</span>)             <span class="co"># plot a correlogram</span></span>
+<span id="cb143-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-2"></a><span class="kw">acf</span>(kingtimeseriesdiff1, <span class="dt">lag.max=</span><span class="dv">20</span>, <span class="dt">plot=</span><span class="ot">FALSE</span>) <span class="co"># get the autocorrelation values</span></span>
+<span id="cb143-3"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-3"></a>Autocorrelations of series <span class="st">&#39;kingtimeseriesdiff1&#39;</span>, by lag</span>
+<span id="cb143-4"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-4"></a><span class="dv">0</span>      <span class="dv">1</span>      <span class="dv">2</span>      <span class="dv">3</span>      <span class="dv">4</span>      <span class="dv">5</span>      <span class="dv">6</span>      <span class="dv">7</span>      <span class="dv">8</span>      <span class="dv">9</span>     <span class="dv">10</span></span>
+<span id="cb143-5"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-5"></a><span class="fl">1.000</span> <span class="fl">-0.360</span> <span class="fl">-0.162</span> <span class="fl">-0.050</span>  <span class="fl">0.227</span> <span class="fl">-0.042</span> <span class="fl">-0.181</span>  <span class="fl">0.095</span>  <span class="fl">0.064</span> <span class="fl">-0.116</span> <span class="fl">-0.071</span></span>
+<span id="cb143-6"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-6"></a>   <span class="dv">11</span>     <span class="dv">12</span>     <span class="dv">13</span>     <span class="dv">14</span>     <span class="dv">15</span>     <span class="dv">16</span>     <span class="dv">17</span>     <span class="dv">18</span>     <span class="dv">19</span>     <span class="dv">20</span></span>
+<span id="cb143-7"><a href="chinese-translation-of-using-arima-models-in-r.html#cb143-7"></a><span class="fl">0.206</span> <span class="fl">-0.017</span> <span class="fl">-0.212</span>  <span class="fl">0.130</span>  <span class="fl">0.114</span> <span class="fl">-0.009</span> <span class="fl">-0.192</span>  <span class="fl">0.072</span>  <span class="fl">0.113</span> <span class="fl">-0.093</span></span></code></pre></div>
+<p><img src="pics/6.PNG" /></p>
+<p>我们从相关图中看到滞后1的自相关（-0.360）超过了显著性界限，但其他滞后的自相关都没有超过显著性界限。</p>
+<p>要对一次差异化的英格兰国王死亡岁数的时间序列的1-20滞后作部分相关图，并得到偏自相关的值，我们使用“pacf()”函数并输入：</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-1"></a><span class="kw">pacf</span>(kingtimeseriesdiff1, <span class="dt">lag.max=</span><span class="dv">20</span>)             <span class="co"># plot a partial correlogram</span></span>
+<span id="cb144-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-2"></a><span class="kw">pacf</span>(kingtimeseriesdiff1, <span class="dt">lag.max=</span><span class="dv">20</span>, <span class="dt">plot=</span><span class="ot">FALSE</span>) <span class="co"># get the partial autocorrelation values</span></span>
+<span id="cb144-3"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-3"></a>Partial autocorrelations of series <span class="st">&#39;kingtimeseriesdiff1&#39;</span>, by lag</span>
+<span id="cb144-4"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-4"></a>  <span class="dv">1</span>      <span class="dv">2</span>      <span class="dv">3</span>      <span class="dv">4</span>      <span class="dv">5</span>      <span class="dv">6</span>      <span class="dv">7</span>      <span class="dv">8</span>      <span class="dv">9</span>     <span class="dv">10</span>     <span class="dv">11</span></span>
+<span id="cb144-5"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-5"></a> <span class="fl">-0.360</span> <span class="fl">-0.335</span> <span class="fl">-0.321</span>  <span class="fl">0.005</span>  <span class="fl">0.025</span> <span class="fl">-0.144</span> <span class="fl">-0.022</span> <span class="fl">-0.007</span> <span class="fl">-0.143</span> <span class="fl">-0.167</span>  <span class="fl">0.065</span></span>
+<span id="cb144-6"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-6"></a>  <span class="dv">12</span>     <span class="dv">13</span>     <span class="dv">14</span>     <span class="dv">15</span>     <span class="dv">16</span>     <span class="dv">17</span>     <span class="dv">18</span>     <span class="dv">19</span>     <span class="dv">20</span></span>
+<span id="cb144-7"><a href="chinese-translation-of-using-arima-models-in-r.html#cb144-7"></a> <span class="fl">0.034</span> <span class="fl">-0.161</span>  <span class="fl">0.036</span>  <span class="fl">0.066</span>  <span class="fl">0.081</span> <span class="fl">-0.005</span> <span class="fl">-0.027</span> <span class="fl">-0.006</span> <span class="fl">-0.037</span></span></code></pre></div>
+<p><img src="pics/7.PNG" /></p>
+<p>该部分相关图显示偏自相关值在1、2和3滞后时超过了显著性界限，是负的，并且随着滞后增加而大小缓慢减少。在滞后3后偏自相关值减少至0。</p>
+<p>由此，以下为对一次差异化时间序列而言可能的ARMA(自回归滑动平均)模型：</p>
+<ul>
+<li>ARMA(3,0)模型：一个p=3的自回归模型，因为部分相关途中pacf在滞后3后为零，且自相关图中减少至0。</li>
+<li>ARMA(0,1)模型：一个q=1的滑动平均模型，因为自回归图在滞后1后为零，且偏自回归图减少至0。</li>
+<li>ARMA(p,q)模型：一个p和q的值大于0的混合模型，应为自回归图和偏自回归图减少至0。</li>
+</ul>
+<p>我们用简约原则来决定哪一个是最好的模型：我们假设参数最少的模型是最好的。以上模型分别有3个，1个和至少2个参数。所以，ARMA(0,1)被认定为最佳模型。</p>
+<p>ARMA(0,1)模型，即MA(1)模型，是一阶的滑动平均模型。该模型可被写作X_t - mu = Z_t - (theta * Z_t-1),X_t为平稳时间序列（英格兰国王死亡岁数的一次差异化序列），mu为时间序列的均值，Z_t是零均值和方差不变的白噪音，theta是可被预测的参数。</p>
+<p>滑动平均模型通常被用来对相邻观测值间有短期依赖的时间序列建模。直观上，MA模型可以被用作对英格兰国王死亡岁数的时间序列中的不规则成分建模，因为我们可以说一个国王死亡岁数可能和他后面一两个继任者的死亡岁数有关联，但和他更后面的继任者的死亡岁数可能就没什么关系了。</p>
+<p>因为ARMA(0,1)模型（p=0, q=1）被认定为该一次差异化时间序列的最佳模型候选，所以原时间序列可以适用于ARIMA(0,1,1)模型（p=0, d=1, q=1）。</p>
 </div>
-<div id="使用-rcolorbrewer-调色盘" class="section level3">
-<h3><span class="header-section-number">8.1.3</span> 使用 RColorBrewer 调色盘</h3>
-<p>你需要安装 <strong>RColorBrewer</strong> 包：</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="colors-in-r-chinese-translation.html#cb73-1"></a><span class="co"># install.packages(&quot;RColorBrewer&quot;)</span></span></code></pre></div>
-<p>与 <strong>RColorBrewer</strong> 包关联的调色板可以使用 <strong>display.brewer.all（）</strong>绘制，如下：</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="colors-in-r-chinese-translation.html#cb74-1"></a><span class="kw">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
-<span id="cb74-2"><a href="colors-in-r-chinese-translation.html#cb74-2"></a><span class="kw">display.brewer.all</span>()</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-7-1.png" width="768" style="display: block; margin: auto;" /></p>
-<p>调色板有3种类型：<strong>循序、发散和定性</strong>。</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>循序</strong>调色板适合用于从低到高（梯度）的有序数据。调色板名称分别是是： Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu YlOrBr, YlOrRd。</p></li>
-<li><p><strong>发散</strong>调色板重点强调了数据范围的两极和中间值。调色板分别有：BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral。</p></li>
-<li><p><strong>定性</strong>调色板最适合表示名义数据或分类数据，并不表明群体之间的幅度差异。调色板名称是： Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3。</p></li>
-</ol>
-<p>你也可以指定查看单个的RColorBrewer调色盘：</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="colors-in-r-chinese-translation.html#cb75-1"></a><span class="co"># 查看单个调色板</span></span>
-<span id="cb75-2"><a href="colors-in-r-chinese-translation.html#cb75-2"></a><span class="kw">display.brewer.pal</span>(<span class="dt">n =</span> <span class="dv">8</span>, <span class="dt">name =</span> <span class="st">&#39;RdBu&#39;</span>)</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="colors-in-r-chinese-translation.html#cb76-1"></a><span class="co"># 查看单个调色板中颜色的十六进制编码</span></span>
-<span id="cb76-2"><a href="colors-in-r-chinese-translation.html#cb76-2"></a><span class="kw">brewer.pal</span>(<span class="dt">n =</span> <span class="dv">8</span>, <span class="dt">name =</span> <span class="st">&quot;RdBu&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;#B2182B&quot; &quot;#D6604D&quot; &quot;#F4A582&quot; &quot;#FDDBC7&quot; &quot;#D1E5F0&quot; &quot;#92C5DE&quot; &quot;#4393C3&quot;
-## [8] &quot;#2166AC&quot;</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="colors-in-r-chinese-translation.html#cb78-1"></a><span class="co"># 用 RColorBrewer 绘制柱状图</span></span>
-<span id="cb78-2"><a href="colors-in-r-chinese-translation.html#cb78-2"></a><span class="kw">barplot</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>), <span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">name =</span> <span class="st">&quot;RdBu&quot;</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="使用-wes-anderson-调色盘" class="section level3">
-<h3><span class="header-section-number">8.1.4</span> 使用 Wes Anderson 调色盘</h3>
-<p>此调色板可以安装和加载如下：</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="colors-in-r-chinese-translation.html#cb79-1"></a><span class="co"># 安装</span></span>
-<span id="cb79-2"><a href="colors-in-r-chinese-translation.html#cb79-2"></a><span class="co"># install.packages(&quot;wesanderson&quot;)</span></span>
-<span id="cb79-3"><a href="colors-in-r-chinese-translation.html#cb79-3"></a><span class="co"># 加载</span></span>
-<span id="cb79-4"><a href="colors-in-r-chinese-translation.html#cb79-4"></a><span class="kw">library</span>(wesanderson)</span></code></pre></div>
-<p>提供调色盘如下：
-<img src="https://s3.ax1x.com/2021/03/09/63b6de.png" alt="" align=center /></p>
-<p>使用调色板：</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="colors-in-r-chinese-translation.html#cb80-1"></a><span class="co"># 一个简单的柱状图</span></span>
-<span id="cb80-2"><a href="colors-in-r-chinese-translation.html#cb80-2"></a><span class="kw">barplot</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>), <span class="dt">col=</span><span class="kw">wes_palette</span>(<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">name=</span><span class="st">&quot;GrandBudapest1&quot;</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="colors-in-r-chinese-translation.html#cb81-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb81-2"><a href="colors-in-r-chinese-translation.html#cb81-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width, <span class="dt">color =</span> Species)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb81-3"><a href="colors-in-r-chinese-translation.html#cb81-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb81-4"><a href="colors-in-r-chinese-translation.html#cb81-4"></a><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">wes_palette</span>(<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">name=</span><span class="st">&quot;GrandBudapest1&quot;</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="创建一个n个连续颜色的矢量" class="section level3">
-<h3><span class="header-section-number">8.1.5</span> 创建一个n个连续颜色的矢量</h3>
-<p>你也可以使用函数<strong>rainbow(n), heat.colors(n), terrain.colors(n), topo.colors(n), and cm.colors(n)</strong>创建一个包含n个连续的颜色的矢量。</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="colors-in-r-chinese-translation.html#cb82-1"></a><span class="co"># 使用彩虹的颜色</span></span>
-<span id="cb82-2"><a href="colors-in-r-chinese-translation.html#cb82-2"></a><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">rainbow</span>(<span class="dv">5</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="colors-in-r-chinese-translation.html#cb83-1"></a><span class="co"># 使用热量图的颜色</span></span>
-<span id="cb83-2"><a href="colors-in-r-chinese-translation.html#cb83-2"></a><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">heat.colors</span>(<span class="dv">5</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-14-2.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="colors-in-r-chinese-translation.html#cb84-1"></a><span class="co"># 使用 terrain.colors</span></span>
-<span id="cb84-2"><a href="colors-in-r-chinese-translation.html#cb84-2"></a><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">terrain.colors</span>(<span class="dv">5</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="colors-in-r-chinese-translation.html#cb85-1"></a><span class="co"># 使用 topo.colors</span></span>
-<span id="cb85-2"><a href="colors-in-r-chinese-translation.html#cb85-2"></a><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">topo.colors</span>(<span class="dv">5</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-15-2.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="colors-in-r-chinese-translation.html#cb86-1"></a><span class="co"># 使用 cm.colors</span></span>
-<span id="cb86-2"><a href="colors-in-r-chinese-translation.html#cb86-2"></a><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">cm.colors</span>(<span class="dv">5</span>))</span></code></pre></div>
-<p><img src="colors_in_R_Chinese_translation_files/figure-html/unnamed-chunk-15-3.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="使用arima模型进行预测" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> 使用ARIMA模型进行预测</h3>
+<p>一旦你选择了最佳ARIMA(p,d,q)模型候选，你就可以预测该模型的参数，并且为时间序列的未来值进行预测。</p>
+<p>在R中你可以用“arima()”函数来估计一个ARIMA(p,d,q)模型的参数。</p>
+<div id="例英格兰国王死亡岁数-1" class="section level4">
+<h4><span class="header-section-number">11.1.3.1</span> 例：英格兰国王死亡岁数</h4>
+<p>如上，ARIMA(0,1,1)模型对该时间序列来说似乎是一个可行的模型。你可以用“arima()”函数的“order”选项明确ARIMA模型的p,d和q的值。要对一组时间序列拟合一个ARIMA(p,d,q)模型，我们输入：</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-1"></a>kingstimeseriesarima &lt;-<span class="st"> </span><span class="kw">arima</span>(kingstimeseries, <span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># fit an ARIMA(0,1,1) model</span></span>
+<span id="cb145-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-2"></a>kingstimeseriesarima</span>
+<span id="cb145-3"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-3"></a><span class="kw">ARIMA</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb145-4"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-4"></a>Coefficients<span class="op">:</span></span>
+<span id="cb145-5"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-5"></a><span class="st">        </span>ma1</span>
+<span id="cb145-6"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-6"></a>      <span class="fl">-0.7218</span></span>
+<span id="cb145-7"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-7"></a>s.e.   <span class="fl">0.1208</span></span>
+<span id="cb145-8"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-8"></a>sigma<span class="op">^</span><span class="dv">2</span> estimated as <span class="fl">230.4</span><span class="op">:</span><span class="st">  </span>log likelihood =<span class="st"> </span><span class="fl">-170.06</span></span>
+<span id="cb145-9"><a href="chinese-translation-of-using-arima-models-in-r.html#cb145-9"></a>AIC =<span class="st"> </span><span class="fl">344.13</span>   AICc =<span class="st"> </span><span class="fl">344.44</span>   BIC =<span class="st"> </span><span class="fl">347.56</span></span></code></pre></div>
+<p>如上所说，如果我们对时间序列拟合一个ARIMA(0,1,1)模型，我们其实也是对一次差异化的时间序列拟合一个ARMA(0,1)模型。ARMA(0,1)模型可被写作X_t - mu = Z_t - (theta * Z_t-1)，theta是要被估计的参数。从以上的R的“arima()”函数的输出来看，theta的估值（R输出中的‘ma1’）为-0.7218。</p>
+<p>然后我们可以用R的“forecast”包中的“forcast.Arima()”函数对时间序列的未来值进行预测。比如，要对接下来5个英格兰国王的死亡岁数进行预测，我们输入：</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-1"></a><span class="kw">library</span>(<span class="st">&quot;forecast&quot;</span>) <span class="co"># load the &quot;forecast&quot; R library</span></span>
+<span id="cb146-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-2"></a>kingstimeseriesforecasts &lt;-<span class="st"> </span><span class="kw">forecast.Arima</span>(kingstimeseriesarima, <span class="dt">h=</span><span class="dv">5</span>)</span>
+<span id="cb146-3"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-3"></a>kingstimeseriesforecasts</span>
+<span id="cb146-4"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-4"></a>     Point Forecast    Lo <span class="dv">80</span>    Hi <span class="dv">80</span>    Lo <span class="dv">95</span>     Hi <span class="dv">95</span></span>
+<span id="cb146-5"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-5"></a>  <span class="dv">43</span>       <span class="fl">67.75063</span> <span class="fl">48.29647</span> <span class="fl">87.20479</span> <span class="fl">37.99806</span>  <span class="fl">97.50319</span></span>
+<span id="cb146-6"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-6"></a>  <span class="dv">44</span>       <span class="fl">67.75063</span> <span class="fl">47.55748</span> <span class="fl">87.94377</span> <span class="fl">36.86788</span>  <span class="fl">98.63338</span></span>
+<span id="cb146-7"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-7"></a>  <span class="dv">45</span>       <span class="fl">67.75063</span> <span class="fl">46.84460</span> <span class="fl">88.65665</span> <span class="fl">35.77762</span>  <span class="fl">99.72363</span></span>
+<span id="cb146-8"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-8"></a>  <span class="dv">46</span>       <span class="fl">67.75063</span> <span class="fl">46.15524</span> <span class="fl">89.34601</span> <span class="fl">34.72333</span> <span class="fl">100.77792</span></span>
+<span id="cb146-9"><a href="chinese-translation-of-using-arima-models-in-r.html#cb146-9"></a>  <span class="dv">47</span>       <span class="fl">67.75063</span> <span class="fl">45.48722</span> <span class="fl">90.01404</span> <span class="fl">33.70168</span> <span class="fl">101.79958</span></span></code></pre></div>
+<p>原时间序列包括了42位英格兰国王的死亡岁数。forcast.Arima()给出了接下来5位(第43到第48位国王)的死亡岁数，以及相应的80%和95%预测区间。第42位国王的死亡岁数为56岁，而ARIMA模型预测下五位国王的死亡岁数为67.8岁。</p>
+<p>我们可以将前42位国王的实际死亡岁数和用ARIMA(0,1,1)模型预测的后5位国王的死亡岁数作图，输入：</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb147-1"></a><span class="kw">plot.forecast</span>(kingstimeseriesforecasts)</span></code></pre></div>
+<p><img src="pics/8.PNG" /></p>
+<p>如果是指数平滑模型，那最好能调查ARIMA模型的预测误差是否是正态分布的、零均值化的且水平方差的，且是否存在相邻预测误差间的相关。</p>
+<p>比如，我们可以对ARIMA(0,1,1)模型对英格兰国王死亡岁数的预测误差作相关图，并且对1-20滞后作LB检验，输入：</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb148-1"></a><span class="kw">acf</span>(kingstimeseriesforecasts<span class="op">$</span>residuals, <span class="dt">lag.max=</span><span class="dv">20</span>)</span>
+<span id="cb148-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb148-2"></a><span class="kw">Box.test</span>(kingstimeseriesforecasts<span class="op">$</span>residuals, <span class="dt">lag=</span><span class="dv">20</span>, <span class="dt">type=</span><span class="st">&quot;Ljung-Box&quot;</span>)</span>
+<span id="cb148-3"><a href="chinese-translation-of-using-arima-models-in-r.html#cb148-3"></a>Box<span class="op">-</span>Ljung test</span>
+<span id="cb148-4"><a href="chinese-translation-of-using-arima-models-in-r.html#cb148-4"></a>data<span class="op">:</span><span class="st">  </span>kingstimeseriesforecasts<span class="op">$</span>residuals</span>
+<span id="cb148-5"><a href="chinese-translation-of-using-arima-models-in-r.html#cb148-5"></a>X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">13.5844</span>, df =<span class="st"> </span><span class="dv">20</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.851</span></span></code></pre></div>
+<p><img src="pics/9.PNG" /></p>
+<p>由于相关图中没有1-20滞后的样本自相关值超过显著性界限，且LB测试的p值为0.9，我们可以得出有极少证据支持1-20滞后的非零自相关的结论。</p>
+<p>要调查预测误差是否是正态分布的，零均值的，且水平方差的，我们可以作一张预测误差的时间图和(覆盖正态曲线的)柱状图：</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="chinese-translation-of-using-arima-models-in-r.html#cb149-1"></a><span class="kw">plot.ts</span>(kingstimeseriesforecasts<span class="op">$</span>residuals)            <span class="co"># make time plot of forecast errors</span></span>
+<span id="cb149-2"><a href="chinese-translation-of-using-arima-models-in-r.html#cb149-2"></a><span class="kw">plotForecastErrors</span>(kingstimeseriesforecasts<span class="op">$</span>residuals) <span class="co"># make a histogram</span></span></code></pre></div>
+<p><img src="pics/10.PNG" />
+<img src="pics/11.PNG" /></p>
+<p>样本预测误差的时间图显示了预测误差的方差大约保持一致。柱状图显示了预测误差大约是正态分布的且均值约等于0。所以，可以说预测误差是正态分布的，零均值的，且水平方差的。</p>
+<p>因为相邻的预测误差不像是相关的，且预测误差是正态分布的，零均值的，且水平方差的，ARIMA(0,1,1)模型的确提供了一个合适的预测英格兰国王死亡岁数的模型。</p>
 
 </div>
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="ggvis-cheatsheet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="managing-data-frames-with-dplyr-package-in-chinese.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction-to-rstudio-in-portuguese.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-r-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -452,7 +464,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jtr13/cc21/edit/main/colors_in_R_Chinese_translation.Rmd",
+"link": "https://github.com/jtr13/cc21/edit/main/chn_translation_arima_models.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -460,7 +472,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/jtr13/cc21/blob/main/colors_in_R_Chinese_translation.Rmd",
+"link": "https://github.com/jtr13/cc21/blob/main/chn_translation_arima_models.Rmd",
 "text": null
 },
 "download": null,
