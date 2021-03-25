@@ -124,6 +124,7 @@ autocovariance-function-4
 acf-3
 application
 reference
+intro-to-tableau-with-r
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election

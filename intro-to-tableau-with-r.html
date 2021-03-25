@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 GitHub submission instructions | Spring 2021 EDAV Community Contributions</title>
+  <title>Chapter 17 Intro to Tableau with R | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 GitHub submission instructions | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:title" content="Chapter 17 Intro to Tableau with R | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jtr13/cc21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 GitHub submission instructions | Spring 2021 EDAV Community Contributions" />
+  <meta name="twitter:title" content="Chapter 17 Intro to Tableau with R | Spring 2021 EDAV Community Contributions" />
   
   <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="sample-project.html"/>
+<link rel="prev" href="introdution-to-time-series-analysis.html"/>
+<link rel="next" href="zoom-session-in-finance-and-data-science.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,108 +312,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="github-submission-instructions" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> GitHub submission instructions</h1>
-<p>This chapter gives you all the information you need to upload your community contribution. <strong>Please read this entire document carefully before making your submission.</strong> Of particular note is the fact that <strong>bookdown</strong> requires a different .Rmd format than you’re used to, so you must make changes to the beginning of the file as described below before submitting.</p>
-<div id="background" class="section level2">
-<h2><span class="header-section-number">2.1</span> Background</h2>
-<p>This web site makes use of the <strong>bookdown</strong> package to render a collection of <code>.Rmd</code> files into a nicely formatted online book with chapters and subchapters. Your job will be to submit a slightly modified version of your community contribution <code>.Rmd</code> file to the GitHub repository where the source files for this web site are stored. On the backend, the admins will divide the chapters into book sections and order them.</p>
-<p>If your community contribution is in a different format, then create a short <code>.Rmd</code> file that explains what you did, and includes links to any relevant files, such as slides, etc. which you can post on your GitHub repo (or another online site.)</p>
-</div>
-<div id="preparing-your-.rmd-file" class="section level2">
-<h2><span class="header-section-number">2.2</span> Preparing your <code>.Rmd</code> file</h2>
-<p>You should only submit <strong>ONE</strong> <code>Rmd</code> file.</p>
-<p>After completing these modifications, your <code>.Rmd</code> should look like this <a href="https://github.com/jtr13/cc21/blob/main/sample_project.Rmd" target="_blank">sample <code>.Rmd</code>.</a></p>
-<ol style="list-style-type: decimal">
-<li><p>Create a concise, descriptive name for your project. For instance, name it <code>base_r_ggplot_graph</code> or something similar if your work is about contrasting/working with base R graphics and <strong>ggplot2</strong> graphics. Check the <code>.Rmd</code> filenames in <a href="https://github.com/jtr13/cc21" target="_blank">the project repo</a> to make sure your name isn’t already taken. Your project name should be words only and joined with underscores, <strong>no white space</strong>. Use <code>.Rmd</code> not <code>.rmd</code>. In addition, all letters must be <strong>lowercase</strong>. Create a copy of your <code>.Rmd</code> file with the new name.</p></li>
-<li><p>Completely delete the YAML header (the section at the top of the <code>.Rmd</code> that includes name, title, date, output, etc.) including the <code>---</code> line.</p></li>
-<li><p>Choose a short, descriptive, human readable title for your project as your title will show up in the table of contents – look at examples in the 2020 EDAV rendered book of community contributions <a href="https://jtr13.github.io/cc20/" target="_blank">https://jtr13.github.io/cc20</a>. Capitalize the first letter only (“sentence case”). On the first line of your document, enter a single hashtag, <strong>followed by a single whitespace</strong>, and then your title. It is important to follow this format so that bookdown renders your title as a header. Do not use single <code>#</code> headers anywhere else in the document. Note: if your chapter is the first in a section, a second <code>#</code> header and section description will be requested during the pull-request and merge phase.</p></li>
-<li><p>The second line should be blank, followed by your name(s):</p>
-<pre><code># Base R vs. ggplot2
+<div id="intro-to-tableau-with-r" class="section level1">
+<h1><span class="header-section-number">Chapter 17</span> Intro to Tableau with R</h1>
+<p>Daniel Schmidle and Pranav Gopal</p>
+<p><img src="resources/using_r_in_tableau/rt.png" style="width:50.0%" /> <br></p>
+<!-- Intro -->
+<p>
+With an increasing number of job listings requesting experience with Tableau for Data Scientist, Analyst and ML Engineer positions, it is becoming increasingly likely that we might find ourselves needing this tool as part of our repertoire. Since 2003, Tableau has been helping people see and understand data to create actionable insights from their analysis. And without a doubt, Tableau has easy and extensive data visualization capabilities. <br>
+However, as we travel through the Tableau-verse in wonderment of all the beautiful graphs and charts, we still might feel as if something is missing: the computational, data manipulating, statistical power of R we have grown to love. Fortunately, through the Tableau Desktop and the Tableau Server we can still harness the power of R to create incredible data visualizations and analysis.
+</p>
+<p>
+Thus, here is how to start utilizing R in Tableau:
+</p>
+<!-- Setup Directions -->
+<h3>
+Setup
+</h3>
+<p>
+<p>First, you will need R installed on your device (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a> ) and Tableau Desktop through the Tableau homepage (free for students: <a href="https://www.tableau.com/academic/students" class="uri">https://www.tableau.com/academic/students</a>) <br></p>
+In order to have Tableau to connect to R, the Rserve package must be installed and implemented in the RGui or RStudio Console:
+</p>
+<p><img src="resources/using_r_in_tableau/img1.png" /> <br></p>
+<p>
+Tableau will now be able to find and connect to R through a socket server. <br>
+Now, on the Tableau Desktop go to <b>Help → Settings and Performance → Manage Analytics Extension Connection.. </b>
+</p>
+<p><br></p>
+<p><img src="resources/using_r_in_tableau/img2.png" /> <br></p>
+<p>
+Set the extension <b>Rserve</b>, and set the <b>Server: Localhost</b> and <b>Port: 6311</b>
+</p>
+<p><img src="resources/using_r_in_tableau/img3.png" /> <br></p>
+<p>
+You can check the connection by the <b>Test Connection</b>
+</p>
+<p><img src="resources/using_r_in_tableau/img4.png" /> <br></p>
+<p>
+And now you are all set up to use R in Tableau. So, let’s do one easy example to show how to use R functions in the Tableau Desktop.
+</p>
+<p><br></p>
+<!-- First Example Here -->
+<h3>
+Creating Your First R Function
+</h3>
+<p>
+To begin using the computational power of R we must first understand how Tableau implements R. <br>
+Here, the common Tableau built-in <b>Sample - Superstore</b> is used for the base dataset in the example. <br>
+Start, by creating a new calculated field (one easy way is to right click the Data panel on the left hand side and choose <b>Create Calculated Field</b>)
+</p>
+<p><img src="resources/using_r_in_tableau/img5.png" /> <br></p>
+<p>
+<p>Now, here is where the R magic happens:<br />
+<img src="resources/using_r_in_tableau/img6.png" /> <br></p>
+<p>Inside the Calculated Field window, we can start by renaming our field, here we name it “First R Example (expenses)” <br></p>
+<p>Next, inside the function field we need to declare to Tableau what data type we want the R function to return. The types are <b>SCRIPT_BOOL , SCRIPT_INT , SCRIPT_REAL , SCRIPT_STR </b>. The functions list window on the right will allow you to select the data types / Tableau functions and provide further details for each:
+<img src="resources/using_r_in_tableau/img7.jpg" /> <br></p>
+<p>In the above example SCRIPT_REAL is chosen since we want floating point numbers to be returned. <br></p>
+<p>Next, Inside the SCRIPT_REAL(“ <b> #Your R function goes here”</b>,…) with each argument that you want to pass in being represented by <b>.arg1 , .arg2 ,… , argN </b> for N arguments. In this example the variable x is calculating the difference of .arg1 and .arg2 <br></p>
+<p>Next, the final part of the function SCRIPT_REAL(“ Your R function goes here”, <b> specified data arguments for (.arg1, .arg2, etc) go here </b>). In this example <b>SUM(Sales)</b> is being passed to <b>.arg1</b> and <b>SUM([Profit])</b> is being passed to <b>.arg2</b> so that <b>x = SUM(Sales) - SUM([Profit])</b><br></p>
+<p><b>Attention!</b> Tableau will only allow aggregate data to be passed to the SCRIPT function, and thus R function. Therefore, the arguments must be of the form SUM() or AVG() etc. and not in vector format. This limits the normal R functionality however, the limitations become more versatile as aggregate manipulation occurs in Tableau. <br></p>
+<p>So, to finish off our first example we can now use the R output to visualize Sales on the First R Example (calculated expenses) by dragging the <b>calculated expenses</b> to the <b>columns</b> section, <b>sales</b> to the <b>Rows</b>, and <b>Sub-Category</b> to the <b>Color</b> sections:
+<img src="resources/using_r_in_tableau/img8.png" /> <br></p>
+And now we have used R to create a graph in Tableau! Now, this simple calculation can be done in Tableau easily and the call to R is not needed in this case but, let’s take a look at another example where the power R really starts to show.
+</p>
+<p><br></p>
+<!-- Second Example -->
+<h3>
+Example 2 (getting some more use out of R)
+</h3>
+<p>
+<p>To get a little deeper with an R function let us create a linear model for predictions. Still using the <b>Sample - Superstore</b> data from the previous example, we create a new calculated field:<br></p>
+<p><img src="resources/using_r_in_tableau/img9.png" /> <br></p>
+<p>Here, we are using the lm() function from R to create a linear model of <b>SUM([Profit])</b> on <b>AVG(Quantity)</b>, <b>AVG(Sales)</b>, and from our first example <b>[First R Example (calculated expenses)]</b>. This linear model will estimate an expected profit for a category we choose. So, plotting Profit on Expected Profit with aggregated color by Sub-Category creates a nice visualization of the expected vs real outcomes from the model. To note here, a scatter plot was chosen to represent the model outcomes, but the possibilities of other plot types are just a click away in tableau.</p>
+<p><img src="resources/using_r_in_tableau/img10.png" /> <br></p>
+<p>From this example we can start to see the possibilities of R computation within Tableau. <br></p>
+<!-- Work Around-->
+Being able to utilize R in Tableau creates a more dynamic analytical environment however, Tableau’s use of R as a calculated field is limited in many ways. First, as noted above, the SCRIPT Function in Tableau can only take aggregate input, such as the SUM or AVG, and will not accept a vector for computation. So, when using R inside Tableau think more point calculations than Monte Carlo simulations. There is however a way around these limitations that uses R to calculate what you want first, then utilize the newly formed dataset to create a more dynamic integration in Tableau.
+</p>
+<p><br></p>
+<!-- Third Example Here-->
+<h3>
+Example 3 (The R Tableau Tango)
+</h3>
+<p>
+<p>A great example of how easy Tableau is to create dynamic, visually stunning graphs is no better demonstrated than with geospatial data. Tableau can create amazing, interactive visualizations for any region with just a couple clicks of the mouse and the right data. <br></p>
+<p>For this example we used a Covid-19 dataset taken from the JHU CSSE COVID-19 Data as well as The New York Times. <a href="https://data.world/covid-19-data-resource-hub/covid-19-case-counts" class="uri">https://data.world/covid-19-data-resource-hub/covid-19-case-counts</a> <br></p>
+Tableau easily creates an interactive time series visualizing the growth of positive cases by country. Using the Tableau generated <b>latitude</b> and <b>longitude</b> creates the geospatial map, selecting <b>Report Date</b> on the <b>Pages tab</b> creates the time series for cases per day, and adding the <b>SUM(People Positive Cases Count)</b> and the <b>Country Alpha 3 Code</b> to the <b>Marks options</b> creates the visualization for case growth. Another benefit of Tableau is the ease of formatting: changing color patterns, background colors, and plot styles which can be seen in the plot below.
+</p>
+<p><img src="resources/using_r_in_tableau/img11.png" /> <br></p>
+<p>
+<p>But, say we wanted to do a point estimate for the Death Rate parameter of Covid-19 by region. And let’s say we wanted to use bootstrapping from the daily reported data. This sort of computation is where R shines. So, since this type of simulation would not be possible from the Tableau Desktop, using R separately and feeding the result back to Tableau would create the perfect team for all your statistical needs. So, lets begin: <br></p>
+Using the <b>‘Covid-19 Activity.csv’</b> data in Rmarkdown, the first pre-processing step is to calculate the Death Rate per day for each country. We then eliminated all data that had a Death Rate of NaN or Infinity using the <b> tidyverse and dplyr R packages</b>. Looping through every country in the dataframe, we used the <b>base R replicate and sample functions</b> to bootstrap the Death Rate data for each country, taking 100 samples over 1000 repetitions and calculating the mean point estimated Death Rate per country. Writing this calculated pre-processed dataset back to Tableau and plotting the new data in conjunction with the geospatial plot produces the image below:
+</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="intro-to-tableau-with-r.html#cb166-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb166-2"><a href="intro-to-tableau-with-r.html#cb166-2"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb166-3"><a href="intro-to-tableau-with-r.html#cb166-3"></a></span>
+<span id="cb166-4"><a href="intro-to-tableau-with-r.html#cb166-4"></a>covid &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/COVID-19 Activity.csv&quot;</span>)</span>
+<span id="cb166-5"><a href="intro-to-tableau-with-r.html#cb166-5"></a>covid_clean &lt;-<span class="st"> </span><span class="kw">select</span>(covid, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">13</span>)</span>
+<span id="cb166-6"><a href="intro-to-tableau-with-r.html#cb166-6"></a>covid_clean<span class="op">$</span>Death_Rate &lt;-<span class="st"> </span>covid_clean<span class="op">$</span>PEOPLE_DEATH_COUNT<span class="op">/</span>covid_clean<span class="op">$</span>PEOPLE_POSITIVE_CASES_COUNT</span>
+<span id="cb166-7"><a href="intro-to-tableau-with-r.html#cb166-7"></a>covid_clean &lt;-<span class="st"> </span><span class="kw">do.call</span>(data.frame, <span class="kw">lapply</span>(covid_clean, <span class="cf">function</span>(x) <span class="kw">replace</span>(x, <span class="kw">is.infinite</span>(x), <span class="ot">NA</span>)))</span>
+<span id="cb166-8"><a href="intro-to-tableau-with-r.html#cb166-8"></a>covid_clean &lt;-<span class="st"> </span>covid_clean  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(<span class="st">&quot;Death_Rate&quot;</span>)</span>
+<span id="cb166-9"><a href="intro-to-tableau-with-r.html#cb166-9"></a></span>
+<span id="cb166-10"><a href="intro-to-tableau-with-r.html#cb166-10"></a>countries &lt;-<span class="st"> </span><span class="kw">unique</span>(covid_clean<span class="op">$</span>COUNTRY_SHORT_NAME)</span>
+<span id="cb166-11"><a href="intro-to-tableau-with-r.html#cb166-11"></a></span>
+<span id="cb166-12"><a href="intro-to-tableau-with-r.html#cb166-12"></a>Est_Death_Rate &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>,<span class="kw">length</span>(countries))</span>
+<span id="cb166-13"><a href="intro-to-tableau-with-r.html#cb166-13"></a>death_tbl &lt;-<span class="st"> </span><span class="kw">data.frame</span>(countries, Est_Death_Rate)</span>
+<span id="cb166-14"><a href="intro-to-tableau-with-r.html#cb166-14"></a></span>
+<span id="cb166-15"><a href="intro-to-tableau-with-r.html#cb166-15"></a><span class="cf">for</span> (c <span class="cf">in</span> countries){</span>
+<span id="cb166-16"><a href="intro-to-tableau-with-r.html#cb166-16"></a>country &lt;-<span class="st"> </span>covid_clean[covid_clean<span class="op">$</span>COUNTRY_SHORT_NAME <span class="op">==</span><span class="st"> </span>c,]</span>
+<span id="cb166-17"><a href="intro-to-tableau-with-r.html#cb166-17"></a>c_death &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>, <span class="kw">mean</span>(<span class="kw">sample</span>(country<span class="op">$</span>Death_Rate, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)))</span>
+<span id="cb166-18"><a href="intro-to-tableau-with-r.html#cb166-18"></a>death_tbl<span class="op">$</span>Est_Death_Rate[death_tbl<span class="op">$</span>countries <span class="op">==</span><span class="st"> </span>c] &lt;-<span class="st"> </span><span class="kw">mean</span>(c_death)</span>
+<span id="cb166-19"><a href="intro-to-tableau-with-r.html#cb166-19"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="intro-to-tableau-with-r.html#cb167-1"></a><span class="co">#write.csv(death_tbl,&quot;data/death_tbl.csv&quot;)</span></span></code></pre></div>
+<p><img src="resources/using_r_in_tableau/img12.png" /> <br></p>
+<!--  Closing  -->
+<p>
+It is clear from the above examples that Tableau is extremely user-friendly in data visualization. It allows users to create beautiful and colorful plots with no coding knowledge at all. Through it’s drag and drop environment, users can easily change color palettes, filter plots by certain variables, and resize plots instead of having to write time-consuming R code to achieve the same result. However, Tableau’s limited ability for data manipulation makes it much better suited for simple calculations and plotting data that is already pre-processed. <br><br>
+Example 2 showcased the ability to use R within Tableau for more advanced capabilities such as linear regression and other machine learning models. Additionally, Example 3 dealt with statistical analysis of bootstrapping Covid-19 data to calculate a point estimated Death Rate per country. This is where combining the packages available in R to pre-process the data, and then passing it back to Tableau creates a powerhouse for statistical analysis and data visualization.
+All three of these examples showcase the capabilities of using Tableau and R together. Combining the analytical ability of R packages with the drag and drop data visualization of Tableau will make you a better data scientist, and hopefully will help you land the job of your dreams!
+</p>
+<p><br><br></p>
+<h4>
+Sources
+</h4>
+<p><a href="https://www.tableau.com/learn/whitepapers/using-r-and-tableau" class="uri">https://www.tableau.com/learn/whitepapers/using-r-and-tableau</a> <br>
+<a href="https://www.youtube.com/watch?v=E092x4a9_Y4" class="uri">https://www.youtube.com/watch?v=E092x4a9_Y4</a>
+<br><br></p>
 
-Aaron Burr and Alexander Hamilton
-Your content starts here. </code></pre></li>
-<li><p>If your project requires data, please use a built-in dataset or read directly from a URL, such as:</p>
-<p><code>df &lt;- readr::read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")</code> <br> If you absolutely must include a data file, please use a small one, as for many reasons it is desirable to keep the repository size as small as possible.</p></li>
-<li><p>If you have included a <code>setup</code> chunk in your <code>Rmd</code> file, please remember to remove the label <code>setup</code> in the chunk, i.e., use:</p>
-<pre><code>{r, include=FALSE}</code></pre>
-<p>instead of:</p>
-<pre><code>{r setup, include=FALSE}</code></pre></li>
-<li><p>If your project requires libraries to be installed and included in the document, please adhere to the following conventions. Do not evaluate any <code>install.packages()</code> statements in your document. Consumers of an <code>.Rmd</code> file won’t want packages to get installed when they knit your document. Include any <code>library()</code> statements at the top of your <code>Rmd</code> file, below the title, name, and <code>setup</code>, but above any content. If your chapter requires the installation of a package from source (is a GitHub installation), <strong>please add a comment identifying it as such. Please mention this as well in your PR.</strong> Here is an example <code>library()</code> section with install statements that won’t be evaluated:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="github-submission-instructions.html#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>) <span class="co"># used for installation from source</span></span>
-<span id="cb4-2"><a href="github-submission-instructions.html#cb4-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb4-3"><a href="github-submission-instructions.html#cb4-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb4-4"><a href="github-submission-instructions.html#cb4-4"></a></span>
-<span id="cb4-5"><a href="github-submission-instructions.html#cb4-5"></a><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb4-6"><a href="github-submission-instructions.html#cb4-6"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;twitter/AnomalyDetection&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="github-submission-instructions.html#cb5-1"></a><span class="kw">library</span>(<span class="st">&quot;AnomalyDetection&quot;</span>) <span class="co"># must be installed from source</span></span>
-<span id="cb5-2"><a href="github-submission-instructions.html#cb5-2"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb5-3"><a href="github-submission-instructions.html#cb5-3"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div></li>
-</ol>
-<p>You could include both sections, or you could just include the second <code>library()</code> section and trust R users to install any packages themselves. If you developed your <code>Rmd</code> file before moving your <code>library()</code> statements above the rest of the file content, it is highly recommended to knit and review your document again. This may change the namespace that was available in each section of your code during development, causing a function not to work or to exhibit unexpected behavior. This common issue is mentioned in the EDAV R Basics <a href="https://edav.info/basics.html">“Functions stop working”</a> section.</p>
-<ol start="8" style="list-style-type: decimal">
-<li>Your file should not contain <code>getwd()</code> / <code>setwd()</code> calls (you should never use these in scripts anyway!) nor <code>write</code> statements.</li>
-</ol>
-<p>Want to get fancy? See the <a href="github-submission-instructions.html#optional-tweaks">optional tweaks</a> section below.</p>
 </div>
-<div id="submission-steps" class="section level2">
-<h2><span class="header-section-number">2.3</span> Submission steps</h2>
-<p>To submit your work, we will be following “Workflow #4” – that is submitting a pull request to someone else’s repository to which you do not have write access. Instructions are available in <a href="https://edav.info/github.html#st-pr-on-another-repo-with-branching" target="_blank">this tutorial</a>. They are repeated below in abbreviated form, with specific instructions on naming conventions, content information, and other important details.</p>
-<ol style="list-style-type: decimal">
-<li><p>Fork <a href="https://github.com/jtr13/cc21" target="_blank">cc21 repo (this repo)</a> to your GitHub account.</p></li>
-<li><p>Clone/download the forked repo to your local computer.</p></li>
-<li><p>Create a new branch and name it with your project name, in our case <code>sample_project</code>. <strong>Do not skip this step. We will not merge your PR if it doesn’t come from a branch.</strong> If you already forgot to do this, check <a href="https://edav.info/github.html#fixing-mistakes">this tutorial</a> for how to fix it.</p></li>
-<li><p>Copy your modified <code>.Rmd</code> file with the same name into the root directory on the branch. In our example, it is <a href="sample_project.Rmd" target="_blank"><code>sample_project.Rmd</code></a>.</p></li>
-<li><p>Do not include an <code>.html</code> file. (In order for the <strong>bookdown</strong> package to work, all <code>.Rmd</code> files will be rendered behind the scenes.)</p></li>
-<li><p>[OPTIONAL] If you have other resources (such as images) included in your project, create a folder under <code>resources/</code>. In our example, it is <a href="resources/sample_project" target="_blank"><code>resources/sample_project/</code></a>. Put the resources files there. Be sure to change all the links in your <code>.Rmd</code> to include <code>resources/.../</code>, for example:</p>
-<p><code>![Test Photo](resources/sample_project/election.jpg)</code></p></li>
-<li><p>When you are ready to submit your project, push your branch to your remote repo. Follow <a href="https://help.github.com/en/articles/creating-a-pull-request-from-a-fork">this tutorial</a> to create a pull request.</p></li>
-<li><p>At this point a back and forth will begin with the team managing the pull requests. If you are asked to make changes, simply make the changes on your local branch, save, commit, and push to GitHub. The new commits will be added to your pull request; <strong>you do not need to, and should not, create a new pull request.</strong> (If, based on the circumstances, it does make sense to close the pull request and start a new one, we will tell you.)</p></li>
-<li><p>Once your pull request is merged, it’s fine to delete your local clone (folder) as well as the forked repository in your GitHub account.</p></li>
-</ol>
-</div>
-<div id="optional-tweaks" class="section level2">
-<h2><span class="header-section-number">2.4</span> Optional tweaks</h2>
-<ol style="list-style-type: decimal">
-<li><p>If you prefer for links from your chapter to open in new tabs, add <code>{target="_blank"}</code> after the link, such as:</p>
-<p><code>[edav.info](edav.info){target="_blank"}</code></p></li>
-<li><p>Note that your headers (<code>##</code>, <code>###</code>, etc.) will be converted to numbered headings as such: <br> <code>##</code> –&gt; 3.1 <br> <code>###</code> –&gt; 3.1.1 <br> These headings will appear as chapter subheadings and sub-subheadings in the navigation panel on the left. Think about a logical structure for users to navigate your chapter. We recommend using only <code>##</code> and <code>###</code> headings since “sub-sub-subheadings” such as 4.1.3.4 are generally unnecessary and look messy.</p></li>
-<li><p>Unfortunately, there’s no simple way to preview your chapter before it’s actually merged into the project. (<strong>bookdown</strong> has <code>preview_chapter()</code> option but it only works after the entire book has been rendered at least once and that will become more and more complex and require more and more packages as the project grows.) If you really want to preview it, fork and clone this <a href="https://github.com/yihui/bookdown-minimal" target="_blank">minimal bookdown repo</a>, add your <code>.Rmd</code> file, click the “Build book” button on the Build tab (next to Git), and then open any of the <code>.html</code> files in the <code>_book</code> folder in a web browser to see the rendered book. <br><br> If you’re interested in more <strong>bookdown</strong> options, see the <a href="https://bookdown.org/yihui/bookdown/" target="_blank">official reference book</a>. <br><br> Have more useful tweaks to share? Submit an issue or PR.</p></li>
-</ol>
-</div>
-<div id="faq" class="section level2">
-<h2><span class="header-section-number">2.5</span> FAQ</h2>
-<div id="what-should-i-expect-after-creating-a-pull-request" class="section level3">
-<h3><span class="header-section-number">2.5.1</span> What should I expect after creating a pull request?</h3>
-<ol style="list-style-type: decimal">
-<li><p>Within a week after you create a pull request, we will apply a label to it and assign an administrator who will review all the files you submit to see if they meet the requirements.</p></li>
-<li><p>It will take some time before we can process all the pull requests, so as long as you see your pull request has been labeled and assigned to an admin, don’t worry.</p></li>
-<li><p>However, if the admin contacts you regarding the pull request, that usually means your files fail to meet some requirements. The admin will clearly state what is wrong, so please fix them as soon as possible.</p></li>
-</ol>
-</div>
-<div id="what-if-i-catch-mistakes-before-my-pull-request-is-merged" class="section level3">
-<h3><span class="header-section-number">2.5.2</span> What if I catch mistakes before my pull request is merged?</h3>
-<p>Just make the changes on your branch, commit and push them to GitHub. They will automatically be added to the pull request.</p>
-</div>
-<div id="what-if-i-catch-mistakes-after-my-pull-request-is-merged" class="section level3">
-<h3><span class="header-section-number">2.5.3</span> What if I catch mistakes after my pull request is merged?</h3>
-<p>You may submit additional pull requests to fix material on the site. If the edits are small, such as fixing typos, it is easiest to make the edits directly on GitHub, following <a href="https://edav.info/contribute.html#github-only-walkthrough" target="_blank">these instructions</a>. We will merge first pull requests before edits, so please be patient.</p>
-</div>
-<div id="other-questions" class="section level3">
-<h3><span class="header-section-number">2.5.4</span> Other questions</h3>
-<p>If you encounter other problems, please <a href="https://github.com/jtr13/cc21/issues" target="_blank">submit an issue</a> and we will look into it.</p>
-<p>Thank you for your contributions!</p>
 
-</div>
-</div>
-</div>
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sample-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introdution-to-time-series-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="zoom-session-in-finance-and-data-science.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -444,7 +480,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jtr13/cc21/edit/main/instructions.Rmd",
+"link": "https://github.com/jtr13/cc21/edit/main/using_r_in_tableau.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -452,7 +488,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/jtr13/cc21/blob/main/instructions.Rmd",
+"link": "https://github.com/jtr13/cc21/blob/main/using_r_in_tableau.Rmd",
 "text": null
 },
 "download": null,
