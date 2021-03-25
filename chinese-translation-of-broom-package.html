@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 17 Introdution to Time Series Analysis | Spring 2021 EDAV Community Contributions</title>
+  <title>Chapter 14 Chinese translation of broom package | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 17 Introdution to Time Series Analysis | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:title" content="Chapter 14 Chinese translation of broom package | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jtr13/cc21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 17 Introdution to Time Series Analysis | Spring 2021 EDAV Community Contributions" />
+  <meta name="twitter:title" content="Chapter 14 Chinese translation of broom package | Spring 2021 EDAV Community Contributions" />
   
   <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-data-using-apis.html"/>
-<link rel="next" href="intro-to-tableau-with-r.html"/>
+<link rel="prev" href="chinese-translation-of-using-arima-models-in-r.html"/>
+<link rel="next" href="creating-r-packages.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -326,295 +326,269 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introdution-to-time-series-analysis" class="section level1">
-<h1><span class="header-section-number">Chapter 17</span> Introdution to Time Series Analysis</h1>
-<p>Yiyuan Xu</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="introdution-to-time-series-analysis.html#cb185-1"></a><span class="kw">library</span>(astsa)</span>
-<span id="cb185-2"><a href="introdution-to-time-series-analysis.html#cb185-2"></a><span class="kw">library</span>(TSA)</span></code></pre></div>
-<div id="overview" class="section level2">
-<h2><span class="header-section-number">17.1</span> Overview</h2>
-<p>This text briefly talks about basic ideas of time series analysis. Meanwhile, several simple time series are roughly described and shown in pictures. Finally, we explored a few tools such as mean function to analyze and predict time series.</p>
+<div id="chinese-translation-of-broom-package" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Chinese translation of broom package</h1>
+<p>Wenjie Wei and Yinqiu Feng</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="chinese-translation-of-broom-package.html#cb150-1"></a><span class="kw">library</span>(broom)</span></code></pre></div>
+<div id="序言" class="section level2">
+<h2><span class="header-section-number">14.1</span> 序言</h2>
+<p>broom包可以将R语言中内置函数（例如lm，nls或t.test）的混乱输出转换为整齐的tibbel(一种R特有的数据框）。 </p>
+<p>broom 是一种可以将不整齐的估测结果调整为我们想要的整齐数据的工具。它以3种S3类函数为中心，每种方法都采用R统计函数（lm,t.test,nls等等）产生的对象并转换结果至tibble。设计broom是为了和Hadley的dplyr包一起使用。 </p>
+<p>broom应与reshape2和tidyr之类的包区分开来,这些包会将数据帧重新排列和重塑为不同的形式。这些软件包在整理好的的数据分析中执行关键任务，但专注于将一种特定格式的数据帧转换为另一种格式。相反，broom被设计为采用非表格数据格式的格式，并将其转换为整洁的数据框。 </p>
+<p>整理模型输出不是一门精准的学科，它基于数据科学家对于从整洁的数据分析中得出的各种值（例如，估计值，测试统计数据和p值）进行判断的期望。您可能会丢失所需的原始对象中的某些信息，或者保留了比所需更多的信息。如果您认为应该更改模型的整理输出，或者缺少所需的S3类的整理功能，欢迎提出问题或需求。 </p>
 </div>
-<div id="introduction-1" class="section level2">
-<h2><span class="header-section-number">17.2</span> Introduction</h2>
-<p>The analysis of data that have been observed at different time points causes new problems in statistical modeling and inference. These data points taken over time may have an internal structure such as autocorrelation, trend or seasonal variation, which restricts the applicability of some conventional statistical models that assume adjacent observations are independent. Time series analysis, however, is a systematic approach to solve mathematical and statistical problems posed by the internal structure.</p>
-<div id="example-1" class="section level3">
-<h3><span class="header-section-number">17.2.1</span> Example</h3>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="introdution-to-time-series-analysis.html#cb186-1"></a><span class="kw">plot</span>(jj, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Average global temperature deviations (1880–2015) in degrees Celsius&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Quarterly Earnings per Share&quot;</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The data are the global land–ocean temperature deviations (1880-2015), measured in degrees centigrade, from the 1951-1980 average. From the data, we can see that there is an obvious upward trend during the later twentieth century. This observation has been used as one of arguments for the global warming hypothesis. Except the overall upward trend, there are also some other peaks that we can question and analyze. Time series analysis provides tools and models to answer those questions of interest exposed by real experimental data taken from different subject areas.</p>
+<div id="整理函数" class="section level2">
+<h2><span class="header-section-number">14.2</span> 整理函数</h2>
+<p>这个软件包提供了三种S3类函数，可以进行三种不同的整理： </p>
+<p>tidy：绘制tibble，总结该模型的统计结果。这包括回归中每个项的系数和p值，聚类应用中的每个集群信息或多测试功能的每个测试信息。 </p>
+<p>augment：在建模的原始数据中增加列数。这包括预测，残差和聚类分配。</p>
+<p>glance：建立一行关于模型的精简总结。它通常包含诸如R方，调整R方和残余标准误差之类的值，这些值会针对整个模型计算一次。 </p>
+<p>请注意，某些类可能只定义了其中一种或两种方法。 
+作为说明性示例，我们来对R内置的mtcars数据集进行线性拟合。 </p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="chinese-translation-of-broom-package.html#cb151-1"></a>lmfit &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>wt, mtcars)</span>
+<span id="cb151-2"><a href="chinese-translation-of-broom-package.html#cb151-2"></a>lmfit</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt, data = mtcars)
+## 
+## Coefficients:
+## (Intercept)           wt  
+##      37.285       -5.344</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="chinese-translation-of-broom-package.html#cb153-1"></a><span class="kw">summary</span>(lmfit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.5432 -2.3647 -0.1252  1.4096  6.8727 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***
+## wt           -5.3445     0.5591  -9.559 1.29e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.046 on 30 degrees of freedom
+## Multiple R-squared:  0.7528, Adjusted R-squared:  0.7446 
+## F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
+<p>如果您只想看下总结数据，到这就已足够。但是，将其转换为包含所有相同信息的表格数据，以便您可以将其与其他模型结合或进行进一步的分析并非易事。您必须执行coef（summary（lmfit））以获得系数矩阵，术语仍存储在行名称中，并且列名称与其他包不一致（例如与p.value相比，Pr（&gt; | t |）不一致）。<br />
+</p>
+<p>现在，您可以在fit上用broom包里的tidy函数：</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="chinese-translation-of-broom-package.html#cb155-1"></a><span class="kw">tidy</span>(lmfit)</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    37.3      1.88      19.9  8.24e-19
+## 2 wt             -5.34     0.559     -9.56 1.29e-10</code></pre>
+<p>这为您提供了表格数据表示形式。请注意，行名称已移至称为term的列中，并且这些列名称简单且一致（可以使用$进行访问）。 </p>
+<p>您可能对回归中每个原始点的拟合值和残差感兴趣，而不是查看系数。为此，请使用augment函数，它会使用来自模型的信息来扩充原始数据：</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="chinese-translation-of-broom-package.html#cb157-1"></a><span class="kw">augment</span>(lmfit)</span></code></pre></div>
+<pre><code>## # A tibble: 32 x 9
+##    .rownames          mpg    wt .fitted .resid   .hat .sigma  .cooksd .std.resid
+##    &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Mazda RX4         21    2.62    23.3 -2.28  0.0433   3.07  1.33e-2    -0.766 
+##  2 Mazda RX4 Wag     21    2.88    21.9 -0.920 0.0352   3.09  1.72e-3    -0.307 
+##  3 Datsun 710        22.8  2.32    24.9 -2.09  0.0584   3.07  1.54e-2    -0.706 
+##  4 Hornet 4 Drive    21.4  3.22    20.1  1.30  0.0313   3.09  3.02e-3     0.433 
+##  5 Hornet Sportabo…  18.7  3.44    18.9 -0.200 0.0329   3.10  7.60e-5    -0.0668
+##  6 Valiant           18.1  3.46    18.8 -0.693 0.0332   3.10  9.21e-4    -0.231 
+##  7 Duster 360        14.3  3.57    18.2 -3.91  0.0354   3.01  3.13e-2    -1.31  
+##  8 Merc 240D         24.4  3.19    20.2  4.16  0.0313   3.00  3.11e-2     1.39  
+##  9 Merc 230          22.8  3.15    20.5  2.35  0.0314   3.07  9.96e-3     0.784 
+## 10 Merc 280          19.2  3.44    18.9  0.300 0.0329   3.10  1.71e-4     0.100 
+## # … with 22 more rows</code></pre>
+<p>注意，每个新列都以a开头。 （以避免覆盖任何原始列） </p>
+<p>最后，我们为整个回归模型计算了一些汇总统计量，例如R方和F统计量。这些可以通过glance函数访问：</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="chinese-translation-of-broom-package.html#cb159-1"></a><span class="kw">glance</span>(lmfit)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.753         0.745  3.05      91.4 1.29e-10     1  -80.0  166.  170.
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<p>关于tidy,augment和glance函数的区别，可以指路k-means vignette <a href="https://www.tidymodels.org/learn/statistics/k-means/" class="uri">https://www.tidymodels.org/learn/statistics/k-means/</a></p>
 </div>
+<div id="其他案例" class="section level2">
+<h2><span class="header-section-number">14.3</span> 其他案例</h2>
+<div id="广义线性模型和非线性模型" class="section level3">
+<h3><span class="header-section-number">14.3.1</span> 广义线性模型和非线性模型</h3>
+<p>这些功能同样适用于glm的输出结果：</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="chinese-translation-of-broom-package.html#cb161-1"></a>glmfit &lt;-<span class="st"> </span><span class="kw">glm</span>(am <span class="op">~</span><span class="st"> </span>wt, mtcars, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb161-2"><a href="chinese-translation-of-broom-package.html#cb161-2"></a><span class="kw">tidy</span>(glmfit)</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept)    12.0       4.51      2.67 0.00759
+## 2 wt             -4.02      1.44     -2.80 0.00509</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="chinese-translation-of-broom-package.html#cb163-1"></a><span class="kw">augment</span>(glmfit)</span></code></pre></div>
+<pre><code>## # A tibble: 32 x 9
+##    .rownames            am    wt .fitted .resid .std.resid   .hat .sigma .cooksd
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Mazda RX4             1  2.62   1.50   0.635      0.680 0.126   0.803 0.0184 
+##  2 Mazda RX4 Wag         1  2.88   0.471  0.985      1.04  0.108   0.790 0.0424 
+##  3 Datsun 710            1  2.32   2.70   0.360      0.379 0.0963  0.810 0.00394
+##  4 Hornet 4 Drive        0  3.22  -0.897 -0.827     -0.860 0.0744  0.797 0.0177 
+##  5 Hornet Sportabout     0  3.44  -1.80  -0.553     -0.572 0.0681  0.806 0.00647
+##  6 Valiant               0  3.46  -1.88  -0.532     -0.551 0.0674  0.807 0.00590
+##  7 Duster 360            0  3.57  -2.33  -0.432     -0.446 0.0625  0.809 0.00348
+##  8 Merc 240D             0  3.19  -0.796 -0.863     -0.897 0.0755  0.796 0.0199 
+##  9 Merc 230              0  3.15  -0.635 -0.922     -0.960 0.0776  0.793 0.0242 
+## 10 Merc 280              0  3.44  -1.80  -0.553     -0.572 0.0681  0.806 0.00647
+## # … with 22 more rows</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="chinese-translation-of-broom-package.html#cb165-1"></a><span class="kw">glance</span>(glmfit)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 8
+##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+##           &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;
+## 1          43.2      31  -9.59  23.2  26.1     19.2          30    32</code></pre>
+<p>注意，通过glance计算的统计信息对于glm模型与lm模型的不同（例如，偏差而不是R方） </p>
+<p>这些函数还可以用于其他拟合，例如非线性模型（nls）：</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="chinese-translation-of-broom-package.html#cb167-1"></a>nlsfit &lt;-<span class="st"> </span><span class="kw">nls</span>(mpg <span class="op">~</span><span class="st"> </span>k <span class="op">/</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>b, mtcars, <span class="dt">start =</span> <span class="kw">list</span>(<span class="dt">k =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">0</span>))</span>
+<span id="cb167-2"><a href="chinese-translation-of-broom-package.html#cb167-2"></a><span class="kw">tidy</span>(nlsfit)</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   term  estimate std.error statistic  p.value
+##   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 k        45.8       4.25     10.8  7.64e-12
+## 2 b         4.39      1.54      2.85 7.74e- 3</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="chinese-translation-of-broom-package.html#cb169-1"></a><span class="kw">augment</span>(nlsfit, mtcars)</span></code></pre></div>
+<pre><code>## # A tibble: 32 x 14
+##    .rownames     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 Mazda RX4    21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2 Mazda RX4 …  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3 Datsun 710   22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4 Hornet 4 D…  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5 Hornet Spo…  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6 Valiant      18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7 Duster 360   14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8 Merc 240D    24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9 Merc 230     22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10 Merc 280     19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # … with 22 more rows, and 2 more variables: .fitted &lt;dbl&gt;, .resid &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chinese-translation-of-broom-package.html#cb171-1"></a><span class="kw">glance</span>(nlsfit)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 9
+##   sigma isConv       finTol logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt; &lt;lgl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;
+## 1  2.77 TRUE   0.0000000288  -77.0  160.  164.     231.          30    32</code></pre>
 </div>
-<div id="simple-time-series" class="section level2">
-<h2><span class="header-section-number">17.3</span> Simple Time Series</h2>
-<p>The main goal of time series analysis is to construct mathematical models to provide plausible descriptions for observed data. There are many time series models we can use and fit to understand the underlying structures of observed data and do forecasting, monitoring or feedback and feedforward control. Here, some simple time series are listed below.</p>
-<div id="definition" class="section level3">
-<h3><span class="header-section-number">17.3.1</span> Definition</h3>
-<p>Before looking at different series, a clear definition of time series may be helpful. A time series is an ordered sequence of random variables obtained in time. For example, in a time series <span class="math inline">\(x_1, x_2, x_3\)</span>, …, the random variable <span class="math inline">\(x_1\)</span> represents the value at the first time period, <span class="math inline">\(x_2\)</span> represents the value at the second time period and so on. In this text, we will use <span class="math inline">\(\{x_t\}\)</span> to denote a time series where t is time here and typically discrete (<span class="math inline">\(t = 0, ±1, ±2\)</span>, …, or some subset of integers).</p>
-</div>
-<div id="white-noise" class="section level3">
-<h3><span class="header-section-number">17.3.2</span> White Noise</h3>
-<p>White noise, <span class="math inline">\(w_t\)</span>, is a collection of uncorrelated random variables with mean 0 and variance <span class="math inline">\(\sigma^{2}_w\)</span>. This process can be denoted as <span class="math inline">\(w_t \sim wn(0,\sigma^{2}_w)\)</span>. Sometimes the noise is independent and identically distributed (iid) with mean 0 and variance <span class="math inline">\(\sigma^{2}_w\)</span>. We call this white independent noise or iid noise and <span class="math inline">\(w_t \sim iid(0,\sigma^{2}_w)\)</span>. There is also a useful white noise series named Gaussian white noise where <span class="math inline">\(w_t\)</span> are independent normal random variables with mean 0 and variance <span class="math inline">\(\sigma^{2}_w\)</span> i.e. <span class="math inline">\(w_t \sim iid N(0,\sigma^{2}_w)\)</span>.</p>
-<p>The graph below shows a collection of 100 independent normal random variables with mean 0 and variance <span class="math inline">\(\sigma^{2}_w=1\)</span>.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="introdution-to-time-series-analysis.html#cb187-1"></a>w =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb187-2"><a href="introdution-to-time-series-analysis.html#cb187-2"></a><span class="kw">plot.ts</span>(w, <span class="dt">main=</span><span class="st">&quot;white noise&quot;</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="moving-average-of-white-noise" class="section level3">
-<h3><span class="header-section-number">17.3.3</span> Moving Average of White Noise</h3>
-<p>We can replace the white noise <span class="math inline">\(w_t\)</span> by a moving average smoothing the series. For instance, a moving average of white noise using three terms (current and immediate neighbors in the past and future) is
-<span class="math display">\[v_t=\frac{1}{3}(w_{t-1}+w_t+w_{t+1})\]</span></p>
-<p>The graph below uses the Gaussian white noise before by taking the average of three items and shows a smoother version of the white noise one.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="introdution-to-time-series-analysis.html#cb188-1"></a>v =<span class="st"> </span><span class="kw">filter</span>(w, <span class="dt">sides=</span><span class="dv">2</span>, <span class="dt">filter=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb188-2"><a href="introdution-to-time-series-analysis.html#cb188-2"></a><span class="kw">plot.ts</span>(v, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">main=</span><span class="st">&quot;moving average&quot;</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="random-walk-with-drift" class="section level3">
-<h3><span class="header-section-number">17.3.4</span> Random Walk with Drift</h3>
-<p>A random walk with drift is given by
-<span class="math display">\[x_t= δ+x_{t-1}+w_t\]</span>
-for t = 1, 2, …, with <span class="math inline">\(x_0 = 0\)</span> and <span class="math inline">\(w_t\)</span> is white noise. <span class="math inline">\(δ\)</span> here is the drift and when it is zero, this series is simply called a random walk. Note that when <span class="math inline">\(δ=0\)</span>, the value at time t is just the value at time t-1 plus a complete random movement determined by <span class="math inline">\(w_t\)</span>.</p>
-<p>We can also rewrite the equation as a cumulative sum of white noise
-<span class="math display">\[x_t= δt+\sum^{t}_{j=1}w_j \]</span></p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="introdution-to-time-series-analysis.html#cb189-1"></a>w =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb189-2"><a href="introdution-to-time-series-analysis.html#cb189-2"></a>x =<span class="st"> </span><span class="kw">cumsum</span>(w)</span>
-<span id="cb189-3"><a href="introdution-to-time-series-analysis.html#cb189-3"></a>wd =<span class="st"> </span>w <span class="fl">+.2</span></span>
-<span id="cb189-4"><a href="introdution-to-time-series-analysis.html#cb189-4"></a>xd =<span class="st"> </span><span class="kw">cumsum</span>(wd)</span>
-<span id="cb189-5"><a href="introdution-to-time-series-analysis.html#cb189-5"></a><span class="kw">plot.ts</span>(xd, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>), <span class="dt">main=</span><span class="st">&quot;random walk&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb189-6"><a href="introdution-to-time-series-analysis.html#cb189-6"></a><span class="kw">lines</span>(x, <span class="dt">col=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>This graph depicts two random walks with drift <span class="math inline">\(δ=0.2\)</span> (black line) and <span class="math inline">\(δ=0\)</span> (blue line). Here,<span class="math inline">\(\sigma^2_w =1\)</span> for the white noise.</p>
-</div>
-<div id="ar1" class="section level3">
-<h3><span class="header-section-number">17.3.5</span> AR(1)</h3>
-<p>An autoregressive model of order 1 (AR(1)) is of the form
-<span class="math display">\[x_t= \phi x_{t-1}+w_t\]</span>
-where <span class="math inline">\(w_t \sim wn(0,\sigma^{2}_w)\)</span>, <span class="math inline">\(|\phi|&lt;1\)</span> is a constant and <span class="math inline">\(x_t\)</span> is weakly stationary i.e. its mean function is constant and its autocovariance function depends only on the difference between two time period <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span>. The definitions of mean and autocovariance will be clarified later.</p>
-<p>We can also write this equation as
-<span class="math display">\[x_t= \phi x_{t-1}+w_t=\phi(\phi x_{t-2}+w_{t-1})+w_t
-\\ = ϕ^2 x_{t-2}+ϕw_{t-1}+ w_t=⋯\\
-= \phi^k x_{t-k}+ \sum_{j=0}^{k-1}\phi^j  w_{t-j}=  \sum_{j=0}^{\infty} \phi^j  w_{t-j}\]</span></p>
-<p>Here, graphs of AR(1) with <span class="math inline">\(\phi=±0.9\)</span>, <span class="math inline">\(\sigma_w^2=1\)</span> is provided.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="introdution-to-time-series-analysis.html#cb190-1"></a><span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span>.<span class="dv">9</span>), <span class="dt">n=</span><span class="dv">100</span>), </span>
-<span id="cb190-2"><a href="introdution-to-time-series-analysis.html#cb190-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">main=</span>(<span class="kw">expression</span>(<span class="kw">AR</span>(<span class="dv">1</span>)<span class="op">~</span><span class="er">~~</span>phi<span class="op">==+</span>.<span class="dv">9</span>)))</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="introdution-to-time-series-analysis.html#cb191-1"></a><span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span><span class="op">-</span>.<span class="dv">9</span>), <span class="dt">n=</span><span class="dv">100</span>), </span>
-<span id="cb191-2"><a href="introdution-to-time-series-analysis.html#cb191-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">main=</span>(<span class="kw">expression</span>(<span class="kw">AR</span>(<span class="dv">1</span>)<span class="op">~</span><span class="er">~~</span>phi<span class="op">==-</span>.<span class="dv">9</span>)))</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-8-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The series with <span class="math inline">\(\phi=.9\)</span> is smoother than the series with <span class="math inline">\(\phi = −.9\)</span>. We will talk about the reasons why these two have different levels of smoothness later when we go into ACF.</p>
-</div>
-<div id="ma1" class="section level3">
-<h3><span class="header-section-number">17.3.6</span> MA(1)</h3>
-<p>A moving average model of order 1 (MA(1)) is of the form
-<span class="math display">\[
-x_{t}=w_{t}+\theta w_{t-1}
-\]</span></p>
-<p>where <span class="math inline">\(w_t \sim wn(0,\sigma^{2}_w)\)</span> and <span class="math inline">\(\theta\)</span> is a parameter. Notice that <span class="math inline">\(x_t\)</span> here is stationary for any values of <span class="math inline">\(\theta\)</span>.</p>
-<p>Here, graphs of MA(1) with <span class="math inline">\(\theta=±0.7\)</span>, <span class="math inline">\(\sigma_w^2=1\)</span> is provided.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="introdution-to-time-series-analysis.html#cb192-1"></a><span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ma=</span>.<span class="dv">7</span>), <span class="dt">n=</span><span class="dv">100</span>), <span class="dt">ylab=</span><span class="st">&quot;x&quot;</span>,</span>
-<span id="cb192-2"><a href="introdution-to-time-series-analysis.html#cb192-2"></a>            <span class="dt">main=</span>(<span class="kw">expression</span>(<span class="kw">MA</span>(<span class="dv">1</span>)<span class="op">~</span><span class="er">~~</span>theta<span class="op">==+</span>.<span class="dv">7</span>)))</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="introdution-to-time-series-analysis.html#cb193-1"></a><span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ma=</span><span class="op">-</span>.<span class="dv">7</span>), <span class="dt">n=</span><span class="dv">100</span>), <span class="dt">ylab=</span><span class="st">&quot;x&quot;</span>,</span>
-<span id="cb193-2"><a href="introdution-to-time-series-analysis.html#cb193-2"></a>            <span class="dt">main=</span>(<span class="kw">expression</span>(<span class="kw">MA</span>(<span class="dv">1</span>)<span class="op">~</span><span class="er">~~</span>theta<span class="op">==-</span>.<span class="dv">7</span>)))</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-9-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Similar to AR(1), the series with <span class="math inline">\(\theta=.7\)</span> is smoother than the series with <span class="math inline">\(\theta = −.7\)</span>.</p>
-</div>
-</div>
-<div id="measures-of-dependence" class="section level2">
-<h2><span class="header-section-number">17.4</span> Measures of Dependence</h2>
-<p>There are many informative measures to describe data and make people know more about the internal structure and correlation of the data. In this text, we will talk about mean function, autocovariance function and autocorrelation function (ACF).</p>
-<div id="mean-function" class="section level3">
-<h3><span class="header-section-number">17.4.1</span> Mean Function</h3>
-<p>For a time series <span class="math inline">\(x_t\)</span>, its mean function is defined as
-<span class="math display">\[\mu_{x_t}= E(x_t )= ∫_{-∞}^∞ xf_t (x)dx\]</span></p>
-</div>
-<div id="autocovariance-function" class="section level3">
-<h3><span class="header-section-number">17.4.2</span> Autocovariance Function</h3>
-<p>The autocovariance function is defined as
-<span class="math display">\[
-\gamma_{x}(s, t)=\operatorname{cov}\left(x_{s}, x_{t}\right)=E\left[\left(x_{s}-\mu_{s}\right)\left(x_{t}-\mu_{t}\right)\right]
-\]</span></p>
-<p>where s,t are two time points. The autocovariance function measures the linear dependence between values at two different time points in the same time series. If <span class="math inline">\(\gamma_x (s,t)=0\)</span>, <span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span> are not linearly related. Also, very smooth time series will tend to have a large autocovariance function.</p>
-</div>
-<div id="autocorrelation-function-acf" class="section level3">
-<h3><span class="header-section-number">17.4.3</span> Autocorrelation Function (ACF)</h3>
-<p>The autocorrelation function is defined as
-<span class="math display">\[
-\rho(s, t)=\frac{\gamma(s, t)}{\sqrt{\gamma(s, s) \gamma(t, t)}}
-\]</span></p>
-<p>The ACF shows the linear predictability of the value at time t using the value at time s in the time series. The value of ACF is between -1 and 1. For example, if <span class="math inline">\(x_t=β_0+β_1 x_s\)</span> and we can perfectly predict <span class="math inline">\(x_t\)</span> from <span class="math inline">\(x_s\)</span>, ACF will be +1 when <span class="math inline">\(β_1&gt;0\)</span> and -1 when <span class="math inline">\(β_1&lt;0\)</span>. In this way, we can roughly forecast <span class="math inline">\(x_t\)</span> from <span class="math inline">\(x_s\)</span>.</p>
-</div>
-<div id="three-measures-for-simple-time-series-above" class="section level3">
-<h3><span class="header-section-number">17.4.4</span> Three Measures for Simple Time Series Above</h3>
-<div id="white-noise-w_t-sim-wn0sigma2_w" class="section level4">
-<h4><span class="header-section-number">17.4.4.1</span> White Noise <span class="math inline">\(w_t \sim wn(0,\sigma^{2}_w)\)</span></h4>
-<div id="mean-function-1" class="section level5">
-<h5><span class="header-section-number">17.4.4.1.1</span> Mean Function:</h5>
-<p><span class="math display">\[E(w_t)=0\]</span></p>
-</div>
-<div id="autocovariance-function-1" class="section level5">
-<h5><span class="header-section-number">17.4.4.1.2</span> Autocovariance function:</h5>
-<p><span class="math display">\[
-\gamma(s, t)=\left\{\begin{array}{c}
-0, \text { if } t \neq s \\
-\sigma_{w}^{2}, \text { if } t=s
-\end{array}\right.
-\]</span></p>
-</div>
-<div id="acf" class="section level5">
-<h5><span class="header-section-number">17.4.4.1.3</span> ACF:</h5>
-<p><span class="math display">\[
-\rho(s, t)=\left\{\begin{array}{ll}
-0, &amp; \text { if } t \neq s \\
-1, &amp; \text { if } t=s
-\end{array}\right.
-\]</span></p>
-</div>
-</div>
-<div id="moving-average-of-white-noise-using-three-terms-v_tfrac13w_t-1w_tw_t1" class="section level4">
-<h4><span class="header-section-number">17.4.4.2</span> Moving Average of White Noise Using Three Terms <span class="math inline">\(v_t=\frac{1}{3}(w_{t-1}+w_t+w_{t+1})\)</span></h4>
-<div id="mean-function-2" class="section level5">
-<h5><span class="header-section-number">17.4.4.2.1</span> Mean Function:</h5>
-<p><span class="math display">\[E(v_t)=0\]</span></p>
-</div>
-<div id="autocovariance-function-2" class="section level5">
-<h5><span class="header-section-number">17.4.4.2.2</span> Autocovariance function:</h5>
-<p><span class="math display">\[
-\gamma(s, t)=\left\{\begin{array}{ll}
-\frac{3}{9} \sigma_{w}^{2}, &amp; \text { if } s=t \\
-\frac{2}{9} \sigma_{w}^{2}, &amp; \text { if }|s-t|=1 \\
-\frac{1}{9} \sigma_{w}^{2}, &amp; \text { if }|s-t|=2 \\
-0, &amp; \text { if }|s-t|&gt;2
-\end{array}\right.
-\]</span></p>
-</div>
-<div id="acf-1" class="section level5">
-<h5><span class="header-section-number">17.4.4.2.3</span> ACF:</h5>
-<p><span class="math display">\[
-\rho(s, t)=\left\{\begin{array}{ll}
-1, &amp; \text { if } s=t \\
-\frac{2}{3}, &amp; \text { if }|s-t|=1 \\
-\frac{1}{3}, &amp; \text { if }|s-t|=2 \\
-0, &amp; \text { if }|s-t|&gt;2
-\end{array}\right.
-\]</span></p>
-</div>
-</div>
-<div id="random-walk-with-drift-x_t-δtsum_j1t-w_j" class="section level4">
-<h4><span class="header-section-number">17.4.4.3</span> Random Walk with Drift <span class="math inline">\(x_t= δt+\sum_{j=1}^t w_j\)</span></h4>
-<div id="mean-function-3" class="section level5">
-<h5><span class="header-section-number">17.4.4.3.1</span> Mean Function:</h5>
-<p><span class="math display">\[E(x_t )= δt\]</span></p>
-</div>
-<div id="autocovariance-function-with-drift-0" class="section level5">
-<h5><span class="header-section-number">17.4.4.3.2</span> Autocovariance function with drift = 0:</h5>
-<p><span class="math display">\[
-\gamma(s, t)=\min (s, t) \sigma_{w}^{2}
-\]</span></p>
-</div>
-<div id="acf-with-drift-0" class="section level5">
-<h5><span class="header-section-number">17.4.4.3.3</span> ACF with drift = 0:</h5>
-<p><span class="math display">\[
-\rho(s, t)=\frac{\min (s, t)}{\sqrt{s t}}
-\]</span></p>
-</div>
-</div>
-<div id="ar1-x_t-phi-x_t-1w_t" class="section level4">
-<h4><span class="header-section-number">17.4.4.4</span> AR(1) <span class="math inline">\(x_t= \phi x_{t-1}+w_t\)</span></h4>
-<div id="mean-function-4" class="section level5">
-<h5><span class="header-section-number">17.4.4.4.1</span> Mean Function:</h5>
-<p><span class="math display">\[E(x_t)=0\]</span></p>
-</div>
-<div id="autocovariance-function-3" class="section level5">
-<h5><span class="header-section-number">17.4.4.4.2</span> Autocovariance function:</h5>
-<p><span class="math display">\[
-\gamma(h)=\frac{\sigma_{w}^{2} \phi^{h}}{1-\phi^{2}}, h \geq 0
-\]</span></p>
-<p>Since the time series is weakly stationary, <span class="math inline">\(γ(0,h)= γ(h,0)= γ(t,t+h)= γ(s,s+h)=γ(h)\)</span>.</p>
-</div>
-<div id="acf-2" class="section level5">
-<h5><span class="header-section-number">17.4.4.4.3</span> ACF:</h5>
-<p><span class="math display">\[
-\rho(h)=\phi^{h}, h=0,1,2, \ldots
-\]</span></p>
-<p>Take a look at the ACF of AR(1) when <span class="math inline">\(ϕ= 0.9\)</span></p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="introdution-to-time-series-analysis.html#cb194-1"></a>ar =<span class="st"> </span><span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span>.<span class="dv">9</span>), <span class="dt">n=</span><span class="dv">100</span>)</span>
-<span id="cb194-2"><a href="introdution-to-time-series-analysis.html#cb194-2"></a><span class="kw">acf</span>(ar,<span class="dt">lag.max =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Take a look at the ACF of AR(1) when <span class="math inline">\(ϕ= -0.9\)</span></p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="introdution-to-time-series-analysis.html#cb195-1"></a>ar =<span class="st"> </span><span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span><span class="op">-</span>.<span class="dv">9</span>), <span class="dt">n=</span><span class="dv">100</span>)</span>
-<span id="cb195-2"><a href="introdution-to-time-series-analysis.html#cb195-2"></a><span class="kw">acf</span>(ar,<span class="dt">lag.max =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>From these two graphs, we can find out that when <span class="math inline">\(\phi\)</span> is positive, data at contiguous time points will be positively correlated with each other and close to each other. When <span class="math inline">\(\phi\)</span> is negative, data at contiguous time points will be negatively correlated with each other. If one observed data is positive, then the next observed data will be negative. This sample path will be choppy. This is the reason why we will have a smoother sample path when <span class="math inline">\(\phi\)</span> is positive than when <span class="math inline">\(\phi\)</span> is negative before.</p>
+<div id="假设检验" class="section level3">
+<h3><span class="header-section-number">14.3.2</span> 假设检验</h3>
+<p>tidy函数也可以应用于htest对象，例如最近很火的内置函数（如t.test，cor.test和wilcox.test）输出的对象。</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="chinese-translation-of-broom-package.html#cb173-1"></a>tt &lt;-<span class="st"> </span><span class="kw">t.test</span>(wt <span class="op">~</span><span class="st"> </span>am, mtcars)</span>
+<span id="cb173-2"><a href="chinese-translation-of-broom-package.html#cb173-2"></a><span class="kw">tidy</span>(tt)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic    p.value parameter conf.low conf.high
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1     1.36      3.77      2.41      5.49 0.00000627      29.2    0.853      1.86
+## # … with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+<p>在一些情况下，列数可能较少（例如，没有置信区间）：</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chinese-translation-of-broom-package.html#cb175-1"></a>wt &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(wt <span class="op">~</span><span class="st"> </span>am, mtcars)</span>
+<span id="cb175-2"><a href="chinese-translation-of-broom-package.html#cb175-2"></a><span class="kw">tidy</span>(wt)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   statistic   p.value method                                         alternative
+##       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                                          &lt;chr&gt;      
+## 1      230. 0.0000435 Wilcoxon rank sum test with continuity correc… two.sided</code></pre>
+<p>由于tidy输出结果已经只有一行，因此glance返回相同的输出：</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="chinese-translation-of-broom-package.html#cb177-1"></a><span class="kw">glance</span>(tt)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic    p.value parameter conf.low conf.high
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1     1.36      3.77      2.41      5.49 0.00000627      29.2    0.853      1.86
+## # … with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chinese-translation-of-broom-package.html#cb179-1"></a><span class="kw">glance</span>(wt)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   statistic   p.value method                                         alternative
+##       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                                          &lt;chr&gt;      
+## 1      230. 0.0000435 Wilcoxon rank sum test with continuity correc… two.sided</code></pre>
+<p>因为没有必要，我们仅针对卡方检验定义了扩充方法，对于其他检验，假设检验产生关于每个初始数据点的输出，则没有其他意义。</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="chinese-translation-of-broom-package.html#cb181-1"></a>chit &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(<span class="kw">xtabs</span>(Freq <span class="op">~</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Class, </span>
+<span id="cb181-2"><a href="chinese-translation-of-broom-package.html#cb181-2"></a>                         <span class="dt">data =</span> <span class="kw">as.data.frame</span>(Titanic)))</span>
+<span id="cb181-3"><a href="chinese-translation-of-broom-package.html#cb181-3"></a><span class="kw">tidy</span>(chit)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   statistic  p.value parameter method                    
+##       &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                     
+## 1      350. 1.56e-75         3 Pearson&#39;s Chi-squared test</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chinese-translation-of-broom-package.html#cb183-1"></a><span class="kw">augment</span>(chit)</span></code></pre></div>
+<pre><code>## # A tibble: 8 x 9
+##   Sex    Class .observed  .prop .row.prop .col.prop .expected .resid .std.resid
+##   &lt;fct&gt;  &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Male   1st         180 0.0818    0.104     0.554      256.   -4.73     -11.1 
+## 2 Female 1st         145 0.0659    0.309     0.446       69.4   9.07      11.1 
+## 3 Male   2nd         179 0.0813    0.103     0.628      224.   -3.02      -6.99
+## 4 Female 2nd         106 0.0482    0.226     0.372       60.9   5.79       6.99
+## 5 Male   3rd         510 0.232     0.295     0.722      555.   -1.92      -5.04
+## 6 Female 3rd         196 0.0891    0.417     0.278      151.    3.68       5.04
+## 7 Male   Crew        862 0.392     0.498     0.974      696.    6.29      17.6 
+## 8 Female Crew         23 0.0104    0.0489    0.0260     189.  -12.1      -17.6</code></pre>
 </div>
 </div>
-<div id="ma1-x_tw_ttheta-w_t-1" class="section level4">
-<h4><span class="header-section-number">17.4.4.5</span> MA(1) <span class="math inline">\(x_{t}=w_{t}+\theta w_{t-1}\)</span></h4>
-<div id="mean-function-5" class="section level5">
-<h5><span class="header-section-number">17.4.4.5.1</span> Mean Function:</h5>
-<p><span class="math display">\[E(x_t)=0\]</span></p>
+<div id="规则" class="section level2">
+<h2><span class="header-section-number">14.4</span> 规则</h2>
+<p>为了保持一致性，我们制定了一些有关返回数据结构的规则。</p>
+<div id="全部函数" class="section level3">
+<h3><span class="header-section-number">14.4.1</span> 全部函数</h3>
+<ol style="list-style-type: decimal">
+<li><p>tidy, augment 和 glance的输出一定是tibble。</p></li>
+<li><p>所有的输出都没有行名。这样就可以确保用户将输出的tibble与整理好的数据组合在一起，同时不用担心丢失信息（因为R语言里行名不能有重复）。</p></li>
+<li><p>有一些列的名称保持一致，以便可以在不同模型之间进行组合，从而输出我们所期望的内容（避免R每次都会问“是pval还是PValue？”）。下面这些示例没有包括所有可能的列名，也不是所有的输出都包含所有这些列，有的输出甚至不包含任何这些列。仅供参考。</p></li>
+</ol>
 </div>
-<div id="autocovariance-function-4" class="section level5">
-<h5><span class="header-section-number">17.4.4.5.2</span> Autocovariance function:</h5>
-<p><span class="math display">\[
-\gamma(h)=\left\{\begin{array}{ll}
-\left(1+\theta^{2}\right) \sigma_{w}^{2} &amp; h=0 \\
-\theta \sigma_{w}^{2} &amp; h=1 \\
-0 &amp; h&gt;1
-\end{array}\right.
-\]</span></p>
+<div id="tidy函数" class="section level3">
+<h3><span class="header-section-number">14.4.2</span> tidy函数</h3>
+<ol style="list-style-type: decimal">
+<li><p>Tidy的每一行输出都指代一些定义明确的概念，例如一个线性回归公式，一项测试或一个类别。虽然在不同模型里的含义不同，但可以比较明显地看出。每行输出并不能指代初始数据点（这个可以用augment函数）。</p></li>
+<li><p>常见的列名称包括：</p></li>
+</ol>
+<p>• Term：指正在估计的回归或模型中的术语。</p>
+<p>• p.value：用来匹配R的内置统计信息包中的功能（代替pvalue，PValue或pval）</p>
+<p>• statistic：一种测试统计信息，通常是用于计算p值的统计信息。将这些内容组合到许多子组中来执行（例如自举假设测试法）</p>
+<p>• estimate 估计值</p>
+<p>• conf.low ：estimate的置信区间的下限</p>
+<p>• conf.high ：estimate的置信区间的上限</p>
+<p>• df：自由度</p>
 </div>
-<div id="acf-3" class="section level5">
-<h5><span class="header-section-number">17.4.4.5.3</span> ACF:</h5>
-<p><span class="math display">\[
-\rho(h)=\left\{\begin{array}{ll}
-1 &amp; h = 0\\
-\frac{\theta}{\left(1+\theta^{2}\right)} &amp; h=1 \\
-0 &amp; h&gt;1
-\end{array}\right.
-\]</span></p>
-<p>Take a look at the ACF of MA(1) when <span class="math inline">\(\theta= 0.7\)</span></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="introdution-to-time-series-analysis.html#cb196-1"></a>ma =<span class="st"> </span><span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ma=</span>.<span class="dv">7</span>), <span class="dt">n=</span><span class="dv">100</span>)</span>
-<span id="cb196-2"><a href="introdution-to-time-series-analysis.html#cb196-2"></a><span class="kw">acf</span>(ma, <span class="dt">lag.max =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Take a look at the ACF of MA(1) when <span class="math inline">\(\theta= -0.7\)</span></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="introdution-to-time-series-analysis.html#cb197-1"></a>ma =<span class="st"> </span><span class="kw">arima.sim</span>(<span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ma=</span><span class="op">-</span>.<span class="dv">7</span>), <span class="dt">n=</span><span class="dv">100</span>)</span>
-<span id="cb197-2"><a href="introdution-to-time-series-analysis.html#cb197-2"></a><span class="kw">acf</span>(ma, <span class="dt">lag.max =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>We can see that ACF will be around zero when <span class="math inline">\(h&gt;1\)</span>. The only difference is that when <span class="math inline">\(h=1\)</span>, the value of ACF is positive if <span class="math inline">\(\theta &gt; 0\)</span> and negative if <span class="math inline">\(\theta &lt; 0\)</span>.</p>
+<div id="augment函数" class="section level3">
+<h3><span class="header-section-number">14.4.3</span> augment函数</h3>
+<ol style="list-style-type: decimal">
+<li>augment(model, data)将列添加到原始数据。</li>
+</ol>
+<p>• 如果缺少data参数，可以用augment函数从模型中重建数据（有的时候实现不了，而且通常不会包含模型中未使用的列）。</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>augment输出中的每一行要与原始数据中的对应行匹配。如果原始数据有行名，augment需要将其转换成名为.rownames的列。</p></li>
+<li><p>新添加的列名以 . 开头。以避免覆盖原始数据中的列。
+常见的列名称包括：</p></li>
+</ol>
+<p>• .fitted 拟合值：与数据相同规模的预测值。</p>
+<p>• .resid 残差：实际y值减去拟合值</p>
+<p>• .cluster 集群：群集分配</p>
 </div>
-</div>
-</div>
-<div id="application" class="section level3">
-<h3><span class="header-section-number">17.4.5</span> Application</h3>
-<p>These measures are good ways to analyze data and find suitable time series models that fit the data. Here is a simple example. The data shown in the image below records the annual precipitation (in inches) in Los Angeles from 1878 to 1992 and its ACF.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="introdution-to-time-series-analysis.html#cb198-1"></a><span class="kw">data</span>(<span class="st">&quot;larain&quot;</span>)</span>
-<span id="cb198-2"><a href="introdution-to-time-series-analysis.html#cb198-2"></a><span class="kw">plot</span>(larain, <span class="dt">main =</span> <span class="st">&quot;Annual Rainfall/Inches in Los Angeles 1878-1992&quot;</span>)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="introdution-to-time-series-analysis.html#cb199-1"></a><span class="kw">acf</span>(larain)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-14-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The ACF is 1 only when <span class="math inline">\(h=0\)</span>, and for other values of h, the values of ACF are near zero. It is very similar to the ACF of white noise with mean 0 and variance 1. We then create a white noise time series with 100 data and take a look at the ACF.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="introdution-to-time-series-analysis.html#cb200-1"></a>w =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb200-2"><a href="introdution-to-time-series-analysis.html#cb200-2"></a><span class="kw">acf</span>(w)</span></code></pre></div>
-<p><img src="time_series_intro_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Comparing the ACF of white noise and the ACF of the LA rain data, we can get a rough assumption that the LA rain time series may be a random and normal time series just like the white noise one. Although other measures need to be calculated to prove this data is white noise, the ACF values here do give us some ideas about how to analyze data. Next, if it is white noise, we can use a predict function to forecast future data though it does not have much meaning to do predictions by fitting the white noise model since each white noise data point is iid and random.</p>
-</div>
-</div>
-<div id="reference" class="section level2">
-<h2><span class="header-section-number">17.5</span> Reference</h2>
-<p><a href="https://online.stat.psu.edu/stat510/lesson/1/1.2" class="uri">https://online.stat.psu.edu/stat510/lesson/1/1.2</a></p>
-<p><a href="https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc4.htm" class="uri">https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc4.htm</a></p>
-<p>Shumway, R. H., &amp; Stoffer, D. S. (2017). Time series analysis and its applications: With R examples. Cham, Switzerland: Springer.</p>
+<div id="glance函数" class="section level3">
+<h3><span class="header-section-number">14.4.4</span> glance函数</h3>
+<ol style="list-style-type: decimal">
+<li>glance只能返回一个单行tibble。</li>
+</ol>
+<p>• 唯一的例外是glance（NULL）返回一个空的tibble。</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>我们不会在输出里添加建模函数的参数。例如，glm的输出不需要包含family这个词，因为用户调用glm而不是建模函数本身。</p></li>
+<li><p>常见的列名称包括：</p></li>
+</ol>
+<p>• r.squared ：由模型解释的方差</p>
+<p>• adj.r.squared：根据自由度调整方差</p>
+<p>• sigma：残差的估计方差的平方根</p>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="getting-data-using-apis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intro-to-tableau-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chinese-translation-of-using-arima-models-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-r-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -645,7 +619,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jtr13/cc21/edit/main/time_series_intro.Rmd",
+"link": "https://github.com/jtr13/cc21/edit/main/Chinese_translation_Broom_package.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -653,7 +627,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/jtr13/cc21/blob/main/time_series_intro.Rmd",
+"link": "https://github.com/jtr13/cc21/blob/main/Chinese_translation_Broom_package.Rmd",
 "text": null
 },
 "download": null,

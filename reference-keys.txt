@@ -84,6 +84,17 @@ arima模型
 例英格兰国王死亡岁数
 使用arima模型进行预测
 例英格兰国王死亡岁数-1
+chinese-translation-of-broom-package
+序言
+整理函数
+其他案例
+广义线性模型和非线性模型
+假设检验
+规则
+全部函数
+tidy函数
+augment函数
+glance函数
 creating-r-packages
 getting-data-using-apis
 introdution-to-time-series-analysis
