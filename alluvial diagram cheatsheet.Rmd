@@ -1,5 +1,4 @@
-
-# Alluvial Diagram Cheatsheet
+# alluvial_diagram_cheatsheet
 
 Yeqi Zhang
 This project includes a pdf version cheatsheet for Alluvial Diagram Cheatsheet. It includes instructions for plotting, analyzing, faceting and etc.
