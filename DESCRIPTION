@@ -17,6 +17,7 @@ Imports:
     DataCombine,
     datasets,
     dplyr,
+    downloader,
     forcats,
     geomnet,
     ggalluvial,
