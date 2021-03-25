@@ -4,7 +4,7 @@ Chenhui Mao
 
 
 
-![Link to the cheatsheet](resources/ggvis_cheatsheet/ggvis_cheatsheet.pdf)
+[Link to the cheatsheet](resources/ggvis_cheatsheet/ggvis_cheatsheet.pdf)
 
 ## ggvis
 
