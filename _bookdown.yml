@@ -17,7 +17,7 @@ rmd_files: [
   'sample_project.Rmd',
   
   # Part: Package Recommendation
-  'cc_intro_to_quandl_az2638.Rmd',
+  'cc_intro_to_quandl_az2638.Rmd', # contains PART header
 
   # Part: Cheatsheets
   'date_time_handling_cheatsheet.Rmd', # contains PART header
@@ -25,15 +25,16 @@ rmd_files: [
   'ggvis_cheatsheet.Rmd',
 
   # Part: Translation
-  'colors_in_R_Chinese_translation.Rmd',
+  'colors_in_R_Chinese_translation.Rmd', # contains PART header
   'dplyr_tutorial_in_chinese.Rmd',
   'introduction_rstudio_portuguese.Rmd',
 
   # Part: Tutorials
-  'CreatingRPackages.Rmd',
-  
+  'CreatingRPackages.Rmd', # contains PART header
+  'getting_data_using_apis.Rmd',
+
   # Part: Topical Discussions
-  'zoom_in_finance.Rmd',  
+  'zoom_in_finance.Rmd',   # contains PART header
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
