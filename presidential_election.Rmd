@@ -1,0 +1,343 @@
+# Absentee ballot voting in 2020 presidental election 
+
+Shengyuan Cao
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(DataCombine)
+library(stargazer)
+library(forcats)
+library(lubridate)
+library(tidytext)
+library(RCurl)
+library(downloader)
+library(maps)
+```
+
+
+
+## Background and Research Idea
+The right to vote is one of the most important rights in today’s world. Elections provide individuals the ability to influence the politics that govern their lives, and everyone should have an equal opportunity to participate in the voting system. Without a standardized voting process, voting is unequal among individuals and people will start to lose trust in the political system. 
+
+To help promote voting equality across the country, especially in Georgia, I want to investigate if there were any potential patterns related to unequal voting. Absentee ballot serve as an important way for voters who cannot physically vote at voting centers on election days. And it is more prevalent during coronavirus times. Therefore, it is evident that absentee ballots play a considerable role in America’s election process. Our main goal is to try and assess absentee ballot equality based on recent election data, which would have many useful applications, such as to provide useful guide on how absentee ballots will be utilized in future elections. 
+
+The following research will provide insights into which Georgia counties reject absentee ballots, and why they were rejected in 2020 Presidential election. Data comes from open data source at https://elections.sos.ga.gov/Elections/voterabsenteefile.do
+
+In this research, I explore reasons why some absentee ballots were rejected during 2020 Presidential election in Georgia. This topic is to my interest since voting through absentee ballot becomes the trend during pandemic times. And it is very important to protect voting rights and promote voting equlity through absentee ballot. First, I find top reasons for ballot rejection in each county to gain a general idea of rejection reasons, then I group all rejection reasons into 16 main categories using keyword pattern matching method to identify top rejection reasons across Georgia. Besides, I calculate non-accepted ballot rates and absentee ballot participation rate in each county and show these values on a Georgia map.
+
+
+
+## Analyze ballot rejection data
+
+Below are 2020 Presidential Absentee ballot data. First, we load the data and unzip it. 
+```{r}
+downloader::download("https://github.com/Isabellatop/5702CCdata/raw/main/statewide_small.csv.zip",
+                     "statewide_small.csv.zip")
+statewide_small <- read.csv(unz("statewide_small.csv.zip", "statewide_small.csv"), header = TRUE, sep = ",") 
+```
+
+
+
+Application_Status is "A" means that the absentee ballot application is "Accepted". Since we are interested in why some absentee ballots were rejected, we want the ballot status where it is "R","C" or "S", which means "Rejected", "Cancelled" or "Spoiled" respectively. The "Status_Reason" column shows why the ballot is not accepted. 
+
+```{r}
+CRS2020<-statewide_small %>% filter(Ballot_Status =="R"|Ballot_Status =="C"|Ballot_Status =="S")
+CRS2020 # 343,887 total status reasons
+```
+
+
+We can get a sense of why ballots were rejected by finding the top one non-accepting reason for each county in Georgia. 
+
+```{r}
+Top_reason_for_each_county <- CRS2020 %>% group_by(County,Status_Reason) %>% summarise(Total_Number=n()) %>% top_n(1,Total_Number) 
+Top_reason_for_each_county
+```
+
+
+
+
+There are 159 counties in Georgia State. I want to know whar are the most common rejection reason among all counties. We observed that vast majority counties have top rejecting reasons as "mailed ballot surrendered to vote in-person", "voter requested", "ballot was undelivered" and "ballot was undelivered", which is an interesting and critical observation. 
+
+
+```{r}
+Top_reason_for_each_county_new <- Top_reason_for_each_county %>% group_by(Status_Reason) %>% summarise(Total_Number=n()) %>% arrange(desc(Total_Number))
+Top_reason_for_each_county_new
+```
+
+This plot gives us a general idea about ballot rejection reasons, which helps further detailed investigation.
+
+```{r}
+ggplot(Top_reason_for_each_county_new,aes(fct_reorder(Status_Reason,Total_Number),Total_Number))+ 
+  geom_col() +
+ coord_flip() + 
+  xlab("Ballot rejection reason") + 
+  ylab("Total count") +
+  ggtitle("Distribution of top 1 ballot rejection reason in each of 159 \ncounties in Georgia")
+```
+
+
+## Categorize 16 main ballot rejection reasons
+
+There are 5735 unqiue reasons out of all 343,887 observations as to why the ballot is not accepted. Since there are too many unique reasons and the reasons are messy, I will categorize the reasons for rejection by grouping them using key words to find out what are those non-accepting reasons and their distribution. 
+
+```{r}
+status_reason <- CRS2020$Status_Reason
+(length(status_reason))
+(length(unique(status_reason)))
+```
+
+
+
+We want to find ballot rejection reason related to the category "vote early", which includes keywords early, pol(poll), person(in person), aip (means absentee in person), and vip (means voted in person). We use grep function for pattern matching and find there are 183,981 cases for errors about early voting. 
+
+When looking at all the unique ballot rejection reason in this category as showed below, we observe many reasons actally meant the same thing even though they were worded differently. And many reasons had typos in them. It is very likely that reasons for rejecting ballots were not strictly standardized in Georgia, which is an area that could be improved in future absentee ballot voting.
+
+
+```{r}
+early_related <- c('early','pol','person','aip','vip')
+(Total_early<- length(grep(paste(early_related,collapse="|"),status_reason)))
+```
+
+
+Similarly, we find how many ballots were rejected due to "Address related issues", which includes keywords add (address), county and location. We see that there were 2603 ballots rejected because of address related problems and unique address related reasons were listed below. 
+```{r}
+address_related <- c('add','county','location')
+
+Total_address <- length(grep(paste(address_related,collapse="|"),status_reason)) 
+Total_address
+``` 
+
+The third category is "Date related issues", which includes keywords dob, birth and date. In total there are 188 counts.
+```{r}
+date_related <- c('birth','dob','date')
+
+Total_date <- length(grep(paste(date_related,collapse="|"),status_reason,value=TRUE)) 
+Total_date 
+```
+
+
+The fourth category is "Signature issue", which contains keyword "sign" (include signed and signature). There are 3612 many of them. 
+
+```{r}
+Total_sign <-length(grep(pattern = 'sign',status_reason)) 
+Total_sign
+```
+
+The fifth category is "Dead issue", which contains keyword died, deceased and passed. There are 223 counts. 
+
+```{r}
+dead_related <- c('die','deceased','passed')
+
+Total_dead <- length(grep(paste(dead_related,collapse="|"),status_reason,value=TRUE)) 
+Total_dead 
+
+```
+
+The sixth group is about "Delivery issue", which has keywords undeliver. We observe that there are 49,448 counts, which is a large component of rejected ballots. Most reasons are related to ballots were not delivered. 
+```{r}
+deliver_related <- c('undeliver')
+
+unique(grep(paste(deliver_related,collapse="|"),status_reason,value=TRUE))
+Total_deliver <- length(grep(paste(deliver_related,collapse="|"),status_reason,value=TRUE)) 
+Total_deliver
+```
+
+The seventh group is about "Person lost ballot issue", which contain keyword lost,destroy (include destroyed). Most reasons are that ballots were lost or destroyed. There are 5722 many of those. 
+
+
+```{r}
+lost_related <- c('lost','destroy')
+(Total_lost <- length(grep(paste(lost_related,collapse="|"),status_reason))) 
+```
+
+The eighth category is related to "Admin error", which has keywords admin(include administrative), office, vio (voted in office). We find there are as many as 16,562 counts, which is also a relatively large chunk of all rejected ballots. 
+
+```{r}
+admin_related <- c('admin','office','vio')
+(Total_admin <- length(grep(paste(admin_related,collapse="|"),status_reason)))
+```
+
+The ninth category is about "Name error", which has keyword name. There are 16 in total. 
+
+```{r}
+(Total_name <- length(grep(pattern = 'name', status_reason))) 
+```
+
+The 10th category is about "Reissued error". Keywords include reissue and re-issued. When looking at specific reasons, many of those are "spoiled - reissue" and "rejected ballot that has been re-issued". There are 2024 counts. 
+
+```{r}
+reissue_related <- c('reissue','re-issue')
+
+(Total_reissue <- length(grep(paste(reissue_related,collapse="|"),status_reason))) 
+```
+
+The 11th category is about "Receiving error". Keywords are received/rcvd/late/deadline/after/arrived and there are 3863 of them. 
+
+```{r}
+receive_related <- c('received','rcvd','late','deadline','after','arrived','returned','envelope')
+
+(Total_receive <- length(grep(paste(receive_related,collapse="|"),status_reason))) 
+```
+ 
+The 12th category is about "Voter request", which includes keyword request and cancel. There are 62,816 of them. Majority reason includes that voter requested to cancel ballot or requested to vote at the poll instead. 
+
+```{r}
+request_related <- c('request','cancel')
+
+(Total_request <- length(grep(paste(request_related,collapse="|"),status_reason))) 
+```
+
+The 13th category is about "Affidavit issue", which includes keyword aff (includes affidavit). There are 6898 of them. 
+
+```{r}
+aff_related <- c('aff')
+
+(Total_aff <- length(grep(paste(aff_related,collapse="|"),status_reason))) 
+```
+
+The 14th category is about "Multiple ballots/applications", which includes keyword multiple. There are 93 of them.
+
+```{r}
+(Total_multiple <- length(grep(pattern = 'multiple', status_reason))) 
+```
+
+The 15th category is about "Insufficient/missing information", which has keywords insufficient, missing and there are 14 counts. 
+
+```{r}
+insufficient_information_related <- c('insufficient',' missing')
+
+(Total_insufficient_information <- length(grep(paste(insufficient_information_related,collapse="|"),status_reason)))
+````
+
+The 16th category is "Ineligible voter", which has keyword ineligible and has 16 counts. 
+
+```{r}
+unique(grep(pattern = 'ineligible',status_reason,value=TRUE))
+(Total_ineligible <- length(grep(pattern = 'ineligible', status_reason)))
+```
+
+Now we create a dataset with all the identified ballot rejection reasons with their counts to see what are the most promininet reasons that cause ballot to be rejected. 
+
+
+```{r}
+Reasons <- c('Early voting error','Address error','Date error','Signature error','Voter dead','Ballot undelivered error','Lost ballot','Administration error','Name error','Reissued error','Receiving error','Voter request to cancel ballot','Affidavit error','Multiple ballots error','Missing information','Ineligible voter')
+
+value_counts <- c(Total_early,Total_address,Total_date,Total_sign,Total_dead,Total_deliver,Total_lost,Total_admin,Total_name,Total_reissue,Total_receive,Total_request,Total_aff,Total_multiple, Total_insufficient_information,Total_ineligible)
+
+df <- data.frame(Reasons, value_counts)
+df
+```
+
+
+We observe that the top three reasons for a ballot to be rejected are related to errors about early voting, voter request to cancel ballot and ballot undelivered error. These three reasons count for the vast majority of all the identified reasons. 
+
+
+```{r}
+ggplot(df,aes(fct_reorder(Reasons,value_counts),value_counts))+ 
+  geom_col() +
+ coord_flip() + 
+  xlab("Ballot rejection reason") + 
+  ylab("Total count") +
+  ggtitle("Absentee ballot rejection reason in Georgia")
+```
+
+Then, we want to find ballot non-accepted rate for each county in Georgia and make observations about which counties have the highest non-accepted rates. We calculate non-accepted rate by dividing the number of R,C,S (which ballot status is rejected, cancelled and spoiled ballots) by the total number of ballots with status R,C,S,A (A means accepted) for each county. We find that counties with the highest ballot non-accepting are Baldwin, Greene and Dougherty, which are all above 10%! 
+
+We also compute the total absentee ballot number by adding all non-accepted ballot_status ballots (R,C,S,A) for each county.
+
+```{r}
+(Not_accepted_percent_state <- statewide_small %>% group_by(County) %>% summarise(Not_accepted_percent_state=100*sum(Ballot_Status =="R"|Ballot_Status =="C"|Ballot_Status =="S")/sum(Ballot_Status =="R"|Ballot_Status =="C"|Ballot_Status =="S"|Ballot_Status =="A" ), Total_absentee_number=sum(Ballot_Status =="R"|Ballot_Status =="C"|Ballot_Status =="S"|Ballot_Status =="A" ))) %>% arrange(desc(Not_accepted_percent_state))
+
+Not_accepted_percent_state$County <- tolower(Not_accepted_percent_state$County)
+Not_accepted_percent_state$County <- as.character(Not_accepted_percent_state$County)
+```
+
+
+## Show participation rate and ballot non-accepted rate on a Georgia map
+ 
+Now import GA population data for each county and join it with our ballot data. We can compute the absentee ballot participation rate by dividing total absentee ballot number in each county by population in each county as a way to standardize data since we don't want to favor our analysis towards counties with high population. 
+
+We find out overall, absentee ballot participation rate is high in 2020 presidental election in vast majority of counties in Georgia. This is not surprising given the pandemic was going on then and people preferred to vote through absentee ballot. The top three parcipation counties are Forsyth, Towns and Oconee, which were all above 70%. This again stress the importance of all kinds of ballot related issues and ways to solve them in order to improve the voting quality. 
+
+
+
+Import population data in Georgia.
+```{r}
+GA_population <- read.csv("https://raw.githubusercontent.com/Isabellatop/5702CCdata/main/GAdat.csv")
+GA_population$County <- tolower(GA_population$County)
+```
+
+
+Then, join GA county population data with county ballot data by the keyword "County" and compute absentee ballot participation rate. 
+```{r}
+population_and_satewide <- inner_join(GA_population, Not_accepted_percent_state, by="County")
+
+population_and_satewide <- population_and_satewide %>% mutate(Absentee_ballot_participation_rate=100*Total_absentee_number/Population) %>%
+  arrange(desc(Absentee_ballot_participation_rate))
+
+population_and_satewide
+```
+ 
+We create a Georgia map with map_data function in maps package, which provides all the geographical information used to create a map.
+
+```{r}
+ga_df <- map_data("state") %>% filter(region == "georgia")
+
+# ga_df is the base (only the STATE) of Georgia  
+ga_base <- ggplot(data = ga_df, mapping = aes(x = long, y = lat, group = group)) + 
+  coord_quickmap() + #coord_quickmap() automatic adjustment
+  geom_polygon(color = "black", fill = "gray")
+
+ga_base + theme_void() + 
+  geom_polygon(data = ga_df, fill = NA, color = "white") + # inside, boarder color is white
+  geom_polygon(color = "black", fill = NA) # outside boarder color 
+
+#  map_data("county") has state (column "region") and county (column "subregion")
+county_df <- map_data("county") %>% filter(region == "georgia")
+
+ga_base + theme_void() + # theme_void makes backgroud empty
+  geom_polygon(data = county_df, fill = NA, color = "white") + # inside: boarder color is white
+  geom_polygon(color = "black", fill = NA) # outside boarder color is black
+
+county_df$subregion <- replace(county_df$subregion, county_df$subregion=="de kalb", "dekalb")
+
+state_df <- map_data("state") %>% filter(region == "georgia")
+
+
+mapdat <- left_join(population_and_satewide,county_df, by = c("County"="subregion")) # same thing 
+
+mapdat
+```
+
+
+Now visualize ballots non_accepted_percent for each county on map. 
+
+```{r}
+p <-    ggplot(mapdat, aes(long, lat, group = group)) +
+        geom_polygon(aes(fill = Not_accepted_percent_state, color="yellow"), # inside county
+                     colour = alpha("white", 1/2))  +
+        scale_fill_gradient(low="blue", high="red")+
+        geom_polygon(data = state_df, colour = "black", fill = NA) + #outside is Georgia state data, not specific
+        theme_void() +
+        coord_fixed(1.2) 
+
+print(p+ggtitle("Percentage of non-accepted ballots in Georgia for 2020 Presidential Election"))
+```
+
+
+Now visualize absentee ballot participation rate for each county on map, which is calcualted by summing up all ballots and divided by population county-wise. We can see that most counties have participation rates higher than 30 percent. 
+
+
+```{r}
+s <-    ggplot(mapdat, aes(long, lat, group = group)) + # Each group is a different code for each county
+        geom_polygon(aes(fill = Absentee_ballot_participation_rate, color="brown"), 
+                     colour = alpha("white", 1/2))  + # inside county's border is white
+        scale_fill_gradient(low="blue", high="red")+ # fill-in color
+        geom_polygon(data = state_df, colour = "black", fill = NA) + # outside state color
+        theme_void() +
+        coord_fixed(1.2) 
+print(s+ggtitle("Absentee ballot participation rate in Georgia for 2020 Presidential Election"))
+```
