@@ -40,6 +40,7 @@ rmd_files: [
   'time_series_intro.Rmd',
   'using_r_in_tableau.Rmd',
   'sentiment_analysis_and_wordcloud.Rmd',
+  'twitter_sentiment_analysis.Rmd',
 
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
