@@ -11,6 +11,8 @@ language:
 # Chapter ordering
 rmd_files: [
 
+
+ 
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -32,6 +34,7 @@ rmd_files: [
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
   'getting_data_using_apis.Rmd',
+  'time_series_intro.Rmd',  
 
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
@@ -39,6 +42,7 @@ rmd_files: [
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'  
+
 
 ]
 
