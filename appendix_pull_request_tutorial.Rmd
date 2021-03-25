@@ -1,5 +1,9 @@
 # Tutorial for pull request mergers
 
+## General
+
+The following is a checklist of steps to perform before merging the pull request. At any point, if you're not sure what to do, request a review from one of the PR leaders.
+
 ## Check branch
 
 PR should be submitted from a **non-main** branch.
@@ -122,4 +126,4 @@ Leave comments for congratulations 🎉 (type `:tada:`) and then click on the gr
 
 ### Check updated version
 
-A successful merge means that the addition file or files were added to the project with no merge conflicts. It does not mean that the book will render and deploy to GitHub pages without issues. After the merge, it will take about 5-10 minutes for GitHub Actions to render the book and deploy the updated version. You can check the progress by clicking Actions at the top of the repo. If there's a problem (a red circle) please request a review from @jtr13 in the closed pull request.
+A successful merge means that the addition file or files were added to the project with no merge conflicts. It does not mean that the book will render and deploy to GitHub pages without issues. After the merge, it will take about 5-10 minutes for GitHub Actions to render the book and deploy the updated version. If there's a problem I will be notified by email and will address it. In other words, your job is done. However if you're interested, you can check the progress by clicking Actions at the top of the repo.
