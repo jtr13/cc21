@@ -32,8 +32,8 @@ rmd_files: [
   'colors_in_R_Chinese_translation.Rmd', # contains PART header
   'dplyr_tutorial_in_chinese.Rmd',
   'introduction_rstudio_portuguese.Rmd',
-  'chn_translation_arima_models.Rmd',
   'Chinese_translation_Broom_package.Rmd',
+  'chn_translation_arima_models.Rmd'
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
@@ -52,6 +52,7 @@ rmd_files: [
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
+
 
 
 ]
