@@ -52,10 +52,12 @@ rmd_files: [
   'data_science_in_environment.Rmd',
   'presidential_election.Rmd',
   'sports_final_project_zoom_meetup.Rmd',
+  'collaborating_on_github.Rmd',
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
+
 
 ]
 
