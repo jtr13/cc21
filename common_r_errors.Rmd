@@ -69,7 +69,7 @@ This happens when you pass a variable with multiple elements like a list or vect
 This happens with lists, the objects in the list are unnamed and therefore it's impossible to  access them with $. Instead use brackets to find the correct subset.
 
 
-```{r}
+```{r eval=FALSE}
 testlist[1]
 ```
 
