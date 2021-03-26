@@ -12,6 +12,7 @@ language:
 rmd_files: [
 
 
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -55,6 +56,7 @@ rmd_files: [
   'presidential_election.Rmd',
   'sports_final_project_zoom_meetup.Rmd',
   'collaborating_on_github.Rmd',
+  'common_r_errors.Rmd',
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
