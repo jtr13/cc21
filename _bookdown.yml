@@ -44,6 +44,7 @@ rmd_files: [
   'sentiment_analysis_and_wordcloud.Rmd',
   'twitter_sentiment_analysis.Rmd',
   'introduction_to_pyecharts.Rmd',
+  'leaflet_project.Rmd',
 
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
