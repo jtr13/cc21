@@ -116,6 +116,7 @@ chinese-translation-of-bar-chart-and-cleveland-dot-plot
 综述-1
 多点图
 translation-of-critical-covid-data-visualizations-paper
+translate-ibm-website-about-design-language-into-chinese
 creating-r-packages
 getting-data-using-apis
 introdution-to-time-series-analysis
