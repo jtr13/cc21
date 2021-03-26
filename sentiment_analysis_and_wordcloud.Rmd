@@ -152,7 +152,8 @@ videogame %>%
 Let's visualize
 
 ```{r}
-videogame%>%
+library(textdata)
+videogame %>%
   select(id,review)%>%
   unnest_tokens(output = word, input = review)%>%
   inner_join(get_sentiments('nrc'))%>%
