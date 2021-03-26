@@ -11,6 +11,7 @@ language:
 # Chapter ordering
 rmd_files: [
 
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -46,6 +47,7 @@ rmd_files: [
   'twitter_sentiment_analysis.Rmd',
   'introduction_to_pyecharts.Rmd',
   'leaflet_project.Rmd',
+  'data_visualization_interview_questions.Rmd',
 
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
