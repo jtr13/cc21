@@ -53,6 +53,7 @@ rmd_files: [
   'supervised_ml_tutorial.Rmd',
   'data_acquisition_and_wrangling_with_python_pandas_and_sql.Rmd',
   'intro_geographic_chart.Rmd',
+  'eda_and_visualizations_in_python.Rmd',
 
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
