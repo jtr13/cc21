@@ -52,6 +52,7 @@ rmd_files: [
   'eda_and_visualizations_in_python.Rmd',
   'data_transformation_with_dplyr_video_tutorial.Rmd',
   'data_science_ethics_community_contribution.Rmd',
+  'meet_the_pets_zoom_session.Rmd',
   
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
