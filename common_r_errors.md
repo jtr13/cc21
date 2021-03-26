@@ -11,10 +11,6 @@ Emily Jennings-Dobbs
 ```r
 ymd(10-7-19)
 ```
-
-```
-## Error in ymd(10 - 7 - 19): could not find function "ymd"
-```
 This error happens most often when the correct packages aren't loaded. The above error would be fixed by including "library(lubridate)" in the line before the code.
 If this happens with a function you've defined yourself, make sure the function is defined either in a chunk before it is called or in the same chunk but before the code. 
 
@@ -27,10 +23,6 @@ if(c > 3){
   c =c+1
 }
 ```
-
-```
-## Error in if (c > 3) {: missing value where TRUE/FALSE needed
-```
 This error will appear whenever you try to send a NULL or NA variable into an if statement. Check any previous manipulations of the variable to see if something went wrong. 
 
 
@@ -38,10 +30,6 @@ This error will appear whenever you try to send a NULL or NA variable into an if
 
 ```r
 temp
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'temp' not found
 ```
 The variable you have used isn't defined in the code. Check for spelling or capitalization errors and make sure you've defined the variable before the call and not later in the code.
 
@@ -89,10 +77,6 @@ This happens with lists, the objects in the list are unnamed and therefore it's 
 
 ```r
 testlist[1]
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'testlist' not found
 ```
 
 ### argument is of length zero
@@ -197,10 +181,6 @@ Also pretty simple, the function used expected a numeric argument to be thrown t
 x <- rep(NA, 5)  
 y <- c(4, 1, 6, 5, 3) 
 plot(x, y) 
-```
-
-```
-## Error in plot.window(...): need finite 'xlim' values
 ```
 This happens when you plot NA or NULL values, check your variables and determine what to do with NA/NULL values.
 
