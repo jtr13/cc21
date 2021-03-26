@@ -52,6 +52,7 @@ layers
 simple-layers
 compound-layers
 statistical_hypothesis_testing_cheatsheet
+basics-r-cheatsheet
 colors_in_r_chinese_translation
 在r中使用颜色
 r自带的指定颜色名称
