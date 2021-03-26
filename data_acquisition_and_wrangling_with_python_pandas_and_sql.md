@@ -1,0 +1,13 @@
+# Data acquisition and wrangling
+
+Renyin Zhang
+
+I volunteered to create a video to present one of the few introductory data science based modules that Northeast Big Data Hub provided. Using the PowerPoint file as a material, I prepared the lecture and recorded a 30-minute lecture on how to acquire and clean the data. The whole lecture is split into several small videos, each lasting less than 15 minutes, to avoid overwhelming viewers with too much information to intake, and to have breaks in between. 
+
+Here are the links to my videos:
+
+[part 1](https://drive.google.com/file/d/1Z-MtIB0RiirjJ4fDVfXwzoTBPMBq8IeU/view?usp=sharing)
+[part 2](https://drive.google.com/file/d/1M3LyJRkvzA5XT70NYEUJHAGU-x0k9DFi/view?usp=sharing)
+[part 3](https://drive.google.com/file/d/1OCwhcmh4lRfHRUeXlGDvHjn1ENq4hTkG/view?usp=sharing)
+
+Reminder: Log in with your LionMail to have access for the videos.

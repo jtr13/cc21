@@ -248,6 +248,7 @@ question43-what-are-the-main-features-of-tableau
 question44-what-are-histograms-in-tableau-what-is-its-use-in-analysis
 question45-explain-bar-charts-in-tableau.-what-are-the-different-kinds-of-bar-charts
 introduction-to-supervised-machine-learning
+data-acquisition-and-wrangling
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election
