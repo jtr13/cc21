@@ -88,15 +88,18 @@ library(tidyverse)    # for working with data frames and ggplot2
 library(jsonlite)     # for downloading and interacting with Geo JSON file later
 library(RCurl)        # same as above
 library(httr)         # to deal with https problems when getting data from Github
+library(zip)          # to unpack downloaded compressed data
 ```
 
 In this example, I plot all roads in Manhattan from the US Census Bureau's [TIGER database](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-geodatabase-file.html). Read on below to find out more about the TIGER database. `addPolylines()` function from `leaflet` can interpret `SpatialLinesDataFrame` and plot lines on a map. 
 ```{r}
 # Load the shape file 
-base_url <- "https://raw.githubusercontent.com/kennylee15/leaflet_for_r_101/main/tl_2020_36061_roads/tl_2020_36061_roads.shp"
-download.file(URLencode(base_url), "tl_2020_36061_roads.shp", quiet=TRUE)
+base_url <- "https://www2.census.gov/geo/tiger/TIGER2020/ROADS/tl_2020_36061_roads.zip"
+download.file(URLencode(base_url), "tl_2020_36061_roads.zip", quiet=TRUE)
+unzip("tl_2020_36061_roads.zip")
 
-road_shape_ny <- readOGR("tl_2020_36061_roads", verbose = F)
+# "dsn" is the path of the data and the "layer" is the name of the shapefile without any extension
+road_shape_ny <- readOGR(dsn = ".", layer = "tl_2020_36061_roads", verbose = FALSE)
 leaflet() %>%
     addProviderTiles("CartoDB.Positron") %>%
     setView(lng = -73.98928, lat = 40.75042, zoom = 12) %>% 
