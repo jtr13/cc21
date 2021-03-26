@@ -11,6 +11,7 @@ language:
 # Chapter ordering
 rmd_files: [
 
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -35,6 +36,7 @@ rmd_files: [
   'Translation_of_Visualizations_That_Really_Work_Chinese.Rmd',
   'edav_info_categorical_variables_Chinese_translation.Rmd',
   'translation_of_critical_covid_data_visualizations_paper.Rmd',
+  'ibm_translation_to_chinese.Rmd',
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
@@ -67,6 +69,7 @@ rmd_files: [
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
+
 ]
 
 before_chapter_script: "_common.R"
