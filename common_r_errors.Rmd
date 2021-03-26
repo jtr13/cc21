@@ -9,14 +9,14 @@ knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 ```
 
 ### could not find function
-```{r}
+```{r eval=FALSE}
 ymd(10-7-19)
 ```
 This error happens most often when the correct packages aren't loaded. The above error would be fixed by including "library(lubridate)" in the line before the code.
 If this happens with a function you've defined yourself, make sure the function is defined either in a chunk before it is called or in the same chunk but before the code. 
 
 ### Error in if
-```{r}
+```{r eval=FALSE}
 c <- NA
 
 if(c > 3){
@@ -27,7 +27,7 @@ This error will appear whenever you try to send a NULL or NA variable into an if
 
 
 ### Object not found
-```{r}
+```{r eval=FALSE}
 temp
 ```
 The variable you have used isn't defined in the code. Check for spelling or capitalization errors and make sure you've defined the variable before the call and not later in the code.
