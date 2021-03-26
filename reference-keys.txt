@@ -250,6 +250,7 @@ question45-explain-bar-charts-in-tableau.-what-are-the-different-kinds-of-bar-ch
 introduction-to-supervised-machine-learning
 data-acquisition-and-wrangling
 introduction-to-geographic-chart-in-r
+complete-eda-process-and-visualizations-in-python
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election
