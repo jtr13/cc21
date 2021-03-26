@@ -57,12 +57,16 @@ mymap %>% addTiles() %>% setView(lng = -73.9, lat = 40.7, zoom = 10)
 
 It is easy add tiles from third parties. The following shows a satellite image of the US on in Feb 15 2021, in the midst of severe winter storms that impacted most of the country. The image is provide by NASA's [Global Imagery Browse Services (GIBS)](https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs).
 
-```{r}
+```{r eval=FALSE}
 leaflet() %>% setView(-93.65, 42.0285, zoom = 3) %>%
     addProviderTiles("NASAGIBS.ModisTerraTrueColorCR",
                     options = providerTileOptions(time = "2021-02-15"))
 
 ```
+Currently, third-party tiles cannot be supported on bookdown. This issue is discussed [here:](https://github.com/rstudio/bookdown/issues/15#issuecomment-573776659)
+
+![Satellite imagery from GIBS](resources/leaflet_project/leaflet_nasa_tile.png)
+
 
 
 ## Second: Loading feature data
