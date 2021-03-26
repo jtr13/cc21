@@ -34,7 +34,7 @@ rmd_files: [
   'introduction_rstudio_portuguese.Rmd',
   'chn_translation_arima_models.Rmd'
   'Chinese_translation_Broom_package.Rmd',
-  
+  'Translation_of_Visualizations_That_Really_Work_Chinese.Rmd' 
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
