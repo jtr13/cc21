@@ -67,6 +67,7 @@ Imports:
     sp,
     stargazer,
     stringr,
+    textdata,
     tibble,
     tidygraph,
     tidyquant,
