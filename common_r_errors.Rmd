@@ -33,7 +33,7 @@ temp
 The variable you have used isn't defined in the code. Check for spelling or capitalization errors and make sure you've defined the variable before the call and not later in the code.
 
 ### unexpected ...
-```{r}
+```{r eval=FALSE}
 c <- 1
 if(c>1))
 ```
