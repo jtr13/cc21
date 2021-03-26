@@ -32,8 +32,9 @@ rmd_files: [
   'colors_in_R_Chinese_translation.Rmd', # contains PART header
   'dplyr_tutorial_in_chinese.Rmd',
   'introduction_rstudio_portuguese.Rmd',
-  'Chinese_translation_Broom_package.Rmd',
   'chn_translation_arima_models.Rmd'
+  'Chinese_translation_Broom_package.Rmd',
+  
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
