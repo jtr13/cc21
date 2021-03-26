@@ -11,18 +11,14 @@ language:
 # Chapter ordering
 rmd_files: [
 
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
   'sample_project.Rmd',
   
-  
-  
   # Part: Package Recommendation
   'cc_intro_to_quandl_az2638.Rmd', # contains PART header
   
-
   # Part: Cheatsheets
   'date_time_handling_cheatsheet.Rmd', # contains PART header
   'tidydata_cheatsheet.Rmd',
@@ -54,7 +50,8 @@ rmd_files: [
   'intro_geographic_chart.Rmd',
   'eda_and_visualizations_in_python.Rmd',
   'data_transformation_with_dplyr_video_tutorial.Rmd',
-
+  'data_science_ethics_community_contribution.Rmd',
+  
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
   'data_science_in_environment.Rmd',
@@ -64,12 +61,10 @@ rmd_files: [
   'common_r_errors.Rmd',
   'fitness_hour.Rmd',
   'work_management.Rmd',
-  
-
+ 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
-
 ]
 
 before_chapter_script: "_common.R"
