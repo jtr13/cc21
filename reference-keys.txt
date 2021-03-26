@@ -252,6 +252,7 @@ data-acquisition-and-wrangling
 introduction-to-geographic-chart-in-r
 complete-eda-process-and-visualizations-in-python
 data-transformation-with-dplyr-video-tutorial
+data-science-ethics
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election

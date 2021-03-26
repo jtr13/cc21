@@ -1,0 +1,17 @@
+# Data science ethics 
+
+Abhishek Sinha
+
+The Northeast Big Data Innovation Hub (http://nebigdatahub.org/) is a collaboration hub for data science innovation in the Northeast United States. One of its initiatives, the Northeast Student Data Corps (https://nebigdatahub.org/nsdc/) aims at teaching data science fundamentals to students across the region, with a special focus on underserved institutions.
+
+As a part of my community contribution, I aided the Northeast Big Data Innovation Hub by recording a few videos teaching data science concepts for this purpose. My videos are on the topic of Data Science ethics. Researching the slides, and then shooting the videos (2 videos, took me a few takes for each) took about 3-4 hours.
+
+I also aided by gathering more volunteers from the class and coordinating between them and the Hub. This included logistical aid and vetting the videos other volunteers submitted as well. (I got 4 more volunteers from our class and vetted 6 videos).
+
+I also collaborated with a few students of our class who organised/hosted a session on Data for Social Good on March 9th, by presenting this volunteering opportunity to the other attendees and talking about previous work with data for social good.
+
+The link to my recordings for Data Science Ethics:
+
+https://drive.google.com/drive/folders/16JyGYLriAGCWG6iNIZGmLTe7EIB3-CZN?usp=sharing
+
+The videos will be edited by the Hub and put up on their website as well as their youtube channel. The timeline for this has not been finalized but I would be happy to share that as well as and when it comes up.
