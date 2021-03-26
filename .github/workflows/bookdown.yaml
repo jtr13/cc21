@@ -51,7 +51,10 @@ jobs:
             libproj-dev \
             libmpfr6 \
             libmpfr-dev \
-            libudunits2-dev	
+            libudunits2-dev	\
+            default-jre \
+            default-jdk 
+          sudo R CMD javareconf  
       
       - name: Install dependencies	
         run: |	
