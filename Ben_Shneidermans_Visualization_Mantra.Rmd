@@ -198,7 +198,7 @@ hc
 ```
 
 
-# References:
+## References:
 
 [1] https://medium.com/multiple-views-visualization-research-explained/the-purpose-of-visualization-is-insight-not-pictures-an-interview-with-visualization-pioneer-ben-beb15b2d8e9b
 
