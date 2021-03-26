@@ -1,5 +1,7 @@
 # Data Science for Social Good
 
+Rahul Subramaniam and Tushar Agrawal
+
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
