@@ -301,6 +301,7 @@ final-event
 jump-rope
 monkey-bars
 frisbee
+work-culture-and-time-management
 github-initial-setup
 github-actions
 secrets
