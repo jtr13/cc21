@@ -27,7 +27,7 @@ The data we are going to use includes the following fields:
 ## Read and explore the text
 
 ```{r read the data}
-videogame = read.csv('/Users/zack/cc21/resources/sentiment_analysis_and_wordcloud/videogame_review.csv',stringsAsFactors = F)
+videogame = read.csv('resources/sentiment_analysis_and_wordcloud/videogame_review.csv',stringsAsFactors = F)
 head(videogame)
 ```
 ### Explore Ratings of Reviews
@@ -140,8 +140,10 @@ The proportion of positive words increases as the review_rating growth. Ratings 
 
 A word may reflect more than just valence. The ‘nrc’ lexicon categorizes words by emotion. 
 
+*Please note that the next two code chunks must be run interactively since they require the user to consent to the license agreement for using the nrc lexicon. See here for more detail: https://github.com/EmilHvitfeldt/textdata/issues/19*
+
 Emotion in reviews
-```{r}
+```{r, eval = FALSE}
 videogame %>%
   select(id,review) %>%
   unnest_tokens(output = word, input = review) %>%
@@ -151,8 +153,8 @@ videogame %>%
 ```
 Let's visualize
 
-```{r}
-videogame%>%
+```{r, eval = FALSE}
+videogame %>%
   select(id,review)%>%
   unnest_tokens(output = word, input = review)%>%
   inner_join(get_sentiments('nrc'))%>%
