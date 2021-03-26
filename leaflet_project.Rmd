@@ -105,7 +105,7 @@ unzip("tl_2020_36061_roads.zip")
 # "dsn" is the path of the data and the "layer" is the name of the shapefile without any extension
 road_shape_ny <- readOGR(dsn = ".", layer = "tl_2020_36061_roads", verbose = FALSE)
 leaflet() %>%
-    addProviderTiles("CartoDB.Positron") %>%
+    # addProviderTiles("CartoDB.Positron") %>%
     setView(lng = -73.98928, lat = 40.75042, zoom = 12) %>% 
     addPolylines(data = road_shape_ny, weight = 1)
 ```
@@ -121,7 +121,7 @@ base_url <- "https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/
 geo_data <- getURL(URLencode(base_url))
 NYCtract <- readOGR(geo_data, 'OGRGeoJSON', verbose = F)
 NYCtract %>% leaflet() %>% 
-    addProviderTiles("CartoDB.Positron") %>%
+    # addProviderTiles("CartoDB.Positron") %>%
     setView(lng = -73.98928, lat = 40.75042, zoom = 10) %>%
     addPolygons(weight = 1)
 
@@ -169,7 +169,7 @@ pal <- colorNumeric(
 )
 
 map_leaflet <- leaflet() %>%
-    addProviderTiles("CartoDB.Positron") %>%
+    # addProviderTiles("CartoDB.Positron") %>%
     setView(lng = -73.9, lat = 40.7, zoom = 10) %>% 
     addPolygons(data = mapdata, 
                 fillColor = ~pal(pvty), 
