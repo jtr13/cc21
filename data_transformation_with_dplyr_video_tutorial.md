@@ -1,0 +1,5 @@
+# Data Transformation with Dplyr Video Tutorial
+
+Brian Hernandez
+
+Part of the R Tidyverse, Dplyr is one of the most powerful tools out there for data transformation. Learn all about it with this [video tutorial](https://www.youtube.com/watch?v=NJv_ww9QVSc){target="_blank"}. The video is intended as a quick introduction for newcomers and a quick reference for those who are already experienced. Enjoy!
