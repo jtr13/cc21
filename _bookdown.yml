@@ -11,7 +11,62 @@ language:
 # Chapter ordering
 rmd_files: [
 
-'supervised_ml_tutorial.Rmd',
+
+
+
+
+  # Part: Introduction
+  'index.Rmd', # must be first chapter
+  'instructions.Rmd',
+  'sample_project.Rmd',
+  
+  
+  
+  # Part: Package Recommendation
+  'cc_intro_to_quandl_az2638.Rmd', # contains PART header
+  
+
+  # Part: Cheatsheets
+  'date_time_handling_cheatsheet.Rmd', # contains PART header
+  'tidydata_cheatsheet.Rmd',
+  'ggvis_cheatsheet.Rmd',
+  'statistical_hypothesi_testing_cheatsheet.Rmd',
+  
+  # Part: Translation
+  'colors_in_R_Chinese_translation.Rmd', # contains PART header
+  'dplyr_tutorial_in_chinese.Rmd',
+  'introduction_rstudio_portuguese.Rmd',
+  'chn_translation_arima_models.Rmd',
+  'Chinese_translation_Broom_package.Rmd',
+  'Translation_of_Visualizations_That_Really_Work_Chinese.Rmd',
+  'edav_info_categorical_variables_Chinese_translation.Rmd',
+
+  # Part: Tutorials
+  'CreatingRPackages.Rmd', # contains PART header
+  'getting_data_using_apis.Rmd',
+  'time_series_intro.Rmd',
+  'using_r_in_tableau.Rmd',
+  'sentiment_analysis_and_wordcloud.Rmd',
+  'twitter_sentiment_analysis.Rmd',
+  'introduction_to_pyecharts.Rmd',
+  'leaflet_project.Rmd',
+  'data_visualization_interview_questions.Rmd',
+  'supervised_ml_tutorial.Rmd',
+
+  # Part: Topical Discussions
+  'zoom_in_finance.Rmd',   # contains PART header
+  'data_science_in_environment.Rmd',
+  'presidential_election.Rmd',
+  'sports_final_project_zoom_meetup.Rmd',
+  'collaborating_on_github.Rmd',
+  'common_r_errors.Rmd',
+  'fitness_hour.Rmd',
+
+  # Part: Appendices
+  'appendix_initial_setup.Rmd', # contains PART header
+  'appendix_pull_request_tutorial.Rmd'
+
+
 
 ]
 
