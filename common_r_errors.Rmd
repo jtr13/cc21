@@ -160,7 +160,7 @@ a <- '7'
 Also pretty simple, the function used expected a numeric argument to be thrown to it like 7 instead of '7'. The easiest fix is to use as.numeric(), but depending on the situation you may need to re-declare the variable.
 
 ### need finite 'xlim' values
-```{r, fig.keep = 'none' eval=FALSE}
+```{r eval=FALSE}
 x <- rep(NA, 5)  
 y <- c(4, 1, 6, 5, 3) 
 plot(x, y) 
