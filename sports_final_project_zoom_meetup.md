@@ -1,0 +1,14 @@
+# Final project Zoom meetup - sports
+
+Santos Hernandez
+
+For my community contribution, I tried to connect people to project partners 
+that had an interest in sports. After conducting a poll on Piazza to find the best 
+time, I held a zoom session where people could find partners and brainstorm ideas 
+for the final project. The session was on March 9th, 2021 from 9pm-10pm. 
+Although only a few people showed, everyone was able to find project partners, 
+including myself! I also made a followup post with some notes/resources that 
+were gathered during the meeting. This document also had contact information in 
+case someone missed the meeting and still needed a partner.
+
+The resource document lives [here.](https://docs.google.com/document/d/1ZYeUcwlqhr5Aw1I2k4L-sUSxZEINgkhSxJwT_SjgMsM/edit?usp=sharing){target="_blank"}

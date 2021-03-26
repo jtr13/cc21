@@ -1,0 +1,40 @@
+# In-Person Fitness Hour
+
+Aditya Koduri and Archit Matta
+
+## Piazza Announcement
+
+In an effort to provide some real interaction amidst these virtual times, we organized an In-Person Fitness Hour.
+
+**Events:**
+<br>1. Yoga (Bring your own mats)
+<br>2. Jump Rope (Available with Organizers)
+<br>3. Frisbee (Available with Organizers)
+<br>4. Running
+
+**Location:** Riverside Park (Meeting Point - Hudson Beach)
+<br> **Timing:** Tuesday, 23rd March 2021 - 10:00 AM
+
+**Safety Guidelines:**
+<br>1. Masks are compulsory and organizers would provide additional masks at the venue
+<br>2. Maintaining Social Distancing is necessary,and the activities have been planned keeping that in mind
+<br>3. Please bring your own sanitizers and the organizers would bring additional sanitizers to the venue
+<br>4. The organizers would ensure all equipment being offered is sanitized before use
+<br>5. Please refrain from attending if you show symptoms or have been in a high-risk zone
+<br>6. In addition, please also follow the latest guidance from the U.S. Centers for Disease Control and Prevention (CDC)
+
+## Final Event
+
+### Jump Rope
+
+![](resources/fitness_hour/Pic1.jpeg)
+
+
+### Monkey Bars
+
+![](resources/fitness_hour/Pic2.jpeg)
+
+
+### Frisbee
+
+![](resources/fitness_hour/Pic3.jpeg)

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 20 Sentiment analysis and wordcloud | Spring 2021 EDAV Community Contributions</title>
+  <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 20 Sentiment analysis and wordcloud | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="github-repo" content="jtr13/cc21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 20 Sentiment analysis and wordcloud | Spring 2021 EDAV Community Contributions" />
+  
+  <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  
+
+
+
+<meta name="date" content="2021-03-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-tableau-with-r.html"/>
+<link rel="next" href="twitter-sentiment-analysis-in-r.html"/>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">cc for EDAV 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Community contribution assignment</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#logistics"><i class="fa fa-check"></i><b>1.1</b> Logistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#groups"><i class="fa fa-check"></i><b>1.1.1</b> Groups</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#submitting-your-assignment"><i class="fa fa-check"></i><b>1.1.2</b> Submitting your assignment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html"><i class="fa fa-check"></i><b>2</b> GitHub submission instructions</a><ul>
+<li class="chapter" data-level="2.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#background"><i class="fa fa-check"></i><b>2.1</b> Background</a></li>
+<li class="chapter" data-level="2.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#preparing-your-.rmd-file"><i class="fa fa-check"></i><b>2.2</b> Preparing your <code>.Rmd</code> file</a></li>
+<li class="chapter" data-level="2.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#submission-steps"><i class="fa fa-check"></i><b>2.3</b> Submission steps</a></li>
+<li class="chapter" data-level="2.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#optional-tweaks"><i class="fa fa-check"></i><b>2.4</b> Optional tweaks</a></li>
+<li class="chapter" data-level="2.5" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#faq"><i class="fa fa-check"></i><b>2.5</b> FAQ</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-should-i-expect-after-creating-a-pull-request"><i class="fa fa-check"></i><b>2.5.1</b> What should I expect after creating a pull request?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-before-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.2</b> What if I catch mistakes before my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-after-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.3</b> What if I catch mistakes after my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#other-questions"><i class="fa fa-check"></i><b>2.5.4</b> Other questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sample-project.html"><a href="sample-project.html"><i class="fa fa-check"></i><b>3</b> Sample project</a></li>
+<li class="part"><span><b>I Package Recommendation</b></span></li>
+<li class="chapter" data-level="4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html"><i class="fa fa-check"></i><b>4</b> Introduction to Quandl()</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#introduction"><i class="fa fa-check"></i><b>4.1</b> INTRODUCTION</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#installation"><i class="fa fa-check"></i><b>4.1.1</b> Installation :</a></li>
+<li class="chapter" data-level="4.1.2" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#load-package"><i class="fa fa-check"></i><b>4.1.2</b> Load Package</a></li>
+<li class="chapter" data-level="4.1.3" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#set-api-key"><i class="fa fa-check"></i><b>4.1.3</b> Set API key</a></li>
+<li class="chapter" data-level="4.1.4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#loading-data"><i class="fa fa-check"></i><b>4.1.4</b> Loading Data</a></li>
+<li class="chapter" data-level="4.1.5" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#type"><i class="fa fa-check"></i><b>4.1.5</b> Type</a></li>
+<li class="chapter" data-level="4.1.6" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#transform"><i class="fa fa-check"></i><b>4.1.6</b> Transform</a></li>
+<li class="chapter" data-level="4.1.7" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#order"><i class="fa fa-check"></i><b>4.1.7</b> Order</a></li>
+<li class="chapter" data-level="4.1.8" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#collapse"><i class="fa fa-check"></i><b>4.1.8</b> collapse</a></li>
+<li class="chapter" data-level="4.1.9" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#slicing-data"><i class="fa fa-check"></i><b>4.1.9</b> Slicing data</a></li>
+<li class="chapter" data-level="4.1.10" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#finding-a-dataset-in-quandl"><i class="fa fa-check"></i><b>4.1.10</b> Finding a dataset in Quandl</a></li>
+<li class="chapter" data-level="4.1.11" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#example"><i class="fa fa-check"></i><b>4.1.11</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Cheatsheets</b></span></li>
+<li class="chapter" data-level="5" data-path="date-time-handling-in-r-cheatsheet.html"><a href="date-time-handling-in-r-cheatsheet.html"><i class="fa fa-check"></i><b>5</b> Date-Time Handling in R Cheatsheet</a></li>
+<li class="chapter" data-level="6" data-path="tidy-data-cheatsheet.html"><a href="tidy-data-cheatsheet.html"><i class="fa fa-check"></i><b>6</b> Tidy data Cheatsheet</a></li>
+<li class="chapter" data-level="7" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html"><i class="fa fa-check"></i><b>7</b> GGvis cheatsheet</a><ul>
+<li class="chapter" data-level="7.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#ggvis"><i class="fa fa-check"></i><b>7.1</b> ggvis</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#getting-start"><i class="fa fa-check"></i><b>7.1.1</b> Getting start</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#aesthetics"><i class="fa fa-check"></i><b>7.2</b> aesthetics</a></li>
+<li class="chapter" data-level="7.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#interaction"><i class="fa fa-check"></i><b>7.3</b> Interaction</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#basic-interaction"><i class="fa fa-check"></i><b>7.3.1</b> basic interaction</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#input-option"><i class="fa fa-check"></i><b>7.3.2</b> Input option</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#map"><i class="fa fa-check"></i><b>7.3.3</b> Map</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#layers"><i class="fa fa-check"></i><b>7.4</b> Layers</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#simple-layers"><i class="fa fa-check"></i><b>7.4.1</b> Simple layers</a></li>
+<li class="chapter" data-level="7.4.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#compound-layers"><i class="fa fa-check"></i><b>7.4.2</b> Compound layers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="statistical-hypothesis-testing-cheatsheet.html"><a href="statistical-hypothesis-testing-cheatsheet.html"><i class="fa fa-check"></i><b>8</b> Statistical_hypothesis_testing_cheatsheet</a></li>
+<li class="part"><span><b>III Translations</b></span></li>
+<li class="chapter" data-level="9" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html"><i class="fa fa-check"></i><b>9</b> Colors_in_R_Chinese_translation</a><ul>
+<li class="chapter" data-level="9.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>9.1</b> 在R中使用颜色</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>9.1.1</b> R自带的指定颜色名称</a></li>
+<li class="chapter" data-level="9.1.2" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>9.1.2</b> 使用十六进制编码指定颜色</a></li>
+<li class="chapter" data-level="9.1.3" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>9.1.3</b> 使用 RColorBrewer 调色盘</a></li>
+<li class="chapter" data-level="9.1.4" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>9.1.4</b> 使用 Wes Anderson 调色盘</a></li>
+<li class="chapter" data-level="9.1.5" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>9.1.5</b> 创建一个n个连续颜色的矢量</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html"><i class="fa fa-check"></i><b>10</b> Managing Data Frames with dplyr Package in Chinese</a><ul>
+<li class="chapter" data-level="10.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#short-description-of-my-contribution"><i class="fa fa-check"></i><b>10.1</b> Short Description of My Contribution</a></li>
+<li class="chapter" data-level="10.2" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#数据表"><i class="fa fa-check"></i><b>10.2</b> 数据表</a></li>
+<li class="chapter" data-level="10.3" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr包"><i class="fa fa-check"></i><b>10.3</b> dplyr包</a></li>
+<li class="chapter" data-level="10.4" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr语法"><i class="fa fa-check"></i><b>10.4</b> dplyr语法</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#通用dplyr函数属性"><i class="fa fa-check"></i><b>10.4.1</b> 通用dplyr函数属性</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#安装dplyr包"><i class="fa fa-check"></i><b>10.5</b> 安装dplyr包</a></li>
+<li class="chapter" data-level="10.6" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#select"><i class="fa fa-check"></i><b>10.6</b> select()</a></li>
+<li class="chapter" data-level="10.7" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#filter"><i class="fa fa-check"></i><b>10.7</b> filter()</a></li>
+<li class="chapter" data-level="10.8" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#arrange"><i class="fa fa-check"></i><b>10.8</b> arrange()</a></li>
+<li class="chapter" data-level="10.9" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#rename"><i class="fa fa-check"></i><b>10.9</b> rename()</a></li>
+<li class="chapter" data-level="10.10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#mutate"><i class="fa fa-check"></i><b>10.10</b> mutate()</a></li>
+<li class="chapter" data-level="10.11" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#group_by"><i class="fa fa-check"></i><b>10.11</b> group_by()</a></li>
+<li class="chapter" data-level="10.12" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#section"><i class="fa fa-check"></i><b>10.12</b> %&gt;%</a></li>
+<li class="chapter" data-level="10.13" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#总结"><i class="fa fa-check"></i><b>10.13</b> 总结</a></li>
+<li class="chapter" data-level="10.14" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#cited-resourses"><i class="fa fa-check"></i><b>10.14</b> Cited Resourses</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="introduction-to-rstudio-in-portuguese.html"><a href="introduction-to-rstudio-in-portuguese.html"><i class="fa fa-check"></i><b>11</b> Introduction to Rstudio in Portuguese</a></li>
+<li class="chapter" data-level="12" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html"><i class="fa fa-check"></i><b>12</b> Chinese translation of using ARIMA models in R</a><ul>
+<li class="chapter" data-level="12.1" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#arima模型"><i class="fa fa-check"></i><b>12.1</b> ARIMA模型</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#差异化一组时间序列"><i class="fa fa-check"></i><b>12.1.1</b> 差异化一组时间序列</a></li>
+<li class="chapter" data-level="12.1.2" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#选择arima候选模型"><i class="fa fa-check"></i><b>12.1.2</b> 选择ARIMA候选模型</a></li>
+<li class="chapter" data-level="12.1.3" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#使用arima模型进行预测"><i class="fa fa-check"></i><b>12.1.3</b> 使用ARIMA模型进行预测</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html"><i class="fa fa-check"></i><b>13</b> Chinese translation of broom package</a><ul>
+<li class="chapter" data-level="13.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#序言"><i class="fa fa-check"></i><b>13.1</b> 序言</a></li>
+<li class="chapter" data-level="13.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#整理函数"><i class="fa fa-check"></i><b>13.2</b> 整理函数</a></li>
+<li class="chapter" data-level="13.3" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#其他案例"><i class="fa fa-check"></i><b>13.3</b> 其他案例</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#广义线性模型和非线性模型"><i class="fa fa-check"></i><b>13.3.1</b> 广义线性模型和非线性模型</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#假设检验"><i class="fa fa-check"></i><b>13.3.2</b> 假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#规则"><i class="fa fa-check"></i><b>13.4</b> 规则</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#全部函数"><i class="fa fa-check"></i><b>13.4.1</b> 全部函数</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#tidy函数"><i class="fa fa-check"></i><b>13.4.2</b> tidy函数</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#augment函数"><i class="fa fa-check"></i><b>13.4.3</b> augment函数</a></li>
+<li class="chapter" data-level="13.4.4" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#glance函数"><i class="fa fa-check"></i><b>13.4.4</b> glance函数</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="translation-of-visualizations-that-really-work.html"><a href="translation-of-visualizations-that-really-work.html"><i class="fa fa-check"></i><b>14</b> Translation of Visualizations That Really Work</a></li>
+<li class="chapter" data-level="15" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><i class="fa fa-check"></i><b>15</b> Chinese Translation of Bar Chart and Cleveland Dot Plot</a><ul>
+<li class="chapter" data-level="15.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#图表条形图"><i class="fa fa-check"></i><b>15.1</b> 图表：条形图</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#综述"><i class="fa fa-check"></i><b>15.1.1</b> 综述</a></li>
+<li class="chapter" data-level="15.1.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#太长不看"><i class="fa fa-check"></i><b>15.1.2</b> 太长不看</a></li>
+<li class="chapter" data-level="15.1.3" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#简单的例子"><i class="fa fa-check"></i><b>15.1.3</b> 简单的例子</a></li>
+<li class="chapter" data-level="15.1.4" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#理论"><i class="fa fa-check"></i><b>15.1.4</b> 理论</a></li>
+<li class="chapter" data-level="15.1.5" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#何时使用"><i class="fa fa-check"></i><b>15.1.5</b> 何时使用</a></li>
+<li class="chapter" data-level="15.1.6" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#注意事项"><i class="fa fa-check"></i><b>15.1.6</b> 注意事项</a></li>
+<li class="chapter" data-level="15.1.7" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#修改"><i class="fa fa-check"></i><b>15.1.7</b> 修改</a></li>
+<li class="chapter" data-level="15.1.8" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#外部资源"><i class="fa fa-check"></i><b>15.1.8</b> 外部资源</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#图表克利夫兰点图"><i class="fa fa-check"></i><b>15.2</b> 图表：克利夫兰点图</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#综述-1"><i class="fa fa-check"></i><b>15.2.1</b> 综述</a></li>
+<li class="chapter" data-level="15.2.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#多点图"><i class="fa fa-check"></i><b>15.2.2</b> 多点图</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Tutorials</b></span></li>
+<li class="chapter" data-level="16" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>16</b> Creating R Packages</a></li>
+<li class="chapter" data-level="17" data-path="getting-data-using-apis.html"><a href="getting-data-using-apis.html"><i class="fa fa-check"></i><b>17</b> Getting data using APIs</a></li>
+<li class="chapter" data-level="18" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html"><i class="fa fa-check"></i><b>18</b> Introdution to Time Series Analysis</a><ul>
+<li class="chapter" data-level="18.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#overview"><i class="fa fa-check"></i><b>18.1</b> Overview</a></li>
+<li class="chapter" data-level="18.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#introduction-1"><i class="fa fa-check"></i><b>18.2</b> Introduction</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#example-1"><i class="fa fa-check"></i><b>18.2.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#simple-time-series"><i class="fa fa-check"></i><b>18.3</b> Simple Time Series</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#definition"><i class="fa fa-check"></i><b>18.3.1</b> Definition</a></li>
+<li class="chapter" data-level="18.3.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#white-noise"><i class="fa fa-check"></i><b>18.3.2</b> White Noise</a></li>
+<li class="chapter" data-level="18.3.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#moving-average-of-white-noise"><i class="fa fa-check"></i><b>18.3.3</b> Moving Average of White Noise</a></li>
+<li class="chapter" data-level="18.3.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#random-walk-with-drift"><i class="fa fa-check"></i><b>18.3.4</b> Random Walk with Drift</a></li>
+<li class="chapter" data-level="18.3.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#ar1"><i class="fa fa-check"></i><b>18.3.5</b> AR(1)</a></li>
+<li class="chapter" data-level="18.3.6" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#ma1"><i class="fa fa-check"></i><b>18.3.6</b> MA(1)</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#measures-of-dependence"><i class="fa fa-check"></i><b>18.4</b> Measures of Dependence</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#mean-function"><i class="fa fa-check"></i><b>18.4.1</b> Mean Function</a></li>
+<li class="chapter" data-level="18.4.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#autocovariance-function"><i class="fa fa-check"></i><b>18.4.2</b> Autocovariance Function</a></li>
+<li class="chapter" data-level="18.4.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#autocorrelation-function-acf"><i class="fa fa-check"></i><b>18.4.3</b> Autocorrelation Function (ACF)</a></li>
+<li class="chapter" data-level="18.4.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#three-measures-for-simple-time-series-above"><i class="fa fa-check"></i><b>18.4.4</b> Three Measures for Simple Time Series Above</a></li>
+<li class="chapter" data-level="18.4.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#application"><i class="fa fa-check"></i><b>18.4.5</b> Application</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#reference"><i class="fa fa-check"></i><b>18.5</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="intro-to-tableau-with-r.html"><a href="intro-to-tableau-with-r.html"><i class="fa fa-check"></i><b>19</b> Intro to Tableau with R</a></li>
+<li class="chapter" data-level="20" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html"><i class="fa fa-check"></i><b>20</b> Sentiment analysis and wordcloud</a><ul>
+<li class="chapter" data-level="20.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#read-and-explore-the-text"><i class="fa fa-check"></i><b>20.1</b> Read and explore the text</a><ul>
+<li class="chapter" data-level="20.1.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#explore-ratings-of-reviews"><i class="fa fa-check"></i><b>20.1.1</b> Explore Ratings of Reviews</a></li>
+<li class="chapter" data-level="20.1.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#distribution-of-ratings"><i class="fa fa-check"></i><b>20.1.2</b> Distribution of Ratings</a></li>
+<li class="chapter" data-level="20.1.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#explore-the-reviews"><i class="fa fa-check"></i><b>20.1.3</b> Explore the reviews</a></li>
+<li class="chapter" data-level="20.1.4" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#most-common-words"><i class="fa fa-check"></i><b>20.1.4</b> Most common words</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#sentiment-analysis"><i class="fa fa-check"></i><b>20.2</b> Sentiment analysis</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#words-in-reviews"><i class="fa fa-check"></i><b>20.2.1</b> Words in reviews</a></li>
+<li class="chapter" data-level="20.2.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#word-lexicons---bing"><i class="fa fa-check"></i><b>20.2.2</b> Word lexicons —- Bing</a></li>
+<li class="chapter" data-level="20.2.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#word-lexicons---nrc"><i class="fa fa-check"></i><b>20.2.3</b> Word lexicons —- nrc</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#wordcloud"><i class="fa fa-check"></i><b>20.3</b> Wordcloud</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#simple-word-cloud-visualization"><i class="fa fa-check"></i><b>20.3.1</b> Simple Word Cloud Visualization</a></li>
+<li class="chapter" data-level="20.3.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#comparison-word-cloud"><i class="fa fa-check"></i><b>20.3.2</b> Comparison Word Cloud</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html"><i class="fa fa-check"></i><b>21</b> Twitter sentiment analysis in R</a><ul>
+<li class="chapter" data-level="21.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#loading-all-the-required-r-libraries"><i class="fa fa-check"></i><b>21.1</b> Loading all the required R libraries</a></li>
+<li class="chapter" data-level="21.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#sentiment-analysis-1"><i class="fa fa-check"></i><b>21.2</b> Sentiment Analysis</a></li>
+<li class="chapter" data-level="21.3" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#twitter-authorization-to-extract-tweets"><i class="fa fa-check"></i><b>21.3</b> Twitter authorization to extract tweets:</a></li>
+<li class="chapter" data-level="21.4" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#extracting-global-warming-tweets"><i class="fa fa-check"></i><b>21.4</b> Extracting Global Warming tweets:</a></li>
+<li class="chapter" data-level="21.5" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#frequency-of-tweets"><i class="fa fa-check"></i><b>21.5</b> Frequency of Tweets</a></li>
+<li class="chapter" data-level="21.6" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#estimating-sentiment-score"><i class="fa fa-check"></i><b>21.6</b> Estimating Sentiment Score</a><ul>
+<li class="chapter" data-level="21.6.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#loading-sentiment-word-lists"><i class="fa fa-check"></i><b>21.6.1</b> Loading sentiment word lists:</a></li>
+<li class="chapter" data-level="21.6.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#sentiment-scoring-function"><i class="fa fa-check"></i><b>21.6.2</b> Sentiment scoring function:</a></li>
+<li class="chapter" data-level="21.6.3" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#calculating-the-sentiment-score"><i class="fa fa-check"></i><b>21.6.3</b> Calculating the sentiment score:</a></li>
+</ul></li>
+<li class="chapter" data-level="21.7" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#histogram-of-sentiment-scores"><i class="fa fa-check"></i><b>21.7</b> Histogram of sentiment scores:</a></li>
+<li class="chapter" data-level="21.8" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#barplot-of-sentiment-type"><i class="fa fa-check"></i><b>21.8</b> Barplot of sentiment type:</a></li>
+<li class="chapter" data-level="21.9" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#wordcloud-1"><i class="fa fa-check"></i><b>21.9</b> Wordcloud:</a></li>
+<li class="chapter" data-level="21.10" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#word-frequency-plot"><i class="fa fa-check"></i><b>21.10</b> Word Frequency plot:</a></li>
+<li class="chapter" data-level="21.11" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#network-analysis"><i class="fa fa-check"></i><b>21.11</b> Network Analysis</a><ul>
+<li class="chapter" data-level="21.11.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#bigram-analysis-and-network-definition"><i class="fa fa-check"></i><b>21.11.1</b> Bigram analysis and Network definition</a></li>
+<li class="chapter" data-level="21.11.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#network-visualization"><i class="fa fa-check"></i><b>21.11.2</b> Network visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="21.12" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#references"><i class="fa fa-check"></i><b>21.12</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="introduction-to-pyecharts.html"><a href="introduction-to-pyecharts.html"><i class="fa fa-check"></i><b>22</b> Introduction to pyecharts</a></li>
+<li class="chapter" data-level="23" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html"><i class="fa fa-check"></i><b>23</b> Up and Running (Quickly) with Leaflet</a><ul>
+<li class="chapter" data-level="23.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>23.1</b> What is leaflet?</a></li>
+<li class="chapter" data-level="23.2" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#why-should-we-use-leaflet-on-r"><i class="fa fa-check"></i><b>23.2</b> Why should we use leaflet on R?</a><ul>
+<li class="chapter" data-level="23.2.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#reason-why-you-should-use-leaflet"><i class="fa fa-check"></i><b>23.2.1</b> Reason why you should use leaflet</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#why-another-how-to-post-on-leaflet"><i class="fa fa-check"></i><b>23.3</b> Why another how-to post on Leaflet?</a></li>
+<li class="chapter" data-level="23.4" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#first-creating-a-base-map"><i class="fa fa-check"></i><b>23.4</b> First: Creating a base map</a></li>
+<li class="chapter" data-level="23.5" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#second-loading-feature-data"><i class="fa fa-check"></i><b>23.5</b> Second: Loading feature data</a><ul>
+<li class="chapter" data-level="23.5.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#what-does-geospatial-data-look-like"><i class="fa fa-check"></i><b>23.5.1</b> What does geospatial data look like?</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#last-saving-the-map"><i class="fa fa-check"></i><b>23.6</b> Last: Saving the map</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html"><i class="fa fa-check"></i><b>24</b> Interview questions for data visualization</a><ul>
+<li class="chapter" data-level="24.0.1" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#general-questions"><i class="fa fa-check"></i><b>24.0.1</b> General Questions</a></li>
+<li class="chapter" data-level="24.0.2" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#r-questions"><i class="fa fa-check"></i><b>24.0.2</b> R Questions</a></li>
+<li class="chapter" data-level="24.0.3" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#python-questions"><i class="fa fa-check"></i><b>24.0.3</b> Python Questions</a></li>
+<li class="chapter" data-level="24.0.4" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#tableau-questions"><i class="fa fa-check"></i><b>24.0.4</b> Tableau Questions</a></li>
+</ul></li>
+<li class="part"><span><b>V Topical Discussions</b></span></li>
+<li class="chapter" data-level="25" data-path="zoom-session-in-finance-and-data-science.html"><a href="zoom-session-in-finance-and-data-science.html"><i class="fa fa-check"></i><b>25</b> Zoom session in Finance and Data-Science</a></li>
+<li class="chapter" data-level="26" data-path="data-science-the-environment-and-sustainability.html"><a href="data-science-the-environment-and-sustainability.html"><i class="fa fa-check"></i><b>26</b> Data science, the environment, and sustainability</a></li>
+<li class="chapter" data-level="27" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html"><i class="fa fa-check"></i><b>27</b> Absentee ballot voting in 2020 presidental election</a><ul>
+<li class="chapter" data-level="27.1" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#background-and-research-idea"><i class="fa fa-check"></i><b>27.1</b> Background and Research Idea</a></li>
+<li class="chapter" data-level="27.2" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#analyze-ballot-rejection-data"><i class="fa fa-check"></i><b>27.2</b> Analyze ballot rejection data</a></li>
+<li class="chapter" data-level="27.3" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#categorize-16-main-ballot-rejection-reasons"><i class="fa fa-check"></i><b>27.3</b> Categorize 16 main ballot rejection reasons</a></li>
+<li class="chapter" data-level="27.4" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#show-participation-rate-and-ballot-non-accepted-rate-on-a-georgia-map"><i class="fa fa-check"></i><b>27.4</b> Show participation rate and ballot non-accepted rate on a Georgia map</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="final-project-zoom-meetup-sports.html"><a href="final-project-zoom-meetup-sports.html"><i class="fa fa-check"></i><b>28</b> Final project Zoom meetup - sports</a></li>
+<li class="chapter" data-level="29" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html"><i class="fa fa-check"></i><b>29</b> Collaborating on RStudio with GitHub</a><ul>
+<li class="chapter" data-level="29.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#objective"><i class="fa fa-check"></i><b>29.1</b> Objective</a></li>
+<li class="chapter" data-level="29.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#what-is-git"><i class="fa fa-check"></i><b>29.2</b> What is Git?</a></li>
+<li class="chapter" data-level="29.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#collaborating-on-github"><i class="fa fa-check"></i><b>29.3</b> Collaborating on GitHub</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#create-a-repository"><i class="fa fa-check"></i><b>29.3.1</b> Create a repository</a></li>
+<li class="chapter" data-level="29.3.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#branching"><i class="fa fa-check"></i><b>29.3.2</b> Branching</a></li>
+<li class="chapter" data-level="29.3.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#add-collaborators"><i class="fa fa-check"></i><b>29.3.3</b> Add Collaborators</a></li>
+<li class="chapter" data-level="29.3.4" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#tracking-changes-on-github"><i class="fa fa-check"></i><b>29.3.4</b> Tracking changes on GitHub</a></li>
+<li class="chapter" data-level="29.3.5" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#blame"><i class="fa fa-check"></i><b>29.3.5</b> Blame</a></li>
+<li class="chapter" data-level="29.3.6" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#issues"><i class="fa fa-check"></i><b>29.3.6</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#getting-started-with-git-on-rstudio"><i class="fa fa-check"></i><b>29.4</b> Getting started with Git on RStudio</a><ul>
+<li class="chapter" data-level="29.4.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#cloning-a-repository-to-a-new-project"><i class="fa fa-check"></i><b>29.4.1</b> Cloning a repository to a new project</a></li>
+<li class="chapter" data-level="29.4.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#cloning-a-repository-set-up-by-someone-else"><i class="fa fa-check"></i><b>29.4.2</b> Cloning a repository set up by someone else</a></li>
+<li class="chapter" data-level="29.4.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#overview-of-git-panel"><i class="fa fa-check"></i><b>29.4.3</b> Overview of Git panel</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#merging-conflicts"><i class="fa fa-check"></i><b>29.5</b> Merging Conflicts</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html"><i class="fa fa-check"></i><b>30</b> Common Errors in R</a><ul>
+<li class="chapter" data-level="30.0.1" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#could-not-find-function"><i class="fa fa-check"></i><b>30.0.1</b> could not find function</a></li>
+<li class="chapter" data-level="30.0.2" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#error-in-if"><i class="fa fa-check"></i><b>30.0.2</b> Error in if</a></li>
+<li class="chapter" data-level="30.0.3" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#object-not-found"><i class="fa fa-check"></i><b>30.0.3</b> Object not found</a></li>
+<li class="chapter" data-level="30.0.4" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unexpected"><i class="fa fa-check"></i><b>30.0.4</b> unexpected …</a></li>
+<li class="chapter" data-level="30.0.5" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#condition-has-length-1"><i class="fa fa-check"></i><b>30.0.5</b> condition has length &gt; 1</a></li>
+<li class="chapter" data-level="30.0.6" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#operator-is-invalid-for-atomic-vectors"><i class="fa fa-check"></i><b>30.0.6</b> $ operator is invalid for atomic vectors</a></li>
+<li class="chapter" data-level="30.0.7" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#argument-is-of-length-zero"><i class="fa fa-check"></i><b>30.0.7</b> argument is of length zero</a></li>
+<li class="chapter" data-level="30.0.8" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unimplemented-type-list"><i class="fa fa-check"></i><b>30.0.8</b> unimplemented type ‘list’</a></li>
+<li class="chapter" data-level="30.0.9" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#undefined-columns-selected"><i class="fa fa-check"></i><b>30.0.9</b> undefined columns selected</a></li>
+<li class="chapter" data-level="30.0.10" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#replacement-has-length-zero"><i class="fa fa-check"></i><b>30.0.10</b> replacement has length zero</a></li>
+<li class="chapter" data-level="30.0.11" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#replacement-has-10-rows-data-has-5"><i class="fa fa-check"></i><b>30.0.11</b> replacement has 10 rows, data has 5</a></li>
+<li class="chapter" data-level="30.0.12" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#by-must-specify-a-uniquely-valid-column"><i class="fa fa-check"></i><b>30.0.12</b> ‘by’ must specify a uniquely valid column</a></li>
+<li class="chapter" data-level="30.0.13" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#incorrect-number-of-subscripts-on-matrix"><i class="fa fa-check"></i><b>30.0.13</b> incorrect number of subscripts on matrix</a></li>
+<li class="chapter" data-level="30.0.14" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#subscript-out-of-bounds"><i class="fa fa-check"></i><b>30.0.14</b> subscript out of bounds</a></li>
+<li class="chapter" data-level="30.0.15" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#cannot-open-the-connection"><i class="fa fa-check"></i><b>30.0.15</b> cannot open the connection</a></li>
+<li class="chapter" data-level="30.0.16" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#non-numeric-argument-to-binary-operator"><i class="fa fa-check"></i><b>30.0.16</b> non-numeric argument to binary operator</a></li>
+<li class="chapter" data-level="30.0.17" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#need-finite-xlim-values"><i class="fa fa-check"></i><b>30.0.17</b> need finite ‘xlim’ values</a></li>
+<li class="chapter" data-level="30.0.18" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unused-argument"><i class="fa fa-check"></i><b>30.0.18</b> unused argument</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="tips-for-debugging.html"><a href="tips-for-debugging.html"><i class="fa fa-check"></i><b>31</b> Tips for Debugging</a><ul>
+<li class="chapter" data-level="31.1" data-path="tips-for-debugging.html"><a href="tips-for-debugging.html#references-1"><i class="fa fa-check"></i><b>31.1</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html"><i class="fa fa-check"></i><b>32</b> In-Person Fitness Hour</a><ul>
+<li class="chapter" data-level="32.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#piazza-announcement"><i class="fa fa-check"></i><b>32.1</b> Piazza Announcement</a></li>
+<li class="chapter" data-level="32.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#final-event"><i class="fa fa-check"></i><b>32.2</b> Final Event</a><ul>
+<li class="chapter" data-level="32.2.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#jump-rope"><i class="fa fa-check"></i><b>32.2.1</b> Jump Rope</a></li>
+<li class="chapter" data-level="32.2.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#monkey-bars"><i class="fa fa-check"></i><b>32.2.2</b> Monkey Bars</a></li>
+<li class="chapter" data-level="32.2.3" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#frisbee"><i class="fa fa-check"></i><b>32.2.3</b> Frisbee</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Appendices</b></span></li>
+<li class="chapter" data-level="33" data-path="github-initial-setup.html"><a href="github-initial-setup.html"><i class="fa fa-check"></i><b>33</b> Github initial setup</a><ul>
+<li class="chapter" data-level="33.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-actions"><i class="fa fa-check"></i><b>33.1</b> GitHub Actions</a><ul>
+<li class="chapter" data-level="33.1.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#secrets"><i class="fa fa-check"></i><b>33.1.1</b> Secrets</a></li>
+<li class="chapter" data-level="33.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>33.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
+<li class="chapter" data-level="33.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>33.1.3</b> GitHub Pages in repo settings</a></li>
+</ul></li>
+<li class="chapter" data-level="33.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>33.2</b> DESCRIPTION file</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>34</b> Tutorial for pull request mergers</a><ul>
+<li class="chapter" data-level="34.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#general"><i class="fa fa-check"></i><b>34.1</b> General</a></li>
+<li class="chapter" data-level="34.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>34.2</b> Check branch</a></li>
+<li class="chapter" data-level="34.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#examine-files-that-were-added-or-modified"><i class="fa fa-check"></i><b>34.3</b> Examine files that were added or modified</a></li>
+<li class="chapter" data-level="34.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-filename"><i class="fa fa-check"></i><b>34.4</b> Check <code>.Rmd</code> filename</a></li>
+<li class="chapter" data-level="34.5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-file-contents"><i class="fa fa-check"></i><b>34.5</b> Check <code>.Rmd</code> file contents</a></li>
+<li class="chapter" data-level="34.6" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#request-changes"><i class="fa fa-check"></i><b>34.6</b> Request changes</a></li>
+<li class="chapter" data-level="34.7" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-the-pull-request"><i class="fa fa-check"></i><b>34.7</b> Merge the pull request</a><ul>
+<li class="chapter" data-level="34.7.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#add-chapter-filename-to-_bookdown.yml-in-prs-branch"><i class="fa fa-check"></i><b>34.7.1</b> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></a></li>
+<li class="chapter" data-level="34.7.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part"><i class="fa fa-check"></i><b>34.7.2</b> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</a></li>
+<li class="chapter" data-level="34.7.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-pr-and-leave-a-comment"><i class="fa fa-check"></i><b>34.7.3</b> Merge PR and leave a comment</a></li>
+<li class="chapter" data-level="34.7.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-updated-version"><i class="fa fa-check"></i><b>34.7.4</b> Check updated version</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spring 2021 EDAV Community Contributions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sentiment-analysis-and-wordcloud" class="section level1">
+<h1><span class="header-section-number">Chapter 20</span> Sentiment analysis and wordcloud</h1>
+<p>Yuao Zhao</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="sentiment-analysis-and-wordcloud.html#cb215-1"></a><span class="kw">library</span>(qdap)</span>
+<span id="cb215-2"><a href="sentiment-analysis-and-wordcloud.html#cb215-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb215-3"><a href="sentiment-analysis-and-wordcloud.html#cb215-3"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb215-4"><a href="sentiment-analysis-and-wordcloud.html#cb215-4"></a><span class="kw">library</span>(tidyr)</span>
+<span id="cb215-5"><a href="sentiment-analysis-and-wordcloud.html#cb215-5"></a><span class="kw">library</span>(stringr)</span>
+<span id="cb215-6"><a href="sentiment-analysis-and-wordcloud.html#cb215-6"></a><span class="kw">library</span>(tidytext)</span>
+<span id="cb215-7"><a href="sentiment-analysis-and-wordcloud.html#cb215-7"></a><span class="kw">library</span>(ggplot2) </span>
+<span id="cb215-8"><a href="sentiment-analysis-and-wordcloud.html#cb215-8"></a><span class="kw">library</span>(ggthemes)</span>
+<span id="cb215-9"><a href="sentiment-analysis-and-wordcloud.html#cb215-9"></a><span class="kw">library</span>(wordcloud)</span></code></pre></div>
+<p>Sentiment analysis is an important part of the emotion computing and wordcloud is a fancy way of text visualization. Combining the two, we can reveal and display people’s attitude and perspectives through their comments or articles. This tutorial will go through the basic process of these two by analysing the video game comments dataset.</p>
+<p>About the Data
+This dataset is based on a set of Amazon review of video games downloaded from Prof Julian McAuley’s website (<a href="http://jmcauley.ucsd.edu/data/amazon/" class="uri">http://jmcauley.ucsd.edu/data/amazon/</a>). Since this dataset is very large, we only included data from Aug 2013 to July 2014 which gives us a year of data to work with.</p>
+<p>The data we are going to use includes the following fields:<br />
+* id: A unique identifier for each review<br />
+* review: Text of review posted on Amazon<br />
+* review_rating: Each review on Amazon is rated by others using a five-star scale (presumably based on helpfulness of review)</p>
+<div id="read-and-explore-the-text" class="section level2">
+<h2><span class="header-section-number">20.1</span> Read and explore the text</h2>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="sentiment-analysis-and-wordcloud.html#cb216-1"></a>videogame =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;resources/sentiment_analysis_and_wordcloud/videogame_review.csv&#39;</span>,<span class="dt">stringsAsFactors =</span> F)</span>
+<span id="cb216-2"><a href="sentiment-analysis-and-wordcloud.html#cb216-2"></a><span class="kw">head</span>(videogame)</span></code></pre></div>
+<pre><code>##   id
+## 1  1
+## 2  2
+## 3  3
+## 4  4
+## 5  5
+## 6  6
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     review
+## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               1st shipment received a book instead of the game.2nd shipment got a FAKE one. Game arrived with a wrong key inside on sealed box. I got in contact with codemasters and send them pictures of the DVD and the content. They said nothing they can do its a fake DVD.Returned it good bye.!
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     I still haven&#39;t figured this one out. Did everything as instructed but the game never installed. Strange. Since I don&#39;t like to rate on something I couldn&#39;t get to work, I&#39;ll just say that I didn&#39;t like it because I couldn&#39;t get it to work :P For those that did manage to get it installed, I&#39;m sure it&#39;s a great game. I had the first Dirt and it was a scream! Too bad this one bombed. Maybe a bad disc...
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                I bought this and the key didn&#39;t work.  It was a gift, and the recipient wasn&#39;t able to solve the problem.  It might have been a good game, but I never found out because the key failed.
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           I love it! Use it all the time. Really works perfectly with all games that you need a mic for.
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          my grandkids (and their parents) love playing with the microphone along with the guitar we got.this really is a lot of fun for everyone.  would totally recommend getting this if someone has an interest in music (singing)...
+## 6 The greatest bait and switch betrayal of a fanbase in videogaming history and most hated game of all time.To begin I will provide Amazon&#39;s customer base the &amp;#34;tale of the turd&amp;#34; as I call it in relation to this abomination&#39;s &amp;#34;quality&amp;#34; or rather lackthereof:Gameplay: Utterly challengeless. A lobotomy patient, a two year old drooling baby in a feces filled diaper or even an individual with a severe case of down syndrome could easily complete this game in a single sitting with minimal effort. Just mash buttons or &amp;#34;spam&amp;#34; the controls as PC gamers would say and you&#39;ll eventually complete this atrocious slap in the face Disney level Aonuma dreck.Graphics: Hideous, vomit inducing, ridiculous, teletubbies-esque, bait and switch from what we were originally promised at Spaceworld 2000 (realistic style epic, cool and beautiful graphics with a decidedly Lord Of The Rings style flare) Also there are ugly and gaudy white lines that appear all throughout Wand Wacker indicating Nintendo was not able to polish this turd before release. Oh what a shame.Sound: The only redeemable inspiring thing about this Aonuma dud is the ocean music likely composed by Koji Kondo. The rest is detestable Saturday morning cartoon level kiddy drivel. Soccer moms and grandparents should approve. Real Zelda fans can only vomit at this level of disrespect Nintendo has stooped to in order to insult us.Theme: Near total rip off of Kevin Costner&#39;s Water World to such a great extent I fully believe Costner could probably win a lawsuit against Nintendo for royalties if he so desired. Needless to say this watery environment is not what true Zelda fans look forward to when we go to pick up a new Zelda game. No, what we&#39;re looking for is the green forests and fields of Hyrule proper, not some watery grave that sits atop it for reasons likely relating to Aonuma&#39;s child learning how to bathe for the first time and Aonuma getting inspired to make Zelda into a giant bathing simulator via Wand Wacker. I&#39;ve said it before and I&#39;ll say it again Nintendo needs to fire Eiji Aonuma and his entire Zelda team and get normal people developing the Zelda series again for it to return to health.Commentary: The online game journalists also known as professional liars can attempt to re-write history all they like but The Legend Of Celda: Wand Wacker will go down as the most hated videogame of all time and the greatest betrayal of a fanbase in gaming history.This was Nintendo, Miyamoto and Eiji Aonuma&#39;s Vince Mcmahon esque &amp;#34;Screw you!&amp;#34; to the true Zelda fanbase and by true Zelda fanbase I&#39;m not referring to the scumbag sycophants that populate online gaming message forums but the market in general who determines whether videogames become massive successes or massive failures and the true Zelda fans spoke loud and clear not once but twice.Two whole times on that Wand Wacker piece of dog excrement first with its original Gamecube release and second with its Wii U HD re-release that this is not the way that they envisioned the Legend Of Zelda series, this is not the way they wanted it to go and as a result Wand Wacker flopped mightily BOTH times as such a Benedict Arnold or Rosenbergs esque betrayal is destined to do.To rephrase a quote from Ridley Scott&#39;s Gladiator: &amp;#34;Marcus Aurelius had a dream that was Zelda and this is not it, THIS IS NOT IT!&amp;#34;We were lied to and led to believe that the epic, cool, badass, Spaceworld 2000 realistically presented Zelda would be what we would soon be getting on the Gamecube but then much later the bait and switch hideously deformed Celda Wand Wacker made its debut to boos and hisses worldwide and massive hate on the internet was poured it and Nintendo&#39;s way (before the damage control brainwashing took effect which has left a dishonest internet forum gaming community in its wake who pretends to love Wand Wacker in order to shill and run damage control for Nintendo while real Zelda fans have abandoned Nintendo due to its betrayal of them for the other consoles or PC gaming if they haven&#39;t simply upped and left gaming in disgusting over this nasty unnecessary debacle and betrayal of Zelda&#39;s true fans.Eiji Aonuma the hack no talent Jimmy Fallon Of Japan enabled by the out of touch Shigeru Miyamoto has been ruining the Zelda series since he took up its reigns to create the embarrassment known as Majora&#39;s Mask.Aonuma&#39;s first game &amp;#34;Marvelous&amp;#34; failed (MARVELOUSLY!) and he had no credentials at all to be given the Zelda series but insanely Nintendo gave it to him and ever since he&#39;s been driving Zelda along with it&#39;s sales figures into the ground making one boring puzzle filled bad NPC filled faux Zelda game after another.When the truth of the matter is Zelda is supposed to be an arcade action adventure sword and sorcery game with light RPG elements thrown in for good measure.Aonuma completely butchers this formula in favor of the boring garbage gameplay elements he prefers and the market lets him know what it thinks of his efforts by making sure his version of Zelda ends up in the bomba discount gaming bins where such low quality trash belongs.In anycase to re-iterate so as to set this very important point in stone once more:Wand Wacker offers up literally no gameplay challenge whatsoever and can be completed by a lobotomy patient (as is typical of Aonuma offerings).Conclusion: My rating of this turd is 1 star since I can&#39;t give it lower due to how Amazon&#39;s system is set up.
+##   review_rating
+## 1             1
+## 2             2
+## 3             1
+## 4             5
+## 5             5
+## 6             1</code></pre>
+<div id="explore-ratings-of-reviews" class="section level3">
+<h3><span class="header-section-number">20.1.1</span> Explore Ratings of Reviews</h3>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="sentiment-analysis-and-wordcloud.html#cb218-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb218-2"><a href="sentiment-analysis-and-wordcloud.html#cb218-2"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">average_rating =</span> <span class="kw">mean</span>(review_rating), <span class="dt">median_rating =</span> <span class="kw">median</span>(review_rating))</span></code></pre></div>
+<pre><code>##   average_rating median_rating
+## 1       4.423333             5</code></pre>
+<p>The median_rating is <strong>5</strong> and the average of the rating is <strong>4.42</strong></p>
+</div>
+<div id="distribution-of-ratings" class="section level3">
+<h3><span class="header-section-number">20.1.2</span> Distribution of Ratings</h3>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="sentiment-analysis-and-wordcloud.html#cb220-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>videogame,<span class="kw">aes</span>(<span class="dt">x=</span>review_rating))<span class="op">+</span></span>
+<span id="cb220-2"><a href="sentiment-analysis-and-wordcloud.html#cb220-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&#39;sienna&#39;</span>)<span class="op">+</span></span>
+<span id="cb220-3"><a href="sentiment-analysis-and-wordcloud.html#cb220-3"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
+<p><img src="sentiment_analysis_and_wordcloud_files/figure-html/explore%20the%20num%20of%20review-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>As we can see from the chart, few people gave the extreme low scores.</p>
+</div>
+<div id="explore-the-reviews" class="section level3">
+<h3><span class="header-section-number">20.1.3</span> Explore the reviews</h3>
+<p>Regular expressions (regex) is a framework for teaching a computer how to recognize patterns of text. In order to count sentences, one needs to define what a sentence is. If we defined a sentence as “a set of characters or punctuation (comma, quote) or spaces that end with one or more period, question mark, exclamation mark or combination of them”, the following reqular expression would match the sentence: [A-Za-z,;’"]+[^.!?]*[.?!]</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="sentiment-analysis-and-wordcloud.html#cb221-1"></a><span class="co"># Characters across all reviews</span></span>
+<span id="cb221-2"><a href="sentiment-analysis-and-wordcloud.html#cb221-2"></a>videogame<span class="op">%&gt;%</span></span>
+<span id="cb221-3"><a href="sentiment-analysis-and-wordcloud.html#cb221-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_character =</span> <span class="kw">mean</span>(<span class="kw">nchar</span>(review)), <span class="dt">median_character =</span> <span class="kw">median</span>(<span class="kw">nchar</span>(review)))</span></code></pre></div>
+<pre><code>##   mean_character median_character
+## 1         582.81            191.5</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="sentiment-analysis-and-wordcloud.html#cb223-1"></a><span class="co"># Words across all reviews</span></span>
+<span id="cb223-2"><a href="sentiment-analysis-and-wordcloud.html#cb223-2"></a>videogame<span class="op">%&gt;%</span></span>
+<span id="cb223-3"><a href="sentiment-analysis-and-wordcloud.html#cb223-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_words =</span> <span class="kw">mean</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">S+&#39;</span>)), <span class="dt">median_words =</span> <span class="kw">median</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">S+&#39;</span>)))</span></code></pre></div>
+<pre><code>##   mean_words median_words
+## 1   106.7833           37</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="sentiment-analysis-and-wordcloud.html#cb225-1"></a><span class="co"># Sentences across all reviews</span></span>
+<span id="cb225-2"><a href="sentiment-analysis-and-wordcloud.html#cb225-2"></a>videogame<span class="op">%&gt;%</span></span>
+<span id="cb225-3"><a href="sentiment-analysis-and-wordcloud.html#cb225-3"></a><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">mean_sentences =</span> <span class="kw">mean</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&quot;[A-Za-z,;&#39;</span><span class="ch">\&quot;\\</span><span class="st">s]+[^.!?]*[.?!]&quot;</span>)), <span class="dt">median_sentences =</span> <span class="kw">median</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&quot;[A-Za-z,;&#39;</span><span class="ch">\&quot;\\</span><span class="st">s]+[^.!?]*[.?!]&quot;</span>)))</span></code></pre></div>
+<pre><code>##   mean_sentences median_sentences
+## 1           5.84                3</code></pre>
+<p>On average, there are 583 characters, 106 words, 6 sentences across all reviews.</p>
+</div>
+<div id="most-common-words" class="section level3">
+<h3><span class="header-section-number">20.1.4</span> Most common words</h3>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="sentiment-analysis-and-wordcloud.html#cb227-1"></a>most_common_word =<span class="st"> </span><span class="kw">freq_terms</span>(<span class="dt">text.var=</span>videogame<span class="op">$</span>review,<span class="dt">top=</span><span class="dv">25</span>,<span class="dt">stopwords =</span></span>
+<span id="cb227-2"><a href="sentiment-analysis-and-wordcloud.html#cb227-2"></a>                                <span class="kw">c</span>(Top200Words,<span class="st">&quot;game&quot;</span>,<span class="st">&quot;games&quot;</span>,<span class="st">&quot;playing&quot;</span>,<span class="st">&quot;it&#39;s&quot;</span>,<span class="st">&quot;i&#39;ve&quot;</span>,<span class="st">&quot;i&#39;m&quot;</span>,<span class="st">&quot;s&quot;</span>,<span class="st">&quot;d&quot;</span>))</span>
+<span id="cb227-3"><a href="sentiment-analysis-and-wordcloud.html#cb227-3"></a>  </span>
+<span id="cb227-4"><a href="sentiment-analysis-and-wordcloud.html#cb227-4"></a><span class="kw">ggplot</span>(most_common_word,<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(WORD, FREQ, <span class="dt">.desc=</span><span class="ot">FALSE</span>),<span class="dt">y=</span>FREQ))<span class="op">+</span></span>
+<span id="cb227-5"><a href="sentiment-analysis-and-wordcloud.html#cb227-5"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>,<span class="dt">fill =</span> <span class="st">&quot;steelblue&quot;</span>)<span class="op">+</span></span>
+<span id="cb227-6"><a href="sentiment-analysis-and-wordcloud.html#cb227-6"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Word&quot;</span>)<span class="op">+</span></span>
+<span id="cb227-7"><a href="sentiment-analysis-and-wordcloud.html#cb227-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span></span>
+<span id="cb227-8"><a href="sentiment-analysis-and-wordcloud.html#cb227-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
+<span id="cb227-9"><a href="sentiment-analysis-and-wordcloud.html#cb227-9"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<p><img src="sentiment_analysis_and_wordcloud_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>By examining the top 25 words, we can conclude that the most popular games are <strong>Mario</strong> and <strong>Zelda</strong>. Also most words are good-comment-word, such as fun, love, best.</p>
+</div>
+</div>
+<div id="sentiment-analysis" class="section level2">
+<h2><span class="header-section-number">20.2</span> Sentiment analysis</h2>
+<p>Let us classify the words to gain a better understanding of the reviews. For this, we will use the dplyr and tidytext packages. We will make use of the unnest_tokens function from tidytext to tokenize the reviews and the following dplyr functions to organize the data: select, group_by, ungroup and count. Later on, we will also use the tidyr package to reshape the data.</p>
+<div id="words-in-reviews" class="section level3">
+<h3><span class="header-section-number">20.2.1</span> Words in reviews</h3>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="sentiment-analysis-and-wordcloud.html#cb228-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb228-2"><a href="sentiment-analysis-and-wordcloud.html#cb228-2"></a><span class="st">  </span><span class="kw">select</span>(id,review) <span class="op">%&gt;%</span></span>
+<span id="cb228-3"><a href="sentiment-analysis-and-wordcloud.html#cb228-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word,<span class="dt">input=</span>review) <span class="op">%&gt;%</span></span>
+<span id="cb228-4"><a href="sentiment-analysis-and-wordcloud.html#cb228-4"></a><span class="st">  </span><span class="kw">group_by</span>(id) <span class="op">%&gt;%</span></span>
+<span id="cb228-5"><a href="sentiment-analysis-and-wordcloud.html#cb228-5"></a><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span></span>
+<span id="cb228-6"><a href="sentiment-analysis-and-wordcloud.html#cb228-6"></a><span class="st">  </span><span class="kw">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+## # Groups:   id [6]
+##      id     n
+##   &lt;int&gt; &lt;int&gt;
+## 1     1    54
+## 2     2    80
+## 3     3    37
+## 4     4    20
+## 5     5    37
+## 6     6   949</code></pre>
+</div>
+<div id="word-lexicons---bing" class="section level3">
+<h3><span class="header-section-number">20.2.2</span> Word lexicons —- Bing</h3>
+<p>There are a number of word lexicons that can be used to classify words as being positive or negative. The bing lexicon categorizes words as being positive and negative.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="sentiment-analysis-and-wordcloud.html#cb230-1"></a>pos_neg =<span class="st"> </span>videogame<span class="op">%&gt;%</span></span>
+<span id="cb230-2"><a href="sentiment-analysis-and-wordcloud.html#cb230-2"></a><span class="st">            </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb230-3"><a href="sentiment-analysis-and-wordcloud.html#cb230-3"></a><span class="st">            </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review)<span class="op">%&gt;%</span></span>
+<span id="cb230-4"><a href="sentiment-analysis-and-wordcloud.html#cb230-4"></a><span class="st">            </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))</span>
+<span id="cb230-5"><a href="sentiment-analysis-and-wordcloud.html#cb230-5"></a><span class="kw">head</span>(pos_neg)</span></code></pre></div>
+<pre><code>##   id    word sentiment
+## 1  1    fake  negative
+## 2  1   wrong  negative
+## 3  1    fake  negative
+## 4  1    good  positive
+## 5  2 strange  negative
+## 6  2    like  positive</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="sentiment-analysis-and-wordcloud.html#cb232-1"></a><span class="kw">ggplot</span>(pos_neg,<span class="kw">aes</span>(<span class="dt">x=</span>sentiment,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
+<span id="cb232-2"><a href="sentiment-analysis-and-wordcloud.html#cb232-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span></span>
+<span id="cb232-3"><a href="sentiment-analysis-and-wordcloud.html#cb232-3"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></span>
+<span id="cb232-4"><a href="sentiment-analysis-and-wordcloud.html#cb232-4"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
+<p><img src="sentiment_analysis_and_wordcloud_files/figure-html/visualize-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The amount of <em>positive words</em> is almost as <strong>twice</strong> as the amount of <em>negative words</em>.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="sentiment-analysis-and-wordcloud.html#cb233-1"></a>rating_sentiment =<span class="st"> </span></span>
+<span id="cb233-2"><a href="sentiment-analysis-and-wordcloud.html#cb233-2"></a><span class="st">  </span>videogame <span class="op">%&gt;%</span></span>
+<span id="cb233-3"><a href="sentiment-analysis-and-wordcloud.html#cb233-3"></a><span class="st">    </span><span class="kw">select</span>(id,review,review_rating)<span class="op">%&gt;%</span></span>
+<span id="cb233-4"><a href="sentiment-analysis-and-wordcloud.html#cb233-4"></a><span class="st">    </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
+<span id="cb233-5"><a href="sentiment-analysis-and-wordcloud.html#cb233-5"></a><span class="st">    </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb233-6"><a href="sentiment-analysis-and-wordcloud.html#cb233-6"></a><span class="st">    </span><span class="kw">group_by</span>(review_rating,sentiment)<span class="op">%&gt;%</span></span>
+<span id="cb233-7"><a href="sentiment-analysis-and-wordcloud.html#cb233-7"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">amount =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></span>
+<span id="cb233-8"><a href="sentiment-analysis-and-wordcloud.html#cb233-8"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">proportion =</span> amount<span class="op">/</span><span class="kw">sum</span>(amount))</span>
+<span id="cb233-9"><a href="sentiment-analysis-and-wordcloud.html#cb233-9"></a></span>
+<span id="cb233-10"><a href="sentiment-analysis-and-wordcloud.html#cb233-10"></a>rating_sentiment <span class="op">%&gt;%</span></span>
+<span id="cb233-11"><a href="sentiment-analysis-and-wordcloud.html#cb233-11"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>review_rating,<span class="dt">y=</span>proportion,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
+<span id="cb233-12"><a href="sentiment-analysis-and-wordcloud.html#cb233-12"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
+<span id="cb233-13"><a href="sentiment-analysis-and-wordcloud.html#cb233-13"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
+<p><img src="sentiment_analysis_and_wordcloud_files/figure-html/check%20whether%20reviews%20of%20lots%20of%20positive%20words%20are%20helpful-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The proportion of positive words increases as the review_rating growth. Ratings of 3 and 4 are barely the same in terms of the positive-negative structure of people’s comments.</p>
+</div>
+<div id="word-lexicons---nrc" class="section level3">
+<h3><span class="header-section-number">20.2.3</span> Word lexicons —- nrc</h3>
+<p>A word may reflect more than just valence. The ‘nrc’ lexicon categorizes words by emotion.</p>
+<p><em>Please note that the next two code chunks must be run interactively since they require the user to consent to the license agreement for using the nrc lexicon. See here for more detail: <a href="https://github.com/EmilHvitfeldt/textdata/issues/19" class="uri">https://github.com/EmilHvitfeldt/textdata/issues/19</a></em></p>
+<p>Emotion in reviews</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="sentiment-analysis-and-wordcloud.html#cb234-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb234-2"><a href="sentiment-analysis-and-wordcloud.html#cb234-2"></a><span class="st">  </span><span class="kw">select</span>(id,review) <span class="op">%&gt;%</span></span>
+<span id="cb234-3"><a href="sentiment-analysis-and-wordcloud.html#cb234-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review) <span class="op">%&gt;%</span></span>
+<span id="cb234-4"><a href="sentiment-analysis-and-wordcloud.html#cb234-4"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;nrc&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb234-5"><a href="sentiment-analysis-and-wordcloud.html#cb234-5"></a><span class="st">  </span><span class="kw">group_by</span>(sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb234-6"><a href="sentiment-analysis-and-wordcloud.html#cb234-6"></a><span class="st">    </span><span class="kw">count</span>()</span></code></pre></div>
+<p>Let’s visualize</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="sentiment-analysis-and-wordcloud.html#cb235-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb235-2"><a href="sentiment-analysis-and-wordcloud.html#cb235-2"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb235-3"><a href="sentiment-analysis-and-wordcloud.html#cb235-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review)<span class="op">%&gt;%</span></span>
+<span id="cb235-4"><a href="sentiment-analysis-and-wordcloud.html#cb235-4"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;nrc&#39;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb235-5"><a href="sentiment-analysis-and-wordcloud.html#cb235-5"></a><span class="st">  </span><span class="kw">group_by</span>(sentiment)<span class="op">%&gt;%</span></span>
+<span id="cb235-6"><a href="sentiment-analysis-and-wordcloud.html#cb235-6"></a><span class="st">    </span><span class="kw">count</span>()<span class="op">%&gt;%</span></span>
+<span id="cb235-7"><a href="sentiment-analysis-and-wordcloud.html#cb235-7"></a><span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(sentiment,<span class="dt">X =</span> n),<span class="dt">y=</span>n,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
+<span id="cb235-8"><a href="sentiment-analysis-and-wordcloud.html#cb235-8"></a><span class="st">        </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
+<span id="cb235-9"><a href="sentiment-analysis-and-wordcloud.html#cb235-9"></a><span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span>F)<span class="op">+</span></span>
+<span id="cb235-10"><a href="sentiment-analysis-and-wordcloud.html#cb235-10"></a><span class="st">        </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
+<span id="cb235-11"><a href="sentiment-analysis-and-wordcloud.html#cb235-11"></a><span class="st">        </span><span class="kw">theme_wsj</span>()</span></code></pre></div>
+</div>
+</div>
+<div id="wordcloud" class="section level2">
+<h2><span class="header-section-number">20.3</span> Wordcloud</h2>
+<p>Wordclouds sometime could offer little insight into the data, yet they tend to be very good at capturing interest of non-technical audiences.</p>
+<div id="simple-word-cloud-visualization" class="section level3">
+<h3><span class="header-section-number">20.3.1</span> Simple Word Cloud Visualization</h3>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="sentiment-analysis-and-wordcloud.html#cb236-1"></a>wordcloudData1 =<span class="st"> </span></span>
+<span id="cb236-2"><a href="sentiment-analysis-and-wordcloud.html#cb236-2"></a><span class="st">  </span>videogame<span class="op">%&gt;%</span></span>
+<span id="cb236-3"><a href="sentiment-analysis-and-wordcloud.html#cb236-3"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb236-4"><a href="sentiment-analysis-and-wordcloud.html#cb236-4"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
+<span id="cb236-5"><a href="sentiment-analysis-and-wordcloud.html#cb236-5"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words)<span class="op">%&gt;%</span></span>
+<span id="cb236-6"><a href="sentiment-analysis-and-wordcloud.html#cb236-6"></a><span class="st">  </span><span class="kw">group_by</span>(word)<span class="op">%&gt;%</span></span>
+<span id="cb236-7"><a href="sentiment-analysis-and-wordcloud.html#cb236-7"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">freq =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></span>
+<span id="cb236-8"><a href="sentiment-analysis-and-wordcloud.html#cb236-8"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(freq))<span class="op">%&gt;%</span></span>
+<span id="cb236-9"><a href="sentiment-analysis-and-wordcloud.html#cb236-9"></a><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></span>
+<span id="cb236-10"><a href="sentiment-analysis-and-wordcloud.html#cb236-10"></a><span class="st">  </span><span class="kw">data.frame</span>()</span>
+<span id="cb236-11"><a href="sentiment-analysis-and-wordcloud.html#cb236-11"></a></span>
+<span id="cb236-12"><a href="sentiment-analysis-and-wordcloud.html#cb236-12"></a><span class="kw">set.seed</span>(<span class="dv">617</span>)</span>
+<span id="cb236-13"><a href="sentiment-analysis-and-wordcloud.html#cb236-13"></a><span class="kw">wordcloud</span>(<span class="dt">words =</span> wordcloudData1<span class="op">$</span>word,wordcloudData1<span class="op">$</span>freq,<span class="dt">scale=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.5</span>),<span class="dt">max.words =</span> <span class="dv">100</span>,<span class="dt">colors=</span><span class="kw">brewer.pal</span>(<span class="dv">9</span>,<span class="st">&quot;Spectral&quot;</span>))</span></code></pre></div>
+<p><img src="sentiment_analysis_and_wordcloud_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="comparison-word-cloud" class="section level3">
+<h3><span class="header-section-number">20.3.2</span> Comparison Word Cloud</h3>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="sentiment-analysis-and-wordcloud.html#cb237-1"></a>wordcloudData2 =<span class="st"> </span></span>
+<span id="cb237-2"><a href="sentiment-analysis-and-wordcloud.html#cb237-2"></a><span class="st">  </span>videogame<span class="op">%&gt;%</span></span>
+<span id="cb237-3"><a href="sentiment-analysis-and-wordcloud.html#cb237-3"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb237-4"><a href="sentiment-analysis-and-wordcloud.html#cb237-4"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
+<span id="cb237-5"><a href="sentiment-analysis-and-wordcloud.html#cb237-5"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words)<span class="op">%&gt;%</span></span>
+<span id="cb237-6"><a href="sentiment-analysis-and-wordcloud.html#cb237-6"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb237-7"><a href="sentiment-analysis-and-wordcloud.html#cb237-7"></a><span class="st">  </span><span class="kw">count</span>(sentiment,word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span></span>
+<span id="cb237-8"><a href="sentiment-analysis-and-wordcloud.html#cb237-8"></a><span class="st">  </span><span class="kw">spread</span>(<span class="dt">key=</span>sentiment,<span class="dt">value =</span> n,<span class="dt">fill=</span><span class="dv">0</span>)<span class="op">%&gt;%</span></span>
+<span id="cb237-9"><a href="sentiment-analysis-and-wordcloud.html#cb237-9"></a><span class="st">  </span><span class="kw">data.frame</span>()</span>
+<span id="cb237-10"><a href="sentiment-analysis-and-wordcloud.html#cb237-10"></a><span class="kw">rownames</span>(wordcloudData2) =<span class="st"> </span>wordcloudData2[,<span class="st">&#39;word&#39;</span>]</span>
+<span id="cb237-11"><a href="sentiment-analysis-and-wordcloud.html#cb237-11"></a>wordcloudData2 =<span class="st"> </span>wordcloudData2[,<span class="kw">c</span>(<span class="st">&#39;positive&#39;</span>,<span class="st">&#39;negative&#39;</span>)]</span>
+<span id="cb237-12"><a href="sentiment-analysis-and-wordcloud.html#cb237-12"></a></span>
+<span id="cb237-13"><a href="sentiment-analysis-and-wordcloud.html#cb237-13"></a><span class="kw">set.seed</span>(<span class="dv">617</span>)</span>
+<span id="cb237-14"><a href="sentiment-analysis-and-wordcloud.html#cb237-14"></a><span class="kw">comparison.cloud</span>(<span class="dt">term.matrix =</span> wordcloudData2,<span class="dt">scale =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.5</span>),<span class="dt">max.words =</span> <span class="dv">200</span>, <span class="dt">rot.per=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="sentiment_analysis_and_wordcloud_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Hope you can enjoy this tutorial and explore more on text mining.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-tableau-with-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="twitter-sentiment-analysis-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtr13/cc21/edit/main/sentiment_analysis_and_wordcloud.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jtr13/cc21/blob/main/sentiment_analysis_and_wordcloud.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

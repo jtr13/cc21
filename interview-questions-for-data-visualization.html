@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 24 Interview questions for data visualization | Spring 2021 EDAV Community Contributions</title>
+  <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 24 Interview questions for data visualization | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="github-repo" content="jtr13/cc21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 24 Interview questions for data visualization | Spring 2021 EDAV Community Contributions" />
+  
+  <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  
+
+
+
+<meta name="date" content="2021-03-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="up-and-running-quickly-with-leaflet.html"/>
+<link rel="next" href="zoom-session-in-finance-and-data-science.html"/>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">cc for EDAV 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Community contribution assignment</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#logistics"><i class="fa fa-check"></i><b>1.1</b> Logistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#groups"><i class="fa fa-check"></i><b>1.1.1</b> Groups</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#submitting-your-assignment"><i class="fa fa-check"></i><b>1.1.2</b> Submitting your assignment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html"><i class="fa fa-check"></i><b>2</b> GitHub submission instructions</a><ul>
+<li class="chapter" data-level="2.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#background"><i class="fa fa-check"></i><b>2.1</b> Background</a></li>
+<li class="chapter" data-level="2.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#preparing-your-.rmd-file"><i class="fa fa-check"></i><b>2.2</b> Preparing your <code>.Rmd</code> file</a></li>
+<li class="chapter" data-level="2.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#submission-steps"><i class="fa fa-check"></i><b>2.3</b> Submission steps</a></li>
+<li class="chapter" data-level="2.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#optional-tweaks"><i class="fa fa-check"></i><b>2.4</b> Optional tweaks</a></li>
+<li class="chapter" data-level="2.5" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#faq"><i class="fa fa-check"></i><b>2.5</b> FAQ</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-should-i-expect-after-creating-a-pull-request"><i class="fa fa-check"></i><b>2.5.1</b> What should I expect after creating a pull request?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-before-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.2</b> What if I catch mistakes before my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-after-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.3</b> What if I catch mistakes after my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#other-questions"><i class="fa fa-check"></i><b>2.5.4</b> Other questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sample-project.html"><a href="sample-project.html"><i class="fa fa-check"></i><b>3</b> Sample project</a></li>
+<li class="part"><span><b>I Package Recommendation</b></span></li>
+<li class="chapter" data-level="4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html"><i class="fa fa-check"></i><b>4</b> Introduction to Quandl()</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#introduction"><i class="fa fa-check"></i><b>4.1</b> INTRODUCTION</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#installation"><i class="fa fa-check"></i><b>4.1.1</b> Installation :</a></li>
+<li class="chapter" data-level="4.1.2" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#load-package"><i class="fa fa-check"></i><b>4.1.2</b> Load Package</a></li>
+<li class="chapter" data-level="4.1.3" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#set-api-key"><i class="fa fa-check"></i><b>4.1.3</b> Set API key</a></li>
+<li class="chapter" data-level="4.1.4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#loading-data"><i class="fa fa-check"></i><b>4.1.4</b> Loading Data</a></li>
+<li class="chapter" data-level="4.1.5" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#type"><i class="fa fa-check"></i><b>4.1.5</b> Type</a></li>
+<li class="chapter" data-level="4.1.6" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#transform"><i class="fa fa-check"></i><b>4.1.6</b> Transform</a></li>
+<li class="chapter" data-level="4.1.7" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#order"><i class="fa fa-check"></i><b>4.1.7</b> Order</a></li>
+<li class="chapter" data-level="4.1.8" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#collapse"><i class="fa fa-check"></i><b>4.1.8</b> collapse</a></li>
+<li class="chapter" data-level="4.1.9" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#slicing-data"><i class="fa fa-check"></i><b>4.1.9</b> Slicing data</a></li>
+<li class="chapter" data-level="4.1.10" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#finding-a-dataset-in-quandl"><i class="fa fa-check"></i><b>4.1.10</b> Finding a dataset in Quandl</a></li>
+<li class="chapter" data-level="4.1.11" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#example"><i class="fa fa-check"></i><b>4.1.11</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Cheatsheets</b></span></li>
+<li class="chapter" data-level="5" data-path="date-time-handling-in-r-cheatsheet.html"><a href="date-time-handling-in-r-cheatsheet.html"><i class="fa fa-check"></i><b>5</b> Date-Time Handling in R Cheatsheet</a></li>
+<li class="chapter" data-level="6" data-path="tidy-data-cheatsheet.html"><a href="tidy-data-cheatsheet.html"><i class="fa fa-check"></i><b>6</b> Tidy data Cheatsheet</a></li>
+<li class="chapter" data-level="7" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html"><i class="fa fa-check"></i><b>7</b> GGvis cheatsheet</a><ul>
+<li class="chapter" data-level="7.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#ggvis"><i class="fa fa-check"></i><b>7.1</b> ggvis</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#getting-start"><i class="fa fa-check"></i><b>7.1.1</b> Getting start</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#aesthetics"><i class="fa fa-check"></i><b>7.2</b> aesthetics</a></li>
+<li class="chapter" data-level="7.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#interaction"><i class="fa fa-check"></i><b>7.3</b> Interaction</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#basic-interaction"><i class="fa fa-check"></i><b>7.3.1</b> basic interaction</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#input-option"><i class="fa fa-check"></i><b>7.3.2</b> Input option</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#map"><i class="fa fa-check"></i><b>7.3.3</b> Map</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#layers"><i class="fa fa-check"></i><b>7.4</b> Layers</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#simple-layers"><i class="fa fa-check"></i><b>7.4.1</b> Simple layers</a></li>
+<li class="chapter" data-level="7.4.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#compound-layers"><i class="fa fa-check"></i><b>7.4.2</b> Compound layers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="statistical-hypothesis-testing-cheatsheet.html"><a href="statistical-hypothesis-testing-cheatsheet.html"><i class="fa fa-check"></i><b>8</b> Statistical_hypothesis_testing_cheatsheet</a></li>
+<li class="part"><span><b>III Translations</b></span></li>
+<li class="chapter" data-level="9" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html"><i class="fa fa-check"></i><b>9</b> Colors_in_R_Chinese_translation</a><ul>
+<li class="chapter" data-level="9.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>9.1</b> 在R中使用颜色</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>9.1.1</b> R自带的指定颜色名称</a></li>
+<li class="chapter" data-level="9.1.2" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>9.1.2</b> 使用十六进制编码指定颜色</a></li>
+<li class="chapter" data-level="9.1.3" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>9.1.3</b> 使用 RColorBrewer 调色盘</a></li>
+<li class="chapter" data-level="9.1.4" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>9.1.4</b> 使用 Wes Anderson 调色盘</a></li>
+<li class="chapter" data-level="9.1.5" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>9.1.5</b> 创建一个n个连续颜色的矢量</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html"><i class="fa fa-check"></i><b>10</b> Managing Data Frames with dplyr Package in Chinese</a><ul>
+<li class="chapter" data-level="10.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#short-description-of-my-contribution"><i class="fa fa-check"></i><b>10.1</b> Short Description of My Contribution</a></li>
+<li class="chapter" data-level="10.2" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#数据表"><i class="fa fa-check"></i><b>10.2</b> 数据表</a></li>
+<li class="chapter" data-level="10.3" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr包"><i class="fa fa-check"></i><b>10.3</b> dplyr包</a></li>
+<li class="chapter" data-level="10.4" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr语法"><i class="fa fa-check"></i><b>10.4</b> dplyr语法</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#通用dplyr函数属性"><i class="fa fa-check"></i><b>10.4.1</b> 通用dplyr函数属性</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#安装dplyr包"><i class="fa fa-check"></i><b>10.5</b> 安装dplyr包</a></li>
+<li class="chapter" data-level="10.6" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#select"><i class="fa fa-check"></i><b>10.6</b> select()</a></li>
+<li class="chapter" data-level="10.7" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#filter"><i class="fa fa-check"></i><b>10.7</b> filter()</a></li>
+<li class="chapter" data-level="10.8" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#arrange"><i class="fa fa-check"></i><b>10.8</b> arrange()</a></li>
+<li class="chapter" data-level="10.9" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#rename"><i class="fa fa-check"></i><b>10.9</b> rename()</a></li>
+<li class="chapter" data-level="10.10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#mutate"><i class="fa fa-check"></i><b>10.10</b> mutate()</a></li>
+<li class="chapter" data-level="10.11" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#group_by"><i class="fa fa-check"></i><b>10.11</b> group_by()</a></li>
+<li class="chapter" data-level="10.12" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#section"><i class="fa fa-check"></i><b>10.12</b> %&gt;%</a></li>
+<li class="chapter" data-level="10.13" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#总结"><i class="fa fa-check"></i><b>10.13</b> 总结</a></li>
+<li class="chapter" data-level="10.14" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#cited-resourses"><i class="fa fa-check"></i><b>10.14</b> Cited Resourses</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="introduction-to-rstudio-in-portuguese.html"><a href="introduction-to-rstudio-in-portuguese.html"><i class="fa fa-check"></i><b>11</b> Introduction to Rstudio in Portuguese</a></li>
+<li class="chapter" data-level="12" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html"><i class="fa fa-check"></i><b>12</b> Chinese translation of using ARIMA models in R</a><ul>
+<li class="chapter" data-level="12.1" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#arima模型"><i class="fa fa-check"></i><b>12.1</b> ARIMA模型</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#差异化一组时间序列"><i class="fa fa-check"></i><b>12.1.1</b> 差异化一组时间序列</a></li>
+<li class="chapter" data-level="12.1.2" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#选择arima候选模型"><i class="fa fa-check"></i><b>12.1.2</b> 选择ARIMA候选模型</a></li>
+<li class="chapter" data-level="12.1.3" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#使用arima模型进行预测"><i class="fa fa-check"></i><b>12.1.3</b> 使用ARIMA模型进行预测</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html"><i class="fa fa-check"></i><b>13</b> Chinese translation of broom package</a><ul>
+<li class="chapter" data-level="13.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#序言"><i class="fa fa-check"></i><b>13.1</b> 序言</a></li>
+<li class="chapter" data-level="13.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#整理函数"><i class="fa fa-check"></i><b>13.2</b> 整理函数</a></li>
+<li class="chapter" data-level="13.3" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#其他案例"><i class="fa fa-check"></i><b>13.3</b> 其他案例</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#广义线性模型和非线性模型"><i class="fa fa-check"></i><b>13.3.1</b> 广义线性模型和非线性模型</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#假设检验"><i class="fa fa-check"></i><b>13.3.2</b> 假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#规则"><i class="fa fa-check"></i><b>13.4</b> 规则</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#全部函数"><i class="fa fa-check"></i><b>13.4.1</b> 全部函数</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#tidy函数"><i class="fa fa-check"></i><b>13.4.2</b> tidy函数</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#augment函数"><i class="fa fa-check"></i><b>13.4.3</b> augment函数</a></li>
+<li class="chapter" data-level="13.4.4" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#glance函数"><i class="fa fa-check"></i><b>13.4.4</b> glance函数</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="translation-of-visualizations-that-really-work.html"><a href="translation-of-visualizations-that-really-work.html"><i class="fa fa-check"></i><b>14</b> Translation of Visualizations That Really Work</a></li>
+<li class="chapter" data-level="15" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><i class="fa fa-check"></i><b>15</b> Chinese Translation of Bar Chart and Cleveland Dot Plot</a><ul>
+<li class="chapter" data-level="15.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#图表条形图"><i class="fa fa-check"></i><b>15.1</b> 图表：条形图</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#综述"><i class="fa fa-check"></i><b>15.1.1</b> 综述</a></li>
+<li class="chapter" data-level="15.1.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#太长不看"><i class="fa fa-check"></i><b>15.1.2</b> 太长不看</a></li>
+<li class="chapter" data-level="15.1.3" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#简单的例子"><i class="fa fa-check"></i><b>15.1.3</b> 简单的例子</a></li>
+<li class="chapter" data-level="15.1.4" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#理论"><i class="fa fa-check"></i><b>15.1.4</b> 理论</a></li>
+<li class="chapter" data-level="15.1.5" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#何时使用"><i class="fa fa-check"></i><b>15.1.5</b> 何时使用</a></li>
+<li class="chapter" data-level="15.1.6" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#注意事项"><i class="fa fa-check"></i><b>15.1.6</b> 注意事项</a></li>
+<li class="chapter" data-level="15.1.7" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#修改"><i class="fa fa-check"></i><b>15.1.7</b> 修改</a></li>
+<li class="chapter" data-level="15.1.8" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#外部资源"><i class="fa fa-check"></i><b>15.1.8</b> 外部资源</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#图表克利夫兰点图"><i class="fa fa-check"></i><b>15.2</b> 图表：克利夫兰点图</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#综述-1"><i class="fa fa-check"></i><b>15.2.1</b> 综述</a></li>
+<li class="chapter" data-level="15.2.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#多点图"><i class="fa fa-check"></i><b>15.2.2</b> 多点图</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Tutorials</b></span></li>
+<li class="chapter" data-level="16" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>16</b> Creating R Packages</a></li>
+<li class="chapter" data-level="17" data-path="getting-data-using-apis.html"><a href="getting-data-using-apis.html"><i class="fa fa-check"></i><b>17</b> Getting data using APIs</a></li>
+<li class="chapter" data-level="18" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html"><i class="fa fa-check"></i><b>18</b> Introdution to Time Series Analysis</a><ul>
+<li class="chapter" data-level="18.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#overview"><i class="fa fa-check"></i><b>18.1</b> Overview</a></li>
+<li class="chapter" data-level="18.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#introduction-1"><i class="fa fa-check"></i><b>18.2</b> Introduction</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#example-1"><i class="fa fa-check"></i><b>18.2.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#simple-time-series"><i class="fa fa-check"></i><b>18.3</b> Simple Time Series</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#definition"><i class="fa fa-check"></i><b>18.3.1</b> Definition</a></li>
+<li class="chapter" data-level="18.3.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#white-noise"><i class="fa fa-check"></i><b>18.3.2</b> White Noise</a></li>
+<li class="chapter" data-level="18.3.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#moving-average-of-white-noise"><i class="fa fa-check"></i><b>18.3.3</b> Moving Average of White Noise</a></li>
+<li class="chapter" data-level="18.3.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#random-walk-with-drift"><i class="fa fa-check"></i><b>18.3.4</b> Random Walk with Drift</a></li>
+<li class="chapter" data-level="18.3.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#ar1"><i class="fa fa-check"></i><b>18.3.5</b> AR(1)</a></li>
+<li class="chapter" data-level="18.3.6" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#ma1"><i class="fa fa-check"></i><b>18.3.6</b> MA(1)</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#measures-of-dependence"><i class="fa fa-check"></i><b>18.4</b> Measures of Dependence</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#mean-function"><i class="fa fa-check"></i><b>18.4.1</b> Mean Function</a></li>
+<li class="chapter" data-level="18.4.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#autocovariance-function"><i class="fa fa-check"></i><b>18.4.2</b> Autocovariance Function</a></li>
+<li class="chapter" data-level="18.4.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#autocorrelation-function-acf"><i class="fa fa-check"></i><b>18.4.3</b> Autocorrelation Function (ACF)</a></li>
+<li class="chapter" data-level="18.4.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#three-measures-for-simple-time-series-above"><i class="fa fa-check"></i><b>18.4.4</b> Three Measures for Simple Time Series Above</a></li>
+<li class="chapter" data-level="18.4.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#application"><i class="fa fa-check"></i><b>18.4.5</b> Application</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#reference"><i class="fa fa-check"></i><b>18.5</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="intro-to-tableau-with-r.html"><a href="intro-to-tableau-with-r.html"><i class="fa fa-check"></i><b>19</b> Intro to Tableau with R</a></li>
+<li class="chapter" data-level="20" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html"><i class="fa fa-check"></i><b>20</b> Sentiment analysis and wordcloud</a><ul>
+<li class="chapter" data-level="20.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#read-and-explore-the-text"><i class="fa fa-check"></i><b>20.1</b> Read and explore the text</a><ul>
+<li class="chapter" data-level="20.1.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#explore-ratings-of-reviews"><i class="fa fa-check"></i><b>20.1.1</b> Explore Ratings of Reviews</a></li>
+<li class="chapter" data-level="20.1.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#distribution-of-ratings"><i class="fa fa-check"></i><b>20.1.2</b> Distribution of Ratings</a></li>
+<li class="chapter" data-level="20.1.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#explore-the-reviews"><i class="fa fa-check"></i><b>20.1.3</b> Explore the reviews</a></li>
+<li class="chapter" data-level="20.1.4" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#most-common-words"><i class="fa fa-check"></i><b>20.1.4</b> Most common words</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#sentiment-analysis"><i class="fa fa-check"></i><b>20.2</b> Sentiment analysis</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#words-in-reviews"><i class="fa fa-check"></i><b>20.2.1</b> Words in reviews</a></li>
+<li class="chapter" data-level="20.2.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#word-lexicons---bing"><i class="fa fa-check"></i><b>20.2.2</b> Word lexicons —- Bing</a></li>
+<li class="chapter" data-level="20.2.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#word-lexicons---nrc"><i class="fa fa-check"></i><b>20.2.3</b> Word lexicons —- nrc</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#wordcloud"><i class="fa fa-check"></i><b>20.3</b> Wordcloud</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#simple-word-cloud-visualization"><i class="fa fa-check"></i><b>20.3.1</b> Simple Word Cloud Visualization</a></li>
+<li class="chapter" data-level="20.3.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#comparison-word-cloud"><i class="fa fa-check"></i><b>20.3.2</b> Comparison Word Cloud</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html"><i class="fa fa-check"></i><b>21</b> Twitter sentiment analysis in R</a><ul>
+<li class="chapter" data-level="21.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#loading-all-the-required-r-libraries"><i class="fa fa-check"></i><b>21.1</b> Loading all the required R libraries</a></li>
+<li class="chapter" data-level="21.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#sentiment-analysis-1"><i class="fa fa-check"></i><b>21.2</b> Sentiment Analysis</a></li>
+<li class="chapter" data-level="21.3" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#twitter-authorization-to-extract-tweets"><i class="fa fa-check"></i><b>21.3</b> Twitter authorization to extract tweets:</a></li>
+<li class="chapter" data-level="21.4" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#extracting-global-warming-tweets"><i class="fa fa-check"></i><b>21.4</b> Extracting Global Warming tweets:</a></li>
+<li class="chapter" data-level="21.5" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#frequency-of-tweets"><i class="fa fa-check"></i><b>21.5</b> Frequency of Tweets</a></li>
+<li class="chapter" data-level="21.6" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#estimating-sentiment-score"><i class="fa fa-check"></i><b>21.6</b> Estimating Sentiment Score</a><ul>
+<li class="chapter" data-level="21.6.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#loading-sentiment-word-lists"><i class="fa fa-check"></i><b>21.6.1</b> Loading sentiment word lists:</a></li>
+<li class="chapter" data-level="21.6.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#sentiment-scoring-function"><i class="fa fa-check"></i><b>21.6.2</b> Sentiment scoring function:</a></li>
+<li class="chapter" data-level="21.6.3" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#calculating-the-sentiment-score"><i class="fa fa-check"></i><b>21.6.3</b> Calculating the sentiment score:</a></li>
+</ul></li>
+<li class="chapter" data-level="21.7" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#histogram-of-sentiment-scores"><i class="fa fa-check"></i><b>21.7</b> Histogram of sentiment scores:</a></li>
+<li class="chapter" data-level="21.8" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#barplot-of-sentiment-type"><i class="fa fa-check"></i><b>21.8</b> Barplot of sentiment type:</a></li>
+<li class="chapter" data-level="21.9" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#wordcloud-1"><i class="fa fa-check"></i><b>21.9</b> Wordcloud:</a></li>
+<li class="chapter" data-level="21.10" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#word-frequency-plot"><i class="fa fa-check"></i><b>21.10</b> Word Frequency plot:</a></li>
+<li class="chapter" data-level="21.11" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#network-analysis"><i class="fa fa-check"></i><b>21.11</b> Network Analysis</a><ul>
+<li class="chapter" data-level="21.11.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#bigram-analysis-and-network-definition"><i class="fa fa-check"></i><b>21.11.1</b> Bigram analysis and Network definition</a></li>
+<li class="chapter" data-level="21.11.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#network-visualization"><i class="fa fa-check"></i><b>21.11.2</b> Network visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="21.12" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#references"><i class="fa fa-check"></i><b>21.12</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="introduction-to-pyecharts.html"><a href="introduction-to-pyecharts.html"><i class="fa fa-check"></i><b>22</b> Introduction to pyecharts</a></li>
+<li class="chapter" data-level="23" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html"><i class="fa fa-check"></i><b>23</b> Up and Running (Quickly) with Leaflet</a><ul>
+<li class="chapter" data-level="23.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>23.1</b> What is leaflet?</a></li>
+<li class="chapter" data-level="23.2" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#why-should-we-use-leaflet-on-r"><i class="fa fa-check"></i><b>23.2</b> Why should we use leaflet on R?</a><ul>
+<li class="chapter" data-level="23.2.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#reason-why-you-should-use-leaflet"><i class="fa fa-check"></i><b>23.2.1</b> Reason why you should use leaflet</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#why-another-how-to-post-on-leaflet"><i class="fa fa-check"></i><b>23.3</b> Why another how-to post on Leaflet?</a></li>
+<li class="chapter" data-level="23.4" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#first-creating-a-base-map"><i class="fa fa-check"></i><b>23.4</b> First: Creating a base map</a></li>
+<li class="chapter" data-level="23.5" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#second-loading-feature-data"><i class="fa fa-check"></i><b>23.5</b> Second: Loading feature data</a><ul>
+<li class="chapter" data-level="23.5.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#what-does-geospatial-data-look-like"><i class="fa fa-check"></i><b>23.5.1</b> What does geospatial data look like?</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#last-saving-the-map"><i class="fa fa-check"></i><b>23.6</b> Last: Saving the map</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html"><i class="fa fa-check"></i><b>24</b> Interview questions for data visualization</a><ul>
+<li class="chapter" data-level="24.0.1" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#general-questions"><i class="fa fa-check"></i><b>24.0.1</b> General Questions</a></li>
+<li class="chapter" data-level="24.0.2" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#r-questions"><i class="fa fa-check"></i><b>24.0.2</b> R Questions</a></li>
+<li class="chapter" data-level="24.0.3" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#python-questions"><i class="fa fa-check"></i><b>24.0.3</b> Python Questions</a></li>
+<li class="chapter" data-level="24.0.4" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#tableau-questions"><i class="fa fa-check"></i><b>24.0.4</b> Tableau Questions</a></li>
+</ul></li>
+<li class="part"><span><b>V Topical Discussions</b></span></li>
+<li class="chapter" data-level="25" data-path="zoom-session-in-finance-and-data-science.html"><a href="zoom-session-in-finance-and-data-science.html"><i class="fa fa-check"></i><b>25</b> Zoom session in Finance and Data-Science</a></li>
+<li class="chapter" data-level="26" data-path="data-science-the-environment-and-sustainability.html"><a href="data-science-the-environment-and-sustainability.html"><i class="fa fa-check"></i><b>26</b> Data science, the environment, and sustainability</a></li>
+<li class="chapter" data-level="27" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html"><i class="fa fa-check"></i><b>27</b> Absentee ballot voting in 2020 presidental election</a><ul>
+<li class="chapter" data-level="27.1" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#background-and-research-idea"><i class="fa fa-check"></i><b>27.1</b> Background and Research Idea</a></li>
+<li class="chapter" data-level="27.2" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#analyze-ballot-rejection-data"><i class="fa fa-check"></i><b>27.2</b> Analyze ballot rejection data</a></li>
+<li class="chapter" data-level="27.3" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#categorize-16-main-ballot-rejection-reasons"><i class="fa fa-check"></i><b>27.3</b> Categorize 16 main ballot rejection reasons</a></li>
+<li class="chapter" data-level="27.4" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#show-participation-rate-and-ballot-non-accepted-rate-on-a-georgia-map"><i class="fa fa-check"></i><b>27.4</b> Show participation rate and ballot non-accepted rate on a Georgia map</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="final-project-zoom-meetup-sports.html"><a href="final-project-zoom-meetup-sports.html"><i class="fa fa-check"></i><b>28</b> Final project Zoom meetup - sports</a></li>
+<li class="chapter" data-level="29" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html"><i class="fa fa-check"></i><b>29</b> Collaborating on RStudio with GitHub</a><ul>
+<li class="chapter" data-level="29.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#objective"><i class="fa fa-check"></i><b>29.1</b> Objective</a></li>
+<li class="chapter" data-level="29.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#what-is-git"><i class="fa fa-check"></i><b>29.2</b> What is Git?</a></li>
+<li class="chapter" data-level="29.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#collaborating-on-github"><i class="fa fa-check"></i><b>29.3</b> Collaborating on GitHub</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#create-a-repository"><i class="fa fa-check"></i><b>29.3.1</b> Create a repository</a></li>
+<li class="chapter" data-level="29.3.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#branching"><i class="fa fa-check"></i><b>29.3.2</b> Branching</a></li>
+<li class="chapter" data-level="29.3.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#add-collaborators"><i class="fa fa-check"></i><b>29.3.3</b> Add Collaborators</a></li>
+<li class="chapter" data-level="29.3.4" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#tracking-changes-on-github"><i class="fa fa-check"></i><b>29.3.4</b> Tracking changes on GitHub</a></li>
+<li class="chapter" data-level="29.3.5" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#blame"><i class="fa fa-check"></i><b>29.3.5</b> Blame</a></li>
+<li class="chapter" data-level="29.3.6" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#issues"><i class="fa fa-check"></i><b>29.3.6</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#getting-started-with-git-on-rstudio"><i class="fa fa-check"></i><b>29.4</b> Getting started with Git on RStudio</a><ul>
+<li class="chapter" data-level="29.4.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#cloning-a-repository-to-a-new-project"><i class="fa fa-check"></i><b>29.4.1</b> Cloning a repository to a new project</a></li>
+<li class="chapter" data-level="29.4.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#cloning-a-repository-set-up-by-someone-else"><i class="fa fa-check"></i><b>29.4.2</b> Cloning a repository set up by someone else</a></li>
+<li class="chapter" data-level="29.4.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#overview-of-git-panel"><i class="fa fa-check"></i><b>29.4.3</b> Overview of Git panel</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#merging-conflicts"><i class="fa fa-check"></i><b>29.5</b> Merging Conflicts</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html"><i class="fa fa-check"></i><b>30</b> Common Errors in R</a><ul>
+<li class="chapter" data-level="30.0.1" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#could-not-find-function"><i class="fa fa-check"></i><b>30.0.1</b> could not find function</a></li>
+<li class="chapter" data-level="30.0.2" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#error-in-if"><i class="fa fa-check"></i><b>30.0.2</b> Error in if</a></li>
+<li class="chapter" data-level="30.0.3" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#object-not-found"><i class="fa fa-check"></i><b>30.0.3</b> Object not found</a></li>
+<li class="chapter" data-level="30.0.4" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unexpected"><i class="fa fa-check"></i><b>30.0.4</b> unexpected …</a></li>
+<li class="chapter" data-level="30.0.5" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#condition-has-length-1"><i class="fa fa-check"></i><b>30.0.5</b> condition has length &gt; 1</a></li>
+<li class="chapter" data-level="30.0.6" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#operator-is-invalid-for-atomic-vectors"><i class="fa fa-check"></i><b>30.0.6</b> $ operator is invalid for atomic vectors</a></li>
+<li class="chapter" data-level="30.0.7" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#argument-is-of-length-zero"><i class="fa fa-check"></i><b>30.0.7</b> argument is of length zero</a></li>
+<li class="chapter" data-level="30.0.8" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unimplemented-type-list"><i class="fa fa-check"></i><b>30.0.8</b> unimplemented type ‘list’</a></li>
+<li class="chapter" data-level="30.0.9" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#undefined-columns-selected"><i class="fa fa-check"></i><b>30.0.9</b> undefined columns selected</a></li>
+<li class="chapter" data-level="30.0.10" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#replacement-has-length-zero"><i class="fa fa-check"></i><b>30.0.10</b> replacement has length zero</a></li>
+<li class="chapter" data-level="30.0.11" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#replacement-has-10-rows-data-has-5"><i class="fa fa-check"></i><b>30.0.11</b> replacement has 10 rows, data has 5</a></li>
+<li class="chapter" data-level="30.0.12" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#by-must-specify-a-uniquely-valid-column"><i class="fa fa-check"></i><b>30.0.12</b> ‘by’ must specify a uniquely valid column</a></li>
+<li class="chapter" data-level="30.0.13" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#incorrect-number-of-subscripts-on-matrix"><i class="fa fa-check"></i><b>30.0.13</b> incorrect number of subscripts on matrix</a></li>
+<li class="chapter" data-level="30.0.14" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#subscript-out-of-bounds"><i class="fa fa-check"></i><b>30.0.14</b> subscript out of bounds</a></li>
+<li class="chapter" data-level="30.0.15" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#cannot-open-the-connection"><i class="fa fa-check"></i><b>30.0.15</b> cannot open the connection</a></li>
+<li class="chapter" data-level="30.0.16" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#non-numeric-argument-to-binary-operator"><i class="fa fa-check"></i><b>30.0.16</b> non-numeric argument to binary operator</a></li>
+<li class="chapter" data-level="30.0.17" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#need-finite-xlim-values"><i class="fa fa-check"></i><b>30.0.17</b> need finite ‘xlim’ values</a></li>
+<li class="chapter" data-level="30.0.18" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unused-argument"><i class="fa fa-check"></i><b>30.0.18</b> unused argument</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="tips-for-debugging.html"><a href="tips-for-debugging.html"><i class="fa fa-check"></i><b>31</b> Tips for Debugging</a><ul>
+<li class="chapter" data-level="31.1" data-path="tips-for-debugging.html"><a href="tips-for-debugging.html#references-1"><i class="fa fa-check"></i><b>31.1</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html"><i class="fa fa-check"></i><b>32</b> In-Person Fitness Hour</a><ul>
+<li class="chapter" data-level="32.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#piazza-announcement"><i class="fa fa-check"></i><b>32.1</b> Piazza Announcement</a></li>
+<li class="chapter" data-level="32.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#final-event"><i class="fa fa-check"></i><b>32.2</b> Final Event</a><ul>
+<li class="chapter" data-level="32.2.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#jump-rope"><i class="fa fa-check"></i><b>32.2.1</b> Jump Rope</a></li>
+<li class="chapter" data-level="32.2.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#monkey-bars"><i class="fa fa-check"></i><b>32.2.2</b> Monkey Bars</a></li>
+<li class="chapter" data-level="32.2.3" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#frisbee"><i class="fa fa-check"></i><b>32.2.3</b> Frisbee</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Appendices</b></span></li>
+<li class="chapter" data-level="33" data-path="github-initial-setup.html"><a href="github-initial-setup.html"><i class="fa fa-check"></i><b>33</b> Github initial setup</a><ul>
+<li class="chapter" data-level="33.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-actions"><i class="fa fa-check"></i><b>33.1</b> GitHub Actions</a><ul>
+<li class="chapter" data-level="33.1.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#secrets"><i class="fa fa-check"></i><b>33.1.1</b> Secrets</a></li>
+<li class="chapter" data-level="33.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>33.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
+<li class="chapter" data-level="33.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>33.1.3</b> GitHub Pages in repo settings</a></li>
+</ul></li>
+<li class="chapter" data-level="33.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>33.2</b> DESCRIPTION file</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>34</b> Tutorial for pull request mergers</a><ul>
+<li class="chapter" data-level="34.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#general"><i class="fa fa-check"></i><b>34.1</b> General</a></li>
+<li class="chapter" data-level="34.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>34.2</b> Check branch</a></li>
+<li class="chapter" data-level="34.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#examine-files-that-were-added-or-modified"><i class="fa fa-check"></i><b>34.3</b> Examine files that were added or modified</a></li>
+<li class="chapter" data-level="34.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-filename"><i class="fa fa-check"></i><b>34.4</b> Check <code>.Rmd</code> filename</a></li>
+<li class="chapter" data-level="34.5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-file-contents"><i class="fa fa-check"></i><b>34.5</b> Check <code>.Rmd</code> file contents</a></li>
+<li class="chapter" data-level="34.6" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#request-changes"><i class="fa fa-check"></i><b>34.6</b> Request changes</a></li>
+<li class="chapter" data-level="34.7" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-the-pull-request"><i class="fa fa-check"></i><b>34.7</b> Merge the pull request</a><ul>
+<li class="chapter" data-level="34.7.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#add-chapter-filename-to-_bookdown.yml-in-prs-branch"><i class="fa fa-check"></i><b>34.7.1</b> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></a></li>
+<li class="chapter" data-level="34.7.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part"><i class="fa fa-check"></i><b>34.7.2</b> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</a></li>
+<li class="chapter" data-level="34.7.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-pr-and-leave-a-comment"><i class="fa fa-check"></i><b>34.7.3</b> Merge PR and leave a comment</a></li>
+<li class="chapter" data-level="34.7.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-updated-version"><i class="fa fa-check"></i><b>34.7.4</b> Check updated version</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spring 2021 EDAV Community Contributions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="interview-questions-for-data-visualization" class="section level1">
+<h1><span class="header-section-number">Chapter 24</span> Interview questions for data visualization</h1>
+<p>Ivy Liu</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="interview-questions-for-data-visualization.html#cb275-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb275-2"><a href="interview-questions-for-data-visualization.html#cb275-2"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<div id="general-questions" class="section level3">
+<h3><span class="header-section-number">24.0.1</span> General Questions</h3>
+<div id="question1-what-is-data-modeling" class="section level4">
+<h4><span class="header-section-number">24.0.1.1</span> Question1: What is data modeling?</h4>
+<p><font size = "3"></p>
+<p>Data modeling is the analysis of data objects that are used in a business or other context and the identification of the relationships among these data objects. Data modeling is the first step in performing object-oriented programming.
+</font><br />
+</p>
+</div>
+<div id="question2-what-are-the-steps-involved-in-a-data-analysis-process" class="section level4">
+<h4><span class="header-section-number">24.0.1.2</span> Question2: What are the steps involved in a data analysis process}</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li>Data exploration<br />
+</li>
+<li>Data preparation<br />
+</li>
+<li>Data modeling<br />
+</li>
+<li>Validation<br />
+</li>
+<li>Implementation of model and tracking<br />
+</font></li>
+</ol>
+</div>
+<div id="question3-why-is-data-cleansing-important-for-data-visualization" class="section level4">
+<h4><span class="header-section-number">24.0.1.3</span> Question3: Why is data cleansing important for data visualization?</h4>
+<p><font size = "3"></p>
+<p>Data cleansing is used for identifying and removing errors and inconsistencies from data in order to enhance the quality of data. This process is crucial and emphasized because wrong data can lead to poor analysis. This step ensures the quality of the data is met to prepare data for visualization.
+</font></p>
+</div>
+<div id="question4-explain-what-should-be-done-with-suspected-or-missing-data" class="section level4">
+<h4><span class="header-section-number">24.0.1.4</span> Question4: Explain what should be done with suspected or missing data?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>Prepare a validation report that gives information of all suspected data. It should give information like validation criteria that it failed and the date and time of occurrence.<br />
+</p></li>
+<li><p>Experience personnel should examine the suspicious data to determine their acceptability.<br />
+</p></li>
+<li><p>Invalid data should be assigned and replaced with a validation code.<br />
+</p></li>
+<li><p>To work on missing data use the best analysis strategy like deletion method, single imputation methods, mean/median/mode imputation, model based methods, etc.<br />
+</p></li>
+</ol>
+<p></font></p>
+</div>
+<div id="question5-what-are-some-important-features-of-a-good-data-visualization" class="section level4">
+<h4><span class="header-section-number">24.0.1.5</span> Question5: What are some important features of a good data visualization?</h4>
+<p><font size = "3"></p>
+<p>The data visualisation should be light and must highlight essential aspects of the data; looking at important variables, what is relatively important, what are the trends and changes. Besides, data visualisation must be visually appealing but should not have unnecessary information in it.</p>
+<p>One can answer this question in multiple ways: from technical points to mentioning key aspects, but be sure to remember saying these points:</p>
+<ol style="list-style-type: decimal">
+<li>Data positioning<br />
+</li>
+<li>Bars over circle and squares<br />
+</li>
+<li>Use of colour theory<br />
+</li>
+<li>Reducing chart junk by avoiding 3D charts and eliminating the use of pie charts to show proportions<br />
+</li>
+<li>why sunburst visualization is more effective for hierarchical plots<br />
+</font></li>
+</ol>
+</div>
+<div id="question6-what-is-a-scatter-plot-for-what-type-of-data-is-scatter-plot-usually-used-for" class="section level4">
+<h4><span class="header-section-number">24.0.1.6</span> Question6: What is a scatter plot? For what type of data is scatter plot usually used for?</h4>
+<p><font size = "3"></p>
+<p>A scatter plot is a chart used to plot a correlation between two or more variables at the same time. It’s usually used for numeric data.
+</font></p>
+<p><img src="data_visualization_interview_questions_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="question7-what-features-might-be-visible-in-scatterplots" class="section level4">
+<h4><span class="header-section-number">24.0.1.7</span> Question7: What features might be visible in scatterplots?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>Correlation: the two variables might have a relationship, for example, one might depend on another. But this is not the same as causation.<br />
+</p></li>
+<li><p>Associations: the variables may be associated with one another.<br />
+</p></li>
+<li><p>Outliers: there could be cases where the data in two dimensions does not follow the general pattern.<br />
+</p></li>
+<li><p>Clusters: sometimes there could be groups of data that form a cluster on the plot.<br />
+</p></li>
+<li><p>Gaps: some combinations of values might not exist in a particular case.<br />
+</p></li>
+<li><p>Barriers: boundaries.<br />
+</p></li>
+<li><p>Conditional relationships: some relationship between the variables rely on a condition to be met.<br />
+</p></li>
+</ol>
+<p></font></p>
+</div>
+<div id="question8-what-type-of-plot-would-you-use-if-you-need-to-demonstrate-relationship-between-variablesparameters" class="section level4">
+<h4><span class="header-section-number">24.0.1.8</span> Question8: What type of plot would you use if you need to demonstrate “relationship” between variables/parameters?</h4>
+<p><font size = "3">
+When we are trying to show the relationship between 2 variables, scatter plots or charts are used. When we are trying to show “relationship” between three variables, bubble charts are used.
+</font></p>
+</div>
+<div id="question9-when-will-you-use-a-histogram-and-when-will-you-use-a-bar-chart-explain-with-an-example." class="section level4">
+<h4><span class="header-section-number">24.0.1.9</span> Question9: When will you use a histogram and when will you use a bar chart? Explain with an example.}</h4>
+<p><font size = "3">
+Both plots are used to plot the distribution of a variable. Histograms are usually used for a categorical variable, while bar charts are used for a categorical variable.
+</font></p>
+</div>
+<div id="question10-what-is-an-outlier" class="section level4">
+<h4><span class="header-section-number">24.0.1.10</span> Question10: What is an outlier?</h4>
+<p><font size = "3">
+The outlier is a commonly used terms by analysts referred for a value that appears far away and diverges from an overall pattern in a sample. There are two types of outliers: univariate and multivariate.
+</font></p>
+</div>
+<div id="question11-what-type-of-data-is-box-plots-usually-used-for-why" class="section level4">
+<h4><span class="header-section-number">24.0.1.11</span> Question11: What type of data is box-plots usually used for? Why?</h4>
+<p><font size = "3">
+Boxplots are usually used for continuous variables. The plot is generally not informative when used for discrete data.
+</font>
+<img src="data_visualization_interview_questions_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="question12-what-information-could-you-gain-from-a-box-plot" class="section level4">
+<h4><span class="header-section-number">24.0.1.12</span> Question12: What information could you gain from a box-plot?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li>Minimum/maximum score<br />
+</li>
+<li>Lower/upper quartile<br />
+</li>
+<li>Median<br />
+</li>
+<li>The Interquartile Range<br />
+</li>
+<li>Skewness<br />
+</li>
+<li>Dispersion<br />
+</li>
+<li>Outliers<br />
+</font></li>
+</ol>
+</div>
+<div id="question13-when-do-you-use-a-boxplot-and-in-what-situation-would-you-choose-boxplot-over-histograms." class="section level4">
+<h4><span class="header-section-number">24.0.1.13</span> Question13: When do you use a boxplot and in what situation would you choose boxplot over histograms.}</h4>
+<p><font size = "3">
+Boxplots are used when trying to show a statistical distribution of one variable or compare the distributions of several variables. It is a visual representation of the statistical five number summary.</p>
+<p>Histograms are better at determining the probability distribution of the data; however, boxxplots are better for comparison between datasets and they are more space efficient.
+</font></p>
+</div>
+<div id="question14-when-analyzing-a-histogram-what-are-some-of-the-features-to-look-for" class="section level4">
+<h4><span class="header-section-number">24.0.1.14</span> Question14: When analyzing a histogram, what are some of the features to look for?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li>Asymmetry<br />
+</li>
+<li>Outliers<br />
+</li>
+<li>Multimodality<br />
+</li>
+<li>Gaps<br />
+</li>
+<li>Heaping/Rounding: Heaping example: temperature data can consist of common values due to conversion from Fahrenheit to Celsius. Rounding example: weight data that are all multiples of 5.<br />
+</li>
+<li>Impossibilities/Errors<br />
+</font></li>
+</ol>
+</div>
+<div id="question15-what-type-of-data-is-histograms-usually-used-for" class="section level4">
+<h4><span class="header-section-number">24.0.1.15</span> Question15: What type of data is histograms usually used for?</h4>
+<p><font size = "3">
+Continuous data
+</font></p>
+</div>
+<div id="question16-what-is-the-difference-between-count-histogram-relative-frequency-histogram-cumulative-frequency-histogram-and-density-histogram" class="section level4">
+<h4><span class="header-section-number">24.0.1.16</span> Question16: What is the difference between count histogram, relative frequency histogram, cumulative frequency histogram and density histogram?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>Count: the vertical (y) axis shows the frequency/count of data that falls within each bin<br />
+</p></li>
+<li><p>Relative frequency: the vertical (y) axis shows the relative frequency of data that falls within each bin. Relative frequency can be calculated by dividing the frequency by the total frequency (total count). Hence, the height of the bars sum up to 1.<br />
+</p></li>
+<li><p>Cumulative frequency: it shows the accumulation of the frequencies. Each vertical (y) axis shows the frequency of data in the corresponding bin and all the previous ones.<br />
+</p></li>
+<li><p>Density: the vertical (y) axis is calculated by dividing the relative frequency by the bin width. Hence, the area of the bars sum up to 1.<br />
+</p></li>
+</ol>
+<p></font></p>
+</div>
+<div id="question17-what-is-nominal-data-and-ordinal-data-explain-with-examples." class="section level4">
+<h4><span class="header-section-number">24.0.1.17</span> Question17: What is nominal data and ordinal data? Explain with examples.}</h4>
+<p><font size = "3"></p>
+<p>Nominal data is data with no fixed categorical order. For example, the continents of the world (Europe, Asia, North America, Africa, South America, Antarctica, Oceania).</p>
+<p>Ordinal data is data with fixed categorical order. For example, customer satisfactory rate (Very dissatisfied, dissatisfied, neutral, satisfied, very satisfied).
+</font></p>
+</div>
+<div id="question18-what-are-some-advantages-of-using-cleveland-dot-plot-versus-bar-chart" class="section level4">
+<h4><span class="header-section-number">24.0.1.18</span> Question18: What are some advantages of using cleveland dot plot versus bar chart?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>Cleveland plot takes up less space for data with many categories. Within a given space, one can fit more dots than bars.<br />
+</p></li>
+<li><p>Cleveland plot can show two different sets of values on the same line.<br />
+</p></li>
+</ol>
+<p></font></p>
+</div>
+<div id="question19-how-do-you-determine-the-color-palette-in-your-plots" class="section level4">
+<h4><span class="header-section-number">24.0.1.19</span> Question19: How do you determine the color palette in your plots?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>Depends on whether the data is discrete or continuous, I would choose different color scheme. For example, if the data is nominal, I would chose qualitative palette where there is no progression, but if the data is continuous, I would choose a sequential or perceptually uniform color palette.</p></li>
+<li><p>To avoid using colors that causes confusion or unintended emphasis on part of the data, I usually use the existing palettes in the software packages. For example in R, there is RColorBrewer.</p></li>
+<li><p>When I am presenting my data visualizations, I would try to make my graphs color vision decency (CVD) friendly.</p></li>
+</ol>
+<p></font></p>
+<p><br />
+<br />
+<br />
+</p>
+</div>
+</div>
+<div id="r-questions" class="section level3">
+<h3><span class="header-section-number">24.0.2</span> R Questions</h3>
+<div id="question20-list-3-libraries-in-r-that-can-be-used-for-data-visualization." class="section level4">
+<h4><span class="header-section-number">24.0.2.1</span> Question20: List 3 libraries in R that can be used for data visualization.}</h4>
+<p><font size = "3">
+ggplot2, Lattice, Leaflet, Highcharter, RColorBrewer, Plotly, sunburstR, RGL, dygraphs
+</font></p>
+</div>
+<div id="question21-how-do-you-make-multiple-plots-to-a-single-page-layout-in-r" class="section level4">
+<h4><span class="header-section-number">24.0.2.2</span> Question21: How do you make multiple plots to a single page layout in R?</h4>
+<p><font size = "3">
+Use the function <span class="math inline">\(par(mfrow=c(n,m))\)</span>. For example, <span class="math inline">\(par(mfrow=c(2,2))\)</span> can be used to capture a 2 X 2 plot in a single page.
+</font></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="interview-questions-for-data-visualization.html#cb276-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb276-2"><a href="interview-questions-for-data-visualization.html#cb276-2"></a><span class="kw">plot</span>(wt,mpg, <span class="dt">main=</span><span class="st">&quot;Scatterplot of wt vs. mpg&quot;</span>)</span>
+<span id="cb276-3"><a href="interview-questions-for-data-visualization.html#cb276-3"></a><span class="kw">plot</span>(wt,disp, <span class="dt">main=</span><span class="st">&quot;Scatterplot of wt vs disp&quot;</span>)</span>
+<span id="cb276-4"><a href="interview-questions-for-data-visualization.html#cb276-4"></a><span class="kw">hist</span>(wt, <span class="dt">main=</span><span class="st">&quot;Histogram of wt&quot;</span>)</span>
+<span id="cb276-5"><a href="interview-questions-for-data-visualization.html#cb276-5"></a><span class="kw">boxplot</span>(wt, <span class="dt">main=</span><span class="st">&quot;Boxplot of wt&quot;</span>)</span></code></pre></div>
+<p><img src="data_visualization_interview_questions_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="question22-what-is-the-lattice-package-in-r-used-for" class="section level4">
+<h4><span class="header-section-number">24.0.2.3</span> Question22: What is the lattice package in R used for?</h4>
+<p><font size = "3">
+Lattice is mainly used for multivariate data and relationships. It supports trellis graphs, which displays a variable or the relationship between variables, conditioned on one or more other variables.
+</font></p>
+</div>
+<div id="question23-can-pots-be-exported-as-image-files-or-other-file-formats-in-r" class="section level4">
+<h4><span class="header-section-number">24.0.2.4</span> Question23: Can pots be exported as image files or other file formats in R?</h4>
+<p><font size = "3">
+Yes, plots could be saved as images directly from R using an editor such as RStudio. This way of saving, however, does not provide much flexibility. If we want to customize our images, we need to have an approach as to how to export plots from the R code itself.</p>
+<p>We can use “ggsave” function to accomplish this.</p>
+<p>We can save the plots in different formats such as jpeg, tiff, pdf, svg etc. We can also use various parameters to change the size of the image prior to exporting it or saving it in a path or location.</p>
+<ul>
+<li><p>Saving as jpeg format
+<span class="math display">\[ggsave(filename = “PlotName1.jpeg”, plot=Image\_plot )\]</span></p></li>
+<li><p>Saving as tiff format
+<span class="math display">\[ggsave(filename = “PlotName1.tiff”, plot=Image\_plot )\]</span></p></li>
+<li><p>Saving as pdf format
+<span class="math display">\[ggsave(filename = “PlotName1.pdf”, plot=Image\_plot )\]</span></p></li>
+<li><p>Saving as tiff format with change in size
+<span class="math display">\[ggsave(filename = “PlotName1.tiff”, plot=Image\_plot , width=14, height=10, units=”cm”)\]</span></p></li>
+</ul>
+<p></font></p>
+</div>
+<div id="question24-what-are-the-key-components-or-grammar-for-the-visualization-in-the-ggplot2-library-in-r" class="section level4">
+<h4><span class="header-section-number">24.0.2.5</span> Question24: What are the key components or grammar for the visualization in the ggplot2 library in R?</h4>
+<p><font size = "3"></p>
+<p>Every visualization in ggplot2 package in R comprises of the following key aspects:<br />
+</p>
+<ol style="list-style-type: decimal">
+<li>Data – The raw material of your visualization<br />
+</li>
+<li>Layers – What you can see or visualize on plots (i.e. lines, points, maps etc.)<br />
+</li>
+<li>Scales – Maps the data to graphical output<br />
+</li>
+<li>Coordinates – This is from the visualization perspective (i.e. grids, tables etc.)<br />
+</li>
+<li>Faceting – Provides “visual drill-down” into the data<br />
+</li>
+<li>Themes – Controls the details of the display (i.e. fonts, size, colour etc.)<br />
+</font></li>
+</ol>
+</div>
+<div id="question25-why-is-it-important-to-tidy-data" class="section level4">
+<h4><span class="header-section-number">24.0.2.6</span> Question25: Why is it important to tidy data?</h4>
+<p><font size = "3">
+Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types. In tidy <a href="data:\" class="uri">data:\</a></p>
+<ol style="list-style-type: decimal">
+<li>Each variable forms a column.<br />
+</li>
+<li>Each observation forms a row.<br />
+</li>
+<li>Each type of observational unit forms a table.<br />
+</li>
+</ol>
+<p>Tidy data makes it easy for an analyst or a computer to extract needed variables because it provides a standard way of structuring a dataset. Compare the different versions of the classroom data: in the messy version you need to use different strategies to extract different variables. This slows analysis and invites errors.</p>
+<p>(source: <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" class="uri">https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</a>)
+</font></p>
+</div>
+<div id="question26-how-do-you-import-data-in-r" class="section level4">
+<h4><span class="header-section-number">24.0.2.7</span> Question26: How do you import data in R}</h4>
+<p><font size = "3"></p>
+<p>One can import data from a text file, csv, excel, SPSS, SAS, etc. in R.</p>
+<p>R base functions that can be used include: <span class="math inline">\(read.table()\)</span>, <span class="math inline">\(read.delim()\)</span>, <span class="math inline">\(read.csv()\)</span>, <span class="math inline">\(readcsv2()\)</span>. We could also use the <span class="math inline">\(readr\)</span> package to fast read data.</p>
+<p>Reading from excel requires either <span class="math inline">\(readxl\)</span> or <span class="math inline">\(xlsx\)</span> package, and for SPSS and SAS, one could use the <span class="math inline">\(Hmisc\)</span> package.
+</font></p>
+</div>
+<div id="question27-how-missing-values-and-impossible-values-are-represented-in-r" class="section level4">
+<h4><span class="header-section-number">24.0.2.8</span> Question27: How missing values and impossible values are represented in R ?</h4>
+<p><font size = "3"></p>
+<p>NaN (Not a Number) is used to represent impossible values whereas NA (Not Available) is used to represent missing values.</p>
+<p>Usually, simply deleting missing values is not a good idea because the probable cause for missing value could be some problem with data collection or programming or the query. It is good to find the root cause of the missing values and then take necessary steps handle them.
+</font></p>
+</div>
+<div id="question28-what-are-the-building-blocks-for-graphing-with-ggplot2" class="section level4">
+<h4><span class="header-section-number">24.0.2.9</span> Question28: What are the building blocks for graphing with ggplot2?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li>Layers: a plot of the dataset<br />
+</li>
+<li>Scale: normal, logarithmic, etc.<br />
+</li>
+<li>Coord: coordinate system<br />
+</li>
+<li>Facet: multiple plots<br />
+</li>
+<li>Theme: the looks of the overal graph<br />
+</font></li>
+</ol>
+</div>
+<div id="question29-two-students-plotted-histograms-for-the-exact-same-data-in-r-with-the-same-bin-width-and-boundary-values-however-their-plots-have-completely-different-shape.-what-could-be-the-cause-of-this" class="section level4">
+<h4><span class="header-section-number">24.0.2.10</span> Question29: Two students plotted histograms for the exact same data in R with the same bin width and boundary values, however their plots have completely different shape. What could be the cause of this?</h4>
+<p><font size = "3">
+This is probably due to the fact that the one plot is right closed, the other is right open, so that the data points that fall on the boundaries are put into different bins.</p>
+<p>This kind of difference can be eliminated by choosing boundary values that cannot occur in the dataset; for example, we can use higher precision decimal values.
+</font></p>
+<p><font size = "3">
+Example data:</p>
+<p>780, 1100, 940, 900, 1170, 900, 950, 905, 1340, 1122, 900, 970, 1009, 1157, 1151, 1009, 1217, 1080, 896, 958,<br />
+1153, 900, 860, 1070, 800, 1070, 909, 1100, 940, 1110, 940, 1122, 1100, 1300, 1070, 890, 1106, 704, 500, 500,<br />
+620, 1500, 1100, 833, 1300, 1011, 1100, 1140, 610, 990, 1058, 700, 1069, 1170, 700, 900, 700, 1150, 1500, 950
+</font></p>
+<p><img src="data_visualization_interview_questions_files/figure-html/unnamed-chunk-6-1.png" width="960" style="display: block; margin: auto;" /></p>
+</div>
+<div id="question30-in-r-we-can-use-the-read_html-function-to-easily-scrape-data-from-websites.-what-are-some-of-the-caveats-of-web-scraping-ethically-and-legally" class="section level4">
+<h4><span class="header-section-number">24.0.2.11</span> Question30: In R, we can use the <span class="math inline">\(read\_html\)</span> function to easily scrape data from websites. What are some of the caveats of web scraping (ethically and legally)?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li>Think and investigate legality of scraping the data<br />
+</li>
+<li>Think about whether the use of the data is ethical<br />
+</li>
+<li>Limit bandwidth use<br />
+</li>
+<li>Scrape only what you need<br />
+</font></li>
+</ol>
+</div>
+<div id="question32-what-are-factors-in-r-and-why-is-it-useful" class="section level4">
+<h4><span class="header-section-number">24.0.2.12</span> Question32: What are factors in R and why is it useful?</h4>
+<p><font size = "3">
+Factors are the data objects which are used to categorize the data and store it as levels. They can store both strings and integers. They are useful in the columns which have a limited number of unique values. Like “Male,”Female" and True, False etc. They are useful in data analysis for statistical modeling.</p>
+<p>(source: <a href="https://www.tutorialspoint.com/r/r\_factors.html" class="uri">https://www.tutorialspoint.com/r/r\_factors.html</a>)
+</font></p>
+</div>
+<div id="question32-what-is-rmarkdown-what-is-the-use-of-it" class="section level4">
+<h4><span class="header-section-number">24.0.2.13</span> Question32: What is Rmarkdown? What is the use of it?</h4>
+<p><font size = "3">
+RMarkdown is a tool provided by R to create dynamic documents and reports that contain shiny widgets and outputs from R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code.</p>
+<p></font></p>
+</div>
+<div id="question33-what-are-some-common-functions-in-the-dplyr-package" class="section level4">
+<h4><span class="header-section-number">24.0.2.14</span> Question33: What are some common functions in the “dplyr” package?</h4>
+<p><font size = "3">
+filter, select, mutate, arrange and count.</p>
+<p></font></p>
+<p><br />
+<br />
+<br />
+</p>
+</div>
+</div>
+<div id="python-questions" class="section level3">
+<h3><span class="header-section-number">24.0.3</span> Python Questions</h3>
+<div id="question34-what-is-pandas" class="section level4">
+<h4><span class="header-section-number">24.0.3.1</span> Question34: What is pandas?</h4>
+<p><font size = "3">
+Pandas is a Python open-source library that provides high-performance, powerful and flexible data structures and data analysis tools. It is built on top of Python programming language.
+</font></p>
+</div>
+<div id="question35-what-libraries-do-data-scientists-use-to-plot-data-in-python" class="section level4">
+<h4><span class="header-section-number">24.0.3.2</span> Question35: What libraries do data scientists use to plot data in Python?</h4>
+<p><font size = "3">
+Matplotlib is the main library used for plotting data in Python. However, the plots created with this library need lots of fine-tuning to look shiny and professional. For that reason, many data scientists prefer Seaborn, which allows you to create appealing and meaningful plots with only one line of code.
+</font></p>
+</div>
+<div id="question36-name-a-few-libraries-in-python-used-for-data-analysis-and-scientific-computations." class="section level4">
+<h4><span class="header-section-number">24.0.3.3</span> Question36: Name a few libraries in Python used for Data Analysis and Scientific computations.?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>NumPy: It is used for scientific computing and performing basic and advanced array operations. It offers many handy features performing operations on n-arrays and matrices in Python. It helps to process arrays that store values of the same data type and makes performing math operations on arrays (and their vectorization) easier.<br />
+</p></li>
+<li><p>SciPy: This useful library includes modules for linear algebra, integration, optimization, and statistics. Its main functionality was built upon NumPy, so its arrays make use of this library.<br />
+</p></li>
+<li><p>Pandas: This is a library created to help developers work with “labeled” and “relational” data intuitively. It’s based on two main data structures: “Series” (one-dimensional, like a list of items) and “Data Frames” (two-dimensional, like a table with multiple columns).<br />
+</p></li>
+<li><p>SciKit: Scikits is a group of packages in the SciPy Stack that were created for specific functionalities – for example, image processing. Scikit-learn uses the math operations of SciPy to expose a concise interface to the most common machine learning algorithms.<br />
+</p></li>
+<li><p>Matplotlib: This is a standard data science library that helps to generate data visualizations such as two-dimensional diagrams and graphs (histograms, scatterplots, non-Cartesian coordinates graphs).<br />
+</p></li>
+<li><p>Seaborn: Seaborn is based on Matplotlib and serves as a useful Python machine learning tool for visualizing statistical models – heatmaps and other types of visualizations that summarize data and depict the overall distributions.<br />
+</p></li>
+<li><p>Plotly: This web-based tool for data visualization that offers many useful out-of-box graphics – you can find them on the Plot.ly website. The library works very well in interactive web applications.<br />
+</p></li>
+</ol>
+<p></font></p>
+</div>
+<div id="question37-which-library-would-you-prefer-for-plotting-in-python-language-seaborn-or-matplotlib" class="section level4">
+<h4><span class="header-section-number">24.0.3.4</span> Question37: Which library would you prefer for plotting in Python language: Seaborn or Matplotlib?</h4>
+<p><font size = "3">
+Matplotlib is the python library used for plotting but it needs lot of fine-tuning to ensure that the plots look shiny.</p>
+<p>Seaborn helps data scientists create statistically and aesthetically appealing meaningful plots. The answer to this question varies based on the requirements for plotting data.
+</font></p>
+<p><br />
+<br />
+<br />
+</p>
+</div>
+</div>
+<div id="tableau-questions" class="section level3">
+<h3><span class="header-section-number">24.0.4</span> Tableau Questions</h3>
+<div id="question38-what-does-tableau-do" class="section level4">
+<h4><span class="header-section-number">24.0.4.1</span> Question38: What does Tableau do?</h4>
+<p><font size = "3">
+Tableau is a visual analytics engine that makes it easier to create interactive visual analytics in the form of dashboards. It empowers people and organizations to make the most of their data and solve problems.
+</font></p>
+</div>
+<div id="question39-in-tableau-how-is-the-context-filter-different-from-other-filters" class="section level4">
+<h4><span class="header-section-number">24.0.4.2</span> Question39: In Tableau, how is the Context Filter different from other Filters?</h4>
+<p><font size = "3">
+When we create a Context Filter, Tableau will create a temporary table for this particular Filter set and other Filters will be applied on the Context Filter data like cascade parameters.</p>
+<p>Suppose, we have created a Context Filter on countries, USA and India, Tableau will create a temporary table for these two countries’ data and if we have any other Filters other will be applied on these two countries’ data if we don’t have any Context Filter, each record will check for all Filters.</p>
+<p>(source: <a href="https://datavizguru.com/interview-questions/" class="uri">https://datavizguru.com/interview-questions/</a>)
+</font></p>
+</div>
+<div id="question40-in-tableau-what-is-the-disadvantage-of-context-filters" class="section level4">
+<h4><span class="header-section-number">24.0.4.3</span> Question40: In Tableau, what is the disadvantage of Context Filters?</h4>
+<p><font size = "3">
+The Context Filter is not frequently changed by the user—if the Filter is changed, the database must be recomputed and the temporary table has to be rewritten, slowing performance.</p>
+<p>When we set a dimension to context, Tableau creates a temporary table that will require a reload each time the view is initiated. For Excel, Access, and text data sources, the temporary table created is in an Access table format. For SQL Server, MySQL, and Oracle data sources, we must have permission to create a temporary table on our server. For a multidimensional data source, or cubes, temporary tables are not created, and Context Filters defined which Filters are independent and which are dependent.</p>
+<p>(source: <a href="https://datavizguru.com/interview-questions/" class="uri">https://datavizguru.com/interview-questions/</a>)
+</font></p>
+</div>
+<div id="question41-what-are-filters-how-many-types-of-filters-are-there-in-tableau" class="section level4">
+<h4><span class="header-section-number">24.0.4.4</span> Question41: What are Filters? How many types of Filters are there in Tableau?</h4>
+<p><font size = "3">
+The filters can be applied in a worksheet to restrict the number of records present in a dataset, especially for unnecessary data; and it shows the exact data we want.</p>
+<p>There are various types of filters available in Tableau.</p>
+<ol style="list-style-type: decimal">
+<li><p>Extract Filters: Extract filters are used to apply filter on extracted data from the data source. For this filter, data is extracted from the data source and placed into the Tableau data repository.<br />
+</p></li>
+<li><p>Datasource Filters: Using the data source filters in tableau, we can directly apply our filter conditions on the data source. It filters the data at the data source and then uploads only the remaining data in the Tableau worksheet. But, the only difference is it works with both live and extract connection.<br />
+</p></li>
+<li><p>Context Filters: By using context filters in tableau, we can apply a general context to our overall analysis of Tableau.<br />
+</p></li>
+<li><p>Dimension Filters: The dimension filters are the filters that we apply on individual dimensions. Dimensions are not aggregated and so, we can select distinct values from the list of field values.<br />
+</p></li>
+<li><p>Measure Filters: The measure filters are the filters that we apply using the measure field values. Measure values are always aggregated like sum, average, median, etc.<br />
+</p></li>
+</ol>
+<p>(source: <a href="https://data-flair.training/blogs/tableau-filters/" class="uri">https://data-flair.training/blogs/tableau-filters/</a>)
+</font></p>
+</div>
+<div id="question42-what-is-the-difference-between-heat-map-and-treemap-in-tableau" class="section level4">
+<h4><span class="header-section-number">24.0.4.5</span> Question42: What is the difference between heat map and treemap in Tableau?</h4>
+<p><font size = "3">
+A heat map is a great way to compare categories using color and size. In this, we can compare two different measures.</p>
+<p>A treemap is used for illustrating hierarchical (tree-structured) data and for visualizing a part of or a whole relationship.
+</font></p>
+</div>
+<div id="question43-what-are-the-main-features-of-tableau" class="section level4">
+<h4><span class="header-section-number">24.0.4.6</span> Question43: What are the main features of Tableau?</h4>
+<p><font size = "3"></p>
+<ol style="list-style-type: decimal">
+<li><p>Tableau Dashboard: Tableau Dashboards provide a wholesome view of your data by the means of visualizations, visual objects, text, etc. Dashboards are very informative as they can present data in the form of stories, enable the addition of multiple views and objects, provide a variety of layouts and formats, enable the users to deploy suitable filters.<br />
+</p></li>
+<li><p>Collaboration and Sharing: Tableau provides convenient options to collaborate with other users and instantly share data in the form of visualizations, sheets, dashboards, etc. in real-time. It allows you to securely share data from various data sources such as on-premise, on-cloud, hybrid, etc. Instant and easy collaboration and data sharing help in getting quick reviews or feedback on the data leading to a better overall analysis of it.<br />
+</p></li>
+<li><p>Live and In-memory Data: Tableau ensures connectivity to both live data sources or data extraction from external data sources as in-memory data. This gives the user the flexibility to use data from more than one type of data source without any restrictions. You can use data directly from the data source by establishing live data connections or keep that data in-memory by extracting data from a data source as per their requirement.<br />
+</p></li>
+<li><p>Data Sources in Tableau: Tableau offers a myriad of data source options you can connect to and fetch data from. Data sources ranging from on-premise files, spreadsheets, relational databases, non-relational databases, data warehouses, big data, to on-cloud data are all available on Tableau.<br />
+</p></li>
+<li><p>Advanced Visualizations (Chart Types): In Tableau, you can make visualizations as basic as a bar chart or pie chart. You can also make more advanced visualization as histogram, gantt chart, bullet chart, motion chart, treemap and boxplot.<br />
+</p></li>
+<li><p>Maps: Tableau has a lot of pre-installed information on maps such as cities, postal codes, administrative boundaries, etc. This makes the maps created on Tableau very detailed and informative.<br />
+</p></li>
+<li><p>Trend Lines and Predictive Analysis: Easy creation of trend lines and forecasting is possible due to Tableau’s powerful backend and dynamic front end. You can easily get data predictions such as a forecast or a trend line by simply selecting some options and drag-and-drop operations using your concerned fields.<br />
+</p></li>
+</ol>
+<p>(source : <a href="https://data-flair.training/blogs/tableau-features/" class="uri">https://data-flair.training/blogs/tableau-features/</a>)
+</font></p>
+</div>
+<div id="question44-what-are-histograms-in-tableau-what-is-its-use-in-analysis" class="section level4">
+<h4><span class="header-section-number">24.0.4.7</span> Question44: What are Histograms in Tableau? What is its use in analysis?</h4>
+<p><font size = "3">
+Histograms show or graphically represent the distribution of values in intervals or bins of equal sizes. These charts are specifically used to represent the distribution of continuous data.</p>
+<p>Histogram in Tableau takes the continuous measure values and places them into bins of equal sizes.
+</font></p>
+</div>
+<div id="question45-explain-bar-charts-in-tableau.-what-are-the-different-kinds-of-bar-charts" class="section level4">
+<h4><span class="header-section-number">24.0.4.8</span> Question45: Explain Bar charts in Tableau. What are the different kinds of Bar Charts?</h4>
+<p><font size = "3">
+Bar charts represent data in categories by using rectangular bars, whose height is proportional to the value that bar is representing.</p>
+<p>In Tableau, we can make different kinds of bar charts such as; Segmented bar chart, Stacked bar chart, Side-by-side bar chart etc.</p>
+<ol style="list-style-type: decimal">
+<li><p>Horizontal/ Vertical bar chart: A horizontal or vertical bar graph is a simple graph having bars of vertical or horizontal orientation.<br />
+</p></li>
+<li><p>Segmented bar chart: A segmented bar chart is a bar chart where a bar chart contains more than one set of bars. Each set of bars belongs to a particular segment. For instance, we can have a sales bar graph for three or four different segments all seen in a single view.<br />
+</p></li>
+<li><p>Stacked bar chart: A stacked bar chart has a single bar divided into smaller parts. For instance, a single bar for the year 2019 can show sales for different countries or regions or cities. We can also set a color scheme for the subdivisions in a bar as we can see in a stacked bar chart below.<br />
+</p></li>
+<li><p>Side-by-side bar chart: A side-by-side bar chart will have multiple bars standing next to each other for a single segment.<br />
+</p></li>
+</ol>
+<p></font></p>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="up-and-running-quickly-with-leaflet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="zoom-session-in-finance-and-data-science.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtr13/cc21/edit/main/data_visualization_interview_questions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jtr13/cc21/blob/main/data_visualization_interview_questions.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
