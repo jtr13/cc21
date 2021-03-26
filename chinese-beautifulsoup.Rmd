@@ -1,11 +1,11 @@
 # Chinese Translation--Beautiful Soup Tutorial
 
-## Haifeng Lan
+Haifeng Lan
 
-### 源文件链接：https://www.datacamp.com/community/tutorials/tutorial-python-beautifulsoup-datacamp-tutorials
+源文件链接：https://www.datacamp.com/community/tutorials/tutorial-python-beautifulsoup-datacamp-tutorials
 
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -172,7 +172,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Aditya Sharma可能会超越Sejal如果按照目前的速度保持不变。
 
-###赞同数vs作品数
+### 赞同数vs作品数
 赞同数对于读者来说很重要
 
 让我们看看谁得到了最好的赞同数比作品数！我们同样只考虑前十的作者。这一结果会以散点图的形式展示
