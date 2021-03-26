@@ -27,7 +27,7 @@ The data we are going to use includes the following fields:
 ## Read and explore the text
 
 ```{r read the data}
-videogame = read.csv('/Users/zack/cc21/resources/sentiment_analysis_and_wordcloud/videogame_review.csv',stringsAsFactors = F)
+videogame = read.csv('resources/sentiment_analysis_and_wordcloud/videogame_review.csv',stringsAsFactors = F)
 head(videogame)
 ```
 ### Explore Ratings of Reviews
