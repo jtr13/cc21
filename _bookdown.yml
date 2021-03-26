@@ -11,6 +11,8 @@ language:
 # Chapter ordering
 rmd_files: [
 
+
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -32,7 +34,7 @@ rmd_files: [
   'colors_in_R_Chinese_translation.Rmd', # contains PART header
   'dplyr_tutorial_in_chinese.Rmd',
   'introduction_rstudio_portuguese.Rmd',
-  'chn_translation_arima_models.Rmd'
+  'chn_translation_arima_models.Rmd',
   'Chinese_translation_Broom_package.Rmd',
   'Translation_of_Visualizations_That_Really_Work_Chinese.Rmd' 
 
@@ -50,6 +52,7 @@ rmd_files: [
   'zoom_in_finance.Rmd',   # contains PART header
   'data_science_in_environment.Rmd',
   'presidential_election.Rmd',
+  'sports_final_project_zoom_meetup.Rmd'
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
