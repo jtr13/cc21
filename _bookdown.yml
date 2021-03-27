@@ -11,8 +11,6 @@ language:
 # Chapter ordering
 rmd_files: [
 
-
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -57,6 +55,7 @@ rmd_files: [
   'data_science_ethics_community_contribution.Rmd',
   'meet_the_pets_zoom_session.Rmd',
   'three_dimension_plot_tutorial.Rmd',
+  'ben_shneidermans_visualization_mantra.Rmd', 
   
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
@@ -71,7 +70,6 @@ rmd_files: [
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
-
 ]
 
 before_chapter_script: "_common.R"
