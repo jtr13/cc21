@@ -12,6 +12,7 @@ language:
 rmd_files: [
 
 
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -55,6 +56,7 @@ rmd_files: [
   'data_transformation_with_dplyr_video_tutorial.Rmd',
   'data_science_ethics_community_contribution.Rmd',
   'meet_the_pets_zoom_session.Rmd',
+  'three_dimension_plot_tutorial.Rmd',
   
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
