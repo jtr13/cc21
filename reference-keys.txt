@@ -270,6 +270,17 @@ plotly-library
 d-scatter-plot
 conclusion
 works-cited
+ben-shneidermans-visualization-mantra
+introduction-3
+need-for-visualization
+ben-shneidermans-visual-information-seeking-mantra
+step-1--overview
+step-2and-3---zoom-and-filter
+step-4---details-on-demand
+step-5---relate
+step-6---history
+step-7---extract
+references-1
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election
@@ -313,7 +324,7 @@ non-numeric-argument-to-binary-operator
 need-finite-xlim-values
 unused-argument
 tips-for-debugging
-references-1
+references-2
 in-person-fitness-hour
 piazza-announcement
 final-event
