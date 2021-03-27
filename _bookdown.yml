@@ -32,7 +32,7 @@ rmd_files: [
   'introduction_rstudio_portuguese.Rmd',
   'chn_translation_arima_models.Rmd',
   'Chinese_translation_Broom_package.Rmd',
-  'Translation_of_Visualizations_That_Really_Work_Chinese.Rmd',
+  'translation_of_visualizations_that_really_work_chinese.Rmd',
   'edav_info_categorical_variables_Chinese_translation.Rmd',
   'translation_of_critical_covid_data_visualizations_paper.Rmd',
   'ibm_translation_to_chinese.Rmd',
