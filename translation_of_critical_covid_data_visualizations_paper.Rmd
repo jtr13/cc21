@@ -1,0 +1,9 @@
+# Translation of critical covid data visualizations paper
+
+Siqi Chen and Yaoling Wang
+
+My partner and I hoped to contribute to the community by translating the following paper into Chinese. This paper was first published on July 27, 2020 by Emily Bowe, Shannon Mattern and Erin Simmons. Translated paper was aimed to help people understand the importance of data visualization and how it exists in our daily lives, especially in this global emergency period. For instance, during the COVID-19 period, data visualization could be used to inform people of the symptoms of pandemics, and obtain the comuse time by dance models. In this way, people would stay home and stay safe. Meanwhile, we will also need to be aware of the limitations of data visualization and its potential subjectiveness when taking advantage of accessible data. Thinking critically about resources we get is more important than the way they are presented. My partner and I were inspired by this paper, not only because it was closely related to our recent circumstances, but also because it promotes critical thinking when using data visualization. This paper has been a useful resource for us, and we hope this translation would be helpful for our classmates as well.
+The original paper could be found on SAGE Journals. Our translation could be found on GitHub Repo.
+
+SAGE Journals link: https://journals.sagepub.com/doi/full/10.1177/2053951720939236
+GitHub Repo link: https://github.com/siqichen99/STAT5702_CC_Group12.git
