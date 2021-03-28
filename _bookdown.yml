@@ -25,6 +25,7 @@ rmd_files: [
   'ggvis_cheatsheet.Rmd',
   'statistical_hypothesi_testing_cheatsheet.Rmd',
   'r_basics_cheatsheet.Rmd',
+  'alluvial_diagram_cheatsheet.Rmd',  
   
   # Part: Translation
   'colors_in_R_Chinese_translation.Rmd', # contains PART header
