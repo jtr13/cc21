@@ -38,7 +38,7 @@ rmd_files: [
   'edav_info_categorical_variables_Chinese_translation.Rmd',
   'translation_of_critical_covid_data_visualizations_paper.Rmd',
   'ibm_translation_to_chinese.Rmd',
-  'Chinese_Translation_EDA&DataVisualization.Rmd',
+  'translation_Chinese_EDA&DataVisualization.Rmd',
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
