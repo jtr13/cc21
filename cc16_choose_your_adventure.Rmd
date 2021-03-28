@@ -1,13 +1,10 @@
----
-title: "Choose Your Adventure - How to choose the right visualization for your data"
-author: "Gee Hyun Kwon (gk2575), Angela Simei Li (sl4525)"
-output:
-  html_document:
-    df_print: paged
----
+
+# Choose Your Adventure - How to choose the right visualization for your data
+
+Gee Hyun Kwon (gk2575) & Angela Simei Li (sl4525)
 
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # this prevents package loading message from appearing in the rendered version of your problem set
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE,
                       message = FALSE)
@@ -21,11 +18,11 @@ library(tidyverse)
 
 ```
 
-# Introduction
+## Introduction
 
 Graphs and charts help us understand data better, but it isn’t always clear exactly how to choose the right visualization. We have developed a 3-step process “choose your adventure” to help you navigate through your next data visualization problem at hand.
 
-## Step 1. What would you like to show?
+### Step 1. What would you like to show?
 
 We have developed a flowchart to help you decide the type of graph you might need. We believe that there are four types of goals in visualizing a dataset.
 
@@ -47,7 +44,7 @@ We have developed a flowchart to help you decide the type of graph you might nee
 
 Based on the types, we recommend the following flowchart to pick the right visualization.
 
-## Step 2
+### Step 2
 
 It is often not enough to simply pick only one type of graph for complex questions. Here are some additional aspects to consider once you’ve picked the direction of the visualization through the flowchart.
 
@@ -61,7 +58,7 @@ It is often not enough to simply pick only one type of graph for complex questio
 
 An example use of faceting is to show the growth height of all 6 vegetables in a vegetable garden through the same time period, and the 6 graphs of x-axis being time and y-axis being height are being placed in a 2x3 table format.
 
-## Step 3
+### Step 3
 
 Is overlaying two different types of graphs a good idea? Overlaying two different graphs could bring clarity to the visualization. However, unnecessarily overlaying could lead to confusion and clutter. A good example of overlaying two graphs is drawing a regression line through a chaotic scatter plot to highlight the trend of the dots.
 
@@ -76,6 +73,7 @@ Some common details to make-or-break a graph include:
 ## The Flow Chart
 
 ![](https://i.ibb.co/7K0hsfm/flowchart.png)
+
 
 ## An Example Use Case
 
