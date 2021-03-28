@@ -70,6 +70,7 @@ rmd_files: [
   'fitness_hour.Rmd',
   'work_management.Rmd',
   'community_contribution_data_science_for_social_good.Rmd',
+  'wine_presentation.Rmd',
  
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
