@@ -336,6 +336,7 @@ frisbee
 work-culture-and-time-management
 data-science-for-social-good
 r-markdown
+wine-and-wine-tasting
 github-initial-setup
 github-actions
 secrets
