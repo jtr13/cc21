@@ -332,6 +332,8 @@ jump-rope
 monkey-bars
 frisbee
 work-culture-and-time-management
+data-science-for-social-good
+r-markdown
 github-initial-setup
 github-actions
 secrets
