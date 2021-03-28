@@ -8,4 +8,4 @@ https://www.ibm.com/design/language/data-visualization/overview/
 
 
 The translated version in Chinese can be accessed in:  
-https://github.com/zc2583/cc21/blob/IBM_DesignLanguage_Translated/IBM_Design_Translated.pdf  
+https://github.com/zc2583/cc21/blob/main/5702%20CC.pdf  
