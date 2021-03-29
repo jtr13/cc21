@@ -42,9 +42,6 @@ Set up your own account and copy your api_key into the following function
 Quandl.api_key('your_key')
 
 
-```r
-Quandl.api_key('JrvHzZcnakybdzAUChjn')
-```
 
 
 

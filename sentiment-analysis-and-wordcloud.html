@@ -576,15 +576,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sentiment-analysis-and-wordcloud" class="section level1">
 <h1><span class="header-section-number">Chapter 25</span> Sentiment analysis and wordcloud</h1>
 <p>Yuao Zhao</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="sentiment-analysis-and-wordcloud.html#cb215-1"></a><span class="kw">library</span>(qdap)</span>
-<span id="cb215-2"><a href="sentiment-analysis-and-wordcloud.html#cb215-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb215-3"><a href="sentiment-analysis-and-wordcloud.html#cb215-3"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb215-4"><a href="sentiment-analysis-and-wordcloud.html#cb215-4"></a><span class="kw">library</span>(tidyr)</span>
-<span id="cb215-5"><a href="sentiment-analysis-and-wordcloud.html#cb215-5"></a><span class="kw">library</span>(stringr)</span>
-<span id="cb215-6"><a href="sentiment-analysis-and-wordcloud.html#cb215-6"></a><span class="kw">library</span>(tidytext)</span>
-<span id="cb215-7"><a href="sentiment-analysis-and-wordcloud.html#cb215-7"></a><span class="kw">library</span>(ggplot2) </span>
-<span id="cb215-8"><a href="sentiment-analysis-and-wordcloud.html#cb215-8"></a><span class="kw">library</span>(ggthemes)</span>
-<span id="cb215-9"><a href="sentiment-analysis-and-wordcloud.html#cb215-9"></a><span class="kw">library</span>(wordcloud)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="sentiment-analysis-and-wordcloud.html#cb214-1"></a><span class="kw">library</span>(qdap)</span>
+<span id="cb214-2"><a href="sentiment-analysis-and-wordcloud.html#cb214-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb214-3"><a href="sentiment-analysis-and-wordcloud.html#cb214-3"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb214-4"><a href="sentiment-analysis-and-wordcloud.html#cb214-4"></a><span class="kw">library</span>(tidyr)</span>
+<span id="cb214-5"><a href="sentiment-analysis-and-wordcloud.html#cb214-5"></a><span class="kw">library</span>(stringr)</span>
+<span id="cb214-6"><a href="sentiment-analysis-and-wordcloud.html#cb214-6"></a><span class="kw">library</span>(tidytext)</span>
+<span id="cb214-7"><a href="sentiment-analysis-and-wordcloud.html#cb214-7"></a><span class="kw">library</span>(ggplot2) </span>
+<span id="cb214-8"><a href="sentiment-analysis-and-wordcloud.html#cb214-8"></a><span class="kw">library</span>(ggthemes)</span>
+<span id="cb214-9"><a href="sentiment-analysis-and-wordcloud.html#cb214-9"></a><span class="kw">library</span>(wordcloud)</span></code></pre></div>
 <p>Sentiment analysis is an important part of the emotion computing and wordcloud is a fancy way of text visualization. Combining the two, we can reveal and display people’s attitude and perspectives through their comments or articles. This tutorial will go through the basic process of these two by analysing the video game comments dataset.</p>
 <p>About the Data
 This dataset is based on a set of Amazon review of video games downloaded from Prof Julian McAuley’s website (<a href="http://jmcauley.ucsd.edu/data/amazon/" class="uri">http://jmcauley.ucsd.edu/data/amazon/</a>). Since this dataset is very large, we only included data from Aug 2013 to July 2014 which gives us a year of data to work with.</p>
@@ -594,8 +594,8 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 * review_rating: Each review on Amazon is rated by others using a five-star scale (presumably based on helpfulness of review)</p>
 <div id="read-and-explore-the-text" class="section level2">
 <h2><span class="header-section-number">25.1</span> Read and explore the text</h2>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="sentiment-analysis-and-wordcloud.html#cb216-1"></a>videogame =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;resources/sentiment_analysis_and_wordcloud/videogame_review.csv&#39;</span>,<span class="dt">stringsAsFactors =</span> F)</span>
-<span id="cb216-2"><a href="sentiment-analysis-and-wordcloud.html#cb216-2"></a><span class="kw">head</span>(videogame)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="sentiment-analysis-and-wordcloud.html#cb215-1"></a>videogame =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;resources/sentiment_analysis_and_wordcloud/videogame_review.csv&#39;</span>,<span class="dt">stringsAsFactors =</span> F)</span>
+<span id="cb215-2"><a href="sentiment-analysis-and-wordcloud.html#cb215-2"></a><span class="kw">head</span>(videogame)</span></code></pre></div>
 <pre><code>##   id
 ## 1  1
 ## 2  2
@@ -619,51 +619,51 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 ## 6             1</code></pre>
 <div id="explore-ratings-of-reviews" class="section level3">
 <h3><span class="header-section-number">25.1.1</span> Explore Ratings of Reviews</h3>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="sentiment-analysis-and-wordcloud.html#cb218-1"></a>videogame <span class="op">%&gt;%</span></span>
-<span id="cb218-2"><a href="sentiment-analysis-and-wordcloud.html#cb218-2"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">average_rating =</span> <span class="kw">mean</span>(review_rating), <span class="dt">median_rating =</span> <span class="kw">median</span>(review_rating))</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="sentiment-analysis-and-wordcloud.html#cb217-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb217-2"><a href="sentiment-analysis-and-wordcloud.html#cb217-2"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">average_rating =</span> <span class="kw">mean</span>(review_rating), <span class="dt">median_rating =</span> <span class="kw">median</span>(review_rating))</span></code></pre></div>
 <pre><code>##   average_rating median_rating
 ## 1       4.423333             5</code></pre>
 <p>The median_rating is <strong>5</strong> and the average of the rating is <strong>4.42</strong></p>
 </div>
 <div id="distribution-of-ratings" class="section level3">
 <h3><span class="header-section-number">25.1.2</span> Distribution of Ratings</h3>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="sentiment-analysis-and-wordcloud.html#cb220-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>videogame,<span class="kw">aes</span>(<span class="dt">x=</span>review_rating))<span class="op">+</span></span>
-<span id="cb220-2"><a href="sentiment-analysis-and-wordcloud.html#cb220-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&#39;sienna&#39;</span>)<span class="op">+</span></span>
-<span id="cb220-3"><a href="sentiment-analysis-and-wordcloud.html#cb220-3"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="sentiment-analysis-and-wordcloud.html#cb219-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>videogame,<span class="kw">aes</span>(<span class="dt">x=</span>review_rating))<span class="op">+</span></span>
+<span id="cb219-2"><a href="sentiment-analysis-and-wordcloud.html#cb219-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">fill=</span><span class="st">&#39;sienna&#39;</span>)<span class="op">+</span></span>
+<span id="cb219-3"><a href="sentiment-analysis-and-wordcloud.html#cb219-3"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
 <p><img src="sentiment_analysis_and_wordcloud_files/figure-html/explore%20the%20num%20of%20review-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As we can see from the chart, few people gave the extreme low scores.</p>
 </div>
 <div id="explore-the-reviews" class="section level3">
 <h3><span class="header-section-number">25.1.3</span> Explore the reviews</h3>
 <p>Regular expressions (regex) is a framework for teaching a computer how to recognize patterns of text. In order to count sentences, one needs to define what a sentence is. If we defined a sentence as “a set of characters or punctuation (comma, quote) or spaces that end with one or more period, question mark, exclamation mark or combination of them”, the following reqular expression would match the sentence: [A-Za-z,;’"]+[^.!?]*[.?!]</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="sentiment-analysis-and-wordcloud.html#cb221-1"></a><span class="co"># Characters across all reviews</span></span>
-<span id="cb221-2"><a href="sentiment-analysis-and-wordcloud.html#cb221-2"></a>videogame<span class="op">%&gt;%</span></span>
-<span id="cb221-3"><a href="sentiment-analysis-and-wordcloud.html#cb221-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_character =</span> <span class="kw">mean</span>(<span class="kw">nchar</span>(review)), <span class="dt">median_character =</span> <span class="kw">median</span>(<span class="kw">nchar</span>(review)))</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="sentiment-analysis-and-wordcloud.html#cb220-1"></a><span class="co"># Characters across all reviews</span></span>
+<span id="cb220-2"><a href="sentiment-analysis-and-wordcloud.html#cb220-2"></a>videogame<span class="op">%&gt;%</span></span>
+<span id="cb220-3"><a href="sentiment-analysis-and-wordcloud.html#cb220-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_character =</span> <span class="kw">mean</span>(<span class="kw">nchar</span>(review)), <span class="dt">median_character =</span> <span class="kw">median</span>(<span class="kw">nchar</span>(review)))</span></code></pre></div>
 <pre><code>##   mean_character median_character
 ## 1         582.81            191.5</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="sentiment-analysis-and-wordcloud.html#cb223-1"></a><span class="co"># Words across all reviews</span></span>
-<span id="cb223-2"><a href="sentiment-analysis-and-wordcloud.html#cb223-2"></a>videogame<span class="op">%&gt;%</span></span>
-<span id="cb223-3"><a href="sentiment-analysis-and-wordcloud.html#cb223-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_words =</span> <span class="kw">mean</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">S+&#39;</span>)), <span class="dt">median_words =</span> <span class="kw">median</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">S+&#39;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="sentiment-analysis-and-wordcloud.html#cb222-1"></a><span class="co"># Words across all reviews</span></span>
+<span id="cb222-2"><a href="sentiment-analysis-and-wordcloud.html#cb222-2"></a>videogame<span class="op">%&gt;%</span></span>
+<span id="cb222-3"><a href="sentiment-analysis-and-wordcloud.html#cb222-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_words =</span> <span class="kw">mean</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">S+&#39;</span>)), <span class="dt">median_words =</span> <span class="kw">median</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">S+&#39;</span>)))</span></code></pre></div>
 <pre><code>##   mean_words median_words
 ## 1   106.7833           37</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="sentiment-analysis-and-wordcloud.html#cb225-1"></a><span class="co"># Sentences across all reviews</span></span>
-<span id="cb225-2"><a href="sentiment-analysis-and-wordcloud.html#cb225-2"></a>videogame<span class="op">%&gt;%</span></span>
-<span id="cb225-3"><a href="sentiment-analysis-and-wordcloud.html#cb225-3"></a><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">mean_sentences =</span> <span class="kw">mean</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&quot;[A-Za-z,;&#39;</span><span class="ch">\&quot;\\</span><span class="st">s]+[^.!?]*[.?!]&quot;</span>)), <span class="dt">median_sentences =</span> <span class="kw">median</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&quot;[A-Za-z,;&#39;</span><span class="ch">\&quot;\\</span><span class="st">s]+[^.!?]*[.?!]&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="sentiment-analysis-and-wordcloud.html#cb224-1"></a><span class="co"># Sentences across all reviews</span></span>
+<span id="cb224-2"><a href="sentiment-analysis-and-wordcloud.html#cb224-2"></a>videogame<span class="op">%&gt;%</span></span>
+<span id="cb224-3"><a href="sentiment-analysis-and-wordcloud.html#cb224-3"></a><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">mean_sentences =</span> <span class="kw">mean</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&quot;[A-Za-z,;&#39;</span><span class="ch">\&quot;\\</span><span class="st">s]+[^.!?]*[.?!]&quot;</span>)), <span class="dt">median_sentences =</span> <span class="kw">median</span>(<span class="kw">str_count</span>(<span class="dt">string =</span> review,<span class="dt">pattern =</span> <span class="st">&quot;[A-Za-z,;&#39;</span><span class="ch">\&quot;\\</span><span class="st">s]+[^.!?]*[.?!]&quot;</span>)))</span></code></pre></div>
 <pre><code>##   mean_sentences median_sentences
 ## 1           5.84                3</code></pre>
 <p>On average, there are 583 characters, 106 words, 6 sentences across all reviews.</p>
 </div>
 <div id="most-common-words" class="section level3">
 <h3><span class="header-section-number">25.1.4</span> Most common words</h3>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="sentiment-analysis-and-wordcloud.html#cb227-1"></a>most_common_word =<span class="st"> </span><span class="kw">freq_terms</span>(<span class="dt">text.var=</span>videogame<span class="op">$</span>review,<span class="dt">top=</span><span class="dv">25</span>,<span class="dt">stopwords =</span></span>
-<span id="cb227-2"><a href="sentiment-analysis-and-wordcloud.html#cb227-2"></a>                                <span class="kw">c</span>(Top200Words,<span class="st">&quot;game&quot;</span>,<span class="st">&quot;games&quot;</span>,<span class="st">&quot;playing&quot;</span>,<span class="st">&quot;it&#39;s&quot;</span>,<span class="st">&quot;i&#39;ve&quot;</span>,<span class="st">&quot;i&#39;m&quot;</span>,<span class="st">&quot;s&quot;</span>,<span class="st">&quot;d&quot;</span>))</span>
-<span id="cb227-3"><a href="sentiment-analysis-and-wordcloud.html#cb227-3"></a>  </span>
-<span id="cb227-4"><a href="sentiment-analysis-and-wordcloud.html#cb227-4"></a><span class="kw">ggplot</span>(most_common_word,<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(WORD, FREQ, <span class="dt">.desc=</span><span class="ot">FALSE</span>),<span class="dt">y=</span>FREQ))<span class="op">+</span></span>
-<span id="cb227-5"><a href="sentiment-analysis-and-wordcloud.html#cb227-5"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>,<span class="dt">fill =</span> <span class="st">&quot;steelblue&quot;</span>)<span class="op">+</span></span>
-<span id="cb227-6"><a href="sentiment-analysis-and-wordcloud.html#cb227-6"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Word&quot;</span>)<span class="op">+</span></span>
-<span id="cb227-7"><a href="sentiment-analysis-and-wordcloud.html#cb227-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span></span>
-<span id="cb227-8"><a href="sentiment-analysis-and-wordcloud.html#cb227-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
-<span id="cb227-9"><a href="sentiment-analysis-and-wordcloud.html#cb227-9"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="sentiment-analysis-and-wordcloud.html#cb226-1"></a>most_common_word =<span class="st"> </span><span class="kw">freq_terms</span>(<span class="dt">text.var=</span>videogame<span class="op">$</span>review,<span class="dt">top=</span><span class="dv">25</span>,<span class="dt">stopwords =</span></span>
+<span id="cb226-2"><a href="sentiment-analysis-and-wordcloud.html#cb226-2"></a>                                <span class="kw">c</span>(Top200Words,<span class="st">&quot;game&quot;</span>,<span class="st">&quot;games&quot;</span>,<span class="st">&quot;playing&quot;</span>,<span class="st">&quot;it&#39;s&quot;</span>,<span class="st">&quot;i&#39;ve&quot;</span>,<span class="st">&quot;i&#39;m&quot;</span>,<span class="st">&quot;s&quot;</span>,<span class="st">&quot;d&quot;</span>))</span>
+<span id="cb226-3"><a href="sentiment-analysis-and-wordcloud.html#cb226-3"></a>  </span>
+<span id="cb226-4"><a href="sentiment-analysis-and-wordcloud.html#cb226-4"></a><span class="kw">ggplot</span>(most_common_word,<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(WORD, FREQ, <span class="dt">.desc=</span><span class="ot">FALSE</span>),<span class="dt">y=</span>FREQ))<span class="op">+</span></span>
+<span id="cb226-5"><a href="sentiment-analysis-and-wordcloud.html#cb226-5"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>,<span class="dt">fill =</span> <span class="st">&quot;steelblue&quot;</span>)<span class="op">+</span></span>
+<span id="cb226-6"><a href="sentiment-analysis-and-wordcloud.html#cb226-6"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Word&quot;</span>)<span class="op">+</span></span>
+<span id="cb226-7"><a href="sentiment-analysis-and-wordcloud.html#cb226-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span></span>
+<span id="cb226-8"><a href="sentiment-analysis-and-wordcloud.html#cb226-8"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
+<span id="cb226-9"><a href="sentiment-analysis-and-wordcloud.html#cb226-9"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
 <p><img src="sentiment_analysis_and_wordcloud_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>By examining the top 25 words, we can conclude that the most popular games are <strong>Mario</strong> and <strong>Zelda</strong>. Also most words are good-comment-word, such as fun, love, best.</p>
 </div>
@@ -673,12 +673,12 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 <p>Let us classify the words to gain a better understanding of the reviews. For this, we will use the dplyr and tidytext packages. We will make use of the unnest_tokens function from tidytext to tokenize the reviews and the following dplyr functions to organize the data: select, group_by, ungroup and count. Later on, we will also use the tidyr package to reshape the data.</p>
 <div id="words-in-reviews" class="section level3">
 <h3><span class="header-section-number">25.2.1</span> Words in reviews</h3>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="sentiment-analysis-and-wordcloud.html#cb228-1"></a>videogame <span class="op">%&gt;%</span></span>
-<span id="cb228-2"><a href="sentiment-analysis-and-wordcloud.html#cb228-2"></a><span class="st">  </span><span class="kw">select</span>(id,review) <span class="op">%&gt;%</span></span>
-<span id="cb228-3"><a href="sentiment-analysis-and-wordcloud.html#cb228-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word,<span class="dt">input=</span>review) <span class="op">%&gt;%</span></span>
-<span id="cb228-4"><a href="sentiment-analysis-and-wordcloud.html#cb228-4"></a><span class="st">  </span><span class="kw">group_by</span>(id) <span class="op">%&gt;%</span></span>
-<span id="cb228-5"><a href="sentiment-analysis-and-wordcloud.html#cb228-5"></a><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span></span>
-<span id="cb228-6"><a href="sentiment-analysis-and-wordcloud.html#cb228-6"></a><span class="st">  </span><span class="kw">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="sentiment-analysis-and-wordcloud.html#cb227-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb227-2"><a href="sentiment-analysis-and-wordcloud.html#cb227-2"></a><span class="st">  </span><span class="kw">select</span>(id,review) <span class="op">%&gt;%</span></span>
+<span id="cb227-3"><a href="sentiment-analysis-and-wordcloud.html#cb227-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word,<span class="dt">input=</span>review) <span class="op">%&gt;%</span></span>
+<span id="cb227-4"><a href="sentiment-analysis-and-wordcloud.html#cb227-4"></a><span class="st">  </span><span class="kw">group_by</span>(id) <span class="op">%&gt;%</span></span>
+<span id="cb227-5"><a href="sentiment-analysis-and-wordcloud.html#cb227-5"></a><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span></span>
+<span id="cb227-6"><a href="sentiment-analysis-and-wordcloud.html#cb227-6"></a><span class="st">  </span><span class="kw">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ## # Groups:   id [6]
 ##      id     n
@@ -693,11 +693,11 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 <div id="word-lexicons---bing" class="section level3">
 <h3><span class="header-section-number">25.2.2</span> Word lexicons —- Bing</h3>
 <p>There are a number of word lexicons that can be used to classify words as being positive or negative. The bing lexicon categorizes words as being positive and negative.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="sentiment-analysis-and-wordcloud.html#cb230-1"></a>pos_neg =<span class="st"> </span>videogame<span class="op">%&gt;%</span></span>
-<span id="cb230-2"><a href="sentiment-analysis-and-wordcloud.html#cb230-2"></a><span class="st">            </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
-<span id="cb230-3"><a href="sentiment-analysis-and-wordcloud.html#cb230-3"></a><span class="st">            </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review)<span class="op">%&gt;%</span></span>
-<span id="cb230-4"><a href="sentiment-analysis-and-wordcloud.html#cb230-4"></a><span class="st">            </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))</span>
-<span id="cb230-5"><a href="sentiment-analysis-and-wordcloud.html#cb230-5"></a><span class="kw">head</span>(pos_neg)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="sentiment-analysis-and-wordcloud.html#cb229-1"></a>pos_neg =<span class="st"> </span>videogame<span class="op">%&gt;%</span></span>
+<span id="cb229-2"><a href="sentiment-analysis-and-wordcloud.html#cb229-2"></a><span class="st">            </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb229-3"><a href="sentiment-analysis-and-wordcloud.html#cb229-3"></a><span class="st">            </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review)<span class="op">%&gt;%</span></span>
+<span id="cb229-4"><a href="sentiment-analysis-and-wordcloud.html#cb229-4"></a><span class="st">            </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))</span>
+<span id="cb229-5"><a href="sentiment-analysis-and-wordcloud.html#cb229-5"></a><span class="kw">head</span>(pos_neg)</span></code></pre></div>
 <pre><code>##   id    word sentiment
 ## 1  1    fake  negative
 ## 2  1   wrong  negative
@@ -705,25 +705,25 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 ## 4  1    good  positive
 ## 5  2 strange  negative
 ## 6  2    like  positive</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="sentiment-analysis-and-wordcloud.html#cb232-1"></a><span class="kw">ggplot</span>(pos_neg,<span class="kw">aes</span>(<span class="dt">x=</span>sentiment,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
-<span id="cb232-2"><a href="sentiment-analysis-and-wordcloud.html#cb232-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span></span>
-<span id="cb232-3"><a href="sentiment-analysis-and-wordcloud.html#cb232-3"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></span>
-<span id="cb232-4"><a href="sentiment-analysis-and-wordcloud.html#cb232-4"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="sentiment-analysis-and-wordcloud.html#cb231-1"></a><span class="kw">ggplot</span>(pos_neg,<span class="kw">aes</span>(<span class="dt">x=</span>sentiment,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
+<span id="cb231-2"><a href="sentiment-analysis-and-wordcloud.html#cb231-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span></span>
+<span id="cb231-3"><a href="sentiment-analysis-and-wordcloud.html#cb231-3"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></span>
+<span id="cb231-4"><a href="sentiment-analysis-and-wordcloud.html#cb231-4"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
 <p><img src="sentiment_analysis_and_wordcloud_files/figure-html/visualize-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The amount of <em>positive words</em> is almost as <strong>twice</strong> as the amount of <em>negative words</em>.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="sentiment-analysis-and-wordcloud.html#cb233-1"></a>rating_sentiment =<span class="st"> </span></span>
-<span id="cb233-2"><a href="sentiment-analysis-and-wordcloud.html#cb233-2"></a><span class="st">  </span>videogame <span class="op">%&gt;%</span></span>
-<span id="cb233-3"><a href="sentiment-analysis-and-wordcloud.html#cb233-3"></a><span class="st">    </span><span class="kw">select</span>(id,review,review_rating)<span class="op">%&gt;%</span></span>
-<span id="cb233-4"><a href="sentiment-analysis-and-wordcloud.html#cb233-4"></a><span class="st">    </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
-<span id="cb233-5"><a href="sentiment-analysis-and-wordcloud.html#cb233-5"></a><span class="st">    </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb233-6"><a href="sentiment-analysis-and-wordcloud.html#cb233-6"></a><span class="st">    </span><span class="kw">group_by</span>(review_rating,sentiment)<span class="op">%&gt;%</span></span>
-<span id="cb233-7"><a href="sentiment-analysis-and-wordcloud.html#cb233-7"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">amount =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></span>
-<span id="cb233-8"><a href="sentiment-analysis-and-wordcloud.html#cb233-8"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">proportion =</span> amount<span class="op">/</span><span class="kw">sum</span>(amount))</span>
-<span id="cb233-9"><a href="sentiment-analysis-and-wordcloud.html#cb233-9"></a></span>
-<span id="cb233-10"><a href="sentiment-analysis-and-wordcloud.html#cb233-10"></a>rating_sentiment <span class="op">%&gt;%</span></span>
-<span id="cb233-11"><a href="sentiment-analysis-and-wordcloud.html#cb233-11"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>review_rating,<span class="dt">y=</span>proportion,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
-<span id="cb233-12"><a href="sentiment-analysis-and-wordcloud.html#cb233-12"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
-<span id="cb233-13"><a href="sentiment-analysis-and-wordcloud.html#cb233-13"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="sentiment-analysis-and-wordcloud.html#cb232-1"></a>rating_sentiment =<span class="st"> </span></span>
+<span id="cb232-2"><a href="sentiment-analysis-and-wordcloud.html#cb232-2"></a><span class="st">  </span>videogame <span class="op">%&gt;%</span></span>
+<span id="cb232-3"><a href="sentiment-analysis-and-wordcloud.html#cb232-3"></a><span class="st">    </span><span class="kw">select</span>(id,review,review_rating)<span class="op">%&gt;%</span></span>
+<span id="cb232-4"><a href="sentiment-analysis-and-wordcloud.html#cb232-4"></a><span class="st">    </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
+<span id="cb232-5"><a href="sentiment-analysis-and-wordcloud.html#cb232-5"></a><span class="st">    </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb232-6"><a href="sentiment-analysis-and-wordcloud.html#cb232-6"></a><span class="st">    </span><span class="kw">group_by</span>(review_rating,sentiment)<span class="op">%&gt;%</span></span>
+<span id="cb232-7"><a href="sentiment-analysis-and-wordcloud.html#cb232-7"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">amount =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></span>
+<span id="cb232-8"><a href="sentiment-analysis-and-wordcloud.html#cb232-8"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">proportion =</span> amount<span class="op">/</span><span class="kw">sum</span>(amount))</span>
+<span id="cb232-9"><a href="sentiment-analysis-and-wordcloud.html#cb232-9"></a></span>
+<span id="cb232-10"><a href="sentiment-analysis-and-wordcloud.html#cb232-10"></a>rating_sentiment <span class="op">%&gt;%</span></span>
+<span id="cb232-11"><a href="sentiment-analysis-and-wordcloud.html#cb232-11"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>review_rating,<span class="dt">y=</span>proportion,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
+<span id="cb232-12"><a href="sentiment-analysis-and-wordcloud.html#cb232-12"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
+<span id="cb232-13"><a href="sentiment-analysis-and-wordcloud.html#cb232-13"></a><span class="st">  </span><span class="kw">theme_economist</span>()</span></code></pre></div>
 <p><img src="sentiment_analysis_and_wordcloud_files/figure-html/check%20whether%20reviews%20of%20lots%20of%20positive%20words%20are%20helpful-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The proportion of positive words increases as the review_rating growth. Ratings of 3 and 4 are barely the same in terms of the positive-negative structure of people’s comments.</p>
 </div>
@@ -732,24 +732,24 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 <p>A word may reflect more than just valence. The ‘nrc’ lexicon categorizes words by emotion.</p>
 <p><em>Please note that the next two code chunks must be run interactively since they require the user to consent to the license agreement for using the nrc lexicon. See here for more detail: <a href="https://github.com/EmilHvitfeldt/textdata/issues/19" class="uri">https://github.com/EmilHvitfeldt/textdata/issues/19</a></em></p>
 <p>Emotion in reviews</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="sentiment-analysis-and-wordcloud.html#cb234-1"></a>videogame <span class="op">%&gt;%</span></span>
-<span id="cb234-2"><a href="sentiment-analysis-and-wordcloud.html#cb234-2"></a><span class="st">  </span><span class="kw">select</span>(id,review) <span class="op">%&gt;%</span></span>
-<span id="cb234-3"><a href="sentiment-analysis-and-wordcloud.html#cb234-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review) <span class="op">%&gt;%</span></span>
-<span id="cb234-4"><a href="sentiment-analysis-and-wordcloud.html#cb234-4"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;nrc&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb234-5"><a href="sentiment-analysis-and-wordcloud.html#cb234-5"></a><span class="st">  </span><span class="kw">group_by</span>(sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb234-6"><a href="sentiment-analysis-and-wordcloud.html#cb234-6"></a><span class="st">    </span><span class="kw">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="sentiment-analysis-and-wordcloud.html#cb233-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb233-2"><a href="sentiment-analysis-and-wordcloud.html#cb233-2"></a><span class="st">  </span><span class="kw">select</span>(id,review) <span class="op">%&gt;%</span></span>
+<span id="cb233-3"><a href="sentiment-analysis-and-wordcloud.html#cb233-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review) <span class="op">%&gt;%</span></span>
+<span id="cb233-4"><a href="sentiment-analysis-and-wordcloud.html#cb233-4"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;nrc&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb233-5"><a href="sentiment-analysis-and-wordcloud.html#cb233-5"></a><span class="st">  </span><span class="kw">group_by</span>(sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb233-6"><a href="sentiment-analysis-and-wordcloud.html#cb233-6"></a><span class="st">    </span><span class="kw">count</span>()</span></code></pre></div>
 <p>Let’s visualize</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="sentiment-analysis-and-wordcloud.html#cb235-1"></a>videogame <span class="op">%&gt;%</span></span>
-<span id="cb235-2"><a href="sentiment-analysis-and-wordcloud.html#cb235-2"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
-<span id="cb235-3"><a href="sentiment-analysis-and-wordcloud.html#cb235-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review)<span class="op">%&gt;%</span></span>
-<span id="cb235-4"><a href="sentiment-analysis-and-wordcloud.html#cb235-4"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;nrc&#39;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb235-5"><a href="sentiment-analysis-and-wordcloud.html#cb235-5"></a><span class="st">  </span><span class="kw">group_by</span>(sentiment)<span class="op">%&gt;%</span></span>
-<span id="cb235-6"><a href="sentiment-analysis-and-wordcloud.html#cb235-6"></a><span class="st">    </span><span class="kw">count</span>()<span class="op">%&gt;%</span></span>
-<span id="cb235-7"><a href="sentiment-analysis-and-wordcloud.html#cb235-7"></a><span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(sentiment,<span class="dt">X =</span> n),<span class="dt">y=</span>n,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
-<span id="cb235-8"><a href="sentiment-analysis-and-wordcloud.html#cb235-8"></a><span class="st">        </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
-<span id="cb235-9"><a href="sentiment-analysis-and-wordcloud.html#cb235-9"></a><span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span>F)<span class="op">+</span></span>
-<span id="cb235-10"><a href="sentiment-analysis-and-wordcloud.html#cb235-10"></a><span class="st">        </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
-<span id="cb235-11"><a href="sentiment-analysis-and-wordcloud.html#cb235-11"></a><span class="st">        </span><span class="kw">theme_wsj</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="sentiment-analysis-and-wordcloud.html#cb234-1"></a>videogame <span class="op">%&gt;%</span></span>
+<span id="cb234-2"><a href="sentiment-analysis-and-wordcloud.html#cb234-2"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb234-3"><a href="sentiment-analysis-and-wordcloud.html#cb234-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output =</span> word, <span class="dt">input =</span> review)<span class="op">%&gt;%</span></span>
+<span id="cb234-4"><a href="sentiment-analysis-and-wordcloud.html#cb234-4"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;nrc&#39;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb234-5"><a href="sentiment-analysis-and-wordcloud.html#cb234-5"></a><span class="st">  </span><span class="kw">group_by</span>(sentiment)<span class="op">%&gt;%</span></span>
+<span id="cb234-6"><a href="sentiment-analysis-and-wordcloud.html#cb234-6"></a><span class="st">    </span><span class="kw">count</span>()<span class="op">%&gt;%</span></span>
+<span id="cb234-7"><a href="sentiment-analysis-and-wordcloud.html#cb234-7"></a><span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(sentiment,<span class="dt">X =</span> n),<span class="dt">y=</span>n,<span class="dt">fill=</span>sentiment))<span class="op">+</span></span>
+<span id="cb234-8"><a href="sentiment-analysis-and-wordcloud.html#cb234-8"></a><span class="st">        </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
+<span id="cb234-9"><a href="sentiment-analysis-and-wordcloud.html#cb234-9"></a><span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span>F)<span class="op">+</span></span>
+<span id="cb234-10"><a href="sentiment-analysis-and-wordcloud.html#cb234-10"></a><span class="st">        </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
+<span id="cb234-11"><a href="sentiment-analysis-and-wordcloud.html#cb234-11"></a><span class="st">        </span><span class="kw">theme_wsj</span>()</span></code></pre></div>
 </div>
 </div>
 <div id="wordcloud" class="section level2">
@@ -757,37 +757,37 @@ This dataset is based on a set of Amazon review of video games downloaded from P
 <p>Wordclouds sometime could offer little insight into the data, yet they tend to be very good at capturing interest of non-technical audiences.</p>
 <div id="simple-word-cloud-visualization" class="section level3">
 <h3><span class="header-section-number">25.3.1</span> Simple Word Cloud Visualization</h3>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="sentiment-analysis-and-wordcloud.html#cb236-1"></a>wordcloudData1 =<span class="st"> </span></span>
-<span id="cb236-2"><a href="sentiment-analysis-and-wordcloud.html#cb236-2"></a><span class="st">  </span>videogame<span class="op">%&gt;%</span></span>
-<span id="cb236-3"><a href="sentiment-analysis-and-wordcloud.html#cb236-3"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
-<span id="cb236-4"><a href="sentiment-analysis-and-wordcloud.html#cb236-4"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
-<span id="cb236-5"><a href="sentiment-analysis-and-wordcloud.html#cb236-5"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words)<span class="op">%&gt;%</span></span>
-<span id="cb236-6"><a href="sentiment-analysis-and-wordcloud.html#cb236-6"></a><span class="st">  </span><span class="kw">group_by</span>(word)<span class="op">%&gt;%</span></span>
-<span id="cb236-7"><a href="sentiment-analysis-and-wordcloud.html#cb236-7"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">freq =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></span>
-<span id="cb236-8"><a href="sentiment-analysis-and-wordcloud.html#cb236-8"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(freq))<span class="op">%&gt;%</span></span>
-<span id="cb236-9"><a href="sentiment-analysis-and-wordcloud.html#cb236-9"></a><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></span>
-<span id="cb236-10"><a href="sentiment-analysis-and-wordcloud.html#cb236-10"></a><span class="st">  </span><span class="kw">data.frame</span>()</span>
-<span id="cb236-11"><a href="sentiment-analysis-and-wordcloud.html#cb236-11"></a></span>
-<span id="cb236-12"><a href="sentiment-analysis-and-wordcloud.html#cb236-12"></a><span class="kw">set.seed</span>(<span class="dv">617</span>)</span>
-<span id="cb236-13"><a href="sentiment-analysis-and-wordcloud.html#cb236-13"></a><span class="kw">wordcloud</span>(<span class="dt">words =</span> wordcloudData1<span class="op">$</span>word,wordcloudData1<span class="op">$</span>freq,<span class="dt">scale=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.5</span>),<span class="dt">max.words =</span> <span class="dv">100</span>,<span class="dt">colors=</span><span class="kw">brewer.pal</span>(<span class="dv">9</span>,<span class="st">&quot;Spectral&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="sentiment-analysis-and-wordcloud.html#cb235-1"></a>wordcloudData1 =<span class="st"> </span></span>
+<span id="cb235-2"><a href="sentiment-analysis-and-wordcloud.html#cb235-2"></a><span class="st">  </span>videogame<span class="op">%&gt;%</span></span>
+<span id="cb235-3"><a href="sentiment-analysis-and-wordcloud.html#cb235-3"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb235-4"><a href="sentiment-analysis-and-wordcloud.html#cb235-4"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
+<span id="cb235-5"><a href="sentiment-analysis-and-wordcloud.html#cb235-5"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words)<span class="op">%&gt;%</span></span>
+<span id="cb235-6"><a href="sentiment-analysis-and-wordcloud.html#cb235-6"></a><span class="st">  </span><span class="kw">group_by</span>(word)<span class="op">%&gt;%</span></span>
+<span id="cb235-7"><a href="sentiment-analysis-and-wordcloud.html#cb235-7"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">freq =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></span>
+<span id="cb235-8"><a href="sentiment-analysis-and-wordcloud.html#cb235-8"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(freq))<span class="op">%&gt;%</span></span>
+<span id="cb235-9"><a href="sentiment-analysis-and-wordcloud.html#cb235-9"></a><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></span>
+<span id="cb235-10"><a href="sentiment-analysis-and-wordcloud.html#cb235-10"></a><span class="st">  </span><span class="kw">data.frame</span>()</span>
+<span id="cb235-11"><a href="sentiment-analysis-and-wordcloud.html#cb235-11"></a></span>
+<span id="cb235-12"><a href="sentiment-analysis-and-wordcloud.html#cb235-12"></a><span class="kw">set.seed</span>(<span class="dv">617</span>)</span>
+<span id="cb235-13"><a href="sentiment-analysis-and-wordcloud.html#cb235-13"></a><span class="kw">wordcloud</span>(<span class="dt">words =</span> wordcloudData1<span class="op">$</span>word,wordcloudData1<span class="op">$</span>freq,<span class="dt">scale=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.5</span>),<span class="dt">max.words =</span> <span class="dv">100</span>,<span class="dt">colors=</span><span class="kw">brewer.pal</span>(<span class="dv">9</span>,<span class="st">&quot;Spectral&quot;</span>))</span></code></pre></div>
 <p><img src="sentiment_analysis_and_wordcloud_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="comparison-word-cloud" class="section level3">
 <h3><span class="header-section-number">25.3.2</span> Comparison Word Cloud</h3>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="sentiment-analysis-and-wordcloud.html#cb237-1"></a>wordcloudData2 =<span class="st"> </span></span>
-<span id="cb237-2"><a href="sentiment-analysis-and-wordcloud.html#cb237-2"></a><span class="st">  </span>videogame<span class="op">%&gt;%</span></span>
-<span id="cb237-3"><a href="sentiment-analysis-and-wordcloud.html#cb237-3"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
-<span id="cb237-4"><a href="sentiment-analysis-and-wordcloud.html#cb237-4"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
-<span id="cb237-5"><a href="sentiment-analysis-and-wordcloud.html#cb237-5"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words)<span class="op">%&gt;%</span></span>
-<span id="cb237-6"><a href="sentiment-analysis-and-wordcloud.html#cb237-6"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb237-7"><a href="sentiment-analysis-and-wordcloud.html#cb237-7"></a><span class="st">  </span><span class="kw">count</span>(sentiment,word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span></span>
-<span id="cb237-8"><a href="sentiment-analysis-and-wordcloud.html#cb237-8"></a><span class="st">  </span><span class="kw">spread</span>(<span class="dt">key=</span>sentiment,<span class="dt">value =</span> n,<span class="dt">fill=</span><span class="dv">0</span>)<span class="op">%&gt;%</span></span>
-<span id="cb237-9"><a href="sentiment-analysis-and-wordcloud.html#cb237-9"></a><span class="st">  </span><span class="kw">data.frame</span>()</span>
-<span id="cb237-10"><a href="sentiment-analysis-and-wordcloud.html#cb237-10"></a><span class="kw">rownames</span>(wordcloudData2) =<span class="st"> </span>wordcloudData2[,<span class="st">&#39;word&#39;</span>]</span>
-<span id="cb237-11"><a href="sentiment-analysis-and-wordcloud.html#cb237-11"></a>wordcloudData2 =<span class="st"> </span>wordcloudData2[,<span class="kw">c</span>(<span class="st">&#39;positive&#39;</span>,<span class="st">&#39;negative&#39;</span>)]</span>
-<span id="cb237-12"><a href="sentiment-analysis-and-wordcloud.html#cb237-12"></a></span>
-<span id="cb237-13"><a href="sentiment-analysis-and-wordcloud.html#cb237-13"></a><span class="kw">set.seed</span>(<span class="dv">617</span>)</span>
-<span id="cb237-14"><a href="sentiment-analysis-and-wordcloud.html#cb237-14"></a><span class="kw">comparison.cloud</span>(<span class="dt">term.matrix =</span> wordcloudData2,<span class="dt">scale =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.5</span>),<span class="dt">max.words =</span> <span class="dv">200</span>, <span class="dt">rot.per=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="sentiment-analysis-and-wordcloud.html#cb236-1"></a>wordcloudData2 =<span class="st"> </span></span>
+<span id="cb236-2"><a href="sentiment-analysis-and-wordcloud.html#cb236-2"></a><span class="st">  </span>videogame<span class="op">%&gt;%</span></span>
+<span id="cb236-3"><a href="sentiment-analysis-and-wordcloud.html#cb236-3"></a><span class="st">  </span><span class="kw">select</span>(id,review)<span class="op">%&gt;%</span></span>
+<span id="cb236-4"><a href="sentiment-analysis-and-wordcloud.html#cb236-4"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(<span class="dt">output=</span>word,<span class="dt">input=</span>review)<span class="op">%&gt;%</span></span>
+<span id="cb236-5"><a href="sentiment-analysis-and-wordcloud.html#cb236-5"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words)<span class="op">%&gt;%</span></span>
+<span id="cb236-6"><a href="sentiment-analysis-and-wordcloud.html#cb236-6"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&#39;bing&#39;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb236-7"><a href="sentiment-analysis-and-wordcloud.html#cb236-7"></a><span class="st">  </span><span class="kw">count</span>(sentiment,word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span></span>
+<span id="cb236-8"><a href="sentiment-analysis-and-wordcloud.html#cb236-8"></a><span class="st">  </span><span class="kw">spread</span>(<span class="dt">key=</span>sentiment,<span class="dt">value =</span> n,<span class="dt">fill=</span><span class="dv">0</span>)<span class="op">%&gt;%</span></span>
+<span id="cb236-9"><a href="sentiment-analysis-and-wordcloud.html#cb236-9"></a><span class="st">  </span><span class="kw">data.frame</span>()</span>
+<span id="cb236-10"><a href="sentiment-analysis-and-wordcloud.html#cb236-10"></a><span class="kw">rownames</span>(wordcloudData2) =<span class="st"> </span>wordcloudData2[,<span class="st">&#39;word&#39;</span>]</span>
+<span id="cb236-11"><a href="sentiment-analysis-and-wordcloud.html#cb236-11"></a>wordcloudData2 =<span class="st"> </span>wordcloudData2[,<span class="kw">c</span>(<span class="st">&#39;positive&#39;</span>,<span class="st">&#39;negative&#39;</span>)]</span>
+<span id="cb236-12"><a href="sentiment-analysis-and-wordcloud.html#cb236-12"></a></span>
+<span id="cb236-13"><a href="sentiment-analysis-and-wordcloud.html#cb236-13"></a><span class="kw">set.seed</span>(<span class="dv">617</span>)</span>
+<span id="cb236-14"><a href="sentiment-analysis-and-wordcloud.html#cb236-14"></a><span class="kw">comparison.cloud</span>(<span class="dt">term.matrix =</span> wordcloudData2,<span class="dt">scale =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.5</span>),<span class="dt">max.words =</span> <span class="dv">200</span>, <span class="dt">rot.per=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="sentiment_analysis_and_wordcloud_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Hope you can enjoy this tutorial and explore more on text mining.</p>
 

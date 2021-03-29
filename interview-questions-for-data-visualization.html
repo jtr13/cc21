@@ -576,8 +576,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="interview-questions-for-data-visualization" class="section level1">
 <h1><span class="header-section-number">Chapter 30</span> Interview questions for data visualization</h1>
 <p>Ivy Liu</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="interview-questions-for-data-visualization.html#cb275-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb275-2"><a href="interview-questions-for-data-visualization.html#cb275-2"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="interview-questions-for-data-visualization.html#cb274-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb274-2"><a href="interview-questions-for-data-visualization.html#cb274-2"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
 <div id="general-questions" class="section level3">
 <h3><span class="header-section-number">30.0.1</span> General Questions</h3>
 <div id="question1-what-is-data-modeling" class="section level4">
@@ -807,11 +807,11 @@ ggplot2, Lattice, Leaflet, Highcharter, RColorBrewer, Plotly, sunburstR, RGL, dy
 <p><font size = "3">
 Use the function <span class="math inline">\(par(mfrow=c(n,m))\)</span>. For example, <span class="math inline">\(par(mfrow=c(2,2))\)</span> can be used to capture a 2 X 2 plot in a single page.
 </font></p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="interview-questions-for-data-visualization.html#cb276-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb276-2"><a href="interview-questions-for-data-visualization.html#cb276-2"></a><span class="kw">plot</span>(wt,mpg, <span class="dt">main=</span><span class="st">&quot;Scatterplot of wt vs. mpg&quot;</span>)</span>
-<span id="cb276-3"><a href="interview-questions-for-data-visualization.html#cb276-3"></a><span class="kw">plot</span>(wt,disp, <span class="dt">main=</span><span class="st">&quot;Scatterplot of wt vs disp&quot;</span>)</span>
-<span id="cb276-4"><a href="interview-questions-for-data-visualization.html#cb276-4"></a><span class="kw">hist</span>(wt, <span class="dt">main=</span><span class="st">&quot;Histogram of wt&quot;</span>)</span>
-<span id="cb276-5"><a href="interview-questions-for-data-visualization.html#cb276-5"></a><span class="kw">boxplot</span>(wt, <span class="dt">main=</span><span class="st">&quot;Boxplot of wt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="interview-questions-for-data-visualization.html#cb275-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb275-2"><a href="interview-questions-for-data-visualization.html#cb275-2"></a><span class="kw">plot</span>(wt,mpg, <span class="dt">main=</span><span class="st">&quot;Scatterplot of wt vs. mpg&quot;</span>)</span>
+<span id="cb275-3"><a href="interview-questions-for-data-visualization.html#cb275-3"></a><span class="kw">plot</span>(wt,disp, <span class="dt">main=</span><span class="st">&quot;Scatterplot of wt vs disp&quot;</span>)</span>
+<span id="cb275-4"><a href="interview-questions-for-data-visualization.html#cb275-4"></a><span class="kw">hist</span>(wt, <span class="dt">main=</span><span class="st">&quot;Histogram of wt&quot;</span>)</span>
+<span id="cb275-5"><a href="interview-questions-for-data-visualization.html#cb275-5"></a><span class="kw">boxplot</span>(wt, <span class="dt">main=</span><span class="st">&quot;Boxplot of wt&quot;</span>)</span></code></pre></div>
 <p><img src="data_visualization_interview_questions_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="question22-what-is-the-lattice-package-in-r-used-for" class="section level4">
