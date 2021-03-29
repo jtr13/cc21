@@ -11,7 +11,6 @@ language:
 # Chapter ordering
 rmd_files: [
 
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -66,6 +65,7 @@ rmd_files: [
   'presidential_election.Rmd',
   'sports_final_project_zoom_meetup.Rmd',
   'collaborating_on_github.Rmd',
+  'cc16_choose_your_adventure.Rmd',
   'common_r_errors.Rmd',
   'fitness_hour.Rmd',
   'work_management.Rmd',
@@ -75,7 +75,6 @@ rmd_files: [
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
-
 
 ]
 
