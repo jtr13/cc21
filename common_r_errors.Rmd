@@ -35,7 +35,7 @@ The variable you have used isn't defined in the code. Check for spelling or capi
 ## unexpected ...
 ```{r, include = TRUE, error=TRUE}
 c <- 1
-if(c>1))
+#if(c>1))
 ```
 This one is pretty simple, somewhere in your code is an extra parenthesis.
 
