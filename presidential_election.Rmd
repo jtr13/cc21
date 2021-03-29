@@ -45,7 +45,7 @@ Application_Status is "A" means that the absentee ballot application is "Accepte
 
 ```{r}
 CRS2020<-statewide_small %>% filter(Ballot_Status =="R"|Ballot_Status =="C"|Ballot_Status =="S")
-CRS2020 # 343,887 total status reasons
+head(CRS2020,15) # Show first 15 rows
 ```
 
 
@@ -278,7 +278,7 @@ population_and_satewide <- inner_join(GA_population, Not_accepted_percent_state,
 population_and_satewide <- population_and_satewide %>% mutate(Absentee_ballot_participation_rate=100*Total_absentee_number/Population) %>%
   arrange(desc(Absentee_ballot_participation_rate))
 
-population_and_satewide
+head(population_and_satewide,15) 
 ```
  
 We create a Georgia map with map_data function in maps package, which provides all the geographical information used to create a map.
@@ -307,9 +307,9 @@ county_df$subregion <- replace(county_df$subregion, county_df$subregion=="de kal
 state_df <- map_data("state") %>% filter(region == "georgia")
 
 
-mapdat <- left_join(population_and_satewide,county_df, by = c("County"="subregion")) # same thing 
+mapdat <- left_join(population_and_satewide,county_df, by = c("County"="subregion")) 
 
-mapdat
+head(mapdat,15)
 ```
 
 
