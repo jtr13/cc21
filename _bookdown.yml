@@ -35,6 +35,7 @@ rmd_files: [
   'translation_of_critical_covid_data_visualizations_paper.Rmd',
   'ibm_translation_to_chinese.Rmd',
   'translation_Chinese_eda_and_data_visualization.Rmd',
+  'chinese_translation_stringr_siwenxie.Rmd',
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
