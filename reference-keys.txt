@@ -306,6 +306,14 @@ cloning-a-repository-to-a-new-project
 cloning-a-repository-set-up-by-someone-else
 overview-of-git-panel
 merging-conflicts
+choose-your-adventure---how-to-choose-the-right-visualization-for-your-data
+introduction-4
+step-1.-what-would-you-like-to-show
+step-2
+step-3
+the-flow-chart
+an-example-use-case
+conclusion-1
 common-errors-in-r
 could-not-find-function
 error-in-if
