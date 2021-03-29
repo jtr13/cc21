@@ -1,8 +1,4 @@
 
-
-```{r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 # Introduction to Topology Data Analysis
 
 Yiwei Ren
