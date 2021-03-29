@@ -10,17 +10,9 @@ language:
 
 # Chapter ordering
 rmd_files: [
-  # Part: Introduction
-  'index.Rmd', # must be first chapter
-  'instructions.Rmd',
-  'sample_project.Rmd',
   
-  # Part: Cheatsheets
-  'date_time_handling_cheatsheet.Rmd', # contains PART header
+  'sql_r_tutorial.Rmd',
 
-  # Part: Appendices
-  'appendix_initial_setup.Rmd', # contains PART header
-  'appendix_pull_request_tutorial.Rmd'
 ]
 
 before_chapter_script: "_common.R"
