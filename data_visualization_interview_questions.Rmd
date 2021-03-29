@@ -1,0 +1,628 @@
+# Interview questions for data visualization
+
+Ivy Liu
+```{r}
+library(gridExtra)
+library(ggplot2)
+```
+###	General Questions
+
+
+#### Question1: What is data modeling?
+
+<font size = "3">
+
+Data modeling is the analysis of data objects that are used in a business or other context and the identification of the relationships among these data objects. Data modeling is the first step in performing object-oriented programming. 
+</font>
+\
+
+
+#### Question2: What are the steps involved in a data analysis process}
+<font size = "3">
+
+1. Data exploration \
+2. Data preparation \
+3. Data modeling \
+4. Validation \
+5. Implementation of model and tracking \
+</font>
+
+
+#### Question3: Why is data cleansing important for data visualization?
+
+<font size = "3">
+
+Data cleansing is used for identifying and removing errors and inconsistencies from data in order to enhance the quality of data. This process is crucial and emphasized because wrong data can lead to poor analysis. This step ensures the quality of the data is met to prepare data for visualization.
+</font>
+
+
+#### Question4: Explain what should be done with suspected or missing data?
+
+<font size = "3">
+
+1. Prepare a validation report that gives information of all suspected data. It should give information like validation criteria that it failed and the date and time of occurrence. \
+
+2. Experience personnel should examine the suspicious data to determine their acceptability. \
+
+3. Invalid data should be assigned and replaced with a validation code. \
+
+4. To work on missing data use the best analysis strategy like deletion method, single imputation methods, mean/median/mode imputation, model based methods, etc.\
+
+</font>
+
+
+#### Question5: What are some important features of a good data visualization?\label{new-question}
+
+<font size = "3">
+
+The data visualisation should be light and must highlight essential aspects of the data; looking at important variables, what is relatively important, what are the trends and changes. Besides, data visualisation must be visually appealing but should not have unnecessary information in it.
+
+One can answer this question in multiple ways: from technical points to mentioning key aspects, but be sure to remember saying these points:
+
+
+1. Data positioning \
+2. Bars over circle and squares \
+3. Use of colour theory \
+4. Reducing chart junk by avoiding 3D charts and eliminating the use of pie charts to show proportions \
+5. why sunburst visualization is more effective for hierarchical plots \
+</font>
+
+
+
+#### Question6: What is a scatter plot? For what type of data is scatter plot usually used for?
+
+<font size = "3">
+
+A scatter plot is a chart used to plot a correlation between two or more variables at the same time. It's usually used for numeric data.
+</font>
+
+```{r echo = FALSE}
+attach(mtcars)
+plot(wt, mpg, main="Scatterplot Example", 
+   xlab="Car Weight ", ylab="Miles Per Gallon ", pch=19)
+```
+
+
+
+#### Question7: What features might be visible in scatterplots?
+
+<font size = "3">
+
+1. Correlation: the two variables might have a relationship, for example, one might depend on another. But this is not the same as causation.  \
+
+2. Associations: the variables may be associated with one another. \
+
+3. Outliers: there could be cases where the data in two dimensions does not follow the general pattern. \
+
+4. Clusters: sometimes there could be groups of data that form a cluster on the plot. \
+
+5. Gaps: some combinations of values might not exist in a particular case. \
+
+6. Barriers: boundaries. \
+
+7. Conditional relationships: some relationship between the variables rely on a condition to be met. \
+
+</font>
+
+#### Question8: What type of plot would you use if you need to demonstrate "relationship" between variables/parameters?
+
+<font size = "3">
+When we are trying to show the relationship between 2 variables, scatter plots or charts are used. When we are trying to show “relationship” between three variables, bubble charts are used. 
+</font>
+
+
+#### Question9: When will you use a histogram and when will you use a bar chart? Explain with an example.}
+
+<font size = "3">
+Both plots are used to plot the distribution of a variable. Histograms are usually used for a categorical variable, while bar charts are used for a categorical variable.
+</font>
+
+
+
+#### Question10: What is an outlier?
+
+<font size = "3">
+The outlier is a commonly used terms by analysts referred for a value that appears far away and diverges from an overall pattern in a sample. There are two types of outliers: univariate and multivariate.
+</font>
+
+
+
+#### Question11: What type of data is box-plots usually used for? Why?
+
+<font size = "3">
+Boxplots are usually used for continuous variables. The plot is generally not informative when used for discrete data.
+</font>
+```{r echo = FALSE}
+boxplot(mpg~cyl,data=mtcars, main="Example Boxplots: Car Milage Data", 
+   xlab="Number of Cylinders", ylab="Miles Per Gallon")
+```
+
+
+
+#### Question12: What information could you gain from a box-plot?
+
+<font size = "3">
+
+1. Minimum/maximum score \
+2. Lower/upper quartile \
+3. Median \
+4. The Interquartile Range \
+5. Skewness \
+6. Dispersion \
+7. Outliers \
+</font>
+
+
+#### Question13: When do you use a boxplot and in what situation would you choose boxplot over histograms.}
+
+<font size = "3">
+Boxplots are used when trying to show a statistical distribution of one variable or compare the distributions of several variables. It is a visual representation of the statistical five number summary.
+
+Histograms are better at determining the probability distribution of the data; however, boxxplots are better for comparison between datasets and they are more space efficient.
+</font>
+
+
+#### Question14: When analyzing a histogram, what are some of the features to look for?
+
+<font size = "3">
+
+1. Asymmetry \
+2. Outliers \
+3. Multimodality \
+4. Gaps \
+5. Heaping/Rounding: Heaping example: temperature data can consist of common values due to conversion from Fahrenheit to Celsius. Rounding example: weight data that are all multiples of 5. \
+6. Impossibilities/Errors \
+</font>
+
+
+
+#### Question15: What type of data is histograms usually used for?
+
+<font size = "3">
+Continuous data
+</font>
+
+
+
+#### Question16: What is the difference between count histogram, relative frequency histogram, cumulative frequency histogram and density histogram?
+
+<font size = "3">
+
+1. Count: the vertical (y) axis shows the frequency/count of data that falls within each bin \
+
+2. Relative frequency: the vertical (y) axis shows the relative frequency of data that falls within each bin. Relative frequency can be calculated by dividing the frequency by the total frequency (total count). Hence, the height of the bars sum up to 1. \
+
+3. Cumulative frequency: it shows the accumulation of the frequencies. Each vertical (y) axis shows the frequency of data in the corresponding bin and all the previous ones. \
+
+4. Density: the vertical (y) axis is calculated by dividing the relative frequency by the bin width. Hence, the area of the bars sum up to 1. \
+
+</font>
+
+
+
+#### Question17: What is nominal data and ordinal data? Explain with examples.}
+
+<font size = "3">
+
+Nominal data is data with no fixed categorical order. For example, the continents of the world (Europe, Asia, North America, Africa, South America, Antarctica, Oceania). 
+
+Ordinal data is data with fixed categorical order. For example, customer satisfactory rate (Very dissatisfied, dissatisfied, neutral, satisfied, very satisfied).
+</font>
+
+
+
+#### Question18: What are some advantages of using cleveland dot plot versus bar chart?
+
+<font size = "3">
+
+1. Cleveland plot takes up less space for data with many categories. Within a given space, one can fit more dots than bars. \
+
+2. Cleveland plot can show two different sets of values on the same line. \
+
+</font>
+
+
+
+#### Question19: How do you determine the color palette in your plots?
+
+<font size = "3">
+
+1. Depends on whether the data is discrete or continuous, I would choose different color scheme. For example, if the data is nominal, I would chose qualitative palette where there is no progression, but if the data is continuous, I would choose a sequential or perceptually uniform color palette.
+
+2. To avoid using colors that causes confusion or unintended emphasis on part of the data, I usually use the existing palettes in the software packages. For example in R, there is RColorBrewer.
+
+3. When I am presenting my data visualizations, I would try to make my graphs color vision decency (CVD) friendly.
+
+</font>
+
+\
+\
+\
+
+### R Questions 
+
+#### Question20: List 3 libraries in R that can be used for data visualization.}\label{labels}
+
+<font size = "3">
+ggplot2, Lattice, Leaflet, Highcharter, RColorBrewer, Plotly, sunburstR, RGL, dygraphs
+</font>
+
+
+
+#### Question21: How do you make multiple plots to a single page layout in R?\label{change-title}
+
+<font size = "3">
+Use the function $par(mfrow=c(n,m))$. For example, $par(mfrow=c(2,2))$ can be used to capture a 2 X 2 plot in a single page.
+</font>
+
+```{r}
+par(mfrow=c(2,2))
+plot(wt,mpg, main="Scatterplot of wt vs. mpg")
+plot(wt,disp, main="Scatterplot of wt vs disp")
+hist(wt, main="Histogram of wt")
+boxplot(wt, main="Boxplot of wt")
+```
+
+
+#### Question22: What is the lattice package in R used for?\label{change-spacing}
+
+<font size = "3">
+Lattice is mainly used for multivariate data and relationships. It supports trellis graphs, which displays a variable or the relationship between variables, conditioned on one or more other variables.
+</font>
+
+
+
+#### Question23: Can pots be exported as image files or other file formats in R?
+
+<font size = "3">
+Yes, plots could be saved as images directly from R using an editor such as RStudio. This way of saving, however, does not provide much flexibility. If we want to customize our images, we need to have an approach as to how to export plots from the R code itself.
+
+We can use “ggsave” function to accomplish this.
+
+We can save the plots in different formats such as jpeg, tiff, pdf, svg etc. We can also use various parameters to change the size of the image prior to exporting it or saving it in a path or location.
+
+- Saving as jpeg format
+$$ggsave(filename = “PlotName1.jpeg”, plot=Image\_plot )$$
+
+- Saving as tiff format
+$$ggsave(filename = “PlotName1.tiff”, plot=Image\_plot )$$
+
+- Saving as pdf format
+$$ggsave(filename = “PlotName1.pdf”, plot=Image\_plot )$$
+
+- Saving as tiff format with change in size
+$$ggsave(filename = “PlotName1.tiff”, plot=Image\_plot , width=14, height=10, units=”cm”)$$
+
+</font>
+
+
+#### Question24: What are the key components or grammar for the visualization in the ggplot2 library in R?
+
+<font size = "3">
+
+Every visualization in ggplot2 package in R comprises of the following key aspects:\
+
+1. Data – The raw material of your visualization \
+2. Layers – What you can see or visualize on plots (i.e. lines, points, maps etc.) \
+3. Scales – Maps the data to graphical output \
+4. Coordinates – This is from the visualization perspective (i.e. grids, tables etc.) \
+5. Faceting – Provides “visual drill-down” into the data \
+6. Themes – Controls the details of the display (i.e. fonts, size, colour etc.) \
+</font>
+
+
+
+
+#### Question25: Why is it important to tidy data?
+
+<font size = "3">
+Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types. In tidy data:\
+
+
+1. Each variable forms a column. \
+2. Each observation forms a row. \
+3. Each type of observational unit forms a table. \
+
+
+Tidy data makes it easy for an analyst or a computer to extract needed variables because it provides a standard way of structuring a dataset. Compare the different versions of the classroom data: in the messy version you need to use different strategies to extract different variables. This slows analysis and invites errors.
+
+(source: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
+</font>
+
+
+
+#### Question26: How do you import data in R}
+
+<font size = "3">
+
+One can import data from a text file, csv, excel, SPSS, SAS, etc. in R.
+
+R base functions that can be used include: $read.table()$, $read.delim()$, $read.csv()$, $readcsv2()$. We could also use the $readr$ package to fast read data. 
+
+Reading from excel requires either $readxl$ or $xlsx$ package, and for SPSS and SAS, one could use the $Hmisc$ package.
+</font>
+
+
+
+#### Question27: How missing values and impossible values are represented in R ?
+
+<font size = "3">
+
+NaN (Not a Number) is used to represent impossible values whereas NA (Not Available) is used to represent missing values. 
+
+Usually, simply deleting missing values is not a good idea because the probable cause for missing value could be some problem with data collection or programming or the query. It is good to find the root cause of the missing values and then take necessary steps handle them.
+</font>
+
+
+#### Question28: What are the building blocks for graphing with ggplot2?
+
+<font size = "3">
+
+1. Layers: a plot of the dataset \
+2. Scale: normal, logarithmic, etc. \
+3. Coord: coordinate system \
+4. Facet: multiple plots \
+5. Theme: the looks of the overal graph \
+</font>
+
+
+
+
+#### Question29: Two students plotted histograms for the exact same data in R with the same bin width and boundary values, however their plots have completely different shape. What could be the cause of this?
+
+<font size = "3">
+This is probably due to the fact that the one plot is right closed, the other is right open, so that the data points that fall on the boundaries are put into different bins.
+
+This kind of difference can be eliminated by choosing boundary values that cannot occur in the dataset; for example, we can use higher precision decimal values.
+</font>
+
+<font size = "3">
+Example data: 
+
+780, 1100, 940, 900, 1170, 900, 950, 905, 1340, 1122, 900, 970, 1009, 1157, 1151, 1009, 1217, 1080, 896, 958, \
+1153, 900, 860, 1070, 800, 1070, 909, 1100, 940, 1110, 940, 1122, 1100, 1300, 1070, 890, 1106, 704, 500, 500, \
+620, 1500, 1100, 833, 1300, 1011, 1100, 1140, 610, 990, 1058, 700, 1069, 1170, 700, 900, 700, 1150, 1500, 950
+</font>
+```{r include = FALSE}
+lamp_life <- c(1080, 896, 958, 1153, 900, 860, 1070, 800, 1070, 909, 1100, 940, 1110, 940, 1122, 1100, 1300, 1070, 890, 1106, 704, 500, 500, 620, 1500, 1100)
+```
+
+```{r echo = FALSE, fig.height=4, fig.width=10}
+df <- data.frame(lamp_life)
+p1 <- ggplot(df, aes(lamp_life)) +
+  geom_histogram(binwidth = 100, boundary = 1000,
+                 fill = "lightBlue", col = "black",
+                 right = TRUE) +
+  ggtitle("Right Closed Histogram of Lamp Life Data")
+
+p2 <- ggplot(df, aes(lamp_life)) +
+  geom_histogram(binwidth = 100, boundary = 1000,
+                 fill = "lightBlue", col = "black",
+                 right = FALSE) +
+  ggtitle("Right Closed Histogram of Lamp Life Data")
+
+grid.arrange(p1, p2, ncol = 2) 
+```
+
+
+
+#### Question30: In R, we can use the $read\_html$ function to easily scrape data from websites. What are some of the caveats of web scraping (ethically and legally)?
+
+<font size = "3">
+
+1. Think and investigate legality of scraping the data \
+2. Think about whether the use of the data is ethical \
+3. Limit bandwidth use \
+4. Scrape only what you need \
+</font>
+
+
+
+
+#### Question32: What are factors in R and why is it useful?
+
+<font size = "3">
+Factors are the data objects which are used to categorize the data and store it as levels. They can store both strings and integers. They are useful in the columns which have a limited number of unique values. Like "Male, "Female" and True, False etc. They are useful in data analysis for statistical modeling.
+
+(source: https://www.tutorialspoint.com/r/r\_factors.html)
+</font>
+
+
+
+#### Question32: What is Rmarkdown? What is the use of it?
+
+<font size = "3">
+RMarkdown is a tool provided by R to create dynamic documents and reports that contain shiny widgets and outputs from R.  An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code.
+
+</font>
+
+
+
+#### Question33: What are some common functions in the "dplyr" package?
+
+<font size = "3">
+filter, select, mutate, arrange and count.
+
+</font>
+
+\
+\
+\
+
+### Python Questions
+
+
+#### Question34: What is pandas?
+
+<font size = "3">
+Pandas is a Python open-source library that provides high-performance, powerful and flexible data structures and data analysis tools. It is built on top of Python programming language.
+</font>
+
+
+#### Question35: What libraries do data scientists use to plot data in Python?
+
+<font size = "3">
+Matplotlib is the main library used for plotting data in Python. However, the plots created with this library need lots of fine-tuning to look shiny and professional. For that reason, many data scientists prefer Seaborn, which allows you to create appealing and meaningful plots with only one line of code.
+</font>
+
+
+
+#### Question36: Name a few libraries in Python used for Data Analysis and Scientific computations.?
+
+<font size = "3">
+
+1. NumPy: It is used for scientific computing and performing basic and advanced array operations. It offers many handy features performing operations on n-arrays and matrices in Python. It helps to process arrays that store values of the same data type and makes performing math operations on arrays (and their vectorization) easier. \
+
+2. SciPy: This useful library includes modules for linear algebra, integration, optimization, and statistics. Its main functionality was built upon NumPy, so its arrays make use of this library. \
+
+3. Pandas: This is a library created to help developers work with "labeled" and "relational" data intuitively. It's based on two main data structures: "Series" (one-dimensional, like a list of items) and "Data Frames" (two-dimensional, like a table with multiple columns). \
+
+4. SciKit: Scikits is a group of packages in the SciPy Stack that were created for specific functionalities – for example, image processing. Scikit-learn uses the math operations of SciPy to expose a concise interface to the most common machine learning algorithms.  \
+
+5. Matplotlib: This is a standard data science library that helps to generate data visualizations such as two-dimensional diagrams and graphs (histograms, scatterplots, non-Cartesian coordinates graphs). \
+
+6. Seaborn: Seaborn is based on Matplotlib and serves as a useful Python machine learning tool for visualizing statistical models – heatmaps and other types of visualizations that summarize data and depict the overall distributions.  \
+
+7. Plotly: This web-based tool for data visualization that offers many useful out-of-box graphics – you can find them on the Plot.ly website. The library works very well in interactive web applications.\
+
+</font>
+
+
+
+
+#### Question37: Which library would you prefer for plotting in Python language: Seaborn or Matplotlib?
+
+<font size = "3">
+Matplotlib is the python library used for plotting but it needs lot of fine-tuning to ensure that the plots look shiny.
+
+Seaborn helps data scientists create statistically and aesthetically appealing meaningful plots. The answer to this question varies based on the requirements for plotting data.
+</font>
+
+\
+\
+\
+
+### Tableau Questions
+
+
+#### Question38:  What does Tableau do?
+
+<font size = "3">
+Tableau is a visual analytics engine that makes it easier to create interactive visual analytics in the form of dashboards. It empowers people and organizations to make the most of their data and solve problems.
+</font>
+
+
+
+#### Question39: In Tableau, how is the Context Filter different from other Filters?
+
+<font size = "3">
+When we create a Context Filter, Tableau will create a temporary table for this particular Filter set and other Filters will be applied on the Context Filter data like cascade parameters.
+
+Suppose, we have created a Context Filter on countries, USA and India, Tableau will create a temporary table for these two countries’ data and if we have any other Filters other will be applied on these two countries’ data if we don’t have any Context Filter, each record will check for all Filters.
+
+(source: https://datavizguru.com/interview-questions/)
+</font>
+
+
+
+#### Question40: In Tableau, what is the disadvantage of Context Filters?
+
+<font size = "3">
+The Context Filter is not frequently changed by the user—if the Filter is changed, the database must be recomputed and the temporary table has to be rewritten, slowing performance.
+
+When we set a dimension to context, Tableau creates a temporary table that will require a reload each time the view is initiated. For Excel, Access, and text data sources, the temporary table created is in an Access table format. For SQL Server, MySQL, and Oracle data sources, we must have permission to create a temporary table on our server. For a multidimensional data source, or cubes, temporary tables are not created, and Context Filters defined which Filters are independent and which are dependent.
+
+(source: https://datavizguru.com/interview-questions/)
+</font>
+
+
+
+#### Question41: What are Filters? How many types of Filters are there in Tableau?
+
+<font size = "3">
+The filters can be applied in a worksheet to restrict the number of records present in a dataset, especially for  unnecessary data; and it shows the exact data we want.
+
+There are various types of filters available in Tableau.
+
+1. Extract Filters: Extract filters are used to apply filter on extracted data from the data source. For this filter, data is extracted from the data source and placed into the Tableau data repository. \
+
+2. Datasource Filters: Using the data source filters in tableau, we can directly apply our filter conditions on the data source. It filters the data at the data source and then uploads only the remaining data in the Tableau worksheet. But, the only difference is it works with both live and extract connection. \
+
+3. Context Filters: By using context filters in tableau, we can apply a general context to our overall analysis of Tableau. \
+
+4. Dimension Filters: The dimension filters are the filters that we apply on individual dimensions. Dimensions are not aggregated and so, we can select distinct values from the list of field values. \
+
+5. Measure Filters: The measure filters are the filters that we apply using the measure field values. Measure values are always aggregated like sum, average, median, etc.  \
+
+
+(source: https://data-flair.training/blogs/tableau-filters/)
+</font>
+
+
+
+#### Question42: What is the difference between heat map and treemap in Tableau?
+
+<font size = "3">
+A heat map is a great way to compare categories using color and size. In this, we can compare two different measures.
+
+A treemap is used for illustrating hierarchical (tree-structured) data and for visualizing a part of or a whole relationship.
+</font>
+
+
+
+#### Question43: What are the main features of Tableau?
+
+<font size = "3">
+
+1. Tableau Dashboard: Tableau Dashboards provide a wholesome view of your data by the means of visualizations, visual objects, text, etc. Dashboards are very informative as they can present data in the form of stories, enable the addition of multiple views and objects, provide a variety of layouts and formats, enable the users to deploy suitable filters. \
+
+2. Collaboration and Sharing: Tableau provides convenient options to collaborate with other users and instantly share data in the form of visualizations, sheets, dashboards, etc. in real-time. It allows you to securely share data from various data sources such as on-premise, on-cloud, hybrid, etc. Instant and easy collaboration and data sharing help in getting quick reviews or feedback on the data leading to a better overall analysis of it. \
+
+3. Live and In-memory Data: Tableau ensures connectivity to both live data sources or data extraction from external data sources as in-memory data. This gives the user the flexibility to use data from more than one type of data source without any restrictions. You can use data directly from the data source by establishing live data connections or keep that data in-memory by extracting data from a data source as per their requirement. \
+
+4. Data Sources in Tableau: Tableau offers a myriad of data source options you can connect to and fetch data from. Data sources ranging from on-premise files, spreadsheets, relational databases, non-relational databases, data warehouses, big data, to on-cloud data are all available on Tableau. \
+
+5. Advanced Visualizations (Chart Types): In Tableau, you can make visualizations as basic as a bar chart or pie chart. You can also make more advanced visualization as histogram, gantt chart, bullet chart, motion chart, treemap and boxplot. \
+
+6. Maps: Tableau has a lot of pre-installed information on maps such as cities, postal codes, administrative boundaries, etc. This makes the maps created on Tableau very detailed and informative. \
+
+7. Trend Lines and Predictive Analysis: Easy creation of trend lines and forecasting is possible due to Tableau’s powerful backend and dynamic front end. You can easily get data predictions such as a forecast or a trend line by simply selecting some options and drag-and-drop operations using your concerned fields. \
+
+(source : https://data-flair.training/blogs/tableau-features/)
+</font>
+
+
+
+#### Question44: What are Histograms in Tableau? What is its use in analysis?
+
+<font size = "3">
+Histograms show or graphically represent the distribution of values in intervals or bins of equal sizes. These charts are specifically used to represent the distribution of continuous data. 
+
+Histogram in Tableau takes the continuous measure values and places them into bins of equal sizes.
+</font>
+
+
+
+#### Question45: Explain Bar charts in Tableau. What are the different kinds of Bar Charts?
+
+<font size = "3">
+Bar charts represent data in categories by using rectangular bars, whose height is proportional to the value that bar is representing.
+
+In Tableau, we can make different kinds of bar charts such as; Segmented bar chart, Stacked bar chart, Side-by-side bar chart etc.
+
+
+1. Horizontal/ Vertical bar chart: A horizontal or vertical bar graph is a simple graph having bars of vertical or horizontal orientation. \
+
+2. Segmented bar chart: A segmented bar chart is a bar chart where a bar chart contains more than one set of bars. Each set of bars belongs to a particular segment. For instance, we can have a sales bar graph for three or four different segments all seen in  a single view. \
+
+3. Stacked bar chart: A stacked bar chart has a single bar divided into smaller parts. For instance, a single bar for the year 2019 can show sales for different countries or regions or cities. We can also set a color scheme for the subdivisions in a bar as we can see in a stacked bar chart below. \
+
+4. Side-by-side bar chart: A side-by-side bar chart will have multiple bars standing next to each other for a single segment. \
+
+</font>
+
+
+```{r, fig.show='hold'}
+
+```
+

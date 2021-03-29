@@ -10,7 +10,77 @@ language:
 
 # Chapter ordering
 rmd_files: [
+
+  # Part: Introduction
+  'index.Rmd', # must be first chapter
+  'instructions.Rmd',
+  'sample_project.Rmd',
+  
+  # Part: Cheatsheets
+  'date_time_handling_cheatsheet.Rmd', # contains PART header
+  'tidydata_cheatsheet.Rmd',
+  'ggvis_cheatsheet.Rmd',
+  'statistical_hypothesi_testing_cheatsheet.Rmd',
+  'r_basics_cheatsheet.Rmd',
+  'alluvial_diagram_cheatsheet.Rmd',  
+  'cc_ggplot2_cheatsheet.Rmd',
+  
+  # Part: Translation
+  'colors_in_R_Chinese_translation.Rmd', # contains PART header
+  'dplyr_tutorial_in_chinese.Rmd',
+  'introduction_rstudio_portuguese.Rmd',
+  'chn_translation_arima_models.Rmd',
+  'Chinese_translation_Broom_package.Rmd',
+  'translation_of_visualizations_that_really_work_in_chinese.Rmd',
+  'edav_info_categorical_variables_Chinese_translation.Rmd',
+  'translation_of_critical_covid_data_visualizations_paper.Rmd',
+  'ibm_translation_to_chinese.Rmd',
+  'translation_Chinese_eda_and_data_visualization.Rmd',
+  'chinese_translation_stringr_siwenxie.Rmd',
   'chinese-beautifulsoup.Rmd',
+
+  # Part: Tutorials
+  'CreatingRPackages.Rmd', # contains PART header
+  'cc_intro_to_quandl_az2638.Rmd',
+  'getting_data_using_apis.Rmd',
+  'time_series_intro.Rmd',
+  'using_r_in_tableau.Rmd',
+  'sentiment_analysis_and_wordcloud.Rmd',
+  'twitter_sentiment_analysis.Rmd',
+  'introduction_to_pyecharts.Rmd',
+  'leaflet_project.Rmd',
+  'intro_geographic_chart.Rmd',
+  'data_visualization_interview_questions.Rmd',
+  'supervised_ml_tutorial.Rmd',
+  'data_acquisition_and_wrangling_with_python_pandas_and_sql.Rmd',
+  'eda_and_visualizations_in_python.Rmd',
+  'data_transformation_with_dplyr_video_tutorial.Rmd',
+  'data_science_ethics_community_contribution.Rmd',
+  'three_dimension_plot_tutorial.Rmd',
+  'ben_shneidermans_visualization_mantra.Rmd', 
+  'cc16_choose_your_adventure.Rmd',
+  'common_r_errors.Rmd',
+  'collaborating_on_github.Rmd',
+  'math_finance_in_r.Rmd',
+  'introduction_topology_data_analysis.Rmd',
+  'base_rvest_web_scapping.Rmd',
+  
+  # Part: Topical Discussions
+  'zoom_in_finance.Rmd',   # contains PART header
+  'data_science_in_environment.Rmd',
+  'presidential_election.Rmd',
+  'sports_final_project_zoom_meetup.Rmd',
+  'fitness_hour.Rmd',
+  'work_management.Rmd',
+  'community_contribution_data_science_for_social_good.Rmd',
+  'wine_presentation.Rmd',
+  'meet_the_pets_zoom_session.Rmd',
+  'intro_to_data_science_videos.Rmd',
+
+  # Part: Appendices
+  'appendix_initial_setup.Rmd', # contains PART header
+  'appendix_pull_request_tutorial.Rmd'
+
 ]
 
 before_chapter_script: "_common.R"

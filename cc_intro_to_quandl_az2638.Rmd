@@ -1,5 +1,3 @@
-# (PART) Package Recommendation {-}
-
 # Introduction to Quandl()
 
 Aiqi Zhou (az2638)
@@ -44,7 +42,7 @@ Set up your own account and copy your api_key into the following function
 
 Quandl.api_key('your_key')
 
-```{r}
+```{r, include=FALSE}
 Quandl.api_key('JrvHzZcnakybdzAUChjn')
 ```
 
