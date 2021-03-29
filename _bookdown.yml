@@ -11,10 +11,6 @@ language:
 # Chapter ordering
 rmd_files: [
 
-
-
-
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -77,11 +73,11 @@ rmd_files: [
   'community_contribution_data_science_for_social_good.Rmd',
   'wine_presentation.Rmd',
   'meet_the_pets_zoom_session.Rmd',
+  'intro_to_data_science_videos.Rmd',
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
-
 
 ]
 
