@@ -8,10 +8,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library("rvest")
 ```
 
-## 1.Introduction
+## Introduction
 Here, we briefly introduce how to do web scraping with R and mainly the usage of R package "rvest". We will use the data from problem set 2 as an example. We need to scrape the data of vaccination rates from this page: "https://www.beckershospitalreview.com/public-health/states-ranked-by-percentage-of-covid-19-vaccines-administered.html." Specifically, "State","State Distributed","Administrated","Percentage" are the variates we need to scape from this page.
 
-## 2.Understanding a web page "HTML"
+## Understanding a web page "HTML"
 
 HTML is not a programming language. Instead, it’s called a markup language — it describes the content and structure of a web page. HTML is organized using tags, which are surrounded by <> symbols. Different tags perform different functions. Together, many tags will form and contain the content of a web page.
 
@@ -47,7 +47,7 @@ There are many, many tags in HTML. The important takeaway is to know that tags h
 Notice that each of the tags are “paired” in a sense that each one is accompanied by another with a similar name. That is to say, the opening \<html> tag is paired with another tag \</html> that indicates the beginning and end of the HTML document. The same applies to \<body> and \<p>.
 
 
-## 3.The rvest library
+## The rvest library
 
 The rvest library is a library that lets users easily scrape data from web pages. Rvest is one of the tidyverse libraries, so it works well with the other libraries contained in the bundle. 
 
@@ -66,14 +66,10 @@ url <- "https://www.beckershospitalreview.com/public-health/states-ranked-by-per
 page <- read_html(url)
 ```
 
-To read the webpage only once, we need to save the page and read the saved page next time when we try to run the code. We can use function write_html().
-
-write_html():
-```{r}
+To read the webpage only once, we need to save the page and read the saved page next time when we try to run the code. We can use function write_html() as follow:
 write_html(page, "vac_page.html")
-```
 
-## 4.Tracking the data from the page
+## Tracking the data from the page
 
 To get the exact data we want, we need to use the devtools of Chrome to track the data. Select the particular line from the web on Chrome, right click, and choose "inspect". Then we will enter the web source code. Right click the choosen line, choose "copy->copy full Xpath". Then we will get the path of the line we choose from the web.
 
@@ -92,7 +88,7 @@ Linesof <- data.frame(Linename, Linepath)
 Linesof
 ```
 
-## 5.Extracting data from the page
+## Extracting data from the page
 
 In order to capture the text, we need to use the html_nodes() and html_text() functions respectively to search for this tag and retrieve the text. But be careful, when we will use xpath for a selected line, we should use function html_nodes as html_nodes(xpath = ...) The code below does this:
 
@@ -119,7 +115,7 @@ page %>%
 
 For other state, inspect the source code of other lines, we discover that we just need to changes the number in square brackets of li[]. So we can use loop to extract data and to get the number, we should remove the character from the text and turn the data to "int".
 
-## 6.Summary
+## Summary
 
 For the package "rvest", there are four functions:
 
