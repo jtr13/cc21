@@ -11,9 +11,6 @@ language:
 # Chapter ordering
 rmd_files: [
 
-
-
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -40,6 +37,7 @@ rmd_files: [
   'ibm_translation_to_chinese.Rmd',
   'translation_Chinese_eda_and_data_visualization.Rmd',
   'chinese_translation_stringr_siwenxie.Rmd',
+  'chinese-beautifulsoup.Rmd',
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
@@ -82,7 +80,6 @@ rmd_files: [
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
   'appendix_pull_request_tutorial.Rmd'
-
 
 ]
 
