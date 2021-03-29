@@ -59,6 +59,7 @@ rmd_files: [
   'common_r_errors.Rmd',
   'collaborating_on_github.Rmd',
   'math_finance_in_r.Rmd',
+  'introduction_topology_data_analysis.Rmd',
   
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
