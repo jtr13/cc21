@@ -22,8 +22,8 @@ ggvis is a visualization package that can:
 First thing first, we shall import some necessary packages
 
 ```{r}
-install.packages("dplyr")
-install.packages("ggvis")
+#install.packages("dplyr")
+#install.packages("ggvis")
 
 library(ggvis)
 library(dplyr)
