@@ -1,4 +1,4 @@
-## Translation of ggplot2 tutorial in Korean
+# Translation of ggplot2 tutorial in Korean
 
 (Translated by) Kyungjin Kim
 find original source from below link
@@ -13,7 +13,7 @@ Tutorial2: http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-With-R-Code.ht
     
     
 ***
-# TUTORIAL 1
+## TUTORIAL 1
 
 ###  ggplot2 구문(Syntax)의 이해          
     
@@ -338,7 +338,7 @@ gg + theme_classic() + labs(subtitle="Classic Theme")
 
 
 ***
-# TUTORIAL 2
+## TUTORIAL 2
 
 ## 파트2: 시각화(look)와 느낌(feel)의 사용자 지정
 
@@ -414,7 +414,7 @@ gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
   geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
   labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
 
-# 구성요소 수정-------------------------------------------
+# 구성요소 수정
 gg + theme(plot.title=element_text(size=20, 
                                     face="bold", 
                                     family="American Typewriter",
@@ -597,16 +597,16 @@ gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
   geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
   labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
 
-# 범례 없음--------------------------------------------------
+# 범례 없음
 gg + theme(legend.position="None") + labs(subtitle="No Legend")
 
-# 왼쪽 범례 -----------------------------------------
+# 왼쪽 범례 
 gg + theme(legend.position="left") + labs(subtitle="Legend on the Left")
 
-#아래 수평 범례 ------------------------
+#아래 수평 범례
 gg + theme(legend.position="bottom", legend.box = "horizontal") + labs(subtitle="Legend at Bottom")
 
-# 플랏 안의 오른쪽 아래--------------------
+# 플랏 안의 오른쪽 아래
 gg + theme(legend.title = element_text(size=12, color = "salmon", face="bold"),
            legend.justification=c(1,0), 
            legend.position=c(0.95, 0.05),  
@@ -614,7 +614,7 @@ gg + theme(legend.title = element_text(size=12, color = "salmon", face="bold"),
            legend.key = element_blank()) + 
   labs(subtitle="Legend: Bottom-Right Inside the Plot")
 
-# 플랏안의 왼쪽 위 범례-------------------------
+# 플랏안의 왼쪽 위 범례
 gg + theme(legend.title = element_text(size=12, color = "salmon", face="bold"),
            legend.justification=c(0,1), 
            legend.position=c(0.05, 0.95),
@@ -649,12 +649,12 @@ gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
   geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
   labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
 
-# 텍스트 및 범례 저장 ------------------------------------------------------
+# 텍스트 및 범례 저장 
 gg + geom_text(aes(label=large_county), size=2, data=midwest_sub) + labs(subtitle="With ggplot2::geom_text") + theme(legend.position = "None")   # text
 
 gg + geom_label(aes(label=large_county), size=2, data=midwest_sub, alpha=0.25) + labs(subtitle="With ggplot2::geom_label") + theme(legend.position = "None")  # label
 
-#(ggrepel 패키지 사용) 텍스트 및 범례 저장 ------------
+#(ggrepel 패키지 사용) 텍스트 및 범례 저장 
 library(ggrepel)
 gg + geom_text_repel(aes(label=large_county), size=2, data=midwest_sub) + labs(subtitle="With ggrepel::geom_text_repel") + theme(legend.position = "None")   # text
 
@@ -678,7 +678,7 @@ gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
   geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
   labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
 
-# 정의 및 주석 추가-------------------------------------
+# 정의 및 주석 추가
 library(grid)
 my_text <- "This text is at x=0.7 and y=0.8!"
 my_grob = grid.text(my_text, x=0.7,  y=0.8, gp=gpar(col="firebrick", fontsize=14, fontface="bold"))
@@ -704,7 +704,7 @@ gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
   geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
   labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest", subtitle="X and Y axis Flipped") + theme(legend.position = "None")
 
-# Flip the X and Y axis -------------------------------------------------
+# Flip the X and Y axis 
 gg + coord_flip()
 
 
@@ -723,7 +723,7 @@ gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
   geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
   labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest", subtitle="Axis Scales Reversed") + theme(legend.position = "None")
 
-# Reverse the X and Y Axis ---------------------------
+# Reverse the X and Y Axis 
 gg + scale_x_reverse() + scale_y_reverse()
 
 
@@ -853,7 +853,7 @@ g <- ggplot(mpg, aes(x=displ, y=hwy)) +
       geom_smooth(method="lm", se=FALSE) + 
       theme_bw()  # apply bw theme
 
-# 배경 변경-----------------------------------
+# 배경 변경
 g + theme(panel.background = element_rect(fill = 'khaki'),
           panel.grid.major = element_line(colour = "burlywood", size=1.5),
           panel.grid.minor = element_line(colour = "tomato", 
@@ -868,7 +868,7 @@ g + theme(panel.background = element_rect(fill = 'khaki'),
     labs(title="Modified Background", 
          subtitle="How to Change Major and Minor grid, Axis Lines, No Border")
 
-#플랏 마진 변경-----------------------------------------------
+#플랏 마진 변경
 g + theme(plot.background=element_rect(fill="salmon"), 
           plot.margin = unit(c(2, 2, 1, 1), "cm")) +  # top, right, bottom, left
     labs(title="Modified Background", subtitle="How to Change Plot Margin") 
