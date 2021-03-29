@@ -367,6 +367,7 @@ data-science-for-social-good
 r-markdown
 wine-and-wine-tasting
 meet-the-pets-zoom-session
+intro-to-data-science-videos
 github-initial-setup
 github-actions
 secrets
