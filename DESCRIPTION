@@ -12,10 +12,12 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
 Imports: 
     astsa,
+    bookdown,
     broom,
     DataCombine,
     datasets,
     dplyr,
+    downloader,
     forcats,
     geomnet,
     ggalluvial,
@@ -23,7 +25,6 @@ Imports:
     ggeasy,
     ggnetwork,
     ggplot2,
-    ggraph,
     ggthemes,
     ggvis,
     glue,
@@ -39,16 +40,16 @@ Imports:
     leaflet,
     lubridate,
     magrittr,
-    mschart,
+    maps,
     network,
     networkD3,
     officer,
-    patchwork,
     plot3D,
     plotly,
     plyr,
     png,
     prettydoc,
+    qdap,
     Quandl,
     quantmod,
     RColorBrewer,
@@ -66,6 +67,7 @@ Imports:
     sp,
     stargazer,
     stringr,
+    textdata,
     tibble,
     tidygraph,
     tidyquant,
@@ -74,10 +76,15 @@ Imports:
     tidyverse,
     timetk,
     tm,
+    TSA,
     twitteR,
     wesanderson,
     widyr,
     wordcloud
+Remotes:
+    ardata-fr/mschart,
+    thomasp85/ggraph,
+    thomasp85/patchwork
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

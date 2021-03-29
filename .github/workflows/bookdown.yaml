@@ -40,8 +40,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-2-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-2-
+          key: ${{ matrix.config.os }}-${{ steps.install-r.outputs.installed-r-version }}-2-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: ${{ matrix.config.os }}-${{ steps.install-r.outputs.installed-r-version }}-2-
           
       - name: Install system dependencies
         run: |
@@ -51,7 +51,10 @@ jobs:
             libproj-dev \
             libmpfr6 \
             libmpfr-dev \
-            libudunits2-dev	
+            libudunits2-dev	\
+            default-jre \
+            default-jdk 
+          sudo R CMD javareconf  
       
       - name: Install dependencies	
         run: |	
