@@ -186,8 +186,8 @@ We preprocess the data using package tidygraph:
 
 ```r
 #add edge type
-nodes <- readr::read_csv("http://users.dimi.uniud.it/~massimo.franceschet/ns/plugandplay/ggraph/dolphin_nodes.csv")
-edges <- readr::read_csv("http://users.dimi.uniud.it/~massimo.franceschet/ns/plugandplay/ggraph/dolphin_edges.csv")
+nodes <- read.csv("http://users.dimi.uniud.it/~massimo.franceschet/ns/plugandplay/ggraph/dolphin_nodes.csv")
+edges <- read.csv("http://users.dimi.uniud.it/~massimo.franceschet/ns/plugandplay/ggraph/dolphin_edges.csv")
 edges = 
   edges %>% 
   mutate(type = sample(c("love", "friendship"), 
