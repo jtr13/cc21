@@ -74,7 +74,7 @@ testlist[1]
 ```
 
 ## argument is of length zero
-```{r, include = TRUE error=TRUE}
+```{r, include = TRUE, error=TRUE}
  df = read.table(text = '
  A B C D
  1 2 34 4 11
