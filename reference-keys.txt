@@ -371,6 +371,14 @@ the-rvest-library
 tracking-the-data-from-the-page
 extracting-data-from-the-page
 summary
+a-brief-introduction-to-ggraph
+overview-1
+installation-1
+core-concept-1-layout
+core-concept-2-nodes
+core-concept-3-edges
+example-network-analysis-with-ggraph
+external-resource
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election
