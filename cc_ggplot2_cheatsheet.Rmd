@@ -141,8 +141,7 @@ ggplot(mtcars, aes(x = 1, fill = as.factor(cyl))) +
 ```
 
 ## Conclusion
-## This is only a little part of ggplot2, and then in my additional resources, compared with ggplot2, 
-## everyone can learn the visualization tools from Python if needed. 
+This is only a little part of ggplot2, and then in my additional resources, compared with ggplot2, everyone can learn the visualization tools from Python if needed. 
 
 
 
