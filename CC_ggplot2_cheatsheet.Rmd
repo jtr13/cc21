@@ -28,7 +28,7 @@ head(mtcars)
 ```{r}
 ggplot(mtcars, aes(wt, mpg)) + 
   geom_point() +
-  # Facet rows by am and columns by cyl
+  ## Facet rows by am and columns by cyl
   facet_grid(rows = vars(am),cols = vars(cyl))
 ```
 
