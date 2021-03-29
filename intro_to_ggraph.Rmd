@@ -1,11 +1,8 @@
----
-output: html_document
----
 # A brief introduction to ggraph
 
 Ying Bi and Gaoge Liu
 
-```{r setup, include=FALSE}
+```{r , include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(ggraph)
 library(igraph)
@@ -17,18 +14,18 @@ nodes <- read_csv("dolphin_nodes.csv")
 edges <- read_csv("dolphin_edges.csv")
 ```
 
-## 1 Overview
+## Overview
 ggraph is an extension of the ggplot2 API. Because of reliance on tabular data input, ggplot2 is not a good choice for graph and network visualizations. ggpraph helps solve this problem and provides the same flexible approach to building up plots layer by layer.
 
 In this tutorial, we will cover the installation, core concepts and give examples on how to use ggraph.
 
-## 2 Installation
+## Installation
 ggraph is available through CRAN and can be installed with install.packages('ggraph'). The package is under active development though and the latest set of features can be obtained by installing from this repository using devtools:
 ```{r}
 #devtools::install_github('thomasp85/ggraph')
 ```
 
-## 3 Core Concept 1: Layout
+## Core Concept 1: Layout
 A layout is the vertical and horizontal placement of nodes when plotting a particular graph structure. Conversely, a layout algorithm is an algorithm that takes in a graph structure (and potentially some additional parameters) and return the vertical and horizontal position of the nodes.
 
 ggraph has access to all layout functions available in igraph and furthermore provides a large selection of its own, such as hive plots, treemaps, and circle packing.
@@ -65,7 +62,7 @@ attributes(layout)
 ```
 
 
-## 4 Core Concept 2: Nodes
+## Core Concept 2: Nodes
 The Nodes are the connected entities in the relational structure. The first concept, layout, is the physical placement of nodes, while the node geoms is the visual manifestation of the entities. As mentioned in 3, layout returns a dataframe, so we can diretly use geom_point() in ggplot2 to polt nodes.
 
 However, ggraph comes with its own set of node geoms. Its first advantage over geom_point() is to provide clearer code, while the second one is that it saves typing.
@@ -85,7 +82,7 @@ ggraph(gr, layout = 'dendrogram', circular = TRUE) +
     coord_fixed()
 ```
 
-## 5 Core Concept 3: Edges
+## Core Concept 3: Edges
 The Edges are the connections between the entities in the relational structure.A straight line is simply just one of many ways this relationship can be visualised. As we saw when discussing nodes sometimes it is not drawn at all but impied using containment or position (treemap, circle packing, and partition layouts), but more often it is shown using a line of some sort. This use-case is handled by the large family of edge geoms provided in ggraph. Some of the edges are general while others are dedicated to specific layouts.
 
 geom_edge_link()is the simplest one with only straight lines:
@@ -113,7 +110,7 @@ ggraph(hairball, layout = 'kk') +
     geom_edge_fan(aes(colour = year))
 ```
 
-## 6 Example: Network Analysis with ggraph
+## Example: Network Analysis with ggraph
 
 In this part we show network analysis with ggraph on a dolphin network.  
 This dolphin network includes:  
@@ -211,6 +208,6 @@ dolphin %>%
   geom_node_point(aes(colour = community), size = 5)
 ```
 
-## 7 External Resource
+## External Resource
 1. [ggraph](https://github.com/thomasp85/ggraph) package;   
 2. [tidygraph and ggraph: tidy network analysis and visualization](http://users.dimi.uniud.it/~massimo.franceschet/ns/plugandplay/ggraph/ggraph.html#15).
