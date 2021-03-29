@@ -1,0 +1,341 @@
+# GGvis cheatsheet
+
+Chenhui Mao
+
+```{r, include=FALSE}
+# keep this chunk in your .Rmd file
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+[Link to the cheatsheet](resources/ggvis_cheatsheet/ggvis_cheatsheet.pdf)
+
+## ggvis
+
+Official website: <http://ggvis.rstudio.com/>
+
+ggvis is a visualization package that can:
+- plot the graph in the same way as ggplot2
+- create interaction strategies where you can interact with the graph locally or in the website
+
+### Getting start
+
+First thing first, we shall import some necessary packages
+
+```{r}
+#install.packages("dplyr")
+#install.packages("ggvis")
+
+library(ggvis)
+library(dplyr)
+```
+
+
+This is a simple demonstration on how to use `ggvis`. As can be seen, ggvis can create graph in the same way ggplot does!
+
+```{r}
+p <- ggvis(mtcars, x = ~wt, y = ~ mpg)
+layer_points(p)
+```
+Similar way to write basic ggvis
+
+```{r}
+layer_points(ggvis(mtcars, x = ~wt, y = ~ mpg))
+```
+
+Apply pipeline to write ggvis
+```{r}
+mtcars %>%
+  ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points
+```
+
+We can add a theme on it
+
+```{r}
+mtcars %>% 
+ggvis(x = ~wt, y = ~mpg) %>% 
+layer_points() %>%
+  add_axis("x", title = "Weight", ticks = 40,
+    properties = axis_props(
+      ticks = list(stroke = "red"),
+      majorTicks = list(strokeWidth = 2),
+      grid = list(stroke = "red"),
+      labels = list(
+        fill = "steelblue",
+        angle = 50,
+        fontSize = 14,
+        align = "left",
+        baseline = "middle",
+        dx = 3
+      ),
+      title = list(fontSize = 16),
+      axis = list(stroke = "#333", strokeWidth = 1.5)
+    )
+  )
+
+```
+
+## aesthetics
+Try to adjust the parameters
+
+```{r}
+mtcars %>%
+  ggvis(~mpg, ~disp, stroke = ~vs) %>%
+  layer_points()
+```
+
+```{r}
+mtcars %>% 
+  ggvis(~mpg, ~disp, fill = ~vs) %>% 
+  layer_points()
+```
+
+```{r}
+mtcars %>% 
+  ggvis(~mpg, ~disp, size = ~vs) %>% 
+  layer_points()
+```
+
+```{r}
+mtcars %>% 
+  ggvis(~mpg, ~disp, shape = ~factor(cyl)) %>% 
+  layer_points()
+```
+
+```{r}
+mtcars %>% 
+  ggvis(~wt, ~mpg, fill := "red",  stroke := "black") %>% 
+  layer_points()
+```
+
+```{r}
+mtcars %>% 
+  ggvis(~wt, ~mpg, size := 300, opacity := 0.4) %>% 
+  layer_points()
+
+```
+
+## Interaction
+
+### basic interaction
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points() %>%
+  layer_smooths(
+    span = input_slider(0.2, 1, value = 0.5, step = 0.05, label = "span")
+  )
+```
+Next, we add some interaction strategies into it. We can add the following interaction into the graph:
+- Change the size of the dot
+- Change the opacity of the dot
+
+```{r}
+mtcars %>% 
+   ggvis(~wt, ~mpg, 
+         size := input_slider(10, 100),
+         opacity := input_slider(0, 1)
+   ) %>% 
+   layer_points()
+```
+
+Add interaction strategies to a histograms
+- Change the width of the histograms
+- Change the center of the histograms
+
+```{r}
+mtcars %>% 
+   ggvis(~wt) %>% 
+   layer_histograms(
+                    width =  input_slider(0, 2, step = 0.10, label = "width"),
+                    center = input_slider(0, 2, step = 0.05, label = "center"))
+
+```
+
+
+
+Add tooltip
+
+```{r}
+mtcars %>%
+   ggvis(~wt, ~mpg) %>% 
+   layer_points()%>%
+   add_tooltip(function(df) df$wt)
+
+```
+
+### Input option
+
+#### input_select()
+
+```{r}
+mtcars %>% ggvis(x = ~wt) %>%
+  layer_densities(
+    adjust = input_slider(.1, 2, value = 1, step = .1, label = "Bandwidth adjustment"),
+    kernel = input_select(
+      c("Gaussian" = "gaussian", "Epanechnikov" = "epanechnikov",
+        "Rectangular" = "rectangular", "Triangular" = "triangular",
+        "Biweight" = "biweight", "Cosine" = "cosine", "Optcosine" = "optcosine"),
+      label = "Kernel")
+  )
+```
+#### Checkbox input
+```{r}
+
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points(
+    opacity := input_checkbox(label = "Semi-transparent",
+                                    map = function(val) ifelse(val, .3, 1))) %>%
+  layer_model_predictions(
+    model = input_checkbox(label = "LOESS (curve) model fit",
+                            map = function(val) ifelse(val, "loess", "lm")))
+```
+
+#### Text input
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points(fill := input_text(label = "Point color", value = "red")) %>%
+  layer_model_predictions(model = input_text(label = "Model type", value = "loess"))
+```
+
+#### Numeric input
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points(size := input_numeric(value = 25, label = "Point size")) %>%
+  layer_smooths(span = input_numeric(value = 0.5, label = "Interpolation points"))
+```
+
+#### Radio buttons
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points() %>%
+  layer_model_predictions(
+    model = input_radiobuttons(c("LOESS" = "loess", "Linear" = "lm"),
+      label = "Model type"),
+    stroke := input_radiobuttons(c("Red" = "red", "Black" = "black"),
+      label = "Line color")
+  )
+```
+
+
+#### Checkbox group
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points(
+    fill := input_checkboxgroup(
+      choices = c("Red" = "r", "Green" = "g", "Blue" = "b"),
+      label = "Point color components",
+      map = function(val) {
+        rgb(0.8 * "r" %in% val, 0.8 * "g" %in% val, 0.8 * "b" %in% val)
+      }
+    )
+  )
+```
+
+### Map
+
+#### Example with value map function
+```{r}
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points() %>%
+  layer_model_predictions(model = "loess",
+    model_args = list(n = input_select(
+      choices = c("Two", "Six", "Eighty"),
+      map = function(value) switch(value, Two = 2, Six = 6, Eighty = 80),
+      label = "Number of points"
+    ))
+  )
+```
+
+```{r}
+
+new_vals <- input_select(c("Set A" = "A", "Set B" = "B"),
+  label = "Dynamically-generated column",
+  map = function(value) {
+    vals <- switch(value,
+      "A" = rep(c("One", "Two")),
+      "B" = c("First", "Second", "Third", "Fourth"))
+    rep(vals, length = nrow(mtcars))
+  })
+
+mtcars %>% ggvis(x = ~wt, y = ~mpg, fill = new_vals) %>%
+  layer_points()
+```
+```{r}
+mtcars %>% ggvis(
+    x = ~wt,
+    y = ~mpg,
+    fill = input_select(c("mpg", "wt"), map = as.name)
+  ) %>%
+  layer_points()
+```
+
+
+## Layers
+
+### Simple layers
+
+include primitives like points, lines and rectangles.
+
+```{r}
+mtcars %>% 
+  ggvis(~wt, ~mpg) %>% 
+  layer_points()
+```
+
+Paths and polygons
+
+```{r}
+df <- data.frame(x = 1:10, y = runif(10))
+df %>% ggvis(~x, ~y) %>% layer_paths()
+```
+
+If you add `fill`, you will get a polygon
+```{r}
+t <- seq(0, 2 * pi, length = 100)
+df <- data.frame(x = sin(t), y = cos(t))
+df %>% ggvis(~x, ~y) %>% layer_paths(fill := "red")
+```
+
+
+```{r}
+df <- data.frame(x = 1:10, y = runif(10))
+df %>% ggvis(~x, ~y) %>% layer_ribbons()
+```
+
+Rectangle
+
+```{r}
+set.seed(1014)
+df <- data.frame(x1 = runif(5), x2 = runif(5), y1 = runif(5), y2 = runif(5))
+df %>% ggvis(~x1, ~y1, x2 = ~x2, y2 = ~y2, fillOpacity := 0.1) %>% layer_rects()
+```
+
+Text
+
+```{r}
+df <- data.frame(x = 3:1, y = c(1, 3, 2), label = c("a", "b", "c"))
+
+df %>% ggvis(~x, ~y, text := ~label) %>% layer_text(fontSize := 50)
+```
+
+### Compound layers
+
+```{r}
+df <- data.frame(x = sin(t), y = cos(t))
+
+df %>% ggvis(~x, ~y) %>% layer_paths()
+```
+
+```{r}
+df %>% ggvis(~x, ~y) %>% layer_lines()
+```
+
+```{r}
+mtcars %>% ggvis(~mpg) %>% layer_histograms()
+```
+
+```{r}
+mtcars %>% ggvis(~wt, ~mpg) %>% layer_smooths()
+```
+
+
