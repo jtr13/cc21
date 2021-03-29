@@ -1,0 +1,79 @@
+---
+title: "Github Job Posting API Example in R"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+Github has a free API for downloading all of the job postings on their website. Their API does not require authorization. We will access the API to download information on remote data-related jobs.
+
+**necessary packages:**
+```{r, message=FALSE, warning=FALSE}
+library(httr)
+library(jsonlite)
+library(seqinr)
+library(base64enc)
+library(dplyr) 
+```
+
+**Make a GET request to the API**
+```{r}
+response = httr::GET("https://jobs.github.com/positions.json?description=api")
+```
+Here we used the `httr` package's function `GET` to retrieve a response from the github API. Since there is no authentication necessary, we can simply request the URL. You can find the url to an API by just googling it.\
+\
+**A request object**\
+This returns a response object with information about what we requested. We saved the response object as the variable `response` so we can inspect it further.
+```{r}
+response
+```
+There are a few things stored in the response object. These are standard when making any request.\
+\
+`response$times` returns the time it took to transfer the data, etc.:
+```{r, echo=FALSE}
+response$times
+```
+`response$url` returns the URL that we requested originally:
+```{r}
+response$url
+```
+`response$status_code` returns the status code of the request. This code is also displayed when we return the `response` object. A status code will tell us the result of our request based on what method we used. Codes in the 400s indicate that an error occurred. Most codes in the 200s mean the request succeeded. It is very easy to google your code to find out what it means. Here is a site I like to use to lookup status codes: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status\
+We got a `status_code` 200 which means OK. This means that our GET request has succeed and the resource has been obtained:
+```{r}
+response$status_code
+```
+`response$headers` gives more detailed context about the response. These are different for different URLs, so these are specific to the Github API. The headers are not necessary for this example so I will not include the output.\
+\
+`response$cookies` returns an HTTP cookie. This is a piece of data that a server sends to the user's web browser. We did not send any cookies so this returns nothing.\
+\
+`response$date` returns the date of the request:
+```{r}
+response$date
+```
+`response$request` returns more information about our request:
+```{r}
+response$request
+```
+\
+All of the above options that we can collect from the response object are pretty standard. `Content` is another standard output that returns more context on the request. If the GET request was successful (`status_code = 200`) then the `content` will return the resource requested. If there is a `status_code` representing an error, `content` will return more information on the error. Thus, it is useful for de-bugging bad requests.\
+\
+**Cleaning & using the API data**\
+`response$content` gives us the content of the request, in this case it is the data that we requested. It is in an ecrypted JSON format. We know this because of the output of the `response` object returns `Content-Type: application/json; charset=utf-8`. This means it is in json format but ecrypted utf-8. To decrypt the data, we use the function `rawToChar`. To convert the JSON to a data frame we use the `fromJSON` function from the `jsonlite` package. It is very typical for data from an API to be returned (and requests sent) in JSON form, thus the `jsonlite` package is very handy when making API requests. R does not have a built-in data type for JSON objects whereas Python does (more on this later).
+```{r}
+raw_data = rawToChar(response$content)
+data = data.frame(fromJSON(raw_data))
+```
+Now we have our data in a dataframe and we can explore what we have in it:
+```{r}
+colnames(data)
+```
+Now I'm able to easily access and use the data from the API. For example, I can find all the companies that are hiring for remote jobs and what the positions are.
+```{r}
+remote_jobs = filter(data, !grepl("Remote", data$location))
+remote_jobs %>% select(company, title)
+```
+I can also get the links to the applications quickly.
+```{r}
+remote_data_jobs = filter(data, !grepl("Data", data$title))
+job_links_to_apply_to = remote_data_jobs$how_to_apply
+```
