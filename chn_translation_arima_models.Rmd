@@ -16,7 +16,7 @@ ARIMA模型是为平稳时间序列定义的。所以如果需要处理一组非
 
 你可以在R中使用‘diff()’函数来差异化时间序列。比如，1866年至1911年女士裙子的直径均值上下浮动且不平稳：
 
-![](pics/1.png)
+![](resources/chn_translation_arima_models/1.png)
 
 我们可以输入以下指令来差异化一次时间序列并且对差异化后的系列作图：
 
@@ -25,7 +25,7 @@ skirtsseriesdiff1 <- diff(skirtsseries, differences=1)
 plot.ts(skirtsseriesdiff1)
 ```
 
-![](pics/2.PNG)
+![](resources/chn_translation_arima_models/2.PNG)
 
 以上的一次差异化时间序列不像是有稳定均值的。所以，我们可以作两次差异化以检测结果是否是稳定时间序列：
 
@@ -34,7 +34,7 @@ skirtsseriesdiff2 <- diff(skirtsseries, differences=2)
 plot.ts(skirtsseriesdiff2)
 ```
 
-![](pics/3.PNG)
+![](resources/chn_translation_arima_models/3.PNG)
 
 以上的二次差异化时间序列看上去是有稳定均值和方差的，因为序列的水平大致保持一致。所以，我们需要作二次差异化以得到裙子直径的稳定平稳时间序列。
 
@@ -42,7 +42,7 @@ plot.ts(skirtsseriesdiff2)
 
 另一例子是英格兰国王死亡岁数的时间序列：
 
-![](pics/4.PNG)
+![](resources/chn_translation_arima_models/4.PNG)
 
 从以上图表可以看出，该时间序列没有平稳均值。我们输入以下代码以计算一次差异化的时间序列并作图：
 
@@ -51,7 +51,7 @@ kingtimeseriesdiff1 <- diff(kingstimeseries, differences=1)
 plot.ts(kingtimeseriesdiff1)
 ```
 
-![](pics/5.PNG)
+![](resources/chn_translation_arima_models/5.PNG)
 
 一次差异化的该时间序列像是有平稳均值和方差的，所以ARIMA(p,1,q)应是一个合适的模型。一次差异化祛除了英格兰国王死亡岁数的时间序列的趋势成分，只留下了不规则成分。我们现在可以检查相邻的不规则成分间是否存在相关性；如果有，这会帮助我们找出一个预测国王死亡岁数的模型。
 
@@ -76,7 +76,7 @@ Autocorrelations of series 'kingtimeseriesdiff1', by lag
 
 ```
 
-![](pics/6.PNG)
+![](resources/chn_translation_arima_models/6.PNG)
 
 我们从相关图中看到滞后1的自相关（-0.360）超过了显著性界限，但其他滞后的自相关都没有超过显著性界限。
 
@@ -93,7 +93,7 @@ Partial autocorrelations of series 'kingtimeseriesdiff1', by lag
 
 ```
 
-![](pics/7.PNG)
+![](resources/chn_translation_arima_models/7.PNG)
 
 该部分相关图显示偏自相关值在1、2和3滞后时超过了显著性界限，是负的，并且随着滞后增加而大小缓慢减少。在滞后3后偏自相关值减少至0。
 
@@ -157,7 +157,7 @@ kingstimeseriesforecasts
 plot.forecast(kingstimeseriesforecasts)
 ```
 
-![](pics/8.PNG)
+![](resources/chn_translation_arima_models/8.PNG)
 
 如果是指数平滑模型，那最好能调查ARIMA模型的预测误差是否是正态分布的、零均值化的且水平方差的，且是否存在相邻预测误差间的相关。
 
@@ -171,7 +171,7 @@ data:  kingstimeseriesforecasts$residuals
 X-squared = 13.5844, df = 20, p-value = 0.851
 ```
 
-![](pics/9.PNG)
+![](resources/chn_translation_arima_models/9.PNG)
 
 由于相关图中没有1-20滞后的样本自相关值超过显著性界限，且LB测试的p值为0.9，我们可以得出有极少证据支持1-20滞后的非零自相关的结论。
 
@@ -182,8 +182,8 @@ plot.ts(kingstimeseriesforecasts$residuals)            # make time plot of forec
 plotForecastErrors(kingstimeseriesforecasts$residuals) # make a histogram
 ```
 
-![](pics/10.PNG)
-![](pics/11.PNG)
+![](resources/chn_translation_arima_models/10.PNG)
+![](resources/chn_translation_arima_models/11.PNG)
 
 样本预测误差的时间图显示了预测误差的方差大约保持一致。柱状图显示了预测误差大约是正态分布的且均值约等于0。所以，可以说预测误差是正态分布的，零均值的，且水平方差的。
 

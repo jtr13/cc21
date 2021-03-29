@@ -1,0 +1,17 @@
+# Data Science for Social Good
+
+Rahul Subramaniam and Tushar Agrawal
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Data Science has a plenitude of applications. With virtually every sector incorporating data science to bolster their efficiency/sales/revenues/performance, novel applications of Data Science come to light every day. 
+
+One such field is the field of Social Good. A lot of Government/Non-Profit organizations use Data Science to develop applications/models that will benefit the society as a whole.
+
+https://drive.google.com/file/d/1cnZwDFeIhi4RqTITP6OHwMutynk7jeuI/view?usp=sharing
+
+Rahul Subramaniam and Tushar Agrawal conducted a Zoom session that discussed various applications of Data Science for Social Good. Click the link above to view the session.
