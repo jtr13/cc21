@@ -1,9 +1,4 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
-## Using SQL with R
+# Using SQL with R
 
 Samir Char, Christodoulos Constantinides
 
