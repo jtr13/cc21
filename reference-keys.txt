@@ -101,6 +101,7 @@ chinese-translation-of-bar-chart-and-cleveland-dot-plot
 translation-of-critical-covid-data-visualizations-paper
 translate-ibm-website-about-design-language-into-chinese
 chinese-translation-exploratory-data-analysis-and-data-visualization
+chinese-translation-of-stringr-package
 creating-r-packages
 introduction-to-quandl
 introduction
