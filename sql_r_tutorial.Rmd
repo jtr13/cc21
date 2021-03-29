@@ -3,7 +3,7 @@ output:
   html_document: default
   pdf_document: default
 ---
-# Using SQL with R
+## Using SQL with R
 
 Samir Char, Christodoulos Constantinides
 
@@ -13,15 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 ```
-# Installing required packages
+## Installing required packages
 ```{r Installing packages, eval=FALSE, echo=TRUE}
 install.packages(c("dbplyr", "RMariaDB"))
 ```  
 ```{r Loading libraries}
 library(RMariaDB) #Database Interface and 'MariaDB' Driver
 ```
-# 1. Creating a MySQL database in AWS
-## 1.1 Create a AWS account
+## Creating a MySQL database in AWS
+### Create a AWS account
 
 If you already have an AWS account you can skip this part.
 
@@ -36,7 +36,7 @@ There are five simple steps that you'll see when creating the account:
 
 And you are set!
 
-## 1.2 Create Relational DataBase instance in AWS
+### Create Relational DataBase instance in AWS
 
 Enter to https://console.aws.amazon.com/ and sign in with your account. Select "root user" if is not already selected. When logged in, you should see a search box in the top of the website like in the picture below (search box highlighted in red).
 
@@ -68,7 +68,7 @@ Finally click on the orange button at the end that says "Create database". This 
 
 ![After a few minutes your database should be up and running](resources/sql_r_tutorial/db_status.png)
 
-## 1.3 Connect to the database
+### Connect to the database
 
 Click on the name of the database to see the connection information and copy the endpoint url and save it somewhere, you will need it later.
 
@@ -83,7 +83,7 @@ A new tab should open and then add the following rule:
 
 ![This rule will let you connect to your database from anywhere](resources/sql_r_tutorial/new_rule.png)
 
-## 1.4 Populate the database with data!
+### Populate the database with data!
 
 In this tutorial we are using Lahman's Baseball Database (LBDB), a famous database of baseball statistics, but you can use any database you like. To insert LBDB into our Amazon RDS, first we need to download the file "lahman-mysql-dump.sql" from the following github url: https://github.com/WebucatorTraining/lahman-baseball-mysql
 
@@ -117,8 +117,8 @@ You should see your database listed in the results like in the image below:
 Congratulations! You have set up your AWS Relational Database Server.  
 Now it's time to connect with R and perform some SQL queries.  
 
-# 2. Connecting With R  
-## 2.1 Setting up the connection
+## Connecting With R  
+### Setting up the connection
 
 
 Replace the database credentials with yours for this chunk of code to work properly.
@@ -137,10 +137,10 @@ dbListTables(connection)
 ```
 ![](resources/sql_r_tutorial/list tables.png)
 
-## 2.2 Create - Read - Update - Delete operations
+### Create - Read - Update - Delete operations
 We can also perform CRUD operations  
   
-### 2.2.1 Insert
+#### Insert
 
 ```{r Insert, eval=FALSE}
 query <- "INSERT INTO leagues(lgID, league, active) VALUES ('TT', 'Test League', 'N')"
@@ -149,7 +149,7 @@ res
 ```  
 ![](resources/sql_r_tutorial/insert.png)
 
-### 2.2.2 Update  
+#### Update  
 ```{r Update, eval=FALSE}
 query <- "UPDATE leagues SET active='Y' WHERE lgID='TT'"
 res <- dbSendQuery(connection,query)
@@ -157,7 +157,7 @@ res
 ```
 ![](resources/sql_r_tutorial/update.png)
 
-### 2.2.3 Delete  
+#### Delete  
 ```{r Delete, eval=FALSE}
 query <- "DELETE FROM leagues WHERE lgID='TT'"
 res <- dbSendQuery(connection,query)
@@ -165,7 +165,7 @@ res
 ```  
 ![](resources/sql_r_tutorial/delete.png)
 
-### 2.2.4 Select  
+#### Select  
 ```{r Select, eval=FALSE}
 query <- 'SELECT yearID, G_all FROM appearances WHERE playerID="willite01" ORDER BY yearID'
 rs <- dbSendQuery(connection,query)
@@ -174,13 +174,13 @@ dbRows
 ```
 ![](resources/sql_r_tutorial/select.png)
 
-## 2.3 Dataframe cleaning
+### Dataframe cleaning
 Before visualizing our result we should do some cleaning like column type conversion.  
 ```{r Cleaning the resulting frame, eval=FALSE}
 dbRows$yearID <- as.numeric(dbRows$yearID)
 ```
 
-## 2.4 Visualizing our Dataframe  
+### Visualizing our Dataframe  
 We are now ready to visualize our Dataframe.
 ```{r Visualizing our query, eval=FALSE}
 library(tidyverse)
