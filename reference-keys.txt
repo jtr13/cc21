@@ -326,6 +326,13 @@ cloning-a-repository-to-a-new-project
 cloning-a-repository-set-up-by-someone-else
 overview-of-git-panel
 merging-conflicts
+math-finance-in-r
+introduction-5
+data-preparation
+empirical-coveriance-matrix
+find-efficient-portfolios-using-meanvariance-analysis
+select-a-set-of-ticker
+visualization-of-minimum-variance-portforlio
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election
