@@ -10,8 +10,6 @@ library(dplyr)
 library(tidygraph)
 library(tidyr)
 library(readr)
-nodes <- read_csv("dolphin_nodes.csv")
-edges <- read_csv("dolphin_edges.csv")
 ```
 
 ## Overview
