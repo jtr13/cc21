@@ -10,38 +10,7 @@ language:
 
 # Chapter ordering
 rmd_files: [
-
-
- 
-  # Part: Introduction
-  'index.Rmd', # must be first chapter
-  'instructions.Rmd',
-  'sample_project.Rmd',
-  
-  # Part: Package Recommendation
-  'cc_intro_to_quandl_az2638.Rmd', # contains PART header
-
-  # Part: Cheatsheets
-  'date_time_handling_cheatsheet.Rmd', # contains PART header
-  'tidydata_cheatsheet.Rmd',
-  'ggvis_cheatsheet.Rmd',
-
-  # Part: Translation
-  'colors_in_R_Chinese_translation.Rmd', # contains PART header
-  'dplyr_tutorial_in_chinese.Rmd',
-  'introduction_rstudio_portuguese.Rmd',
-
-  # Part: Tutorials
-  'CreatingRPackages.Rmd', # contains PART header
-  'getting_data_using_apis.Rmd',
-  'time_series_intro.Rmd',  
-
-  # Part: Topical Discussions
-  'zoom_in_finance.Rmd',   # contains PART header
-
-  # Part: Appendices
-  'appendix_initial_setup.Rmd', # contains PART header
-  'appendix_pull_request_tutorial.Rmd'  
+  cc16_choose_your_adventure.Rmd
 
 
 ]
