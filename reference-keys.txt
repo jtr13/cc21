@@ -348,6 +348,13 @@ find-efficient-portfolios-using-meanvariance-analysis
 select-a-set-of-ticker
 visualization-of-minimum-variance-portforlio
 introduction-to-topology-data-analysis
+an-introduction-of-web-scrapping-using-rvest
+introduction-6
+understanding-a-web-page-html
+the-rvest-library
+tracking-the-data-from-the-page
+extracting-data-from-the-page
+summary
 zoom-session-in-finance-and-data-science
 data-science-the-environment-and-sustainability
 absentee-ballot-voting-in-2020-presidental-election
