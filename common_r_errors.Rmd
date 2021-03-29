@@ -33,9 +33,9 @@ temp
 The variable you have used isn't defined in the code. Check for spelling or capitalization errors and make sure you've defined the variable before the call and not later in the code.
 
 ## unexpected ...
-```{r, include = TRUE, error=TRUE}
+```{r, eval=FALSE, include = TRUE, error=TRUE}
 c <- 1
-#if(c>1))
+if(c>1))
 ```
 This one is pretty simple, somewhere in your code is an extra parenthesis.
 
@@ -45,7 +45,7 @@ x 2
 Usually when this error appears you've forgotten an operator (such as + or =) or you've called a function that requires multiple variables and haven't put a comma between them.
 
 ## condition has length > 1
-```{r, include = TRUE, error=TRUE}
+```{r, eval=FALSE, include = TRUE, error=TRUE}
 f<-function(t) {
 if (t<0){
 f<-0
