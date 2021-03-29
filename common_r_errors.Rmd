@@ -39,7 +39,7 @@ if(c>1))
 ```
 This one is pretty simple, somewhere in your code is an extra parenthesis.
 
-```{r, include = TRUE, error=TRUE}
+```{r, eval=FALSE, include = TRUE, error=TRUE}
 x 2
 ```
 Usually when this error appears you've forgotten an operator (such as + or =) or you've called a function that requires multiple variables and haven't put a comma between them.
