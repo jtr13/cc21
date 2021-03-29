@@ -1,5 +1,3 @@
-# (PART) Package Recommendation {-}
-
 # Introduction to Quandl()
 
 Aiqi Zhou (az2638)
