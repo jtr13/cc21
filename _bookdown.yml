@@ -67,6 +67,8 @@ rmd_files: [
   'introduction_topology_data_analysis.Rmd',
   'base_rvest_web_scapping.Rmd',
   'mschart.Rmd',
+  'intro_to_ggraph.Rmd',
+
   
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
