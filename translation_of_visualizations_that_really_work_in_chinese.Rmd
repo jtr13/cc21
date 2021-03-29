@@ -1,0 +1,11 @@
+```{r, include=FALSE}
+```
+# Translation of Visualizations That Really Work
+
+
+Jing Lu
+
+I wished to contribute to the community by translating the following paper into Chinese.this paper was post in Harvard Business Review the titil is "Visualizations That Really Work". I hope its translation would be helpful for our classmates as well.
+The original paper could be found on https://hbr.org/2016/06/visualizations-that-really-work
+The translation github repo counld be found on https://github.com/JFLR12/STA5702_cc
+
