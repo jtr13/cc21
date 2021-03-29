@@ -36,6 +36,19 @@ compound-layers
 statistical_hypothesis_testing_cheatsheet
 basics-r-cheatsheet
 alluvial-diagram-cheatsheet
+ggplot2_cheatsheet
+some-advanced-techs-from-ggplot2
+dataset
+facet
+facet-layer-basics
+many-variables
+formula-notation
+labeling-facets
+coordinates
+expand-and-clip
+flipping-axes
+pie-charts
+conclusion
 colors_in_r_chinese_translation
 在r中使用颜色
 r自带的指定颜色名称
@@ -270,7 +283,7 @@ interactive-3d-plots
 rgl-library
 plotly-library
 d-scatter-plot
-conclusion
+conclusion-1
 works-cited
 ben-shneidermans-visualization-mantra
 introduction-3
@@ -290,7 +303,7 @@ step-2
 step-3
 the-flow-chart
 an-example-use-case
-conclusion-1
+conclusion-2
 common-errors-in-r
 could-not-find-function
 error-in-if
