@@ -41,6 +41,7 @@ Your teammate should accept the invite in his/her mail.
 
 
 ### Tracking changes on GitHub
+
 * clicking on `###commits` allows you to see commit history
 * click on commits to see what was changed
   - code in red: deleted
@@ -64,19 +65,23 @@ If you have trouble figuring something out, or want somethnig to be resolved, ot
 ### Cloning a repository to a new project
 
 **Step 0**: Create a `github` folder to organize and keep all GitHub repositories.
+
 * Mac users: Users\ [username]\github\
 * Windows Users: Users\ [username]\Documents\github
 
 **Step 1**: Copy GitHub URL
+
 * Click `Code` > Copy `https`format to clipboard
 * Or you can install GitHub Desktop and clone your repository there
 
 **Step 2**: Create a new project on RStudio
+
 * Create New project > `Version Control` > `Git` > paste repository URL
 * The repository will be saved on your local machine
 * Open the new project on a "new session": this will allow you to keep different projects separated and be organized; have different projects open at the same time
 
 **Step 3**: Push the `.Rproj` to GitHub
+
 * `Pull` first, and check everything is up to date
 * `Stage`: select files you want to commit
 * `Commit`: commit the files to GitHub
@@ -89,6 +94,7 @@ If you have trouble figuring something out, or want somethnig to be resolved, ot
 If your teammate or collaborator already set up a github repo and commited an `.Rproj` and other `.R` files, cloning the repository will bring all the files your partner pushed to the repository.
   
 ### Overview of Git panel
+
 * Stage: stage files to commit
 * Status
  - `A`: Added
