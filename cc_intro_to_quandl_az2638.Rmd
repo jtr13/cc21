@@ -1,0 +1,226 @@
+# Introduction to Quandl()
+
+Aiqi Zhou (az2638)
+
+```{r , include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Quandl::Quandl() 
+
+## INTRODUCTION 
+
+Quandl is a source of financial, economic and alternative data. It is acquired by Nasdaq in 2018 and has 20+ million data sets available. Users can acquire free data, purchase data or sell data at Quandl.
+
+You can find data on a large variety of types of data from company data to the demographics data of a country. 
+More can be explored on Quandl's website. https://www.quandl.com/search
+
+The data is readily available in json, csv, xml formats and can be loaded in MatLab, R, Python, etc. 
+
+All the data can be loaded in R through the package Quandl.
+
+
+### Installation :
+
+- install.packages("Quandl")
+
+### Load Package 
+- library(Quandl)
+
+```{r}
+library(Quandl)
+```
+
+### Set API key 
+
+Quandl allows 50 calls a day for anonymous users.
+Sign up for a free account to make unlimited calls every day.
+
+Set up your own account and copy your api_key into the following function 
+
+Quandl.api_key('your_key')
+
+```{r, include=FALSE}
+Quandl.api_key('JrvHzZcnakybdzAUChjn')
+```
+
+
+
+### Loading Data 
+
+All available data can be found and viewed on https://www.quandl.com/search.
+This package includes many free datasets, however, some datasets requires an account or is for paid use only.
+
+To call on a data set in R. You must find the Quandl code of the data set. The codes can be found in the documentation page of the data set.
+
+#### For example 
+
+The follow dataset is called the "Federal Reserve Economic Data", which has the code FRED. 
+This dataset has 335,000+ time-series data.
+
+To call on certain aspect like the GDP of this data set, the Quandl code is "FRED/GDP".
+
+```{r cars}
+
+mydata = Quandl("FRED/GDP")
+head(mydata)
+
+```
+To call on another aspect like disposable personal income, the Quandl code is "FRED/DSPI"
+
+```{r}
+mydata= Quandl("FRED/DSPI")
+head(mydata)
+
+```
+
+### Type
+
+The data can be called in different formats.
+The default of the data is data frame, which can have an argument type = "raw"
+
+- "raw"
+- "ts"
+- "zoo"
+- "xts"
+- "timeSeries"
+
+
+```{r}
+mydata = Quandl("FRED/GDP", type="xts")
+head(mydata)
+```
+```{r}
+mydata = Quandl("FRED/GDP", type="ts")
+head(mydata)
+
+```
+
+```{r}
+mydata = Quandl("FRED/GDP", type="zoo")
+head(mydata)
+
+```
+
+### Transform 
+
+There are some preprocessing can be done when loading the data. By adding a transform argument in Quandl(), the data can have the following types of transformations.
+
+- "" = Default original data
+- "diff" = row on row change in value
+- "rdiff" = row on row percentage change
+- "normalize" = scale to start at 100
+- "cumul" = cumulative sum
+- "rdiff_from" = latest value as % increment 
+
+#### For example the percentage change of GDP by year
+
+```{r}
+mydata = Quandl("FRED/GDP",transform = "rdiff" )
+head(mydata)
+```
+
+### Order 
+
+The data can be ordered by date upon it is loaded.
+Default is descending order by date.
+- "desc"
+- "asc"
+
+```{r}
+mydata = Quandl("FRED/GDP", order = "asc")
+head(mydata)
+
+```
+### collapse
+
+Since all data have a time associated. Quandl allows you to preprocess the data by specifying the frequency of the data.
+
+- ''
+- 'daily'
+- 'weekly'
+- 'monthly'
+- 'quarterly'
+- 'annual'
+
+```{r}
+mydata = Quandl("FRED/GDP", collapse = "quarterly")
+head(mydata)
+```
+
+
+
+
+### Slicing data 
+
+#### Rows
+Because the data we are using is time series data, we can specify the range of row of the data set, using the start and end date arguments.
+
+```{r}
+mydata = Quandl("FRED/GDP", start_date="2001-12-31", end_date="2005-12-31")
+head(mydata)
+```
+
+#### Columns
+To get multiple columns of data from Quandl, the data can be called in the format: Quandl(c("col_1", "col_2"))
+
+```{r}
+mydata = Quandl(c("FRED/GDP", "FRED/DSPI"),start_date="2001-12-31", end_date="2005-12-31")
+head(mydata)
+```
+
+
+
+### Finding a dataset in Quandl 
+
+You can look for certain data sets within R using Quandl.search()
+
+Format: 
+
+Quandl.search(query = "search keyword", 
+              page = # , 
+              source = "source to search from if known", 
+              silent = TRUE/FALSE)
+              
+- query: mandatory argument that you want to search for
+- page: which page of search result you want. Default page = 1.
+- source: specific source you want to search from.
+- silent: print the results when FALSE. Nothing prints when true.
+
+#### Example search for Japan 
+```{r}
+Quandl.search(query = "Japan", 
+              page = 1 , 
+              silent = FALSE)
+```
+You can pick which data set to use from the search result.
+
+### Example 
+
+The following is a quick example of getting data from the data set United Nations Industrial Commodities. 
+From the documentation of this data set, we can learn what we are interested in. https://www.quandl.com/data/UINC-United-Nations-Industrial-Commodities
+
+Here I want to plot the time series data of Beer production of Germany. The code for this information is "UINC/BEER_DEU".
+I want to plot the time series, then the data need to be in the form of "ts"
+
+```{r}
+beer = Quandl("UINC/BEER_DEU",type = "ts")
+head(beer)
+```
+
+```{r}
+beer = Quandl("UINC/BEER_DEU",type = "ts")
+plot.ts(beer)
+```
+If I want to see the yearly percentage change of the data, we need to add a transform argument "rdiff"
+```{r}
+beer_per_change = Quandl("UINC/BEER_DEU",type = "ts",transform = 'rdiff')
+plot.ts(beer_per_change)
+
+```
+
+
+
+
