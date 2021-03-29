@@ -1,9 +1,10 @@
 # ggplot2_cheatsheet
 
 Xiaorui Zhang
-## 1. Some Advanced Techs from ggplot2 
 
-## 1.1 Dataset
+## Some Advanced Techs from ggplot2 
+
+## Dataset
 ```{r}
 library(ggplot2)
 library(dplyr)
@@ -21,9 +22,9 @@ library(dplyr)
 head(mtcars)
 ```
 
-## 1.2 Facet
+## Facet
 
-## 1.2.1 Facet layer basics
+## Facet layer basics
 ```{r}
 ggplot(mtcars, aes(wt, mpg)) + 
   geom_point() +
@@ -32,7 +33,7 @@ ggplot(mtcars, aes(wt, mpg)) +
 ```
 
 
-## 1.2.2 Many variables
+## Many variables
 ```{r}
 mtcars$fcyl_fam <- interaction(mtcars$cyl,mtcars$am,sep = ":")
 
@@ -45,7 +46,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, color = fcyl_fam, size = disp)) +
 ```
 
 
-## 1.2.3 Formula notation
+## Formula notation
 ```{r}
 ggplot(mtcars, aes(wt, mpg)) + 
   geom_point() +
@@ -63,7 +64,7 @@ ggplot(mtcars, aes(wt, mpg)) +
   facet_grid(am ~ cyl)
 ```
 
-## 1.2.4 Labeling facets
+## Labeling facets
 ```{r}
 # Plot wt by mpg
 ggplot(mtcars, aes(wt, mpg)) +
@@ -78,10 +79,10 @@ ggplot(mtcars, aes(wt, mpg)) +
   facet_grid(cols = vars(cyl), labeller = label_context)
 ```
 
-## 1.3 Coordinates
+## Coordinates
 
 
-## 1.3.1 Expand and clip
+## Expand and clip
 ```{r}
 ## Expand sets a buffer margin around the plot, so data and axes don't overlap. 
 ## Setting expand to 0 draws the axes to the limits of the data.
@@ -104,7 +105,7 @@ ggplot(mtcars, aes(wt, mpg)) +
 ```
 
 
-## 1.3.2 Flipping axes 
+## Flipping axes 
 ```{r}
 # Plot fcyl bars, filled by fam
 ggplot(mtcars, aes(as.factor(cyl), fill = as.factor(am))) +
@@ -123,7 +124,7 @@ ggplot(mtcars, aes(as.factor(cyl), fill = as.factor(am))) +
 ```
 
 
-## 1.3.3 Pie charts
+## Pie charts
 ```{r}
 # Run the code, view the plot, then update it
 ggplot(mtcars, aes(x = 1, fill = as.factor(cyl))) +
@@ -139,7 +140,7 @@ ggplot(mtcars, aes(x = 1, fill = as.factor(cyl))) +
   scale_x_continuous(limits = c(0.5,1.5))
 ```
 
-## 2. Conclusion
+## Conclusion
 ## This is only a little part of ggplot2, and then in my additional resources, compared with ggplot2, 
 ## everyone can learn the visualization tools from Python if needed. 
 
