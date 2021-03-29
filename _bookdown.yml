@@ -58,6 +58,7 @@ rmd_files: [
   'cc16_choose_your_adventure.Rmd',
   'common_r_errors.Rmd',
   'collaborating_on_github.Rmd',
+  'math_finance_in_r.Rmd',
   
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
