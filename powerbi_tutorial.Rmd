@@ -1,7 +1,7 @@
 # Quickstart Tutorial to Microsoft Power BI
 
 
-Ellen Chen
+Ellen Chen zc2574
 
 ## Preface
 A month ago, I received an invitation to a data assessment of an internship position, which asked me to create a Power BI dashboard with given dataset and subject. To be honest, I have never touched on Power BI before that. As a Statistics student, I played around with ggplot2, r shiny, plotly, and seaborn a lot at school. But I never used Power BI before. I thought it would be hard to grasp a new tool in a short time. While, it turned out to be OK. After I got the internship offer, my supervisor asked me a question, *“Did you use Power BI a lot before? How did you make such an outstanding dashboard?”*
