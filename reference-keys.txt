@@ -49,6 +49,7 @@ expand-and-clip
 flipping-axes
 pie-charts
 conclusion
+patchwork-cheatsheet
 colors_in_r_chinese_translation
 在r中使用颜色
 r自带的指定颜色名称
