@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 20 Chinese Translation Exploratory Data Analysis and Data Visualization | Spring 2021 EDAV Community Contributions</title>
+  <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 20 Chinese Translation Exploratory Data Analysis and Data Visualization | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  <meta name="github-repo" content="jtr13/cc21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 20 Chinese Translation Exploratory Data Analysis and Data Visualization | Spring 2021 EDAV Community Contributions" />
+  
+  <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
+  
+
+
+
+<meta name="date" content="2021-03-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="translate-ibm-website-about-design-language-into-chinese.html"/>
+<link rel="next" href="chinese-translation-of-stringr-package.html"/>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/rglWebGL-binding-0.105.22/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-0.105.22/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-0.105.22/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/utils.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/textures.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/projection.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/init.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/draw.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/controls.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/selection.src.js"></script>
+<script src="libs/rglwidgetClass-0.105.22/rglTimer.src.js"></script>
+<script src="libs/CanvasMatrix4-0.105.22/CanvasMatrix.src.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet" />
+<script src="libs/highcharts-8.1.2/highcharts.js"></script>
+<script src="libs/highcharts-8.1.2/highcharts-3d.js"></script>
+<script src="libs/highcharts-8.1.2/highcharts-more.js"></script>
+<script src="libs/highcharts-8.1.2/modules/stock.js"></script>
+<script src="libs/highcharts-8.1.2/modules/map.js"></script>
+<script src="libs/highcharts-8.1.2/modules/annotations.js"></script>
+<script src="libs/highcharts-8.1.2/modules/data.js"></script>
+<script src="libs/highcharts-8.1.2/modules/drilldown.js"></script>
+<script src="libs/highcharts-8.1.2/modules/item-series.js"></script>
+<script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script>
+<script src="libs/highcharts-8.1.2/modules/exporting.js"></script>
+<script src="libs/highcharts-8.1.2/modules/export-data.js"></script>
+<script src="libs/highcharts-8.1.2/modules/funnel.js"></script>
+<script src="libs/highcharts-8.1.2/modules/heatmap.js"></script>
+<script src="libs/highcharts-8.1.2/modules/treemap.js"></script>
+<script src="libs/highcharts-8.1.2/modules/sankey.js"></script>
+<script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script>
+<script src="libs/highcharts-8.1.2/modules/organization.js"></script>
+<script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script>
+<script src="libs/highcharts-8.1.2/modules/sunburst.js"></script>
+<script src="libs/highcharts-8.1.2/modules/vector.js"></script>
+<script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script>
+<script src="libs/highcharts-8.1.2/modules/xrange.js"></script>
+<script src="libs/highcharts-8.1.2/modules/tilemap.js"></script>
+<script src="libs/highcharts-8.1.2/modules/venn.js"></script>
+<script src="libs/highcharts-8.1.2/modules/gantt.js"></script>
+<script src="libs/highcharts-8.1.2/modules/timeline.js"></script>
+<script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script>
+<script src="libs/highcharts-8.1.2/modules/bullet.js"></script>
+<script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script>
+<script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script>
+<script src="libs/highcharts-8.1.2/modules/lollipop.js"></script>
+<script src="libs/highcharts-8.1.2/modules/series-label.js"></script>
+<script src="libs/highcharts-8.1.2/plugins/motion.js"></script>
+<script src="libs/highcharts-8.1.2/custom/reset.js"></script>
+<script src="libs/highcharts-8.1.2/modules/boost.js"></script>
+<script src="libs/highchart-binding-0.8.2/highchart.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">cc for EDAV 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Community contribution assignment</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#logistics"><i class="fa fa-check"></i><b>1.1</b> Logistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#groups"><i class="fa fa-check"></i><b>1.1.1</b> Groups</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#submitting-your-assignment"><i class="fa fa-check"></i><b>1.1.2</b> Submitting your assignment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html"><i class="fa fa-check"></i><b>2</b> GitHub submission instructions</a><ul>
+<li class="chapter" data-level="2.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#background"><i class="fa fa-check"></i><b>2.1</b> Background</a></li>
+<li class="chapter" data-level="2.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#preparing-your-.rmd-file"><i class="fa fa-check"></i><b>2.2</b> Preparing your <code>.Rmd</code> file</a></li>
+<li class="chapter" data-level="2.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#submission-steps"><i class="fa fa-check"></i><b>2.3</b> Submission steps</a></li>
+<li class="chapter" data-level="2.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#optional-tweaks"><i class="fa fa-check"></i><b>2.4</b> Optional tweaks</a></li>
+<li class="chapter" data-level="2.5" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#faq"><i class="fa fa-check"></i><b>2.5</b> FAQ</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-should-i-expect-after-creating-a-pull-request"><i class="fa fa-check"></i><b>2.5.1</b> What should I expect after creating a pull request?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-before-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.2</b> What if I catch mistakes before my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.3" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#what-if-i-catch-mistakes-after-my-pull-request-is-merged"><i class="fa fa-check"></i><b>2.5.3</b> What if I catch mistakes after my pull request is merged?</a></li>
+<li class="chapter" data-level="2.5.4" data-path="github-submission-instructions.html"><a href="github-submission-instructions.html#other-questions"><i class="fa fa-check"></i><b>2.5.4</b> Other questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sample-project.html"><a href="sample-project.html"><i class="fa fa-check"></i><b>3</b> Sample project</a></li>
+<li class="part"><span><b>I Cheatsheets</b></span></li>
+<li class="chapter" data-level="4" data-path="date-time-handling-in-r-cheatsheet.html"><a href="date-time-handling-in-r-cheatsheet.html"><i class="fa fa-check"></i><b>4</b> Date-Time Handling in R Cheatsheet</a></li>
+<li class="chapter" data-level="5" data-path="tidy-data-cheatsheet.html"><a href="tidy-data-cheatsheet.html"><i class="fa fa-check"></i><b>5</b> Tidy data Cheatsheet</a></li>
+<li class="chapter" data-level="6" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html"><i class="fa fa-check"></i><b>6</b> GGvis cheatsheet</a><ul>
+<li class="chapter" data-level="6.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#ggvis"><i class="fa fa-check"></i><b>6.1</b> ggvis</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#getting-start"><i class="fa fa-check"></i><b>6.1.1</b> Getting start</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#aesthetics"><i class="fa fa-check"></i><b>6.2</b> aesthetics</a></li>
+<li class="chapter" data-level="6.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#interaction"><i class="fa fa-check"></i><b>6.3</b> Interaction</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#basic-interaction"><i class="fa fa-check"></i><b>6.3.1</b> basic interaction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#input-option"><i class="fa fa-check"></i><b>6.3.2</b> Input option</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#map"><i class="fa fa-check"></i><b>6.3.3</b> Map</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#layers"><i class="fa fa-check"></i><b>6.4</b> Layers</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#simple-layers"><i class="fa fa-check"></i><b>6.4.1</b> Simple layers</a></li>
+<li class="chapter" data-level="6.4.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#compound-layers"><i class="fa fa-check"></i><b>6.4.2</b> Compound layers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistical-hypothesis-testing-cheatsheet.html"><a href="statistical-hypothesis-testing-cheatsheet.html"><i class="fa fa-check"></i><b>7</b> Statistical_hypothesis_testing_cheatsheet</a></li>
+<li class="chapter" data-level="8" data-path="basics-r-cheatsheet.html"><a href="basics-r-cheatsheet.html"><i class="fa fa-check"></i><b>8</b> Basics R Cheatsheet</a></li>
+<li class="chapter" data-level="9" data-path="alluvial-diagram-cheatsheet.html"><a href="alluvial-diagram-cheatsheet.html"><i class="fa fa-check"></i><b>9</b> Alluvial Diagram Cheatsheet</a></li>
+<li class="chapter" data-level="10" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html"><i class="fa fa-check"></i><b>10</b> ggplot2_cheatsheet</a><ul>
+<li class="chapter" data-level="10.1" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#some-advanced-techs-from-ggplot2"><i class="fa fa-check"></i><b>10.1</b> Some Advanced Techs from ggplot2</a></li>
+<li class="chapter" data-level="10.2" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#dataset"><i class="fa fa-check"></i><b>10.2</b> Dataset</a></li>
+<li class="chapter" data-level="10.3" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#facet"><i class="fa fa-check"></i><b>10.3</b> Facet</a></li>
+<li class="chapter" data-level="10.4" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#facet-layer-basics"><i class="fa fa-check"></i><b>10.4</b> Facet layer basics</a></li>
+<li class="chapter" data-level="10.5" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#many-variables"><i class="fa fa-check"></i><b>10.5</b> Many variables</a></li>
+<li class="chapter" data-level="10.6" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#formula-notation"><i class="fa fa-check"></i><b>10.6</b> Formula notation</a></li>
+<li class="chapter" data-level="10.7" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#labeling-facets"><i class="fa fa-check"></i><b>10.7</b> Labeling facets</a></li>
+<li class="chapter" data-level="10.8" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#coordinates"><i class="fa fa-check"></i><b>10.8</b> Coordinates</a></li>
+<li class="chapter" data-level="10.9" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#expand-and-clip"><i class="fa fa-check"></i><b>10.9</b> Expand and clip</a></li>
+<li class="chapter" data-level="10.10" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#flipping-axes"><i class="fa fa-check"></i><b>10.10</b> Flipping axes</a></li>
+<li class="chapter" data-level="10.11" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#pie-charts"><i class="fa fa-check"></i><b>10.11</b> Pie charts</a></li>
+<li class="chapter" data-level="10.12" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#conclusion"><i class="fa fa-check"></i><b>10.12</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>II Translations</b></span></li>
+<li class="chapter" data-level="11" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html"><i class="fa fa-check"></i><b>11</b> Colors_in_R_Chinese_translation</a><ul>
+<li class="chapter" data-level="11.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>11.1</b> 在R中使用颜色</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>11.1.1</b> R自带的指定颜色名称</a></li>
+<li class="chapter" data-level="11.1.2" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>11.1.2</b> 使用十六进制编码指定颜色</a></li>
+<li class="chapter" data-level="11.1.3" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>11.1.3</b> 使用 RColorBrewer 调色盘</a></li>
+<li class="chapter" data-level="11.1.4" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>11.1.4</b> 使用 Wes Anderson 调色盘</a></li>
+<li class="chapter" data-level="11.1.5" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>11.1.5</b> 创建一个n个连续颜色的矢量</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html"><i class="fa fa-check"></i><b>12</b> Managing Data Frames with dplyr Package in Chinese</a><ul>
+<li class="chapter" data-level="12.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#short-description-of-my-contribution"><i class="fa fa-check"></i><b>12.1</b> Short Description of My Contribution</a></li>
+<li class="chapter" data-level="12.2" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#数据表"><i class="fa fa-check"></i><b>12.2</b> 数据表</a></li>
+<li class="chapter" data-level="12.3" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr包"><i class="fa fa-check"></i><b>12.3</b> dplyr包</a></li>
+<li class="chapter" data-level="12.4" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#dplyr语法"><i class="fa fa-check"></i><b>12.4</b> dplyr语法</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#通用dplyr函数属性"><i class="fa fa-check"></i><b>12.4.1</b> 通用dplyr函数属性</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#安装dplyr包"><i class="fa fa-check"></i><b>12.5</b> 安装dplyr包</a></li>
+<li class="chapter" data-level="12.6" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#select"><i class="fa fa-check"></i><b>12.6</b> select()</a></li>
+<li class="chapter" data-level="12.7" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#filter"><i class="fa fa-check"></i><b>12.7</b> filter()</a></li>
+<li class="chapter" data-level="12.8" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#arrange"><i class="fa fa-check"></i><b>12.8</b> arrange()</a></li>
+<li class="chapter" data-level="12.9" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#rename"><i class="fa fa-check"></i><b>12.9</b> rename()</a></li>
+<li class="chapter" data-level="12.10" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#mutate"><i class="fa fa-check"></i><b>12.10</b> mutate()</a></li>
+<li class="chapter" data-level="12.11" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#group_by"><i class="fa fa-check"></i><b>12.11</b> group_by()</a></li>
+<li class="chapter" data-level="12.12" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#section"><i class="fa fa-check"></i><b>12.12</b> %&gt;%</a></li>
+<li class="chapter" data-level="12.13" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#总结"><i class="fa fa-check"></i><b>12.13</b> 总结</a></li>
+<li class="chapter" data-level="12.14" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html#cited-resourses"><i class="fa fa-check"></i><b>12.14</b> Cited Resourses</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="introduction-to-rstudio-in-portuguese.html"><a href="introduction-to-rstudio-in-portuguese.html"><i class="fa fa-check"></i><b>13</b> Introduction to Rstudio in Portuguese</a></li>
+<li class="chapter" data-level="14" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html"><i class="fa fa-check"></i><b>14</b> Chinese translation of using ARIMA models in R</a><ul>
+<li class="chapter" data-level="14.1" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#arima模型"><i class="fa fa-check"></i><b>14.1</b> ARIMA模型</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#差异化一组时间序列"><i class="fa fa-check"></i><b>14.1.1</b> 差异化一组时间序列</a></li>
+<li class="chapter" data-level="14.1.2" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#选择arima候选模型"><i class="fa fa-check"></i><b>14.1.2</b> 选择ARIMA候选模型</a></li>
+<li class="chapter" data-level="14.1.3" data-path="chinese-translation-of-using-arima-models-in-r.html"><a href="chinese-translation-of-using-arima-models-in-r.html#使用arima模型进行预测"><i class="fa fa-check"></i><b>14.1.3</b> 使用ARIMA模型进行预测</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html"><i class="fa fa-check"></i><b>15</b> Chinese translation of broom package</a><ul>
+<li class="chapter" data-level="15.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#序言"><i class="fa fa-check"></i><b>15.1</b> 序言</a></li>
+<li class="chapter" data-level="15.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#整理函数"><i class="fa fa-check"></i><b>15.2</b> 整理函数</a></li>
+<li class="chapter" data-level="15.3" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#其他案例"><i class="fa fa-check"></i><b>15.3</b> 其他案例</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#广义线性模型和非线性模型"><i class="fa fa-check"></i><b>15.3.1</b> 广义线性模型和非线性模型</a></li>
+<li class="chapter" data-level="15.3.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#假设检验"><i class="fa fa-check"></i><b>15.3.2</b> 假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#规则"><i class="fa fa-check"></i><b>15.4</b> 规则</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#全部函数"><i class="fa fa-check"></i><b>15.4.1</b> 全部函数</a></li>
+<li class="chapter" data-level="15.4.2" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#tidy函数"><i class="fa fa-check"></i><b>15.4.2</b> tidy函数</a></li>
+<li class="chapter" data-level="15.4.3" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#augment函数"><i class="fa fa-check"></i><b>15.4.3</b> augment函数</a></li>
+<li class="chapter" data-level="15.4.4" data-path="chinese-translation-of-broom-package.html"><a href="chinese-translation-of-broom-package.html#glance函数"><i class="fa fa-check"></i><b>15.4.4</b> glance函数</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="translation-of-visualizations-that-really-work.html"><a href="translation-of-visualizations-that-really-work.html"><i class="fa fa-check"></i><b>16</b> Translation of Visualizations That Really Work</a></li>
+<li class="chapter" data-level="17" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><i class="fa fa-check"></i><b>17</b> Chinese Translation of Bar Chart and Cleveland Dot Plot</a><ul>
+<li class="chapter" data-level="17.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#图表条形图"><i class="fa fa-check"></i><b>17.1</b> 图表：条形图</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#综述"><i class="fa fa-check"></i><b>17.1.1</b> 综述</a></li>
+<li class="chapter" data-level="17.1.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#太长不看"><i class="fa fa-check"></i><b>17.1.2</b> 太长不看</a></li>
+<li class="chapter" data-level="17.1.3" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#简单的例子"><i class="fa fa-check"></i><b>17.1.3</b> 简单的例子</a></li>
+<li class="chapter" data-level="17.1.4" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#理论"><i class="fa fa-check"></i><b>17.1.4</b> 理论</a></li>
+<li class="chapter" data-level="17.1.5" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#何时使用"><i class="fa fa-check"></i><b>17.1.5</b> 何时使用</a></li>
+<li class="chapter" data-level="17.1.6" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#注意事项"><i class="fa fa-check"></i><b>17.1.6</b> 注意事项</a></li>
+<li class="chapter" data-level="17.1.7" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#修改"><i class="fa fa-check"></i><b>17.1.7</b> 修改</a></li>
+<li class="chapter" data-level="17.1.8" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#外部资源"><i class="fa fa-check"></i><b>17.1.8</b> 外部资源</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#图表克利夫兰点图"><i class="fa fa-check"></i><b>17.2</b> 图表：克利夫兰点图</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#综述-1"><i class="fa fa-check"></i><b>17.2.1</b> 综述</a></li>
+<li class="chapter" data-level="17.2.2" data-path="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html"><a href="chinese-translation-of-bar-chart-and-cleveland-dot-plot.html#多点图"><i class="fa fa-check"></i><b>17.2.2</b> 多点图</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="translation-of-critical-covid-data-visualizations-paper.html"><a href="translation-of-critical-covid-data-visualizations-paper.html"><i class="fa fa-check"></i><b>18</b> Translation of critical covid data visualizations paper</a></li>
+<li class="chapter" data-level="19" data-path="translate-ibm-website-about-design-language-into-chinese.html"><a href="translate-ibm-website-about-design-language-into-chinese.html"><i class="fa fa-check"></i><b>19</b> Translate IBM Website about Design Language into Chinese</a></li>
+<li class="chapter" data-level="20" data-path="chinese-translation-exploratory-data-analysis-and-data-visualization.html"><a href="chinese-translation-exploratory-data-analysis-and-data-visualization.html"><i class="fa fa-check"></i><b>20</b> Chinese Translation Exploratory Data Analysis and Data Visualization</a></li>
+<li class="chapter" data-level="21" data-path="chinese-translation-of-stringr-package.html"><a href="chinese-translation-of-stringr-package.html"><i class="fa fa-check"></i><b>21</b> Chinese translation of stringr package</a></li>
+<li class="chapter" data-level="22" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html"><i class="fa fa-check"></i><b>22</b> Chinese Translation–Beautiful Soup Tutorial</a><ul>
+<li class="chapter" data-level="22.1" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#使用python-beautifulsoup对datacamp教程进行爬取和分析"><i class="fa fa-check"></i><b>22.1</b> 使用Python BeautifulSoup对Datacamp教程进行爬取和分析</a></li>
+<li class="chapter" data-level="22.2" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#在本篇教程中我们将会对datacamp网页的教程板块进行爬取并尝试得出一些见解"><i class="fa fa-check"></i><b>22.2</b> 在本篇教程中，我们将会对Datacamp网页的教程板块进行爬取并尝试得出一些见解</a></li>
+<li class="chapter" data-level="22.3" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#引入函数库"><i class="fa fa-check"></i><b>22.3</b> 引入函数库</a></li>
+<li class="chapter" data-level="22.4" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#决定需要爬取的网页"><i class="fa fa-check"></i><b>22.4</b> 决定需要爬取的网页</a></li>
+<li class="chapter" data-level="22.5" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#进行爬取"><i class="fa fa-check"></i><b>22.5</b> 进行爬取</a></li>
+<li class="chapter" data-level="22.6" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#将list-of-lists变平"><i class="fa fa-check"></i><b>22.6</b> 将List of Lists变平</a></li>
+<li class="chapter" data-level="22.7" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#建立data-frame并保存为csv文件"><i class="fa fa-check"></i><b>22.7</b> 建立Data Frame并保存为CSV文件</a></li>
+<li class="chapter" data-level="22.8" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#读取csv文件"><i class="fa fa-check"></i><b>22.8</b> 读取CSV文件</a></li>
+<li class="chapter" data-level="22.9" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#计算教程的时间频率"><i class="fa fa-check"></i><b>22.9</b> 计算教程的时间频率</a></li>
+<li class="chapter" data-level="22.10" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#自从2017年一月"><i class="fa fa-check"></i><b>22.10</b> 自从2017年一月</a></li>
+<li class="chapter" data-level="22.11" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#最高产作者图表"><i class="fa fa-check"></i><b>22.11</b> 最高产作者图表</a></li>
+<li class="chapter" data-level="22.12" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#最高产作者列表"><i class="fa fa-check"></i><b>22.12</b> 最高产作者列表</a></li>
+<li class="chapter" data-level="22.13" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#教程数量在时间线上增加的速度"><i class="fa fa-check"></i><b>22.13</b> 教程数量在时间线上增加的速度</a></li>
+<li class="chapter" data-level="22.14" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#赞同数vs作品数"><i class="fa fa-check"></i><b>22.14</b> 赞同数vs作品数</a></li>
+<li class="chapter" data-level="22.15" data-path="chinese-translationbeautiful-soup-tutorial.html"><a href="chinese-translationbeautiful-soup-tutorial.html#结论"><i class="fa fa-check"></i><b>22.15</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html"><i class="fa fa-check"></i><b>23</b> Translation of ggplot2 tutorial in Korean</a><ul>
+<li class="chapter" data-level="23.1" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#tutorial-1"><i class="fa fa-check"></i><b>23.1</b> TUTORIAL 1</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#ggplot2-구문syntax의-이해"><i class="fa fa-check"></i><b>23.1.1</b> ggplot2 구문(Syntax)의 이해</a></li>
+<li class="chapter" data-level="23.1.2" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#간단한-산점도scatterplot을-만드는-방법"><i class="fa fa-check"></i><b>23.1.2</b> 간단한 산점도(scatterplot)을 만드는 방법</a></li>
+<li class="chapter" data-level="23.1.3" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#x축-y축-범위를-조정하는-방법"><i class="fa fa-check"></i><b>23.1.3</b> X축, Y축 범위를 조정하는 방법</a></li>
+<li class="chapter" data-level="23.1.4" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#그래프-제목-및-축-제목-변경"><i class="fa fa-check"></i><b>23.1.4</b> 그래프 제목 및 축 제목 변경</a></li>
+<li class="chapter" data-level="23.1.5" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#데이터-포인트의-색상-및-크기-변경"><i class="fa fa-check"></i><b>23.1.5</b> 데이터 포인트의 색상 및 크기 변경</a></li>
+<li class="chapter" data-level="23.1.6" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#x축-텍스트와-눈금의-위치-변경"><i class="fa fa-check"></i><b>23.1.6</b> X축 텍스트와 눈금의 위치 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#tutorial-2"><i class="fa fa-check"></i><b>23.2</b> TUTORIAL 2</a></li>
+<li class="chapter" data-level="23.3" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#파트2-시각화look와-느낌feel의-사용자-지정"><i class="fa fa-check"></i><b>23.3</b> 파트2: 시각화(look)와 느낌(feel)의 사용자 지정</a><ul>
+<li class="chapter" data-level="23.3.1" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#플롯-및-축-제목-추가"><i class="fa fa-check"></i><b>23.3.1</b> 플롯 및 축 제목 추가</a></li>
+<li class="chapter" data-level="23.3.2" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#범례legend-변경"><i class="fa fa-check"></i><b>23.3.2</b> 범례(legend) 변경</a></li>
+<li class="chapter" data-level="23.3.3" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#텍스트-레이블-및-주석-추가"><i class="fa fa-check"></i><b>23.3.3</b> 텍스트, 레이블 및 주석 추가</a></li>
+<li class="chapter" data-level="23.3.4" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#x축-및-y축-뒤집기reverseflip"><i class="fa fa-check"></i><b>23.3.4</b> X축 및 Y축 뒤집기(Reverse/Flip)</a></li>
+<li class="chapter" data-level="23.3.5" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#패셋faceting-단일-그림내에-여러-그래프-배치"><i class="fa fa-check"></i><b>23.3.5</b> 패셋(Faceting): 단일 그림내에 여러 그래프 배치</a></li>
+<li class="chapter" data-level="23.3.6" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#그래프-배경-주축-및-부축-수정"><i class="fa fa-check"></i><b>23.3.6</b> 그래프 배경, 주축 및 부축 수정</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Tutorials</b></span></li>
+<li class="chapter" data-level="24" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>24</b> Creating R Packages</a></li>
+<li class="chapter" data-level="25" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html"><i class="fa fa-check"></i><b>25</b> Introduction to Quandl()</a><ul>
+<li class="chapter" data-level="25.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#introduction"><i class="fa fa-check"></i><b>25.1</b> INTRODUCTION</a><ul>
+<li class="chapter" data-level="25.1.1" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#installation"><i class="fa fa-check"></i><b>25.1.1</b> Installation :</a></li>
+<li class="chapter" data-level="25.1.2" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#load-package"><i class="fa fa-check"></i><b>25.1.2</b> Load Package</a></li>
+<li class="chapter" data-level="25.1.3" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#set-api-key"><i class="fa fa-check"></i><b>25.1.3</b> Set API key</a></li>
+<li class="chapter" data-level="25.1.4" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#loading-data"><i class="fa fa-check"></i><b>25.1.4</b> Loading Data</a></li>
+<li class="chapter" data-level="25.1.5" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#type"><i class="fa fa-check"></i><b>25.1.5</b> Type</a></li>
+<li class="chapter" data-level="25.1.6" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#transform"><i class="fa fa-check"></i><b>25.1.6</b> Transform</a></li>
+<li class="chapter" data-level="25.1.7" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#order"><i class="fa fa-check"></i><b>25.1.7</b> Order</a></li>
+<li class="chapter" data-level="25.1.8" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#collapse"><i class="fa fa-check"></i><b>25.1.8</b> collapse</a></li>
+<li class="chapter" data-level="25.1.9" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#slicing-data"><i class="fa fa-check"></i><b>25.1.9</b> Slicing data</a></li>
+<li class="chapter" data-level="25.1.10" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#finding-a-dataset-in-quandl"><i class="fa fa-check"></i><b>25.1.10</b> Finding a dataset in Quandl</a></li>
+<li class="chapter" data-level="25.1.11" data-path="introduction-to-quandl.html"><a href="introduction-to-quandl.html#example"><i class="fa fa-check"></i><b>25.1.11</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="getting-data-using-apis.html"><a href="getting-data-using-apis.html"><i class="fa fa-check"></i><b>26</b> Getting data using APIs</a></li>
+<li class="chapter" data-level="27" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html"><i class="fa fa-check"></i><b>27</b> Introdution to Time Series Analysis</a><ul>
+<li class="chapter" data-level="27.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#overview"><i class="fa fa-check"></i><b>27.1</b> Overview</a></li>
+<li class="chapter" data-level="27.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#introduction-1"><i class="fa fa-check"></i><b>27.2</b> Introduction</a><ul>
+<li class="chapter" data-level="27.2.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#example-1"><i class="fa fa-check"></i><b>27.2.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#simple-time-series"><i class="fa fa-check"></i><b>27.3</b> Simple Time Series</a><ul>
+<li class="chapter" data-level="27.3.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#definition"><i class="fa fa-check"></i><b>27.3.1</b> Definition</a></li>
+<li class="chapter" data-level="27.3.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#white-noise"><i class="fa fa-check"></i><b>27.3.2</b> White Noise</a></li>
+<li class="chapter" data-level="27.3.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#moving-average-of-white-noise"><i class="fa fa-check"></i><b>27.3.3</b> Moving Average of White Noise</a></li>
+<li class="chapter" data-level="27.3.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#random-walk-with-drift"><i class="fa fa-check"></i><b>27.3.4</b> Random Walk with Drift</a></li>
+<li class="chapter" data-level="27.3.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#ar1"><i class="fa fa-check"></i><b>27.3.5</b> AR(1)</a></li>
+<li class="chapter" data-level="27.3.6" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#ma1"><i class="fa fa-check"></i><b>27.3.6</b> MA(1)</a></li>
+</ul></li>
+<li class="chapter" data-level="27.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#measures-of-dependence"><i class="fa fa-check"></i><b>27.4</b> Measures of Dependence</a><ul>
+<li class="chapter" data-level="27.4.1" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#mean-function"><i class="fa fa-check"></i><b>27.4.1</b> Mean Function</a></li>
+<li class="chapter" data-level="27.4.2" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#autocovariance-function"><i class="fa fa-check"></i><b>27.4.2</b> Autocovariance Function</a></li>
+<li class="chapter" data-level="27.4.3" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#autocorrelation-function-acf"><i class="fa fa-check"></i><b>27.4.3</b> Autocorrelation Function (ACF)</a></li>
+<li class="chapter" data-level="27.4.4" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#three-measures-for-simple-time-series-above"><i class="fa fa-check"></i><b>27.4.4</b> Three Measures for Simple Time Series Above</a></li>
+<li class="chapter" data-level="27.4.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#application"><i class="fa fa-check"></i><b>27.4.5</b> Application</a></li>
+</ul></li>
+<li class="chapter" data-level="27.5" data-path="introdution-to-time-series-analysis.html"><a href="introdution-to-time-series-analysis.html#reference"><i class="fa fa-check"></i><b>27.5</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="intro-to-tableau-with-r.html"><a href="intro-to-tableau-with-r.html"><i class="fa fa-check"></i><b>28</b> Intro to Tableau with R</a></li>
+<li class="chapter" data-level="29" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html"><i class="fa fa-check"></i><b>29</b> Sentiment analysis and wordcloud</a><ul>
+<li class="chapter" data-level="29.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#read-and-explore-the-text"><i class="fa fa-check"></i><b>29.1</b> Read and explore the text</a><ul>
+<li class="chapter" data-level="29.1.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#explore-ratings-of-reviews"><i class="fa fa-check"></i><b>29.1.1</b> Explore Ratings of Reviews</a></li>
+<li class="chapter" data-level="29.1.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#distribution-of-ratings"><i class="fa fa-check"></i><b>29.1.2</b> Distribution of Ratings</a></li>
+<li class="chapter" data-level="29.1.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#explore-the-reviews"><i class="fa fa-check"></i><b>29.1.3</b> Explore the reviews</a></li>
+<li class="chapter" data-level="29.1.4" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#most-common-words"><i class="fa fa-check"></i><b>29.1.4</b> Most common words</a></li>
+</ul></li>
+<li class="chapter" data-level="29.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#sentiment-analysis"><i class="fa fa-check"></i><b>29.2</b> Sentiment analysis</a><ul>
+<li class="chapter" data-level="29.2.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#words-in-reviews"><i class="fa fa-check"></i><b>29.2.1</b> Words in reviews</a></li>
+<li class="chapter" data-level="29.2.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#word-lexicons---bing"><i class="fa fa-check"></i><b>29.2.2</b> Word lexicons —- Bing</a></li>
+<li class="chapter" data-level="29.2.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#word-lexicons---nrc"><i class="fa fa-check"></i><b>29.2.3</b> Word lexicons —- nrc</a></li>
+</ul></li>
+<li class="chapter" data-level="29.3" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#wordcloud"><i class="fa fa-check"></i><b>29.3</b> Wordcloud</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#simple-word-cloud-visualization"><i class="fa fa-check"></i><b>29.3.1</b> Simple Word Cloud Visualization</a></li>
+<li class="chapter" data-level="29.3.2" data-path="sentiment-analysis-and-wordcloud.html"><a href="sentiment-analysis-and-wordcloud.html#comparison-word-cloud"><i class="fa fa-check"></i><b>29.3.2</b> Comparison Word Cloud</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html"><i class="fa fa-check"></i><b>30</b> Twitter sentiment analysis in R</a><ul>
+<li class="chapter" data-level="30.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#loading-all-the-required-r-libraries"><i class="fa fa-check"></i><b>30.1</b> Loading all the required R libraries</a></li>
+<li class="chapter" data-level="30.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#sentiment-analysis-1"><i class="fa fa-check"></i><b>30.2</b> Sentiment Analysis</a></li>
+<li class="chapter" data-level="30.3" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#twitter-authorization-to-extract-tweets"><i class="fa fa-check"></i><b>30.3</b> Twitter authorization to extract tweets:</a></li>
+<li class="chapter" data-level="30.4" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#extracting-global-warming-tweets"><i class="fa fa-check"></i><b>30.4</b> Extracting Global Warming tweets:</a></li>
+<li class="chapter" data-level="30.5" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#frequency-of-tweets"><i class="fa fa-check"></i><b>30.5</b> Frequency of Tweets</a></li>
+<li class="chapter" data-level="30.6" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#estimating-sentiment-score"><i class="fa fa-check"></i><b>30.6</b> Estimating Sentiment Score</a><ul>
+<li class="chapter" data-level="30.6.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#loading-sentiment-word-lists"><i class="fa fa-check"></i><b>30.6.1</b> Loading sentiment word lists:</a></li>
+<li class="chapter" data-level="30.6.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#sentiment-scoring-function"><i class="fa fa-check"></i><b>30.6.2</b> Sentiment scoring function:</a></li>
+<li class="chapter" data-level="30.6.3" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#calculating-the-sentiment-score"><i class="fa fa-check"></i><b>30.6.3</b> Calculating the sentiment score:</a></li>
+</ul></li>
+<li class="chapter" data-level="30.7" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#histogram-of-sentiment-scores"><i class="fa fa-check"></i><b>30.7</b> Histogram of sentiment scores:</a></li>
+<li class="chapter" data-level="30.8" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#barplot-of-sentiment-type"><i class="fa fa-check"></i><b>30.8</b> Barplot of sentiment type:</a></li>
+<li class="chapter" data-level="30.9" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#wordcloud-1"><i class="fa fa-check"></i><b>30.9</b> Wordcloud:</a></li>
+<li class="chapter" data-level="30.10" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#word-frequency-plot"><i class="fa fa-check"></i><b>30.10</b> Word Frequency plot:</a></li>
+<li class="chapter" data-level="30.11" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#network-analysis"><i class="fa fa-check"></i><b>30.11</b> Network Analysis</a><ul>
+<li class="chapter" data-level="30.11.1" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#bigram-analysis-and-network-definition"><i class="fa fa-check"></i><b>30.11.1</b> Bigram analysis and Network definition</a></li>
+<li class="chapter" data-level="30.11.2" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#network-visualization"><i class="fa fa-check"></i><b>30.11.2</b> Network visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="30.12" data-path="twitter-sentiment-analysis-in-r.html"><a href="twitter-sentiment-analysis-in-r.html#references"><i class="fa fa-check"></i><b>30.12</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="introduction-to-pyecharts.html"><a href="introduction-to-pyecharts.html"><i class="fa fa-check"></i><b>31</b> Introduction to pyecharts</a></li>
+<li class="chapter" data-level="32" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html"><i class="fa fa-check"></i><b>32</b> Up and Running (Quickly) with Leaflet</a><ul>
+<li class="chapter" data-level="32.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>32.1</b> What is leaflet?</a></li>
+<li class="chapter" data-level="32.2" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#why-should-we-use-leaflet-on-r"><i class="fa fa-check"></i><b>32.2</b> Why should we use leaflet on R?</a><ul>
+<li class="chapter" data-level="32.2.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#reason-why-you-should-use-leaflet"><i class="fa fa-check"></i><b>32.2.1</b> Reason why you should use leaflet</a></li>
+</ul></li>
+<li class="chapter" data-level="32.3" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#why-another-how-to-post-on-leaflet"><i class="fa fa-check"></i><b>32.3</b> Why another how-to post on Leaflet?</a></li>
+<li class="chapter" data-level="32.4" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#first-creating-a-base-map"><i class="fa fa-check"></i><b>32.4</b> First: Creating a base map</a></li>
+<li class="chapter" data-level="32.5" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#second-loading-feature-data"><i class="fa fa-check"></i><b>32.5</b> Second: Loading feature data</a><ul>
+<li class="chapter" data-level="32.5.1" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#what-does-geospatial-data-look-like"><i class="fa fa-check"></i><b>32.5.1</b> What does geospatial data look like?</a></li>
+</ul></li>
+<li class="chapter" data-level="32.6" data-path="up-and-running-quickly-with-leaflet.html"><a href="up-and-running-quickly-with-leaflet.html#last-saving-the-map"><i class="fa fa-check"></i><b>32.6</b> Last: Saving the map</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="introduction-to-geographic-chart-in-r.html"><a href="introduction-to-geographic-chart-in-r.html"><i class="fa fa-check"></i><b>33</b> Introduction to geographic chart in R</a></li>
+<li class="chapter" data-level="34" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html"><i class="fa fa-check"></i><b>34</b> Interview questions for data visualization</a><ul>
+<li class="chapter" data-level="34.0.1" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#general-questions"><i class="fa fa-check"></i><b>34.0.1</b> General Questions</a></li>
+<li class="chapter" data-level="34.0.2" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#r-questions"><i class="fa fa-check"></i><b>34.0.2</b> R Questions</a></li>
+<li class="chapter" data-level="34.0.3" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#python-questions"><i class="fa fa-check"></i><b>34.0.3</b> Python Questions</a></li>
+<li class="chapter" data-level="34.0.4" data-path="interview-questions-for-data-visualization.html"><a href="interview-questions-for-data-visualization.html#tableau-questions"><i class="fa fa-check"></i><b>34.0.4</b> Tableau Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="introduction-to-supervised-machine-learning.html"><a href="introduction-to-supervised-machine-learning.html"><i class="fa fa-check"></i><b>35</b> Introduction to Supervised Machine Learning</a></li>
+<li class="chapter" data-level="36" data-path="data-acquisition-and-wrangling.html"><a href="data-acquisition-and-wrangling.html"><i class="fa fa-check"></i><b>36</b> Data acquisition and wrangling</a></li>
+<li class="chapter" data-level="37" data-path="complete-eda-process-and-visualizations-in-python.html"><a href="complete-eda-process-and-visualizations-in-python.html"><i class="fa fa-check"></i><b>37</b> Complete EDA Process and Visualizations in Python</a></li>
+<li class="chapter" data-level="38" data-path="data-transformation-with-dplyr-video-tutorial.html"><a href="data-transformation-with-dplyr-video-tutorial.html"><i class="fa fa-check"></i><b>38</b> Data Transformation with Dplyr Video Tutorial</a></li>
+<li class="chapter" data-level="39" data-path="data-science-ethics.html"><a href="data-science-ethics.html"><i class="fa fa-check"></i><b>39</b> Data science ethics</a></li>
+<li class="chapter" data-level="40" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html"><i class="fa fa-check"></i><b>40</b> 3D plot in R</a><ul>
+<li class="chapter" data-level="40.1" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#introduction-2"><i class="fa fa-check"></i><b>40.1</b> Introduction</a></li>
+<li class="chapter" data-level="40.2" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#static-3d-plots"><i class="fa fa-check"></i><b>40.2</b> Static 3D Plots</a><ul>
+<li class="chapter" data-level="40.2.1" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#d-scatterplot"><i class="fa fa-check"></i><b>40.2.1</b> 3D scatterplot</a></li>
+<li class="chapter" data-level="40.2.2" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#d-texts"><i class="fa fa-check"></i><b>40.2.2</b> 3D texts</a></li>
+<li class="chapter" data-level="40.2.3" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#d-histogram"><i class="fa fa-check"></i><b>40.2.3</b> 3D Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="40.3" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#interactive-3d-plots"><i class="fa fa-check"></i><b>40.3</b> Interactive 3D Plots</a><ul>
+<li class="chapter" data-level="40.3.1" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#rgl-library"><i class="fa fa-check"></i><b>40.3.1</b> rgl library</a></li>
+<li class="chapter" data-level="40.3.2" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#plotly-library"><i class="fa fa-check"></i><b>40.3.2</b> plotly library</a></li>
+</ul></li>
+<li class="chapter" data-level="40.4" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#conclusion-1"><i class="fa fa-check"></i><b>40.4</b> Conclusion</a></li>
+<li class="chapter" data-level="40.5" data-path="d-plot-in-r.html"><a href="d-plot-in-r.html#works-cited"><i class="fa fa-check"></i><b>40.5</b> Works Cited</a></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html"><i class="fa fa-check"></i><b>41</b> Ben Shneiderman’s Visualization Mantra</a><ul>
+<li class="chapter" data-level="41.1" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#introduction-3"><i class="fa fa-check"></i><b>41.1</b> Introduction:</a></li>
+<li class="chapter" data-level="41.2" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#need-for-visualization"><i class="fa fa-check"></i><b>41.2</b> Need for Visualization:</a></li>
+<li class="chapter" data-level="41.3" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#ben-shneidermans-visual-information-seeking-mantra"><i class="fa fa-check"></i><b>41.3</b> Ben Shneiderman’s Visual Information Seeking Mantra</a><ul>
+<li class="chapter" data-level="41.3.1" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#step-1--overview"><i class="fa fa-check"></i><b>41.3.1</b> Step 1-&gt; Overview:</a></li>
+<li class="chapter" data-level="41.3.2" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#step-2and-3---zoom-and-filter"><i class="fa fa-check"></i><b>41.3.2</b> Step 2(and 3) -&gt; Zoom and Filter:</a></li>
+<li class="chapter" data-level="41.3.3" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#step-4---details-on-demand"><i class="fa fa-check"></i><b>41.3.3</b> Step 4 -&gt; Details On Demand</a></li>
+<li class="chapter" data-level="41.3.4" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#step-5---relate"><i class="fa fa-check"></i><b>41.3.4</b> Step 5 -&gt; Relate</a></li>
+<li class="chapter" data-level="41.3.5" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#step-6---history"><i class="fa fa-check"></i><b>41.3.5</b> Step 6 -&gt; History</a></li>
+<li class="chapter" data-level="41.3.6" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#step-7---extract"><i class="fa fa-check"></i><b>41.3.6</b> Step 7 -&gt; Extract</a></li>
+</ul></li>
+<li class="chapter" data-level="41.4" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#references-1"><i class="fa fa-check"></i><b>41.4</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="42" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><i class="fa fa-check"></i><b>42</b> Choose Your Adventure - How to choose the right visualization for your data</a><ul>
+<li class="chapter" data-level="42.1" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#introduction-4"><i class="fa fa-check"></i><b>42.1</b> Introduction</a><ul>
+<li class="chapter" data-level="42.1.1" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#step-1.-what-would-you-like-to-show"><i class="fa fa-check"></i><b>42.1.1</b> Step 1. What would you like to show?</a></li>
+<li class="chapter" data-level="42.1.2" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#step-2"><i class="fa fa-check"></i><b>42.1.2</b> Step 2</a></li>
+<li class="chapter" data-level="42.1.3" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#step-3"><i class="fa fa-check"></i><b>42.1.3</b> Step 3</a></li>
+</ul></li>
+<li class="chapter" data-level="42.2" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#the-flow-chart"><i class="fa fa-check"></i><b>42.2</b> The Flow Chart</a></li>
+<li class="chapter" data-level="42.3" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#an-example-use-case"><i class="fa fa-check"></i><b>42.3</b> An Example Use Case</a></li>
+<li class="chapter" data-level="42.4" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#conclusion-2"><i class="fa fa-check"></i><b>42.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html"><i class="fa fa-check"></i><b>43</b> Common Errors in R</a><ul>
+<li class="chapter" data-level="43.1" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#could-not-find-function"><i class="fa fa-check"></i><b>43.1</b> could not find function</a></li>
+<li class="chapter" data-level="43.2" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#error-in-if"><i class="fa fa-check"></i><b>43.2</b> Error in if</a></li>
+<li class="chapter" data-level="43.3" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#object-not-found"><i class="fa fa-check"></i><b>43.3</b> Object not found</a></li>
+<li class="chapter" data-level="43.4" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unexpected"><i class="fa fa-check"></i><b>43.4</b> unexpected …</a></li>
+<li class="chapter" data-level="43.5" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#condition-has-length-1"><i class="fa fa-check"></i><b>43.5</b> condition has length &gt; 1</a></li>
+<li class="chapter" data-level="43.6" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#operator-is-invalid-for-atomic-vectors"><i class="fa fa-check"></i><b>43.6</b> $ operator is invalid for atomic vectors</a></li>
+<li class="chapter" data-level="43.7" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#argument-is-of-length-zero"><i class="fa fa-check"></i><b>43.7</b> argument is of length zero</a></li>
+<li class="chapter" data-level="43.8" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unimplemented-type-list"><i class="fa fa-check"></i><b>43.8</b> unimplemented type ‘list’</a></li>
+<li class="chapter" data-level="43.9" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#undefined-columns-selected"><i class="fa fa-check"></i><b>43.9</b> undefined columns selected</a></li>
+<li class="chapter" data-level="43.10" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#replacement-has-length-zero"><i class="fa fa-check"></i><b>43.10</b> replacement has length zero</a></li>
+<li class="chapter" data-level="43.11" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#replacement-has-10-rows-data-has-5"><i class="fa fa-check"></i><b>43.11</b> replacement has 10 rows, data has 5</a></li>
+<li class="chapter" data-level="43.12" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#by-must-specify-a-uniquely-valid-column"><i class="fa fa-check"></i><b>43.12</b> ‘by’ must specify a uniquely valid column</a></li>
+<li class="chapter" data-level="43.13" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#incorrect-number-of-subscripts-on-matrix"><i class="fa fa-check"></i><b>43.13</b> incorrect number of subscripts on matrix</a></li>
+<li class="chapter" data-level="43.14" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#subscript-out-of-bounds"><i class="fa fa-check"></i><b>43.14</b> subscript out of bounds</a></li>
+<li class="chapter" data-level="43.15" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#cannot-open-the-connection"><i class="fa fa-check"></i><b>43.15</b> cannot open the connection</a></li>
+<li class="chapter" data-level="43.16" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#non-numeric-argument-to-binary-operator"><i class="fa fa-check"></i><b>43.16</b> non-numeric argument to binary operator</a></li>
+<li class="chapter" data-level="43.17" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#need-finite-xlim-values"><i class="fa fa-check"></i><b>43.17</b> need finite ‘xlim’ values</a></li>
+<li class="chapter" data-level="43.18" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#unused-argument"><i class="fa fa-check"></i><b>43.18</b> unused argument</a></li>
+<li class="chapter" data-level="43.19" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#tips-for-debugging"><i class="fa fa-check"></i><b>43.19</b> Tips for Debugging</a></li>
+<li class="chapter" data-level="43.20" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#references-2"><i class="fa fa-check"></i><b>43.20</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="44" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html"><i class="fa fa-check"></i><b>44</b> Collaborating on RStudio with GitHub</a><ul>
+<li class="chapter" data-level="44.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#objective"><i class="fa fa-check"></i><b>44.1</b> Objective</a></li>
+<li class="chapter" data-level="44.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#what-is-git"><i class="fa fa-check"></i><b>44.2</b> What is Git?</a></li>
+<li class="chapter" data-level="44.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#collaborating-on-github"><i class="fa fa-check"></i><b>44.3</b> Collaborating on GitHub</a><ul>
+<li class="chapter" data-level="44.3.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#create-a-repository"><i class="fa fa-check"></i><b>44.3.1</b> Create a repository</a></li>
+<li class="chapter" data-level="44.3.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#branching"><i class="fa fa-check"></i><b>44.3.2</b> Branching</a></li>
+<li class="chapter" data-level="44.3.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#add-collaborators"><i class="fa fa-check"></i><b>44.3.3</b> Add Collaborators</a></li>
+<li class="chapter" data-level="44.3.4" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#tracking-changes-on-github"><i class="fa fa-check"></i><b>44.3.4</b> Tracking changes on GitHub</a></li>
+<li class="chapter" data-level="44.3.5" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#blame"><i class="fa fa-check"></i><b>44.3.5</b> Blame</a></li>
+<li class="chapter" data-level="44.3.6" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#issues"><i class="fa fa-check"></i><b>44.3.6</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="44.4" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#getting-started-with-git-on-rstudio"><i class="fa fa-check"></i><b>44.4</b> Getting started with Git on RStudio</a><ul>
+<li class="chapter" data-level="44.4.1" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#cloning-a-repository-to-a-new-project"><i class="fa fa-check"></i><b>44.4.1</b> Cloning a repository to a new project</a></li>
+<li class="chapter" data-level="44.4.2" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#cloning-a-repository-set-up-by-someone-else"><i class="fa fa-check"></i><b>44.4.2</b> Cloning a repository set up by someone else</a></li>
+<li class="chapter" data-level="44.4.3" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#overview-of-git-panel"><i class="fa fa-check"></i><b>44.4.3</b> Overview of Git panel</a></li>
+</ul></li>
+<li class="chapter" data-level="44.5" data-path="collaborating-on-rstudio-with-github.html"><a href="collaborating-on-rstudio-with-github.html#merging-conflicts"><i class="fa fa-check"></i><b>44.5</b> Merging Conflicts</a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html"><i class="fa fa-check"></i><b>45</b> Math Finance in R</a><ul>
+<li class="chapter" data-level="45.1" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html#introduction-5"><i class="fa fa-check"></i><b>45.1</b> Introduction</a></li>
+<li class="chapter" data-level="45.2" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html#data-preparation"><i class="fa fa-check"></i><b>45.2</b> Data Preparation</a></li>
+<li class="chapter" data-level="45.3" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html#empirical-coveriance-matrix"><i class="fa fa-check"></i><b>45.3</b> Empirical coveriance matrix</a></li>
+<li class="chapter" data-level="45.4" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html#find-efficient-portfolios-using-meanvariance-analysis"><i class="fa fa-check"></i><b>45.4</b> Find efficient portfolios using mean/variance analysis</a></li>
+<li class="chapter" data-level="45.5" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html#select-a-set-of-ticker"><i class="fa fa-check"></i><b>45.5</b> Select a set of ticker</a></li>
+<li class="chapter" data-level="45.6" data-path="math-finance-in-r.html"><a href="math-finance-in-r.html#visualization-of-minimum-variance-portforlio"><i class="fa fa-check"></i><b>45.6</b> Visualization of Minimum Variance Portforlio</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="introduction-to-topology-data-analysis.html"><a href="introduction-to-topology-data-analysis.html"><i class="fa fa-check"></i><b>46</b> Introduction to Topology Data Analysis</a></li>
+<li class="chapter" data-level="47" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html"><i class="fa fa-check"></i><b>47</b> An introduction of web scrapping using rvest</a><ul>
+<li class="chapter" data-level="47.1" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html#introduction-6"><i class="fa fa-check"></i><b>47.1</b> Introduction</a></li>
+<li class="chapter" data-level="47.2" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html#understanding-a-web-page-html"><i class="fa fa-check"></i><b>47.2</b> Understanding a web page “HTML”</a></li>
+<li class="chapter" data-level="47.3" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html#the-rvest-library"><i class="fa fa-check"></i><b>47.3</b> The rvest library</a></li>
+<li class="chapter" data-level="47.4" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html#tracking-the-data-from-the-page"><i class="fa fa-check"></i><b>47.4</b> Tracking the data from the page</a></li>
+<li class="chapter" data-level="47.5" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html#extracting-data-from-the-page"><i class="fa fa-check"></i><b>47.5</b> Extracting data from the page</a></li>
+<li class="chapter" data-level="47.6" data-path="an-introduction-of-web-scrapping-using-rvest.html"><a href="an-introduction-of-web-scrapping-using-rvest.html#summary"><i class="fa fa-check"></i><b>47.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="48" data-path="mschart.html"><a href="mschart.html"><i class="fa fa-check"></i><b>48</b> Mschart</a><ul>
+<li class="chapter" data-level="48.1" data-path="mschart.html"><a href="mschart.html#overview-1"><i class="fa fa-check"></i><b>48.1</b> Overview</a></li>
+<li class="chapter" data-level="48.2" data-path="mschart.html"><a href="mschart.html#setup"><i class="fa fa-check"></i><b>48.2</b> Setup</a></li>
+<li class="chapter" data-level="48.3" data-path="mschart.html"><a href="mschart.html#create-a-line-chart-from-a-given-dataframe"><i class="fa fa-check"></i><b>48.3</b> Create a line chart from a given dataframe</a></li>
+<li class="chapter" data-level="48.4" data-path="mschart.html"><a href="mschart.html#produce-the-chart-in-a-powerpoint"><i class="fa fa-check"></i><b>48.4</b> Produce the chart in a PowerPoint</a></li>
+<li class="chapter" data-level="48.5" data-path="mschart.html"><a href="mschart.html#view-the-chart-by-opening-the-powerpoint"><i class="fa fa-check"></i><b>48.5</b> View the chart by opening the PowerPoint</a></li>
+<li class="chapter" data-level="48.6" data-path="mschart.html"><a href="mschart.html#bar-chart-and-other-available-charts"><i class="fa fa-check"></i><b>48.6</b> Bar chart and other available charts</a></li>
+<li class="chapter" data-level="48.7" data-path="mschart.html"><a href="mschart.html#write-into-a-word-document"><i class="fa fa-check"></i><b>48.7</b> Write into a word document</a></li>
+<li class="chapter" data-level="48.8" data-path="mschart.html"><a href="mschart.html#customize-charts"><i class="fa fa-check"></i><b>48.8</b> Customize Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="49" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html"><i class="fa fa-check"></i><b>49</b> A brief introduction to ggraph</a><ul>
+<li class="chapter" data-level="49.1" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#overview-2"><i class="fa fa-check"></i><b>49.1</b> Overview</a></li>
+<li class="chapter" data-level="49.2" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#installation-1"><i class="fa fa-check"></i><b>49.2</b> Installation</a></li>
+<li class="chapter" data-level="49.3" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#core-concept-1-layout"><i class="fa fa-check"></i><b>49.3</b> Core Concept 1: Layout</a></li>
+<li class="chapter" data-level="49.4" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#core-concept-2-nodes"><i class="fa fa-check"></i><b>49.4</b> Core Concept 2: Nodes</a></li>
+<li class="chapter" data-level="49.5" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#core-concept-3-edges"><i class="fa fa-check"></i><b>49.5</b> Core Concept 3: Edges</a></li>
+<li class="chapter" data-level="49.6" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#example-network-analysis-with-ggraph"><i class="fa fa-check"></i><b>49.6</b> Example: Network Analysis with ggraph</a></li>
+<li class="chapter" data-level="49.7" data-path="a-brief-introduction-to-ggraph.html"><a href="a-brief-introduction-to-ggraph.html#external-resource"><i class="fa fa-check"></i><b>49.7</b> External Resource</a></li>
+</ul></li>
+<li class="chapter" data-level="50" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html"><i class="fa fa-check"></i><b>50</b> Using SQL with R</a><ul>
+<li class="chapter" data-level="50.1" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#installing-required-packages"><i class="fa fa-check"></i><b>50.1</b> Installing required packages</a></li>
+<li class="chapter" data-level="50.2" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#creating-a-mysql-database-in-aws"><i class="fa fa-check"></i><b>50.2</b> Creating a MySQL database in AWS</a><ul>
+<li class="chapter" data-level="50.2.1" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#create-a-aws-account"><i class="fa fa-check"></i><b>50.2.1</b> Create a AWS account</a></li>
+<li class="chapter" data-level="50.2.2" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#create-relational-database-instance-in-aws"><i class="fa fa-check"></i><b>50.2.2</b> Create Relational DataBase instance in AWS</a></li>
+<li class="chapter" data-level="50.2.3" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#connect-to-the-database"><i class="fa fa-check"></i><b>50.2.3</b> Connect to the database</a></li>
+<li class="chapter" data-level="50.2.4" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#populate-the-database-with-data"><i class="fa fa-check"></i><b>50.2.4</b> Populate the database with data!</a></li>
+</ul></li>
+<li class="chapter" data-level="50.3" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#connecting-with-r"><i class="fa fa-check"></i><b>50.3</b> Connecting With R</a><ul>
+<li class="chapter" data-level="50.3.1" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#setting-up-the-connection"><i class="fa fa-check"></i><b>50.3.1</b> Setting up the connection</a></li>
+<li class="chapter" data-level="50.3.2" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#create---read---update---delete-operations"><i class="fa fa-check"></i><b>50.3.2</b> Create - Read - Update - Delete operations</a></li>
+<li class="chapter" data-level="50.3.3" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#dataframe-cleaning"><i class="fa fa-check"></i><b>50.3.3</b> Dataframe cleaning</a></li>
+<li class="chapter" data-level="50.3.4" data-path="using-sql-with-r.html"><a href="using-sql-with-r.html#visualizing-our-dataframe"><i class="fa fa-check"></i><b>50.3.4</b> Visualizing our Dataframe</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Topical Discussions</b></span></li>
+<li class="chapter" data-level="51" data-path="zoom-session-in-finance-and-data-science.html"><a href="zoom-session-in-finance-and-data-science.html"><i class="fa fa-check"></i><b>51</b> Zoom session in Finance and Data-Science</a></li>
+<li class="chapter" data-level="52" data-path="data-science-the-environment-and-sustainability.html"><a href="data-science-the-environment-and-sustainability.html"><i class="fa fa-check"></i><b>52</b> Data science, the environment, and sustainability</a></li>
+<li class="chapter" data-level="53" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html"><i class="fa fa-check"></i><b>53</b> Absentee ballot voting in 2020 presidental election</a><ul>
+<li class="chapter" data-level="53.1" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#background-and-research-idea"><i class="fa fa-check"></i><b>53.1</b> Background and Research Idea</a></li>
+<li class="chapter" data-level="53.2" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#analyze-ballot-rejection-data"><i class="fa fa-check"></i><b>53.2</b> Analyze ballot rejection data</a></li>
+<li class="chapter" data-level="53.3" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#categorize-16-main-ballot-rejection-reasons"><i class="fa fa-check"></i><b>53.3</b> Categorize 16 main ballot rejection reasons</a></li>
+<li class="chapter" data-level="53.4" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#show-participation-rate-and-ballot-non-accepted-rate-on-a-georgia-map"><i class="fa fa-check"></i><b>53.4</b> Show participation rate and ballot non-accepted rate on a Georgia map</a></li>
+</ul></li>
+<li class="chapter" data-level="54" data-path="final-project-zoom-meetup-sports.html"><a href="final-project-zoom-meetup-sports.html"><i class="fa fa-check"></i><b>54</b> Final project Zoom meetup - sports</a></li>
+<li class="chapter" data-level="55" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html"><i class="fa fa-check"></i><b>55</b> In-Person Fitness Hour</a><ul>
+<li class="chapter" data-level="55.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#piazza-announcement"><i class="fa fa-check"></i><b>55.1</b> Piazza Announcement</a></li>
+<li class="chapter" data-level="55.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#final-event"><i class="fa fa-check"></i><b>55.2</b> Final Event</a><ul>
+<li class="chapter" data-level="55.2.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#jump-rope"><i class="fa fa-check"></i><b>55.2.1</b> Jump Rope</a></li>
+<li class="chapter" data-level="55.2.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#monkey-bars"><i class="fa fa-check"></i><b>55.2.2</b> Monkey Bars</a></li>
+<li class="chapter" data-level="55.2.3" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#frisbee"><i class="fa fa-check"></i><b>55.2.3</b> Frisbee</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="56" data-path="work-culture-and-time-management.html"><a href="work-culture-and-time-management.html"><i class="fa fa-check"></i><b>56</b> Work culture and time management</a></li>
+<li class="chapter" data-level="57" data-path="data-science-for-social-good.html"><a href="data-science-for-social-good.html"><i class="fa fa-check"></i><b>57</b> Data Science for Social Good</a><ul>
+<li class="chapter" data-level="57.1" data-path="data-science-for-social-good.html"><a href="data-science-for-social-good.html#r-markdown"><i class="fa fa-check"></i><b>57.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="58" data-path="wine-and-wine-tasting.html"><a href="wine-and-wine-tasting.html"><i class="fa fa-check"></i><b>58</b> Wine and wine tasting</a></li>
+<li class="chapter" data-level="59" data-path="meet-the-pets-zoom-session.html"><a href="meet-the-pets-zoom-session.html"><i class="fa fa-check"></i><b>59</b> Meet the pets zoom session</a></li>
+<li class="chapter" data-level="60" data-path="intro-to-data-science-videos.html"><a href="intro-to-data-science-videos.html"><i class="fa fa-check"></i><b>60</b> Intro to Data Science – videos</a></li>
+<li class="chapter" data-level="61" data-path="data-science-student-community-environment-build.html"><a href="data-science-student-community-environment-build.html"><i class="fa fa-check"></i><b>61</b> Data science student community environment build</a><ul>
+<li class="chapter" data-level="61.1" data-path="data-science-student-community-environment-build.html"><a href="data-science-student-community-environment-build.html#community-contribution-overview"><i class="fa fa-check"></i><b>61.1</b> Community contribution overview</a><ul>
+<li class="chapter" data-level="61.1.1" data-path="data-science-student-community-environment-build.html"><a href="data-science-student-community-environment-build.html#part-1-online-meeting-session"><i class="fa fa-check"></i><b>61.1.1</b> Part 1: Online Meeting Session</a></li>
+<li class="chapter" data-level="61.1.2" data-path="data-science-student-community-environment-build.html"><a href="data-science-student-community-environment-build.html#part-2-build-community-servers"><i class="fa fa-check"></i><b>61.1.2</b> Part 2: Build Community Servers</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Appendices</b></span></li>
+<li class="chapter" data-level="62" data-path="github-initial-setup.html"><a href="github-initial-setup.html"><i class="fa fa-check"></i><b>62</b> Github initial setup</a><ul>
+<li class="chapter" data-level="62.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-actions"><i class="fa fa-check"></i><b>62.1</b> GitHub Actions</a><ul>
+<li class="chapter" data-level="62.1.1" data-path="github-initial-setup.html"><a href="github-initial-setup.html#secrets"><i class="fa fa-check"></i><b>62.1.1</b> Secrets</a></li>
+<li class="chapter" data-level="62.1.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#create-a-gh-pages-branch"><i class="fa fa-check"></i><b>62.1.2</b> Create a <code>gh-pages</code> branch:</a></li>
+<li class="chapter" data-level="62.1.3" data-path="github-initial-setup.html"><a href="github-initial-setup.html#github-pages-in-repo-settings"><i class="fa fa-check"></i><b>62.1.3</b> GitHub Pages in repo settings</a></li>
+</ul></li>
+<li class="chapter" data-level="62.2" data-path="github-initial-setup.html"><a href="github-initial-setup.html#description-file"><i class="fa fa-check"></i><b>62.2</b> DESCRIPTION file</a></li>
+</ul></li>
+<li class="chapter" data-level="63" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html"><i class="fa fa-check"></i><b>63</b> Tutorial for pull request mergers</a><ul>
+<li class="chapter" data-level="63.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#general"><i class="fa fa-check"></i><b>63.1</b> General</a></li>
+<li class="chapter" data-level="63.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-branch"><i class="fa fa-check"></i><b>63.2</b> Check branch</a></li>
+<li class="chapter" data-level="63.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#examine-files-that-were-added-or-modified"><i class="fa fa-check"></i><b>63.3</b> Examine files that were added or modified</a></li>
+<li class="chapter" data-level="63.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-filename"><i class="fa fa-check"></i><b>63.4</b> Check <code>.Rmd</code> filename</a></li>
+<li class="chapter" data-level="63.5" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-.rmd-file-contents"><i class="fa fa-check"></i><b>63.5</b> Check <code>.Rmd</code> file contents</a></li>
+<li class="chapter" data-level="63.6" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#request-changes"><i class="fa fa-check"></i><b>63.6</b> Request changes</a></li>
+<li class="chapter" data-level="63.7" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-the-pull-request"><i class="fa fa-check"></i><b>63.7</b> Merge the pull request</a><ul>
+<li class="chapter" data-level="63.7.1" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#add-chapter-filename-to-_bookdown.yml-in-prs-branch"><i class="fa fa-check"></i><b>63.7.1</b> Add chapter filename to <code>_bookdown.yml</code> in PR’s <code>branch</code></a></li>
+<li class="chapter" data-level="63.7.2" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#pr-leaders-only-add-part-names-to-.rmd-for-every-first-article-in-part"><i class="fa fa-check"></i><b>63.7.2</b> PR Leaders only: Add part names to <code>.Rmd</code> for every first article in part</a></li>
+<li class="chapter" data-level="63.7.3" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#merge-pr-and-leave-a-comment"><i class="fa fa-check"></i><b>63.7.3</b> Merge PR and leave a comment</a></li>
+<li class="chapter" data-level="63.7.4" data-path="tutorial-for-pull-request-mergers.html"><a href="tutorial-for-pull-request-mergers.html#check-updated-version"><i class="fa fa-check"></i><b>63.7.4</b> Check updated version</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spring 2021 EDAV Community Contributions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chinese-translation-exploratory-data-analysis-and-data-visualization" class="section level1">
+<h1><span class="header-section-number">Chapter 20</span> Chinese Translation Exploratory Data Analysis and Data Visualization</h1>
+<p>Translators: Jiaxi Liu &amp; Ruoxi Li
+Original Author:Chong-ho Yu, Ph.Ds.</p>
+<p>You can find the pdf here:
+<a href="https://github.com/Ruoxiiiii/Translation-Script-Exploratory-data-analysis-and-Data-visualization/blob/main/EDA%26Visualization%20Translation%20Script.pdf" class="uri">https://github.com/Ruoxiiiii/Translation-Script-Exploratory-data-analysis-and-Data-visualization/blob/main/EDA%26Visualization%20Translation%20Script.pdf</a></p>
+<p>1.EDA: 探索侦察型工作
+这是对探索性数据分析(EDA)和数据可视化的简要介绍。您将 遇到几个不熟悉的术语和图表，但是此时您不必完全理解它们。 本文的目的是让您知道哪些工具可用以及可以做什么。 EDA的 原理和特定技术将在进一步的阅读中介绍。
+当有人声称他们的方法是探索性的时，实际上他们的意思是他们 不知道自己在做什么。不幸的是，经常以EDA的名义进行拙劣的 研究。在数据收集中，由于没有明确定义研究问题并且没有识别 出变量，研究人员用数百页的调查资料充斥了调查对象。确实， EDA不需要预先确定的假设就可以进行测试，但是它并不能证明 没有研究问题和定义不明确的变量，也无法证明每次尝试直到获 得显着的p值(p-hacking)(Jebb) ，Parrigon和Woo，2017年)。
+EDA这门技术是丰富且结构合理的。探索性数据分析是对确认数 据分析(CDA)的补充，由约翰·图基(John Tukey)(1977，1980)建
+立。 Tukey通常将EDA与侦探工作联系起来。在EDA中，研究人员的作用是以尽可能多的方式探索 数据，直到出现合理的数据“故事”为止。侦探不会收集任何信息。相反，他收集了与案件核心问题 有关的证据和线索。因此，从现在开始，您可以称我为“侦探俞”。</p>
+<p>2.EDA的要素
+Velleman和Hoaglin(1981)概述了探索性数据分析的四个基本要素，如下所示:
+● 数据可视化
+● 残差分析
+● 数据转换或重新表达
+● 稳定性分析过程</p>
+<ol start="3" style="list-style-type: decimal">
+<li>数据可视化
+数据可视化的基本原理是:“一张图片值一千字。”从图片检测数据模式比从数字输出检测数据模 式容易。一般而言，研究目标有六大类。所有这些人都可以利用制图技术来加深我们对数据的理 解:
+● 发现异常值
+● 区分集群
+● 检查分配和其他假设 ● 检查关系
+● 比较均值差异
+● 观察基于时间的过程
+以下是一些示例。这些图的解释非常复杂。只是获得可视化的想法，不要过多的在意细节。 发现异常值
+在直方图等一维图表中很容易发现单变量离群值。在多变量情况下，旋转图很有用。请观看此动 画演示。</li>
+</ol>
+<p>区分集群
+通过可视化，我们可以将变量或主题聚类。此示例显示了如何使用笔刷对主题进行聚类以帮助进 行回归分析。请观看此动画演示。</p>
+<p>检查分布和其他假设
+许多参数测试都需要数据规范性。研究人员可以使用简 单的直方图来检查分布。一种更复杂的方法是使用正态 概率图检查数据。如果数据完全正常，则图形应显示对角 直线。与直线的偏离表示不正常的程度。</p>
+<p>检查关系
+当存在交互作用时，回归线在其他变量的所有级别上均 不一致。移动的网格表面描述了这种变化。如果动画使您 烦恼，请按浏览器上的“停止”按钮以冻结动画。这种类型 的数据可视化可以在Mathematica和DataDesk中执行。</p>
+<p>比较小组差异
+通常使用参数检验(例如t检验或F检验)来比 较均值差异。但是，可以使用图形来补充测试 统计信息。一个典型的例子是使用单元均值图 来检查主要作用和相互作用作用。用于比较差 异的高级图形示例包括菱形图和杠杆图。</p>
+<ol start="4" style="list-style-type: decimal">
+<li>残差分析 译文:
+EDA遵循数据=拟合+残差 或者 数据=模型+误差的模 型。拟合或模型是数据的期望值。残差或误差是偏
+离该预期值的值。通过检查残差，研究人员可以评 估模型的适当性。一个简单的例子可以在回归分析 中找到。左侧的散点图显示了回归模型中的残差。
+今天，不难理解为什么我们应该检查残差以检查数 据对模型的拟合程度。但是，“剩余”是一个现代概 念。几个世纪前，即使是训练有素的科学家对”残差” 这一概念的感受也很弱。 *不幸的是，目前，这个问 题仍然存在于一些倾向于将建模视为理所当然而忽 略残差的研究人员中。
+过去，这种迭代过程是由分析人员手动执行的，例如 2-way fit方法。今天，机器学习算法可自动执行此过 程。 Boosting，也称为boosted树，是自动迭代的一 个很好的例子。</li>
+</ol>
+<p>5.数据转换和重新表达
+数据转换发生在我们的日常生活中:将美元转换为加元，将5分制的GPA转换为4分制的GPA。但是 ，这些示例属于线性变换，因此不影响数据的分布。在EDA中，通常使用非线性变换，从而改变数 据模式。数据重新表达本质上是探索性的，因为在进行转换之前，研究人员永远不知道哪种重新 表达方法可以达到理想的结果。
+数据转换有四个主要目标:
+● 标准化分布 :非常规数据违反了参数测试的假设，因此建议进行转换。常见的误解是将原 始分数转换为z分数会产生正态分布。实际上，原始到z的转换是线性转换。下图显示了从 原始到z的转换后，z得分的分布形状仍然类似于原始得分。适当的过程应该是自然对数变 换或逆概率变换。
+● 稳定差异:方差不相等的数据也不利于参数测试。方差稳定化变换的一个典型示例是平方 根变换:y * = sqrt(y)。
+● 线性化趋势: 回归分析需要线性假设。当数据显示曲线关系时，研究人员可以应用非线性 回归分析，也可以通过线性化变换对数据进行拉直。对数转换是后者的典型示例。
+● 正交化共线变量: 在多元回归中，预测变量之间缺乏独立性会使模型不稳定。就超空间而 言，代表这些变量的向量是非正交的。为了纠正这种情况，可以使用Gram–Schmidt过程或 其他转换技术，通过将分数居中来使变量正交。</p>
+<p>但是，每种统计程序都有其局限性，应谨慎使用。数据转换也不例外。 Osborne(2002)建议应适
+当使用数据转换。许多转换通过更改数据点之间的间距来减少非正态性，但是这在数据解释中提出了问题。如果正确完成了转换，则所有数据点应保持与转换之前相同的相对顺序，并且这不会 影响研究人员解释分数。但是，对于那些需要以直截了当的方式(例如年收入和年龄)来解释的 原始变量，数据转换就可能会出现问题。因为转换后，新变量的解释可能会变得更加复杂。</p>
+<ol start="6" style="list-style-type: decimal">
+<li>抵抗程序
+参数测试基于均值估计，均值对异常值或偏斜分布敏感。在EDA中，通常使用鲁棒的估计器。例如 :
+● 中位数:数据的中间点。
+● 三均值:根据第一四分位数，第三四分位数和中位数两次的算术平均值计算的集中趋势的
+度量。
+● Winsorized均值:均值的可靠版本，其中极端得分被拉回到大部分数据中。
+● 切尾均值:没有异常值的均值
+在您的第一节统计课程中，您就能了解到众数对异常值的抵抗力比中值大。您可能会问为什么使 用中位数而不是众数。确实，在大多数情况下，中位数和众数对异常值具有同样的鲁棒性。请观看 此动画演示。
+重要的是要指出，尽管“抵抗性”和“鲁棒性”通常可以互换使用，但它们之间存在细微的差别。 EDA更加关注抵抗力，而假设检验则更加关注鲁棒性。抵抗力是关于不受异常值影响的，而鲁棒 性是关于不受违反原假设带来的影响。在前者中，目标是获得数据摘要，而在后者中，目标是进行 概率推断。</li>
+</ol>
+<p>7.推荐用于EDA的软件
+● DataDesk
+DataDesk(数据描述公司，2008年)由John Tukey的学生Paul Velleman开发。 DataDesk是探索性 数据分析初学者的理想工具。 它具有丰富的功能和足够的灵活性，可以进行操作，但是对计算机 操作的了解很少。 例如，可以使用DataDesk中的各种转换函数来执行上述数据重新表达。 DataDesk具有一个称为Data Desk Plus的更丰富的版本，其中包含名为ActivStat的基于多媒体的 统计教程。</p>
+<p>● JMP
+JMP(SAS研究所，2016)是一个非常通用的统计程序。 JMP有两种变体，即JMP和JMP Pro。 顾名 思义，JMP Pro是一个专业版本，其中包含许多强大的过程。 但是对于大多数用户而言，JMP足以 满足EDA的要求。 像DataDesk一样，JMP具有内置的数据转换选项，如下所JMP的设计原理类似于苹果iPod的设计原理。 安装后，您无需阅读手册即可开始浏览数据。 除了直方图和箱线图之类的常用图形功能外，JMP中的“图形生成器”还为用户提供了地理信息系统( GIS)。</p>
+<p>● XLISP-STAT 如果您希望通过编程获得完全的控制权，则应考虑XLISP-STAT。例如，在数据可视化中，它涉及数
+据平滑。通过编程，您可以查看不同详细程度的数据。
+LISP代表列表处理。有人称其为“很多白痴和愚蠢的括号”。 LISP由John McCarthy在MIT于1956-62 年创建，用于非数值计算。后来，它专门用于人工智能的开发。 LISP有许多不同的版本，例如普 通Lisp，Franz LISP等XLISP是David Betz开发的许多方言之一。后来，LukeTierney(1990)开发了 用于统计可视化的XLISP-STAT。该软件包具有许多内置的统计图形功能。 Cook and Weisberg( 1994)基于XLISP-STAT，开发了一套称为R-code的回归绘图工具。另一个名为ViSta的综合EDA软 件包(Young，1999)也用XLISP-STAT编写。
+XLISP-STAT是跨平台的。但是，它是一种解释性语言，而不是一种编译语言，因此，必须将编写的 程序加载到XLISP-STAT中才能运行它。</p>
+<ol start="8" style="list-style-type: decimal">
+<li>更多参考
+Tukey(1977)的书被认为是EDA中的经典著作。 在他的时代，计算机资源不容易获得，但是如今， 他建议的大多数图形技术可在许多软件包中使用。
+Behrens(1997)和Behrens&amp;Yu(2003)对于初学者和中级学习者都是必不可少的。 这两章都涵盖 了可视化，数据转换，残差分析和抵抗过程的详细信息，本课对此进行了简要介绍。
+有关EDA的快速概述，请访问NIST工程统计手册。 尽管此站点提供了许多图形技术示例，但并未 告诉您哪些特定的软件包可以生成这些图形。
+有关EDA的哲学基础，请咨询Yu(1994年4月，2006年)。 EDA是一种哲学/态度，而不是技的术集 合。
+要更深入地了解数据可视化，请阅读Yu和Behrens(1995)和Yu(2010，2014)。</li>
+</ol>
+<p>9.注解
+*例如，被认为是现代遗传学创始人的格雷戈尔·孟德尔(Gregor Mendel，1824-1884年)，通过他的 科学发现确立了物种的物理特性受遗传影响的观念。孟德尔进行了一次受精实验，以证实他的信 念。在他的实验中，他跟踪了几代植物，观察特定基因如何从一代传到另一一代。尽管报告的数据 在很大程度上符合遗传假说，但R. A. Fisher(1936)质疑孟德尔研究的有效性。费舍尔指出孟，德 尔的数据“实在太好了”。通过卡方检验，费舍尔发现孟德尔的结果是如此接近预期，以至于这种协 议偶然发生的可能性少于万分之一。
+另一个例子可以在约翰内斯·开普勒(Johnannes Kepler，1571-1630)的故事中找，到他是第一位提 出将地球和其他行星以椭圆形绕太阳公转的提议的天文学家，而不是像伽利略所相信的那样绕太 阳公转。开普勒在另一个著名的天文学家布拉赫(Brahe)的指导下工作，布拉赫收集了庞大的行 星轨道数据库。利用Brahe的数据，开普勒发现数据适合椭圆假设，而不是圆形假设。然而，将近 400年后，当威廉·多纳休(William Donahue)重新提出开普勒的计算结果时，他发现轨道数据和椭 圆模型并不完全吻合。
+此外，有一个广泛的城市传说，英国物理学家亚瑟·爱丁顿(Arthur Eddington)通过观察19年19日食 期间恒星的位置，证实了爱因斯坦的广义相对论。但是，在1980年代，学者发现爱丁顿确实收集 了足够的数据来得出结论。相反，他扭曲了结果以使其符合理论(Swayer，2012)。
+开普勒，孟德尔和爱丁顿不是仅有的三位未能接受数据和模型之间残差的科学家。威廉·哈维( William Harvey)，艾萨克·牛顿(Isaac Newton)和查尔斯·达尔文(CharleDsarwin)也有同样的问 题。这个清单不胜枚举。在回顾科学史上的这一现象时，一些学者谴责那些科学家犯有欺诈罪。 Press and Tanur(2001)用温和的语气说，问题是由“科学家的主观性”引起的。
+我的观点是，这些科学家对残留物的意识较弱。他们以确认性方式进行科学，其中只能得出二分 法的答案。即使存在残差，它们也倾向于包含模型，因为通过承认任何不一致之处，整个模型都会 被拒绝。换句话说，他们接受了DATA = MODEL的概念。
+修订日期:2017年5月</p>
+<ol start="10" style="list-style-type: decimal">
+<li>参考文献
+● Behrens，J.T。(1997)。探索性数据分析的原则和程序。心理方法，第2卷，第131-16页0 。
+● Behrens，J.T.，&amp;Yu，C.H.(2003)。探索性数据分析。在J. A. Schinka和W. F. Velicer(编辑)
+中。心理学手册第2卷:心理学研究方法(第33-64页)。新泽西州:John Wiley&amp;Sons，Inc.
+● Cook，D. R.和Weisberg，S.(1994)。回归图形简介。纽约:威利。
+● 数据描述公司(2008)。 DataDesk。 [在线]可用:<a href="http://www.datadesk.com" class="uri">http://www.datadesk.com</a>
+● Fisher，R.A.(1936年)。孟德尔的作品被重新发现了吗?科学年鉴，第1卷，第115-137页。
+● Jebb，A.，Parrigon，S.&amp;Woo，S.E.(2017年)。探索性数据分析是归纳研究的基 础。人力资
+源管理评论，第27期，第265-276页。
+● Osborne，J。W.(2002)。有关使用数据转换的注意事项。实用评估，研究与评估，8(6)取
+自:<a href="http://pareonline.net/getvn.asp?v=8&amp;n=6" class="uri">http://pareonline.net/getvn.asp?v=8&amp;n=6</a>
+● Press，S.J。，和Tanur，J.M。(2001)。科学家的主观性和贝叶斯方法。纽约:约翰·威利父子(
+John Wiley&amp;Sons)。
+● SAS研究所。 (2016)。 JMP [计算机软件]。卡里，北卡罗来纳州:作者。
+● Swayer，R.K.(2012年)。解释创造力:人类创新的科学(第二版)。纽约，纽约:牛津大学出版
+社。
+● Tierney，L.(1990)。 Lisp-Stat:用于统计计算和动态图形的面向对象的环境。纽约:威利。
+● Tukey，J.W。(1977)。探索性数据分析。马萨诸塞州雷丁:Addison-Wesley出版公司。
+● Tukey，J.W。(1980)。我们需要探索性和确认性。美国统计学家，第34页，第23-25页。
+● Velleman，P.F.和Hoaglin，D.C.(1981)。探索性数据分析的应用程序，基础知识和计算。马
+萨诸塞州波士顿:达克斯伯里出版社。
+● Young，F.(1999)。 ViSta [计算机软件]。取自http://www.uv.es/prodat/ViSta/
+● Yu，C.H.(1994年4月)。就职?扣除?绑架? EDA有逻辑吗?该论文在路易斯安那州新奥
+尔良举行的美国教育研究者协会年会上发表。 (ERIC文件复制服务，编号ED 376 173)
+● Yu，C.H。和Behrens，J.T。(1995)。科学多元可视化在行为科学中的应用。行为研究方法，
+仪器和计算机，第2卷，第264-271页。
+● Yu，C.H.(2010年)。在数据挖掘和重新采样的背景下进行探索性数据分析。国际心理研究 杂志，3(1)，9-22。取自 <a href="http://mvint.usbmed.edu.co:8002/ojs/index.php/web/article/download/455/460" class="uri">http://mvint.usbmed.edu.co:8002/ojs/index.php/web/article/download/455/460</a> [镜像]。
+● Yu，C.H.(2006年)。定量研究方法论的哲学基础。医学博士兰纳姆:美国大学出版社。
+● Yu，C.H.(2014年)。与数据共舞:数据可视化的艺术和科学。德国萨尔布吕肯(Saarbrucken
+):LAP。</li>
+</ol>
+<p>补充:关于数据可视化软件的更多介绍
+Tableau:
+Tableau的真正目的是一个简单的数据可视化工具。开发该工具旨在洞察无法通过盯着电子表格 来快速回答的问题。自成立以来，它已发展成为地球上最流行的数据可视化和报告工具之一。使 用Tableau，用户可以以惊人的速度开发交互式仪表板和可视化文件。相较于其他可视化软件， Tableau有以下几点突出优势:
+(1) 快速创建交互式可视化:使用Tableau的拖放功能，用户可以在数分钟内创建非常互动的视觉效 果。该界面可以处理无尽的变化，同时还限制您创建违反数据可视化最佳做法的图表。您可以查 看Tableau Gallery上创建的一些惊人的视觉效果。
+(2) 易于实施:Tableau中提供了许多不同类型的可视化选项，可以增强用户体验。而且，与Python ，Business Objects和Domo相比，Tableau非常易于学习，任何不具备编码知识的人都可以轻松学 习Tableau
+(3) 处理大量数据:Tableau可以轻松处理数百万行数据。可以使用大量数据创建不同类型的可视 化文件，而不会影响仪表板的性能。另外，Tableau中有一个选项，用户可以使它“实时”建立到不 同数据源(如SQL等)的连接。
+(4) 使用其他脚本语言:为了避免性能问题并在Tableau中进行复杂的表计算，用户可以合并使用 Python或R。使用Python脚本可以通过对数据包执行数据清除任务来减轻软件的负担。但是， Python不是Tableau接受的本机脚本语言。因此，您可以导入一些视觉效果或包装。但是，您可以 看到使用Power BI的Python如何解决此问题。</p>
+<p>R:
+使用R提供的各种数据包, 仅需几行代码就可以创建具有视觉吸引力的数据可视化。常用的10大数 据可视化数据包有plotly, ggplot2, tidyquant, taucharts, ggiraph, geofacets, googleVis, RColorBrewer, dygraphs, shiny。
+(1) Plotly软件包提供了在线互动图和质量图。该软件包扩展了JavaScript库
+(2) ggplot2以其优雅和高质量的图形而闻名，这使其与其他可视化程序包区分开来。
+(3) Tidyquant是用于执行定量财务分析的财务软件包。该软件包在tidyverse Universe下添加为财 务软件包，用于导入，分析和可视化数据。
+(4) Taucharts提供了一个声明性接口，用于将数据字段快速映射到视觉属性。
+(5) Ggiraph是允许我们创建动态ggplot图的工具。该软件包使我们可以在图形中添加工具提示，
+JavaScript操作和动画。
+(6) Geofacets软件包为“ ggplot2”提供了地理标注功能。 Geofaceting将针对不同地理实体的一系
+列绘图安排到保留某些地理方位的网格中。
+(7) GoogleVis在R和Google的图表工具之间提供了一个界面。借助此软件包，我们可以基于R数据
+框创建具有交互式图表的网页。
+(8) RColorBrewer提供了由Cynthia Brewer设计的地图和其他图形的配色方案
+(9) Dygraphs包是dygraphs JavaScript图表库的R接口。它提供了丰富的功能来绘制R中的时间序 列数据。
+(10) Shiny使我们能够通过提供闪亮的程序包来开发交互式且美观的Web应用程序。该软件包提 供了HTML窗口小部件，CSS和JavaScript的各种扩展</p>
+<p>Python:
+Python具有一些最具交互性的数据可视化工具。最基本的绘图类型在多个库之间共享，但是其他 类型仅在某些库中可用。数据科学家经常使用的数据可视化库是Matplotlib, Seaborn 和 Plotly。
+(1) Matplotlib是最受欢迎的Python数据可视化库。它用于生成简单而强大的可视化。从初 学者到 经验丰富的数据科学专业人士，Matplotlib是最广泛使用的绘图库。
+(2) Seaborn提供了多种可视化模式。与matplotlib相比，它与Pandas数据框的集成度更高。 Seaborn被广泛用于统计可视化，因为它具有一些内置的最佳统计任务。
+(3) Plotly主要用于处理地理，科学，统计和财务数据。</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="translate-ibm-website-about-design-language-into-chinese.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chinese-translation-of-stringr-package.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtr13/cc21/edit/main/translation_Chinese_eda_and_data_visualization.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jtr13/cc21/blob/main/translation_Chinese_eda_and_data_visualization.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
