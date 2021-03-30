@@ -23,6 +23,7 @@ rmd_files: [
   'r_basics_cheatsheet.Rmd',
   'alluvial_diagram_cheatsheet.Rmd',  
   'cc_ggplot2_cheatsheet.Rmd',
+  'patchwork_cheatsheet.Rmd',
 
   # Part: Translation
   'colors_in_R_Chinese_translation.Rmd', # contains PART header
