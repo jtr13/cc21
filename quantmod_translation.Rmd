@@ -1,4 +1,8 @@
 
+R Quantmod Package Tutorial & Translation
+Jiashu Xia 
+
+
 From my other courses at Columbia, we have used the package Quantmod in R to access & analyze financial data. I found that this package was not only useful but also convenient in a sense that we do not have to go to other sources and load the data into R. The source that I found below introduces some basic applications and functions of Quantmod, which would be very helpful for those using R in the financial industry. I decided to do a translation of the blog so that it could benefit Chinese people who are not familiar with Quantmod or English.
 
 Source: https://blog.quantinsti.com/a-guide-on-r-quantmod-package-how-to-get-started/
