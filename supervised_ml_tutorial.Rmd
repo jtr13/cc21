@@ -1,0 +1,9 @@
+# Introduction to Supervised Machine Learning
+
+Tomislav Galjanic
+
+In this project a video module on Introduction to Supervised Machine Learning (ML) was created for the Northeast Big Data Hub based on a previously prepared PowerPoint presentation deck and a companion Jupyter Notebook. There are five videos in the module covering introductory topics on supervised ML, decision trees, and Random Forrest.  The examples discussed in the first four videos are also explored in more detail programmatically in the last video by going through the Python code in the companion Jupyter Notebook.
+
+The link to the Google Drive folder with the video lectures is:
+
+https://drive.google.com/drive/folders/1RyR4Qj0waQHysydW3dXnSeM6i9aq7bXw?usp=sharing 
