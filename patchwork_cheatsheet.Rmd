@@ -1,11 +1,3 @@
----
-title: "patchwork_cheatsheet"
-author: "Hanjuan Zhang"
-date: "3/9/2021"
----
-
-# (PART) Cheatsheets {-}
-
 # Patchwork Cheatsheet
 
 Hanjuan Zhang
