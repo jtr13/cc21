@@ -10,6 +10,9 @@ language:
 
 # Chapter ordering
 rmd_files: [
+
+
+
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -39,6 +42,7 @@ rmd_files: [
   'chinese_translation_stringr_siwenxie.Rmd',
   'chinese-beautifulsoup.Rmd',
   'ggplot2_tutorial_in_Korean.Rmd',
+  'rmarkdown_tutorial_translation_chinese.Rmd',
 
   # Part: Tutorials
   'CreatingRPackages.Rmd', # contains PART header
