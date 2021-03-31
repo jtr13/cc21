@@ -1,5 +1,5 @@
 
-R Quantmod Package Tutorial & Translation
+# R Quantmod Package Tutorial & Translation
 Jiashu Xia 
 
 
