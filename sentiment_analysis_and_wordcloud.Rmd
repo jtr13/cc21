@@ -1,0 +1,209 @@
+# Sentiment analysis and wordcloud
+
+Yuao Zhao
+
+```{r, message=FALSE}
+library(qdap)
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(tidytext)
+library(ggplot2) 
+library(ggthemes)
+library(wordcloud)
+```
+
+Sentiment analysis is an important part of the emotion computing and wordcloud is a fancy way of text visualization. Combining the two, we can reveal and display people's attitude and perspectives through their comments or articles. This tutorial will go through the basic process of these two by analysing the video game comments dataset. 
+
+About the Data
+This dataset is based on a set of Amazon review of video games downloaded from Prof Julian McAuley’s website (http://jmcauley.ucsd.edu/data/amazon/). Since this dataset is very large, we only included data from Aug 2013 to July 2014 which gives us a year of data to work with.
+
+The data we are going to use includes the following fields:  
+* id: A unique identifier for each review  
+* review: Text of review posted on Amazon  
+* review_rating: Each review on Amazon is rated by others using a five-star scale (presumably based on helpfulness of review)  
+
+## Read and explore the text
+
+```{r read the data}
+videogame = read.csv('resources/sentiment_analysis_and_wordcloud/videogame_review.csv',stringsAsFactors = F)
+head(videogame)
+```
+### Explore Ratings of Reviews
+
+```{r explore the review rating}
+videogame %>%
+  summarize(average_rating = mean(review_rating), median_rating = median(review_rating))
+```
+
+The median_rating is **5** and the average of the rating is **4.42**
+
+### Distribution of Ratings
+
+```{r explore the num of review} 
+ggplot(data=videogame,aes(x=review_rating))+
+  geom_bar(fill='sienna')+
+  theme_economist()
+```
+
+As we can see from the chart, few people gave the extreme low scores. 
+
+### Explore the reviews
+
+Regular expressions (regex) is a framework for teaching a computer how to recognize patterns of text. In order to count sentences, one needs to define what a sentence is. If we defined a sentence as “a set of characters or punctuation (comma, quote) or spaces that end with one or more period, question mark, exclamation mark or combination of them”, the following reqular expression would match the sentence: [A-Za-z,;’"\s]+[^.!?]*[.?!]
+
+```{r Explore the reviews}
+# Characters across all reviews
+videogame%>%
+  summarize(mean_character = mean(nchar(review)), median_character = median(nchar(review)))
+# Words across all reviews
+videogame%>%
+  summarize(mean_words = mean(str_count(string = review,pattern = '\\S+')), median_words = median(str_count(string = review,pattern = '\\S+')))
+# Sentences across all reviews
+videogame%>%
+ summarize(mean_sentences = mean(str_count(string = review,pattern = "[A-Za-z,;'\"\\s]+[^.!?]*[.?!]")), median_sentences = median(str_count(string = review,pattern = "[A-Za-z,;'\"\\s]+[^.!?]*[.?!]")))
+```
+On average, there are 583 characters, 106 words, 6 sentences across all reviews. 
+
+### Most common words
+
+```{r}
+most_common_word = freq_terms(text.var=videogame$review,top=25,stopwords =
+                                c(Top200Words,"game","games","playing","it's","i've","i'm","s","d"))
+  
+ggplot(most_common_word,aes(x = fct_reorder(WORD, FREQ, .desc=FALSE),y=FREQ))+
+  geom_bar(stat = "identity",fill = "steelblue")+
+  xlab("Word")+
+  ylab("Frequency")+
+  theme_classic()+
+  coord_flip()
+```
+
+By examining the top 25 words, we can conclude that the most popular games are **Mario** and **Zelda**. Also most words are good-comment-word, such as fun, love, best.  
+
+## Sentiment analysis
+
+Let us classify the words to gain a better understanding of the reviews. For this, we will use the dplyr and tidytext packages. We will make use of the unnest_tokens function from tidytext to tokenize the reviews and the following dplyr functions to organize the data: select, group_by, ungroup and count. Later on, we will also use the tidyr package to reshape the data.
+
+### Words in reviews
+```{r The num of words in each review} 
+videogame %>%
+  select(id,review) %>%
+  unnest_tokens(output = word,input=review) %>%
+  group_by(id) %>%
+  count() %>%
+  head()
+```
+
+### Word lexicons ---- Bing
+
+There are a number of word lexicons that can be used to classify words as being positive or negative. The bing lexicon categorizes words as being positive and negative. 
+
+```{r Join lexicon with text and visualize}
+pos_neg = videogame%>%
+            select(id,review)%>%
+            unnest_tokens(output = word, input = review)%>%
+            inner_join(get_sentiments('bing'))
+head(pos_neg)
+```
+
+```{r visualize}
+ggplot(pos_neg,aes(x=sentiment,fill=sentiment))+
+  geom_bar()+
+  guides(fill = F)+
+  theme_economist()
+```
+
+The amount of *positive words* is almost as **twice** as the amount of *negative words*. 
+
+```{r check whether reviews of lots of positive words are helpful}
+rating_sentiment = 
+  videogame %>%
+    select(id,review,review_rating)%>%
+    unnest_tokens(output=word,input=review)%>%
+    inner_join(get_sentiments('bing'))%>%
+    group_by(review_rating,sentiment)%>%
+    summarize(amount = n())%>%
+    mutate(proportion = amount/sum(amount))
+
+rating_sentiment %>%
+  ggplot(aes(x=review_rating,y=proportion,fill=sentiment))+
+  geom_col()+
+  theme_economist()
+```
+
+The proportion of positive words increases as the review_rating growth. Ratings of 3 and 4 are barely the same in terms of the positive-negative structure of people's comments. 
+
+
+### Word lexicons ---- nrc
+
+A word may reflect more than just valence. The ‘nrc’ lexicon categorizes words by emotion. 
+
+*Please note that the next two code chunks must be run interactively since they require the user to consent to the license agreement for using the nrc lexicon. See here for more detail: https://github.com/EmilHvitfeldt/textdata/issues/19*
+
+Emotion in reviews
+```{r, eval = FALSE}
+videogame %>%
+  select(id,review) %>%
+  unnest_tokens(output = word, input = review) %>%
+  inner_join(get_sentiments('nrc')) %>%
+  group_by(sentiment) %>%
+    count()
+```
+Let's visualize
+
+```{r, eval = FALSE}
+videogame %>%
+  select(id,review)%>%
+  unnest_tokens(output = word, input = review)%>%
+  inner_join(get_sentiments('nrc'))%>%
+  group_by(sentiment)%>%
+    count()%>%
+      ggplot(aes(x=reorder(sentiment,X = n),y=n,fill=sentiment))+
+        geom_col()+
+        guides(fill=F)+
+        coord_flip()+
+        theme_wsj()
+```
+
+## Wordcloud
+
+Wordclouds sometime could offer little insight into the data, yet they tend to be very good at capturing interest of non-technical audiences.
+
+### Simple Word Cloud Visualization
+```{r}
+wordcloudData1 = 
+  videogame%>%
+  select(id,review)%>%
+  unnest_tokens(output=word,input=review)%>%
+  anti_join(stop_words)%>%
+  group_by(word)%>%
+  summarize(freq = n())%>%
+  arrange(desc(freq))%>%
+  ungroup()%>%
+  data.frame()
+
+set.seed(617)
+wordcloud(words = wordcloudData1$word,wordcloudData1$freq,scale=c(2,0.5),max.words = 100,colors=brewer.pal(9,"Spectral"))
+```
+
+### Comparison Word Cloud
+```{r}
+wordcloudData2 = 
+  videogame%>%
+  select(id,review)%>%
+  unnest_tokens(output=word,input=review)%>%
+  anti_join(stop_words)%>%
+  inner_join(get_sentiments('bing'))%>%
+  count(sentiment,word,sort=T)%>%
+  spread(key=sentiment,value = n,fill=0)%>%
+  data.frame()
+rownames(wordcloudData2) = wordcloudData2[,'word']
+wordcloudData2 = wordcloudData2[,c('positive','negative')]
+
+set.seed(617)
+comparison.cloud(term.matrix = wordcloudData2,scale = c(2,0.5),max.words = 200, rot.per=0)
+```
+
+Hope you can enjoy this tutorial and explore more on text mining.

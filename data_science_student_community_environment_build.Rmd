@@ -1,0 +1,37 @@
+# Data science student community environment build
+
+Changxing Wang
+
+
+This community contribution consist of 2 parts: the first part is Zoom/KumoSpace online event organized by me with the support of EGSC(Engineering Graduate Student Council) to discuss the topic 'How to foster connections of DS students outside of class'. 
+The second part is I established a discord server for students in data science or related fields based on the discussion of this Zoom online Event.
+
+## Community contribution overview
+
+This community contribution consist of 2 parts: the first part is Zoom/KumoSpace online event organized by me with the support of EGSC(Engineering Graduate Student Council) to discuss the topic 'How to foster connections of DS students outside of class'. 
+The second part is I established a discord server for students in data science or related fields based on the discussion of this Zoom online Event.
+
+### Part 1: Online Meeting Session
+
+Talking Points:
+
+<br>1. Introducing Ourselves. I hosted this session with audience from 4 different countries.
+<br>2. Talking about our hobbies/entertainments outside of classroom! Icebreaking.
+<br>3. Talking about our stories. Why we pick data science road? What we have been going through since high school. If not for better salaries, what will us do for the future career?
+<br>4. Talking about Coronavirus current situation and its impact on different countries we are from.
+<br>5. What impact it has been making in the data science job searching area.
+<br>6. Talking about the opportunities brought from coronavirus in Data Science. There must be some downsides but also upsides.
+<br>7. Talking about the current data science fields & industries in different countries and applicational level AI.
+<br>8. Based on the discussions above, how we can do better, as an international cohort of student body, in promoting communications of our student community?
+<br>9. How we can make our ideas on promoting community connections into actions.
+
+We had a really good meeting on KumoSpace, an online meeting platform with more personalization and visualization options. After the meeting, we decided to build a discord server for our community.
+
+### Part 2: Build Community Servers
+
+Based on What we have talked in the KumoSpace Online Event, I setup a discord server "Data Science & AI Columbia", this server allows every student to share their ideas in different channels, they can also hold online meetings, have video or voice chat freely. 
+
+The Discord Server is really successful, I have more than 10 fellow students joined in in the first 48 hours, and some of us started using the channel to collaborate on final projects and exchange information on student vaccinations. Our community is great!
+
+Join Our Discord Community: https://discord.gg/ngpbzUrsK5
+

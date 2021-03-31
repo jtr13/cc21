@@ -1,0 +1,201 @@
+# Chinese Translation--Beautiful Soup Tutorial
+
+Haifeng Lan
+
+源文件链接：https://www.datacamp.com/community/tutorials/tutorial-python-beautifulsoup-datacamp-tutorials
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 使用Python BeautifulSoup对Datacamp教程进行爬取和分析
+
+## 在本篇教程中，我们将会对Datacamp网页的教程板块进行爬取并尝试得出一些见解
+
+见解包括但不限于以下内容!
+
+* 最多的参与作者
+
+* 参与作者的时间线（一切是怎么开始的！）
+
+* 赞同数和发表数的比较
+
+在这之前，网页将会由BeautifulSoup包爬取。
+
+为了了解网页结构，我们需要使用Chrome浏览器的开发者工具。这帮助我们找出用来搜索必要信息的Classes。
+
+我们将会获取以下信息：
+
+* 作者
+
+* 发表日期
+
+* 标题
+
+* 描述
+
+* 赞同数
+
+## 引入函数库
+
+我们将如以下步骤引入必要函数库：
+
+![Test Photo](resources/chinese-beautifulSoup/CT1.png)
+
+## 决定需要爬取的网页
+
+以下是一个我们将要循环并爬取的示例网页https://www.datacamp.com/community/tutorials?page=2 。我们可以发现，page=2这个内容根据每个页面改变。为了循环到所有页面以爬取必要数据集，我们需要找出页面的数量。
+
+以下代码会帮助我们找到页面的数量。
+
+![Test Photo](resources/chinese-beautifulSoup/CT2.png)
+
+以下是说明：
+
+* 将url保存为一个变量
+
+* 使用urlopen打开之前引入的url
+
+* 爬取具体的页面并保存为soup变量
+
+* 使用列表推倒找出页面上所有的链接并筛选出含有“community/tutorial?page=”的链接
+
+* 最后的url的文本数值就是我们需要爬取页面的总数
+
+接下里我们建立list变量来储存之前提到的需要爬取的列的数值。
+
+![Test Photo](resources/chinese-beautifulSoup/CT3.png)
+
+## 进行爬取
+现在我们知道了需要爬取的页面数量也建立了变量，我们使用以下for循环一个一个扫描网页来得到我们想要的内容。 注意我们最终会得到每个目标列的list of lists种类的结果， 但是之后为了是数据能被当作Data Frame来使用我们会让list变平。
+
+
+![Test Photo](resources/chinese-beautifulSoup/CT4.png)
+
+上面的代码做了以下工作：
+
+* 将url保存为一个变量
+
+* 使用urlopen打开引入的url
+
+* 爬取具体页面并保存为soup变量
+
+* 使用开发者工具找到class名称并使用相关的class名称找出并提取描述，赞同数，作者，发表日期和题目的值。
+
+* 这次我们使用time函数让网页变得简单:)
+
+## 将List of Lists变平
+因为我们得到了list of lists形式的结果，我们将用以下代码将他们变平：
+
+
+![Test Photo](resources/chinese-beautifulSoup/CT5.png)
+
+上方的代码的最后一行代码将String数据格式变为DateTime格式。
+
+## 建立Data Frame并保存为CSV文件
+这个列表将会被变为一个dictionary，然后我们建立一个data frame用于之后的分析。最后一行代码将data frame保存为CSV文件便于之后的使用。
+
+![Test Photo](resources/chinese-beautifulSoup/CT6.png)
+
+## 读取CSV文件
+我们现在将读取刚刚建立的CSV文件。
+
+![Test Photo](resources/chinese-beautifulSoup/CT7.png)
+
+上面的代码告诉我们这个数据集有176行，5列。
+
+![Test Photo](resources/chinese-beautifulSoup/CT8.png)
+
+使用head函数展示前5行内容。
+
+![Test Photo](resources/chinese-beautifulSoup/CT9.png)
+
+* 上方的第一行代码建立一个新的列来储存年-月形式的数据
+
+* 第二行代码建立新的数值为1的列
+
+## 计算教程的时间频率
+这里我们按照年-月的时间线整理教程
+
+![Test Photo](resources/chinese-beautifulSoup/CT10.png)
+
+## 自从2017年一月
+因为2013-2016教程很少，我们从现在开始忽略它们并考虑2017年以后的发表内容。以下是筛选过程：
+
+![Test Photo](resources/chinese-beautifulSoup/CT11.png)
+
+教程数量增长率从2018年开始变快，特别是自3月开始显著增长。考虑到这个数据是在八月中旬提取的并且半个月数量已经超过七月数量的一般，我们或许可以认为八月会是本年发表数量虽多的月份。
+
+## 最高产作者图表
+在发表数量加速上升的时候，谁做出了最多的贡献呢？我们使用简单的条形图来突然这一方面。
+
+![Test Photo](resources/chinese-beautifulSoup/CT12.png)
+
+## 最高产作者列表
+我们还建立了列表来展示这一结果。我们将很快用到这个列表：
+
+![Test Photo](resources/chinese-beautifulSoup/CT13.png)
+
+以下是上面的代码的作用：
+
+* 将结果限制在2017年1月以后
+
+* 只选择作者栏
+
+* 使用value_count功能合计结果
+
+* 按照下降顺序排列结果并只选择前10名
+
+## 教程数量在时间线上增加的速度
+现在我们专注于什么时候，以什么样的速度这10位作者发表他们的教程。为此，我们将使用刚刚创造的列表和一些变形来得出一个堆叠柱形图来展示我们想要的结果。
+
+![Test Photo](resources/chinese-beautifulSoup/CT14.png)
+
+上面的代码起到以下作用：
+
+* 限制数据集只保存2017年1月之后的结果
+
+* 按照发表日期排序
+
+* 将发表日期作为索引列
+
+现在我们将要使用堆叠柱形图图像化结果，数据集现在会按照发表日期索引，合计的发表数量作为数值，作者作为列。
+
+![Test Photo](resources/chinese-beautifulSoup/CT15.png)
+
+以下是我们根据以上图标和之前的作者发表数量图标能得出的结论：
+
+* 当Karlijin Willems是最高产作者时，她也是这列表中第一个发表的人！
+
+* Sejal Jaiswal作为第三高产作者时，她的作品以一个很快的速度上涨并且保持在每个月发表1篇
+
+* Aditya Sharma可能会超越Sejal如果按照目前的速度保持不变。
+
+## 赞同数vs作品数
+赞同数对于读者来说很重要
+
+让我们看看谁得到了最好的赞同数比作品数！我们同样只考虑前十的作者。这一结果会以散点图的形式展示
+
+![Test Photo](resources/chinese-beautifulSoup/CT16.png)
+
+当karlijin Willems拥有接近两倍作品数的时候，她的赞同数也不可思议的多！差不多是Hugo的三倍。 当其他人想法跟上发表速度的时候，Sejal想法保持在第三名。
+
+## 结论
+本篇教程中，我们想办法完成了以下内容：
+
+* 爬取所有页面的教程
+
+* 创建了Data Frame并保存为CSV文件供之后的引用和分析使用
+
+* 使用Pandas和Matplotlib还有以下变形来探索了这些数据
+
+* 使用线图，柱状图，堆叠柱状图和散点图图像化了分析结果
+
+我希望这个教程给正在探索这个和更多其他类似的数据集的我们提供一个良好的开始！
+
+如果你想要了解更多关于Python的内容，请选择DataCamp的 Introduction to Data Visualization with Python 课程和 Importing Data in Python (Part 2) 课程来学习更多关于BeautifulSoup的内容。
+
+
+
+
