@@ -152,6 +152,7 @@ x축-및-y축-뒤집기reverseflip
 facet-wrap
 facet-grid
 그래프-배경-주축-및-부축-수정
+r-markdown-tutorial-translation-in-chinese.
 creating-r-packages
 introduction-to-quandl
 introduction
