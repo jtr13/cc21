@@ -153,11 +153,12 @@ facet-wrap
 facet-grid
 그래프-배경-주축-및-부축-수정
 r-markdown-tutorial-translation-in-chinese.
-creating-r-packages
-introduction-to-quandl
-introduction
-installation
-load-package
+r-quantmod-package-tutorial-translation
+r的quantmod软件包旨在帮助定量交易者开发测试和部署基于统计交易的模型
+下载资料
+可视化图表
+技术指标
+有用的功能
 set-api-key
 loading-data
 for-example
@@ -175,7 +176,7 @@ example
 getting-data-using-apis
 introdution-to-time-series-analysis
 overview
-introduction-1
+introduction
 example-1
 simple-time-series
 definition
@@ -310,7 +311,7 @@ complete-eda-process-and-visualizations-in-python
 data-transformation-with-dplyr-video-tutorial
 data-science-ethics
 d-plot-in-r
-introduction-2
+introduction-1
 static-3d-plots
 d-scatterplot
 change-background
@@ -324,7 +325,7 @@ d-scatter-plot
 conclusion-1
 works-cited
 ben-shneidermans-visualization-mantra
-introduction-3
+introduction-2
 need-for-visualization
 ben-shneidermans-visual-information-seeking-mantra
 step-1--overview
@@ -335,7 +336,7 @@ step-6---history
 step-7---extract
 references-1
 choose-your-adventure---how-to-choose-the-right-visualization-for-your-data
-introduction-4
+introduction-3
 step-1.-what-would-you-like-to-show
 step-2
 step-3
@@ -379,7 +380,7 @@ cloning-a-repository-set-up-by-someone-else
 overview-of-git-panel
 merging-conflicts
 math-finance-in-r
-introduction-5
+introduction-4
 data-preparation
 empirical-coveriance-matrix
 find-efficient-portfolios-using-meanvariance-analysis
@@ -387,7 +388,7 @@ select-a-set-of-ticker
 visualization-of-minimum-variance-portforlio
 introduction-to-topology-data-analysis
 an-introduction-of-web-scrapping-using-rvest
-introduction-6
+introduction-5
 understanding-a-web-page-html
 the-rvest-library
 tracking-the-data-from-the-page
@@ -404,7 +405,7 @@ write-into-a-word-document
 customize-charts
 a-brief-introduction-to-ggraph
 overview-2
-installation-1
+installation
 core-concept-1-layout
 core-concept-2-nodes
 core-concept-3-edges
