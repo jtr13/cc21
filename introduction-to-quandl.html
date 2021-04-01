@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 Introduction to Rstudio in Portuguese | Spring 2021 EDAV Community Contributions</title>
+  <title>Chapter 28 Introduction to Quandl() | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 Introduction to Rstudio in Portuguese | Spring 2021 EDAV Community Contributions" />
+  <meta property="og:title" content="Chapter 28 Introduction to Quandl() | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jtr13/cc21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 Introduction to Rstudio in Portuguese | Spring 2021 EDAV Community Contributions" />
+  <meta name="twitter:title" content="Chapter 28 Introduction to Quandl() | Spring 2021 EDAV Community Contributions" />
   
   <meta name="twitter:description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="managing-data-frames-with-dplyr-package-in-chinese.html"/>
-<link rel="next" href="chinese-translation-of-using-arima-models-in-r.html"/>
+<link rel="prev" href="creating-r-packages.html"/>
+<link rel="next" href="getting-data-using-apis.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -693,21 +693,300 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-rstudio-in-portuguese" class="section level1">
-<h1><span class="header-section-number">Chapter 14</span> Introduction to Rstudio in Portuguese</h1>
-<p>Barbara Bettencourt</p>
-<p>For my community contribution I translated a document on an introduction to Rstudio from Princeton University to Portuguese.</p>
-<p>You can find the pdf here:
-<a href="https://github.com/barbarabettencourt/community_contribution/blob/main/RStudio101Translation.pdf" class="uri">https://github.com/barbarabettencourt/community_contribution/blob/main/RStudio101Translation.pdf</a></p>
+<div id="introduction-to-quandl" class="section level1">
+<h1><span class="header-section-number">Chapter 28</span> Introduction to Quandl()</h1>
+<p>Aiqi Zhou (az2638)</p>
+<p>Quandl::Quandl()</p>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">28.1</span> INTRODUCTION</h2>
+<p>Quandl is a source of financial, economic and alternative data. It is acquired by Nasdaq in 2018 and has 20+ million data sets available. Users can acquire free data, purchase data or sell data at Quandl.</p>
+<p>You can find data on a large variety of types of data from company data to the demographics data of a country.
+More can be explored on Quandl’s website. <a href="https://www.quandl.com/search" class="uri">https://www.quandl.com/search</a></p>
+<p>The data is readily available in json, csv, xml formats and can be loaded in MatLab, R, Python, etc.</p>
+<p>All the data can be loaded in R through the package Quandl.</p>
+<div id="installation" class="section level3">
+<h3><span class="header-section-number">28.1.1</span> Installation :</h3>
+<ul>
+<li>install.packages(“Quandl”)</li>
+</ul>
+</div>
+<div id="load-package" class="section level3">
+<h3><span class="header-section-number">28.1.2</span> Load Package</h3>
+<ul>
+<li>library(Quandl)</li>
+</ul>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="introduction-to-quandl.html#cb354-1"></a><span class="kw">library</span>(Quandl)</span></code></pre></div>
+</div>
+<div id="set-api-key" class="section level3">
+<h3><span class="header-section-number">28.1.3</span> Set API key</h3>
+<p>Quandl allows 50 calls a day for anonymous users.
+Sign up for a free account to make unlimited calls every day.</p>
+<p>Set up your own account and copy your api_key into the following function</p>
+<p>Quandl.api_key(‘your_key’)</p>
+</div>
+<div id="loading-data" class="section level3">
+<h3><span class="header-section-number">28.1.4</span> Loading Data</h3>
+<p>All available data can be found and viewed on <a href="https://www.quandl.com/search" class="uri">https://www.quandl.com/search</a>.
+This package includes many free datasets, however, some datasets requires an account or is for paid use only.</p>
+<p>To call on a data set in R. You must find the Quandl code of the data set. The codes can be found in the documentation page of the data set.</p>
+<div id="for-example" class="section level4">
+<h4><span class="header-section-number">28.1.4.1</span> For example</h4>
+<p>The follow dataset is called the “Federal Reserve Economic Data”, which has the code FRED.
+This dataset has 335,000+ time-series data.</p>
+<p>To call on certain aspect like the GDP of this data set, the Quandl code is “FRED/GDP”.</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="introduction-to-quandl.html#cb355-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>)</span>
+<span id="cb355-2"><a href="introduction-to-quandl.html#cb355-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date    Value
+## 1 2020-10-01 21487.90
+## 2 2020-07-01 21170.25
+## 3 2020-04-01 19520.11
+## 4 2020-01-01 21561.14
+## 5 2019-10-01 21747.39
+## 6 2019-07-01 21540.33</code></pre>
+<p>To call on another aspect like disposable personal income, the Quandl code is “FRED/DSPI”</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="introduction-to-quandl.html#cb357-1"></a>mydata=<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/DSPI&quot;</span>)</span>
+<span id="cb357-2"><a href="introduction-to-quandl.html#cb357-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date   Value
+## 1 2021-01-01 19217.7
+## 2 2020-12-01 17254.5
+## 3 2020-11-01 17151.4
+## 4 2020-10-01 17398.9
+## 5 2020-09-01 17546.8
+## 6 2020-08-01 17430.4</code></pre>
+</div>
+</div>
+<div id="type" class="section level3">
+<h3><span class="header-section-number">28.1.5</span> Type</h3>
+<p>The data can be called in different formats.
+The default of the data is data frame, which can have an argument type = “raw”</p>
+<ul>
+<li>“raw”</li>
+<li>“ts”</li>
+<li>“zoo”</li>
+<li>“xts”</li>
+<li>“timeSeries”</li>
+</ul>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="introduction-to-quandl.html#cb359-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">type=</span><span class="st">&quot;xts&quot;</span>)</span>
+<span id="cb359-2"><a href="introduction-to-quandl.html#cb359-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##            [,1]
+## 1947 Q1 243.164
+## 1947 Q2 245.968
+## 1947 Q3 249.585
+## 1947 Q4 259.745
+## 1948 Q1 265.742
+## 1948 Q2 272.567</code></pre>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="introduction-to-quandl.html#cb361-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">type=</span><span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb361-2"><a href="introduction-to-quandl.html#cb361-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>## [1] 243.164 245.968 249.585 259.745 265.742 272.567</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="introduction-to-quandl.html#cb363-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">type=</span><span class="st">&quot;zoo&quot;</span>)</span>
+<span id="cb363-2"><a href="introduction-to-quandl.html#cb363-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>## 1947 Q1 1947 Q2 1947 Q3 1947 Q4 1948 Q1 1948 Q2 
+## 243.164 245.968 249.585 259.745 265.742 272.567</code></pre>
+</div>
+<div id="transform" class="section level3">
+<h3><span class="header-section-number">28.1.6</span> Transform</h3>
+<p>There are some preprocessing can be done when loading the data. By adding a transform argument in Quandl(), the data can have the following types of transformations.</p>
+<ul>
+<li>"" = Default original data</li>
+<li>“diff” = row on row change in value</li>
+<li>“rdiff” = row on row percentage change</li>
+<li>“normalize” = scale to start at 100</li>
+<li>“cumul” = cumulative sum</li>
+<li>“rdiff_from” = latest value as % increment</li>
+</ul>
+<div id="for-example-the-percentage-change-of-gdp-by-year" class="section level4">
+<h4><span class="header-section-number">28.1.6.1</span> For example the percentage change of GDP by year</h4>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="introduction-to-quandl.html#cb365-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>,<span class="dt">transform =</span> <span class="st">&quot;rdiff&quot;</span> )</span>
+<span id="cb365-2"><a href="introduction-to-quandl.html#cb365-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date        Value
+## 1 2020-10-01  0.015004262
+## 2 2020-07-01  0.084535264
+## 3 2020-04-01 -0.094662207
+## 4 2020-01-01 -0.008564474
+## 5 2019-10-01  0.009613086
+## 6 2019-07-01  0.009866349</code></pre>
+</div>
+</div>
+<div id="order" class="section level3">
+<h3><span class="header-section-number">28.1.7</span> Order</h3>
+<p>The data can be ordered by date upon it is loaded.
+Default is descending order by date.
+- “desc”
+- “asc”</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="introduction-to-quandl.html#cb367-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">order =</span> <span class="st">&quot;asc&quot;</span>)</span>
+<span id="cb367-2"><a href="introduction-to-quandl.html#cb367-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date   Value
+## 1 1947-01-01 243.164
+## 2 1947-04-01 245.968
+## 3 1947-07-01 249.585
+## 4 1947-10-01 259.745
+## 5 1948-01-01 265.742
+## 6 1948-04-01 272.567</code></pre>
+</div>
+<div id="collapse" class="section level3">
+<h3><span class="header-section-number">28.1.8</span> collapse</h3>
+<p>Since all data have a time associated. Quandl allows you to preprocess the data by specifying the frequency of the data.</p>
+<ul>
+<li>’’</li>
+<li>‘daily’</li>
+<li>‘weekly’</li>
+<li>‘monthly’</li>
+<li>‘quarterly’</li>
+<li>‘annual’</li>
+</ul>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="introduction-to-quandl.html#cb369-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;quarterly&quot;</span>)</span>
+<span id="cb369-2"><a href="introduction-to-quandl.html#cb369-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date    Value
+## 1 2020-12-31 21487.90
+## 2 2020-09-30 21170.25
+## 3 2020-06-30 19520.11
+## 4 2020-03-31 21561.14
+## 5 2019-12-31 21747.39
+## 6 2019-09-30 21540.33</code></pre>
+</div>
+<div id="slicing-data" class="section level3">
+<h3><span class="header-section-number">28.1.9</span> Slicing data</h3>
+<div id="rows" class="section level4">
+<h4><span class="header-section-number">28.1.9.1</span> Rows</h4>
+<p>Because the data we are using is time series data, we can specify the range of row of the data set, using the start and end date arguments.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="introduction-to-quandl.html#cb371-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">start_date=</span><span class="st">&quot;2001-12-31&quot;</span>, <span class="dt">end_date=</span><span class="st">&quot;2005-12-31&quot;</span>)</span>
+<span id="cb371-2"><a href="introduction-to-quandl.html#cb371-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date    Value
+## 1 2005-10-01 13332.32
+## 2 2005-07-01 13142.87
+## 3 2005-04-01 12910.02
+## 4 2005-01-01 12761.34
+## 5 2004-10-01 12522.42
+## 6 2004-07-01 12303.34</code></pre>
+</div>
+<div id="columns" class="section level4">
+<h4><span class="header-section-number">28.1.9.2</span> Columns</h4>
+<p>To get multiple columns of data from Quandl, the data can be called in the format: Quandl(c(“col_1”, “col_2”))</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="introduction-to-quandl.html#cb373-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="kw">c</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="st">&quot;FRED/DSPI&quot;</span>),<span class="dt">start_date=</span><span class="st">&quot;2001-12-31&quot;</span>, <span class="dt">end_date=</span><span class="st">&quot;2005-12-31&quot;</span>)</span>
+<span id="cb373-2"><a href="introduction-to-quandl.html#cb373-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
+<pre><code>##         Date FRED.GDP - Value FRED.DSPI - Value
+## 1 2002-01-01         10788.95            7962.4
+## 2 2002-02-01               NA            7981.9
+## 3 2002-03-01               NA            8003.6
+## 4 2002-04-01         10893.21            8066.8
+## 5 2002-05-01               NA            8099.5
+## 6 2002-06-01               NA            8127.2</code></pre>
+</div>
+</div>
+<div id="finding-a-dataset-in-quandl" class="section level3">
+<h3><span class="header-section-number">28.1.10</span> Finding a dataset in Quandl</h3>
+<p>You can look for certain data sets within R using Quandl.search()</p>
+<p>Format:</p>
+<p>Quandl.search(query = “search keyword”,
+page = # ,
+source = “source to search from if known”,
+silent = TRUE/FALSE)</p>
+<ul>
+<li>query: mandatory argument that you want to search for</li>
+<li>page: which page of search result you want. Default page = 1.</li>
+<li>source: specific source you want to search from.</li>
+<li>silent: print the results when FALSE. Nothing prints when true.</li>
+</ul>
+<div id="example-search-for-japan" class="section level4">
+<h4><span class="header-section-number">28.1.10.1</span> Example search for Japan</h4>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="introduction-to-quandl.html#cb375-1"></a><span class="kw">Quandl.search</span>(<span class="dt">query =</span> <span class="st">&quot;Japan&quot;</span>, </span>
+<span id="cb375-2"><a href="introduction-to-quandl.html#cb375-2"></a>              <span class="dt">page =</span> <span class="dv">1</span> , </span>
+<span id="cb375-3"><a href="introduction-to-quandl.html#cb375-3"></a>              <span class="dt">silent =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<pre><code>## Japanese Intervention: Japanese Bank purchases of USD against JPY
+## Code: FRED/JPINTDUSDJPY
+## Desc: 100 Million Yen Not Seasonally Adjusted, (+) numbers mean purchases of the USD (sell Yen), (-) numbers mean sales of USD (buy Yen). Unpublished data. 
+## Freq: daily
+## Cols: DATE | VALUE
+## 
+## NASDAQ Japan Retail JPY Index (NQJP5300JPY)
+## Code: NASDAQOMX/NQJP5300JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5300JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5300JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Media JPY Index (NQJP5500JPY)
+## Code: NASDAQOMX/NQJP5500JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Tech JPY Index (NQJP9000JPY)
+## Code: NASDAQOMX/NQJP9000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Telecom JPY Index (NQJP6000JPY)
+## Code: NASDAQOMX/NQJP6000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Utilities JPY Index (NQJP7000JPY)
+## Code: NASDAQOMX/NQJP7000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP7000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP7000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Banks JPY Index (NQJP8300JPY)
+## Code: NASDAQOMX/NQJP8300JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8300JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8300JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Inds JPY Index (NQJP2000JPY)
+## Code: NASDAQOMX/NQJP2000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Ins JPY Index (NQJP8500JPY)
+## Code: NASDAQOMX/NQJP8500JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Financials JPY Index (NQJP8000JPY)
+## Code: NASDAQOMX/NQJP8000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value</code></pre>
+<p>You can pick which data set to use from the search result.</p>
+</div>
+</div>
+<div id="example" class="section level3">
+<h3><span class="header-section-number">28.1.11</span> Example</h3>
+<p>The following is a quick example of getting data from the data set United Nations Industrial Commodities.
+From the documentation of this data set, we can learn what we are interested in. <a href="https://www.quandl.com/data/UINC-United-Nations-Industrial-Commodities" class="uri">https://www.quandl.com/data/UINC-United-Nations-Industrial-Commodities</a></p>
+<p>Here I want to plot the time series data of Beer production of Germany. The code for this information is “UINC/BEER_DEU”.
+I want to plot the time series, then the data need to be in the form of “ts”</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="introduction-to-quandl.html#cb377-1"></a>beer =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;UINC/BEER_DEU&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb377-2"><a href="introduction-to-quandl.html#cb377-2"></a><span class="kw">head</span>(beer)</span></code></pre></div>
+<pre><code>##      Beer (Mil. USD) Beer (Thousand hectolitres)
+## [1,]       10021.504                    111875.4
+## [2,]        9468.029                    108937.5
+## [3,]        8258.888                    108729.5
+## [4,]        7873.553                    106993.0
+## [5,]        7625.868                    107479.3
+## [6,]        6420.827                    106877.4</code></pre>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="introduction-to-quandl.html#cb379-1"></a>beer =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;UINC/BEER_DEU&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb379-2"><a href="introduction-to-quandl.html#cb379-2"></a><span class="kw">plot.ts</span>(beer)</span></code></pre></div>
+<p><img src="cc_intro_to_quandl_az2638_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
+If I want to see the yearly percentage change of the data, we need to add a transform argument “rdiff”</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="introduction-to-quandl.html#cb380-1"></a>beer_per_change =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;UINC/BEER_DEU&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;ts&quot;</span>,<span class="dt">transform =</span> <span class="st">&#39;rdiff&#39;</span>)</span>
+<span id="cb380-2"><a href="introduction-to-quandl.html#cb380-2"></a><span class="kw">plot.ts</span>(beer_per_change)</span></code></pre></div>
+<p><img src="cc_intro_to_quandl_az2638_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="managing-data-frames-with-dplyr-package-in-chinese.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chinese-translation-of-using-arima-models-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="creating-r-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="getting-data-using-apis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -738,7 +1017,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jtr13/cc21/edit/main/introduction_rstudio_portuguese.Rmd",
+"link": "https://github.com/jtr13/cc21/edit/main/cc_intro_to_quandl_az2638.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -746,7 +1025,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/jtr13/cc21/blob/main/introduction_rstudio_portuguese.Rmd",
+"link": "https://github.com/jtr13/cc21/blob/main/cc_intro_to_quandl_az2638.Rmd",
 "text": null
 },
 "download": null,

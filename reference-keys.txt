@@ -159,6 +159,13 @@ r的quantmod软件包旨在帮助定量交易者开发测试和部署基于统�
 可视化图表
 技术指标
 有用的功能
+下一步
+免责声明股票中的所有投资和交易均涉及风险在金融市场进行交易的任何决定包括股票或期权或其他金融工具的交易都是个人决定只有在进行全面研究后才能做出包括个人风险和财务评估以及在您所能及的范围内寻求业务协助是很有必要的本文中提到的交易策略或相关信息仅供参考
+creating-r-packages
+introduction-to-quandl
+introduction
+installation
+load-package
 set-api-key
 loading-data
 for-example
@@ -176,7 +183,7 @@ example
 getting-data-using-apis
 introdution-to-time-series-analysis
 overview
-introduction
+introduction-1
 example-1
 simple-time-series
 definition
@@ -311,7 +318,7 @@ complete-eda-process-and-visualizations-in-python
 data-transformation-with-dplyr-video-tutorial
 data-science-ethics
 d-plot-in-r
-introduction-1
+introduction-2
 static-3d-plots
 d-scatterplot
 change-background
@@ -325,7 +332,7 @@ d-scatter-plot
 conclusion-1
 works-cited
 ben-shneidermans-visualization-mantra
-introduction-2
+introduction-3
 need-for-visualization
 ben-shneidermans-visual-information-seeking-mantra
 step-1--overview
@@ -336,7 +343,7 @@ step-6---history
 step-7---extract
 references-1
 choose-your-adventure---how-to-choose-the-right-visualization-for-your-data
-introduction-3
+introduction-4
 step-1.-what-would-you-like-to-show
 step-2
 step-3
@@ -380,7 +387,7 @@ cloning-a-repository-set-up-by-someone-else
 overview-of-git-panel
 merging-conflicts
 math-finance-in-r
-introduction-4
+introduction-5
 data-preparation
 empirical-coveriance-matrix
 find-efficient-portfolios-using-meanvariance-analysis
@@ -388,7 +395,7 @@ select-a-set-of-ticker
 visualization-of-minimum-variance-portforlio
 introduction-to-topology-data-analysis
 an-introduction-of-web-scrapping-using-rvest
-introduction-5
+introduction-6
 understanding-a-web-page-html
 the-rvest-library
 tracking-the-data-from-the-page
@@ -405,7 +412,7 @@ write-into-a-word-document
 customize-charts
 a-brief-introduction-to-ggraph
 overview-2
-installation
+installation-1
 core-concept-1-layout
 core-concept-2-nodes
 core-concept-3-edges
