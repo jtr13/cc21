@@ -20,18 +20,18 @@ Source: https://blog.quantinsti.com/a-guide-on-r-quantmod-package-how-to-get-sta
 一旦安装了Quantmod软件包并加载了库，请运行以下命令以将Apple.Inc股票地数据获取到R控制台中。
 ```{r}
 library(quantmod)
-getSymbols（'AAPL'）
+getSymbols('AAPL')
 ```
 
 要查看数据的起点，请输入以下命令。
 ```{r}
-head（AAPL）# 您应该看到以下结果。
+head(AAPL) # 您应该看到以下结果。
 ```
 
 ### 可视化图表
 Quantmod的优点在于它可以可视化图表。输入以下命令。
 ```{r}
-chartSeries（AAPL，TA = NULL）# 这将产生以下图表。
+chartSeries(AAPL, TA = NULL) # 这将产生以下图表。
 ```
 
 可以看到，x轴显示时间段，而y轴显示AAPL股票的价格范围。在上面的命令中，我们设置TA="Null"。这意味着不包括任何“技术分析”参数。以下命令将生产与音量参数相同的图形。
