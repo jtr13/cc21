@@ -10,7 +10,7 @@ Source: https://blog.quantinsti.com/a-guide-on-r-quantmod-package-how-to-get-sta
 
 
 
-#### “R的quantmod软件包旨在帮助定量交易者开发，测试和部署基于统计交易的模型。”
+## “R的quantmod软件包旨在帮助定量交易者开发，测试和部署基于统计交易的模型。”
 
 这是一个快速的原型制作环境，发烧友可以轻松地探索各种技术指标。它提供了R中其他地方没有地制图工具。Quantmod软件包使建模更加容易，分析也变得简单。本文旨在使用样本市场数据介绍Quantmod一些功能。分三部分介绍了Quantmod地功能：下载数据，绘制图表，技术指标和其他功能。
 
@@ -125,7 +125,7 @@ is.OHLC(AAPL) #检查xts对象数据是否具有开盘价，最高价，最低�
 
 输出为TRUE，表示数据对象包含开盘，高，低，和收盘价。
 
-```{r，results = F}
+```{r, results = F}
 has.Vo(AAPL) # Checks whether the data object has volume
 
 seriesHi(AAPL) # To check the highest point of price.
