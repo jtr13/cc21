@@ -1,6 +1,7 @@
 # Plotly R graphing
 
 Brian Mao
+
 ## Introduction
 
 Plotly's R graphing library makes interactive, publication-quality graphs. in this into to Plotly I will show some examples of how to make line plots, scatter plots, area charts, bar charts, box plots, histograms, heatmaps, and 3D scatter plot charts. there are a lots more advanced function in the Plotly. you may explore it later on yourself 
