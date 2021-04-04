@@ -435,6 +435,7 @@ select-1
 dataframe-cleaning
 visualizing-our-dataframe
 plotly-r-graphing
+introduction-7
 url
 install-and-packages
 basic-examples
