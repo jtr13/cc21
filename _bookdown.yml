@@ -10,7 +10,6 @@ language:
 
 # Chapter ordering
 rmd_files: [
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -85,6 +84,7 @@ rmd_files: [
   'meet_the_pets_zoom_session.Rmd',
   'intro_to_data_science_videos.Rmd',
   'data_science_student_community_environment_build.Rmd',
+  'public_nba_data.Rmd',
 
   # Part: Appendices
   'appendix_initial_setup.Rmd', # contains PART header
