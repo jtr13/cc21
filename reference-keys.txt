@@ -475,6 +475,15 @@ data-science-student-community-environment-build
 community-contribution-overview
 part-1-online-meeting-session
 part-2-build-community-servers
+nba-data-useful-for-a-final-project
+stats.nba.com
+basketball-reference.com
+inpredictable.com
+projects.fivethirtyeight.comnba-player-ratings
+pbpstats.com
+kaggle.comschmadam97nba-playbyplay-data-20182019
+apanalytics.shinyapps.ioknarsu3
+other-sites-of-potential-interest-that-deal-with-off-court-matters
 github-initial-setup
 github-actions
 secrets
