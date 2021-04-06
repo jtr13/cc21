@@ -1,6 +1,5 @@
 # Quickstart Tutorial to Microsoft Power BI
 
-
 Ellen Chen zc2574
 
 ## Preface
