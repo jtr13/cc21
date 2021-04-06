@@ -10,7 +10,6 @@ language:
 
 # Chapter ordering
 rmd_files: [
-
   # Part: Introduction
   'index.Rmd', # must be first chapter
   'instructions.Rmd',
@@ -72,7 +71,6 @@ rmd_files: [
   'intro_to_ggraph.Rmd',
   'sql_r_tutorial.Rmd',
   'cc_dv_bm3024.Rmd',
-  'powerbi_tutorial.Rmd',
 
   # Part: Topical Discussions
   'zoom_in_finance.Rmd',   # contains PART header
