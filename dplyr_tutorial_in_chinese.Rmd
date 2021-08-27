@@ -75,9 +75,11 @@ library(dplyr)
 
 解压文件后，你可以把数据加载到R中通过readRDS()函数。
 ```{r}
-rds <- tempfile()
-download.file("http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip",rds)
-chicago <- readRDS(gzcon(unz(rds, "chicago.rds")))
+# Note: the file has already been downloaded to the resources folder
+# rds <- tempfile()
+# download.file("http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip",rds)
+# chicago <- readRDS(gzcon(unz(rds, "chicago.rds")))
+chicago <- readRDS("resources/dplyr_chinese/chicago_data.rds")
 ```
 
 你可以看到数据集的一些基础特点通过dim()和str()函数。
