@@ -11,6 +11,8 @@ description: "This book contains community contributions for STAT GR5702 Spring 
 
 # Community contribution assignment
 
+GR5702
+
 This fairly open-ended assignment provides an opportunity to receive credit for contributing to the collective learning of the class, and perhaps beyond. It should reflect a minimum of 2-3 hours of work. To complete the assignment you must submit a short description of your contribution. If appropriate, attach relevant files.  
 
 There are many ways in which you can contribute:
