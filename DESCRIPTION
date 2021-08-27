@@ -19,7 +19,6 @@ Imports:
     dplyr,
     downloader,
     forcats,
-    geomnet,
     ggalluvial,
     GGally,
     ggeasy,
