@@ -160,7 +160,9 @@ The additional tasks other than the Holy Trinity include the following:
 
 Relate allows users to view relationships between data points. This mantra allows users to further explore networks or maps that help in determining the further course of actions. We can demonstrate this using a simple blood transfusion dataset which tells us the blood transfusion capability between different blood groups. We first plot the network diagram. Each arrow head in this indicates a valid blood transfusion relation.
 
-```{r, fig.height = 6, fig.width = 8, warning=FALSE, message=FALSE}
+*8/27/2021: Setting eval=FALSE for the following code chunk since geomnet is currently not on CRAN and thus preventing GA from rendering the book.*
+
+```{r, fig.height = 6, fig.width = 8, warning=FALSE, message=FALSE, eval=FALSE}
 library(GGally)
 library(network)
 library(ggnetwork)
