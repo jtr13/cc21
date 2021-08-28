@@ -3,7 +3,7 @@
 Huaqing Fang
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE)
 ```
 
 *8/27/2021: Due to changes in the* **mschart** *package as well as the inclusion of commands that don't work within the* **bookdown** *format, such as opening PowerPoint, all code chunks have been set to `eval=FALSE`.*
@@ -110,7 +110,7 @@ To view it online: <a target="_blank" href="https://drive.google.com/file/d/1PZl
 ## Write into a word document
 simply use read_docx() and body_add_chart functions where the chart parameter can be any ms_chart object, that is one of [barchart, linechart, scatterchart, areachart]
 
-```{R}
+```{r}
 doc <- read_docx() 
 
 doc <- body_add_chart(doc, chart = barc, style = "Normal")
