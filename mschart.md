@@ -15,8 +15,8 @@ install the mschart package, first install devtools. Then use ‘devtools’ to 
 
 
 ```r
-#install.packages("devtools")  ## install the package from github
-#devtools::install_github("ardata-fr/mschart")
+# install.packages("devtools")  ## install the package from github
+# devtools::install_github("ardata-fr/mschart")
 ```
 
 
