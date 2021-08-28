@@ -158,7 +158,7 @@ videogame %>%
 ```
 
 ```
-## # A tibble: 6 x 2
+## # A tibble: 6 × 2
 ## # Groups:   id [6]
 ##      id     n
 ##   <int> <int>

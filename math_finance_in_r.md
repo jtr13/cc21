@@ -540,15 +540,15 @@ head(portfolio_values)
 ```
 
 ```
-## # A tibble: 6 x 8
-##       IBM  MSFT   AAPL   JPM   NVDA  Return  Risk SharpeRatio
-##     <dbl> <dbl>  <dbl> <dbl>  <dbl>   <dbl> <dbl>       <dbl>
-## 1 0.306   0.155 0.177  0.274 0.0876 -0.0142 0.469     -0.0304
-## 2 0.0707  0.275 0.247  0.227 0.181  -0.0609 0.538     -0.113 
-## 3 0.291   0.129 0.179  0.113 0.289  -0.0926 0.478     -0.194 
-## 4 0.393   0.283 0.101  0.151 0.0707 -0.0690 0.411     -0.168 
-## 5 0.204   0.195 0.0145 0.187 0.399  -0.305  0.430     -0.710 
-## 6 0.00588 0.274 0.337  0.132 0.252  -0.0127 0.633     -0.0201
+## # A tibble: 6 × 8
+##     IBM   MSFT    AAPL   JPM    NVDA  Return  Risk SharpeRatio
+##   <dbl>  <dbl>   <dbl> <dbl>   <dbl>   <dbl> <dbl>       <dbl>
+## 1 0.317 0.102  0.193   0.375 0.0130   0.0422 0.490      0.0863
+## 2 0.414 0.341  0.00391 0.157 0.0835  -0.168  0.386     -0.436 
+## 3 0.206 0.271  0.0679  0.251 0.204   -0.205  0.419     -0.488 
+## 4 0.339 0.219  0.114   0.318 0.00974 -0.0459 0.430     -0.107 
+## 5 0.118 0.242  0.169   0.167 0.304   -0.167  0.483     -0.346 
+## 6 0.115 0.0302 0.293   0.246 0.316   -0.0328 0.587     -0.0559
 ```
 
 Then we are going to show the minimum variance portfolio
@@ -559,10 +559,10 @@ print(min_var)
 ```
 
 ```
-## # A tibble: 1 x 8
-##     IBM  MSFT    AAPL    JPM   NVDA Return  Risk SharpeRatio
-##   <dbl> <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl>       <dbl>
-## 1 0.428 0.449 0.00106 0.0960 0.0265 -0.154 0.379      -0.406
+## # A tibble: 1 × 8
+##     IBM  MSFT   AAPL    JPM   NVDA  Return  Risk SharpeRatio
+##   <dbl> <dbl>  <dbl>  <dbl>  <dbl>   <dbl> <dbl>       <dbl>
+## 1 0.589 0.259 0.0171 0.0932 0.0424 -0.0819 0.383      -0.214
 ```
 
 Now let's plot all of the portfolios and the minimum variance portfolio. It is very easier to see that the MVP refers to the portfolio with the smallest variance in all randomly composed portfolios.

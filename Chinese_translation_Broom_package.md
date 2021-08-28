@@ -77,7 +77,7 @@ tidy(lmfit)
 ```
 
 ```
-## # A tibble: 2 x 5
+## # A tibble: 2 × 5
 ##   term        estimate std.error statistic  p.value
 ##   <chr>          <dbl>     <dbl>     <dbl>    <dbl>
 ## 1 (Intercept)    37.3      1.88      19.9  8.24e-19
@@ -92,19 +92,19 @@ augment(lmfit)
 ```
 
 ```
-## # A tibble: 32 x 9
-##    .rownames          mpg    wt .fitted .resid   .hat .sigma  .cooksd .std.resid
-##    <chr>            <dbl> <dbl>   <dbl>  <dbl>  <dbl>  <dbl>    <dbl>      <dbl>
-##  1 Mazda RX4         21    2.62    23.3 -2.28  0.0433   3.07  1.33e-2    -0.766 
-##  2 Mazda RX4 Wag     21    2.88    21.9 -0.920 0.0352   3.09  1.72e-3    -0.307 
-##  3 Datsun 710        22.8  2.32    24.9 -2.09  0.0584   3.07  1.54e-2    -0.706 
-##  4 Hornet 4 Drive    21.4  3.22    20.1  1.30  0.0313   3.09  3.02e-3     0.433 
-##  5 Hornet Sportabo…  18.7  3.44    18.9 -0.200 0.0329   3.10  7.60e-5    -0.0668
-##  6 Valiant           18.1  3.46    18.8 -0.693 0.0332   3.10  9.21e-4    -0.231 
-##  7 Duster 360        14.3  3.57    18.2 -3.91  0.0354   3.01  3.13e-2    -1.31  
-##  8 Merc 240D         24.4  3.19    20.2  4.16  0.0313   3.00  3.11e-2     1.39  
-##  9 Merc 230          22.8  3.15    20.5  2.35  0.0314   3.07  9.96e-3     0.784 
-## 10 Merc 280          19.2  3.44    18.9  0.300 0.0329   3.10  1.71e-4     0.100 
+## # A tibble: 32 × 9
+##    .rownames           mpg    wt .fitted .resid   .hat .sigma   .cooksd .std.resid
+##    <chr>             <dbl> <dbl>   <dbl>  <dbl>  <dbl>  <dbl>     <dbl>      <dbl>
+##  1 Mazda RX4          21    2.62    23.3 -2.28  0.0433   3.07 0.0133       -0.766 
+##  2 Mazda RX4 Wag      21    2.88    21.9 -0.920 0.0352   3.09 0.00172      -0.307 
+##  3 Datsun 710         22.8  2.32    24.9 -2.09  0.0584   3.07 0.0154       -0.706 
+##  4 Hornet 4 Drive     21.4  3.22    20.1  1.30  0.0313   3.09 0.00302       0.433 
+##  5 Hornet Sportabout  18.7  3.44    18.9 -0.200 0.0329   3.10 0.0000760    -0.0668
+##  6 Valiant            18.1  3.46    18.8 -0.693 0.0332   3.10 0.000921     -0.231 
+##  7 Duster 360         14.3  3.57    18.2 -3.91  0.0354   3.01 0.0313       -1.31  
+##  8 Merc 240D          24.4  3.19    20.2  4.16  0.0313   3.00 0.0311        1.39  
+##  9 Merc 230           22.8  3.15    20.5  2.35  0.0314   3.07 0.00996       0.784 
+## 10 Merc 280           19.2  3.44    18.9  0.300 0.0329   3.10 0.000171      0.100 
 ## # … with 22 more rows
 ```
 注意，每个新列都以a开头。 （以避免覆盖任何原始列）\ 
@@ -116,7 +116,7 @@ glance(lmfit)
 ```
 
 ```
-## # A tibble: 1 x 12
+## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 ##       <dbl>         <dbl> <dbl>     <dbl>    <dbl> <dbl>  <dbl> <dbl> <dbl>
 ## 1     0.753         0.745  3.05      91.4 1.29e-10     1  -80.0  166.  170.
@@ -136,7 +136,7 @@ tidy(glmfit)
 ```
 
 ```
-## # A tibble: 2 x 5
+## # A tibble: 2 × 5
 ##   term        estimate std.error statistic p.value
 ##   <chr>          <dbl>     <dbl>     <dbl>   <dbl>
 ## 1 (Intercept)    12.0       4.51      2.67 0.00759
@@ -148,7 +148,7 @@ augment(glmfit)
 ```
 
 ```
-## # A tibble: 32 x 9
+## # A tibble: 32 × 9
 ##    .rownames            am    wt .fitted .resid .std.resid   .hat .sigma .cooksd
 ##    <chr>             <dbl> <dbl>   <dbl>  <dbl>      <dbl>  <dbl>  <dbl>   <dbl>
 ##  1 Mazda RX4             1  2.62   1.50   0.635      0.680 0.126   0.803 0.0184 
@@ -169,7 +169,7 @@ glance(glmfit)
 ```
 
 ```
-## # A tibble: 1 x 8
+## # A tibble: 1 × 8
 ##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
 ##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
 ## 1          43.2      31  -9.59  23.2  26.1     19.2          30    32
@@ -184,7 +184,7 @@ tidy(nlsfit)
 ```
 
 ```
-## # A tibble: 2 x 5
+## # A tibble: 2 × 5
 ##   term  estimate std.error statistic  p.value
 ##   <chr>    <dbl>     <dbl>     <dbl>    <dbl>
 ## 1 k        45.8       4.25     10.8  7.64e-12
@@ -196,7 +196,7 @@ augment(nlsfit, mtcars)
 ```
 
 ```
-## # A tibble: 32 x 14
+## # A tibble: 32 × 14
 ##    .rownames     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
 ##    <chr>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 ##  1 Mazda RX4    21       6  160    110  3.9   2.62  16.5     0     1     4     4
@@ -217,7 +217,7 @@ glance(nlsfit)
 ```
 
 ```
-## # A tibble: 1 x 9
+## # A tibble: 1 × 9
 ##   sigma isConv       finTol logLik   AIC   BIC deviance df.residual  nobs
 ##   <dbl> <lgl>         <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
 ## 1  2.77 TRUE   0.0000000288  -77.0  160.  164.     231.          30    32
@@ -232,7 +232,7 @@ tidy(tt)
 ```
 
 ```
-## # A tibble: 1 x 10
+## # A tibble: 1 × 10
 ##   estimate estimate1 estimate2 statistic    p.value parameter conf.low conf.high
 ##      <dbl>     <dbl>     <dbl>     <dbl>      <dbl>     <dbl>    <dbl>     <dbl>
 ## 1     1.36      3.77      2.41      5.49 0.00000627      29.2    0.853      1.86
@@ -246,10 +246,10 @@ tidy(wt)
 ```
 
 ```
-## # A tibble: 1 x 4
-##   statistic   p.value method                                         alternative
-##       <dbl>     <dbl> <chr>                                          <chr>      
-## 1      230. 0.0000435 Wilcoxon rank sum test with continuity correc… two.sided
+## # A tibble: 1 × 4
+##   statistic   p.value method                                            alternative
+##       <dbl>     <dbl> <chr>                                             <chr>      
+## 1      230. 0.0000435 Wilcoxon rank sum test with continuity correction two.sided
 ```
 由于tidy输出结果已经只有一行，因此glance返回相同的输出：
 
@@ -258,7 +258,7 @@ glance(tt)
 ```
 
 ```
-## # A tibble: 1 x 10
+## # A tibble: 1 × 10
 ##   estimate estimate1 estimate2 statistic    p.value parameter conf.low conf.high
 ##      <dbl>     <dbl>     <dbl>     <dbl>      <dbl>     <dbl>    <dbl>     <dbl>
 ## 1     1.36      3.77      2.41      5.49 0.00000627      29.2    0.853      1.86
@@ -270,10 +270,10 @@ glance(wt)
 ```
 
 ```
-## # A tibble: 1 x 4
-##   statistic   p.value method                                         alternative
-##       <dbl>     <dbl> <chr>                                          <chr>      
-## 1      230. 0.0000435 Wilcoxon rank sum test with continuity correc… two.sided
+## # A tibble: 1 × 4
+##   statistic   p.value method                                            alternative
+##       <dbl>     <dbl> <chr>                                             <chr>      
+## 1      230. 0.0000435 Wilcoxon rank sum test with continuity correction two.sided
 ```
 因为没有必要，我们仅针对卡方检验定义了扩充方法，对于其他检验，假设检验产生关于每个初始数据点的输出，则没有其他意义。
 
@@ -284,7 +284,7 @@ tidy(chit)
 ```
 
 ```
-## # A tibble: 1 x 4
+## # A tibble: 1 × 4
 ##   statistic  p.value parameter method                    
 ##       <dbl>    <dbl>     <int> <chr>                     
 ## 1      350. 1.56e-75         3 Pearson's Chi-squared test
@@ -295,7 +295,7 @@ augment(chit)
 ```
 
 ```
-## # A tibble: 8 x 9
+## # A tibble: 8 × 9
 ##   Sex    Class .observed  .prop .row.prop .col.prop .expected .resid .std.resid
 ##   <fct>  <fct>     <dbl>  <dbl>     <dbl>     <dbl>     <dbl>  <dbl>      <dbl>
 ## 1 Male   1st         180 0.0818    0.104     0.554      256.   -4.73     -11.1 

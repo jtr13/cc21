@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 28 Introduction to Quandl() | Spring 2021 EDAV Community Contributions</title>
   <meta name="description" content="This book contains community contributions for STAT GR5702 Spring 2021 at Columbia University" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 28 Introduction to Quandl() | Spring 2021 EDAV Community Contributions" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-04-06" />
+<meta name="date" content="2021-08-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="creating-r-packages.html"/>
 <link rel="next" href="getting-data-using-apis.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -62,7 +62,7 @@
 <link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
 <script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -76,22 +76,24 @@
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/rglWebGL-binding-0.105.22/rglWebGL.js"></script>
-<link href="libs/rglwidgetClass-0.105.22/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-0.105.22/rglClass.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/utils.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/subscenes.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/shaders.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/textures.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/projection.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/mouse.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/init.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/pieces.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/draw.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/controls.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/selection.src.js"></script>
-<script src="libs/rglwidgetClass-0.105.22/rglTimer.src.js"></script>
-<script src="libs/CanvasMatrix4-0.105.22/CanvasMatrix.src.js"></script>
+<script src="libs/rglWebGL-binding-0.107.14/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-0.107.14/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-0.107.14/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/utils.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/textures.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/projection.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/init.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/draw.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/controls.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/selection.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-0.107.14/axes.src.js"></script>
+<script src="libs/CanvasMatrix4-0.107.14/CanvasMatrix.src.js"></script>
 <script src="libs/proj4js-2.3.15/proj4.js"></script>
 <link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet" />
 <script src="libs/highcharts-8.1.2/highcharts.js"></script>
@@ -200,6 +202,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -253,32 +256,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4.2" data-path="ggvis-cheatsheet.html"><a href="ggvis-cheatsheet.html#compound-layers"><i class="fa fa-check"></i><b>6.4.2</b> Compound layers</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="statistical-hypothesis-testing-cheatsheet.html"><a href="statistical-hypothesis-testing-cheatsheet.html"><i class="fa fa-check"></i><b>7</b> Statistical_hypothesis_testing_cheatsheet</a></li>
+<li class="chapter" data-level="7" data-path="statistical_hypothesis_testing_cheatsheet.html"><a href="statistical_hypothesis_testing_cheatsheet.html"><i class="fa fa-check"></i><b>7</b> Statistical_hypothesis_testing_cheatsheet</a></li>
 <li class="chapter" data-level="8" data-path="basics-r-cheatsheet.html"><a href="basics-r-cheatsheet.html"><i class="fa fa-check"></i><b>8</b> Basics R Cheatsheet</a></li>
 <li class="chapter" data-level="9" data-path="alluvial-diagram-cheatsheet.html"><a href="alluvial-diagram-cheatsheet.html"><i class="fa fa-check"></i><b>9</b> Alluvial Diagram Cheatsheet</a></li>
-<li class="chapter" data-level="10" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html"><i class="fa fa-check"></i><b>10</b> ggplot2_cheatsheet</a><ul>
-<li class="chapter" data-level="10.1" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#some-advanced-techs-from-ggplot2"><i class="fa fa-check"></i><b>10.1</b> Some Advanced Techs from ggplot2</a></li>
-<li class="chapter" data-level="10.2" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#dataset"><i class="fa fa-check"></i><b>10.2</b> Dataset</a></li>
-<li class="chapter" data-level="10.3" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#facet"><i class="fa fa-check"></i><b>10.3</b> Facet</a></li>
-<li class="chapter" data-level="10.4" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#facet-layer-basics"><i class="fa fa-check"></i><b>10.4</b> Facet layer basics</a></li>
-<li class="chapter" data-level="10.5" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#many-variables"><i class="fa fa-check"></i><b>10.5</b> Many variables</a></li>
-<li class="chapter" data-level="10.6" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#formula-notation"><i class="fa fa-check"></i><b>10.6</b> Formula notation</a></li>
-<li class="chapter" data-level="10.7" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#labeling-facets"><i class="fa fa-check"></i><b>10.7</b> Labeling facets</a></li>
-<li class="chapter" data-level="10.8" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#coordinates"><i class="fa fa-check"></i><b>10.8</b> Coordinates</a></li>
-<li class="chapter" data-level="10.9" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#expand-and-clip"><i class="fa fa-check"></i><b>10.9</b> Expand and clip</a></li>
-<li class="chapter" data-level="10.10" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#flipping-axes"><i class="fa fa-check"></i><b>10.10</b> Flipping axes</a></li>
-<li class="chapter" data-level="10.11" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#pie-charts"><i class="fa fa-check"></i><b>10.11</b> Pie charts</a></li>
-<li class="chapter" data-level="10.12" data-path="ggplot2-cheatsheet.html"><a href="ggplot2-cheatsheet.html#conclusion"><i class="fa fa-check"></i><b>10.12</b> Conclusion</a></li>
+<li class="chapter" data-level="10" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html"><i class="fa fa-check"></i><b>10</b> ggplot2_cheatsheet</a><ul>
+<li class="chapter" data-level="10.1" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#some-advanced-techs-from-ggplot2"><i class="fa fa-check"></i><b>10.1</b> Some Advanced Techs from ggplot2</a></li>
+<li class="chapter" data-level="10.2" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#dataset"><i class="fa fa-check"></i><b>10.2</b> Dataset</a></li>
+<li class="chapter" data-level="10.3" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#facet"><i class="fa fa-check"></i><b>10.3</b> Facet</a></li>
+<li class="chapter" data-level="10.4" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#facet-layer-basics"><i class="fa fa-check"></i><b>10.4</b> Facet layer basics</a></li>
+<li class="chapter" data-level="10.5" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#many-variables"><i class="fa fa-check"></i><b>10.5</b> Many variables</a></li>
+<li class="chapter" data-level="10.6" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#formula-notation"><i class="fa fa-check"></i><b>10.6</b> Formula notation</a></li>
+<li class="chapter" data-level="10.7" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#labeling-facets"><i class="fa fa-check"></i><b>10.7</b> Labeling facets</a></li>
+<li class="chapter" data-level="10.8" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#coordinates"><i class="fa fa-check"></i><b>10.8</b> Coordinates</a></li>
+<li class="chapter" data-level="10.9" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#expand-and-clip"><i class="fa fa-check"></i><b>10.9</b> Expand and clip</a></li>
+<li class="chapter" data-level="10.10" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#flipping-axes"><i class="fa fa-check"></i><b>10.10</b> Flipping axes</a></li>
+<li class="chapter" data-level="10.11" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#pie-charts"><i class="fa fa-check"></i><b>10.11</b> Pie charts</a></li>
+<li class="chapter" data-level="10.12" data-path="ggplot2_cheatsheet.html"><a href="ggplot2_cheatsheet.html#conclusion"><i class="fa fa-check"></i><b>10.12</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="patchwork-cheatsheet.html"><a href="patchwork-cheatsheet.html"><i class="fa fa-check"></i><b>11</b> Patchwork Cheatsheet</a></li>
 <li class="part"><span><b>II Translations</b></span></li>
-<li class="chapter" data-level="12" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html"><i class="fa fa-check"></i><b>12</b> Colors_in_R_Chinese_translation</a><ul>
-<li class="chapter" data-level="12.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>12.1</b> 在R中使用颜色</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>12.1.1</b> R自带的指定颜色名称</a></li>
-<li class="chapter" data-level="12.1.2" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>12.1.2</b> 使用十六进制编码指定颜色</a></li>
-<li class="chapter" data-level="12.1.3" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>12.1.3</b> 使用 RColorBrewer 调色盘</a></li>
-<li class="chapter" data-level="12.1.4" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>12.1.4</b> 使用 Wes Anderson 调色盘</a></li>
-<li class="chapter" data-level="12.1.5" data-path="colors-in-r-chinese-translation.html"><a href="colors-in-r-chinese-translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>12.1.5</b> 创建一个n个连续颜色的矢量</a></li>
+<li class="chapter" data-level="12" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html"><i class="fa fa-check"></i><b>12</b> Colors_in_R_Chinese_translation</a><ul>
+<li class="chapter" data-level="12.1" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html#在r中使用颜色"><i class="fa fa-check"></i><b>12.1</b> 在R中使用颜色</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html#r自带的指定颜色名称"><i class="fa fa-check"></i><b>12.1.1</b> R自带的指定颜色名称</a></li>
+<li class="chapter" data-level="12.1.2" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html#使用十六进制编码指定颜色"><i class="fa fa-check"></i><b>12.1.2</b> 使用十六进制编码指定颜色</a></li>
+<li class="chapter" data-level="12.1.3" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html#使用-rcolorbrewer-调色盘"><i class="fa fa-check"></i><b>12.1.3</b> 使用 RColorBrewer 调色盘</a></li>
+<li class="chapter" data-level="12.1.4" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html#使用-wes-anderson-调色盘"><i class="fa fa-check"></i><b>12.1.4</b> 使用 Wes Anderson 调色盘</a></li>
+<li class="chapter" data-level="12.1.5" data-path="colors_in_r_chinese_translation.html"><a href="colors_in_r_chinese_translation.html#创建一个n个连续颜色的矢量"><i class="fa fa-check"></i><b>12.1.5</b> 创建一个n个连续颜色的矢量</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="managing-data-frames-with-dplyr-package-in-chinese.html"><a href="managing-data-frames-with-dplyr-package-in-chinese.html"><i class="fa fa-check"></i><b>13</b> Managing Data Frames with dplyr Package in Chinese</a><ul>
@@ -378,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.3.6" data-path="translation-of-ggplot2-tutorial-in-korean.html"><a href="translation-of-ggplot2-tutorial-in-korean.html#그래프-배경-주축-및-부축-수정"><i class="fa fa-check"></i><b>24.3.6</b> 그래프 배경, 주축 및 부축 수정</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="r-markdown-tutorial-translation-in-chinese-.html"><a href="r-markdown-tutorial-translation-in-chinese-.html"><i class="fa fa-check"></i><b>25</b> R markdown Tutorial Translation in Chinese.</a></li>
+<li class="chapter" data-level="25" data-path="r-markdown-tutorial-translation-in-chinese..html"><a href="r-markdown-tutorial-translation-in-chinese..html"><i class="fa fa-check"></i><b>25</b> R markdown Tutorial Translation in Chinese.</a></li>
 <li class="chapter" data-level="26" data-path="r-quantmod-package-tutorial-translation.html"><a href="r-quantmod-package-tutorial-translation.html"><i class="fa fa-check"></i><b>26</b> R Quantmod Package Tutorial &amp; Translation</a><ul>
 <li class="chapter" data-level="26.1" data-path="r-quantmod-package-tutorial-translation.html"><a href="r-quantmod-package-tutorial-translation.html#r的quantmod软件包旨在帮助定量交易者开发测试和部署基于统计交易的模型"><i class="fa fa-check"></i><b>26.1</b> “R的quantmod软件包旨在帮助定量交易者开发，测试和部署基于统计交易的模型。”</a><ul>
 <li class="chapter" data-level="26.1.1" data-path="r-quantmod-package-tutorial-translation.html"><a href="r-quantmod-package-tutorial-translation.html#下载资料"><i class="fa fa-check"></i><b>26.1.1</b> 下载资料</a></li>
@@ -519,15 +522,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="44.4" data-path="ben-shneidermans-visualization-mantra.html"><a href="ben-shneidermans-visualization-mantra.html#references-1"><i class="fa fa-check"></i><b>44.4</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="45" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><i class="fa fa-check"></i><b>45</b> Choose Your Adventure - How to choose the right visualization for your data</a><ul>
-<li class="chapter" data-level="45.1" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#introduction-4"><i class="fa fa-check"></i><b>45.1</b> Introduction</a><ul>
-<li class="chapter" data-level="45.1.1" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#step-1.-what-would-you-like-to-show"><i class="fa fa-check"></i><b>45.1.1</b> Step 1. What would you like to show?</a></li>
-<li class="chapter" data-level="45.1.2" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#step-2"><i class="fa fa-check"></i><b>45.1.2</b> Step 2</a></li>
-<li class="chapter" data-level="45.1.3" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#step-3"><i class="fa fa-check"></i><b>45.1.3</b> Step 3</a></li>
+<li class="chapter" data-level="45" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><i class="fa fa-check"></i><b>45</b> Choose Your Adventure - How to choose the right visualization for your data</a><ul>
+<li class="chapter" data-level="45.1" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#introduction-4"><i class="fa fa-check"></i><b>45.1</b> Introduction</a><ul>
+<li class="chapter" data-level="45.1.1" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#step-1.-what-would-you-like-to-show"><i class="fa fa-check"></i><b>45.1.1</b> Step 1. What would you like to show?</a></li>
+<li class="chapter" data-level="45.1.2" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#step-2"><i class="fa fa-check"></i><b>45.1.2</b> Step 2</a></li>
+<li class="chapter" data-level="45.1.3" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#step-3"><i class="fa fa-check"></i><b>45.1.3</b> Step 3</a></li>
 </ul></li>
-<li class="chapter" data-level="45.2" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#the-flow-chart"><i class="fa fa-check"></i><b>45.2</b> The Flow Chart</a></li>
-<li class="chapter" data-level="45.3" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#an-example-use-case"><i class="fa fa-check"></i><b>45.3</b> An Example Use Case</a></li>
-<li class="chapter" data-level="45.4" data-path="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure-how-to-choose-the-right-visualization-for-your-data.html#conclusion-2"><i class="fa fa-check"></i><b>45.4</b> Conclusion</a></li>
+<li class="chapter" data-level="45.2" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#the-flow-chart"><i class="fa fa-check"></i><b>45.2</b> The Flow Chart</a></li>
+<li class="chapter" data-level="45.3" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#an-example-use-case"><i class="fa fa-check"></i><b>45.3</b> An Example Use Case</a></li>
+<li class="chapter" data-level="45.4" data-path="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html"><a href="choose-your-adventure---how-to-choose-the-right-visualization-for-your-data.html#conclusion-2"><i class="fa fa-check"></i><b>45.4</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="46" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html"><i class="fa fa-check"></i><b>46</b> Common Errors in R</a><ul>
 <li class="chapter" data-level="46.1" data-path="common-errors-in-r.html"><a href="common-errors-in-r.html#could-not-find-function"><i class="fa fa-check"></i><b>46.1</b> could not find function</a></li>
@@ -650,7 +653,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="57.3" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#categorize-16-main-ballot-rejection-reasons"><i class="fa fa-check"></i><b>57.3</b> Categorize 16 main ballot rejection reasons</a></li>
 <li class="chapter" data-level="57.4" data-path="absentee-ballot-voting-in-2020-presidental-election.html"><a href="absentee-ballot-voting-in-2020-presidental-election.html#show-participation-rate-and-ballot-non-accepted-rate-on-a-georgia-map"><i class="fa fa-check"></i><b>57.4</b> Show participation rate and ballot non-accepted rate on a Georgia map</a></li>
 </ul></li>
-<li class="chapter" data-level="58" data-path="final-project-zoom-meetup-sports.html"><a href="final-project-zoom-meetup-sports.html"><i class="fa fa-check"></i><b>58</b> Final project Zoom meetup - sports</a></li>
+<li class="chapter" data-level="58" data-path="final-project-zoom-meetup---sports.html"><a href="final-project-zoom-meetup---sports.html"><i class="fa fa-check"></i><b>58</b> Final project Zoom meetup - sports</a></li>
 <li class="chapter" data-level="59" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html"><i class="fa fa-check"></i><b>59</b> In-Person Fitness Hour</a><ul>
 <li class="chapter" data-level="59.1" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#piazza-announcement"><i class="fa fa-check"></i><b>59.1</b> Piazza Announcement</a></li>
 <li class="chapter" data-level="59.2" data-path="in-person-fitness-hour.html"><a href="in-person-fitness-hour.html#final-event"><i class="fa fa-check"></i><b>59.2</b> Final Event</a><ul>
@@ -768,22 +771,22 @@ This dataset has 335,000+ time-series data.</p>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="introduction-to-quandl.html#cb355-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>)</span>
 <span id="cb355-2"><a href="introduction-to-quandl.html#cb355-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date    Value
-## 1 2020-10-01 21487.90
-## 2 2020-07-01 21170.25
-## 3 2020-04-01 19520.11
-## 4 2020-01-01 21561.14
-## 5 2019-10-01 21747.39
-## 6 2019-07-01 21540.33</code></pre>
+## 1 2021-04-01 22731.37
+## 2 2021-01-01 22038.23
+## 3 2020-10-01 21477.60
+## 4 2020-07-01 21138.57
+## 5 2020-04-01 19477.44
+## 6 2020-01-01 21481.37</code></pre>
 <p>To call on another aspect like disposable personal income, the Quandl code is “FRED/DSPI”</p>
 <div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="introduction-to-quandl.html#cb357-1"></a>mydata=<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/DSPI&quot;</span>)</span>
 <span id="cb357-2"><a href="introduction-to-quandl.html#cb357-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date   Value
-## 1 2021-01-01 19217.7
-## 2 2020-12-01 17254.5
-## 3 2020-11-01 17151.4
-## 4 2020-10-01 17398.9
-## 5 2020-09-01 17546.8
-## 6 2020-08-01 17430.4</code></pre>
+## 1 2021-07-01 18048.1
+## 2 2021-06-01 17850.0
+## 3 2021-05-01 17850.9
+## 4 2021-04-01 18342.5
+## 5 2021-03-01 21698.9
+## 6 2021-02-01 17546.6</code></pre>
 </div>
 </div>
 <div id="type" class="section level3">
@@ -829,13 +832,13 @@ The default of the data is data frame, which can have an argument type = “raw�
 <h4><span class="header-section-number">28.1.6.1</span> For example the percentage change of GDP by year</h4>
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="introduction-to-quandl.html#cb365-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>,<span class="dt">transform =</span> <span class="st">&quot;rdiff&quot;</span> )</span>
 <span id="cb365-2"><a href="introduction-to-quandl.html#cb365-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
-<pre><code>##         Date        Value
-## 1 2020-10-01  0.015004262
-## 2 2020-07-01  0.084535264
-## 3 2020-04-01 -0.094662207
-## 4 2020-01-01 -0.008564474
-## 5 2019-10-01  0.009613086
-## 6 2019-07-01  0.009866349</code></pre>
+<pre><code>##         Date       Value
+## 1 2021-04-01  0.03145185
+## 2 2021-01-01  0.02610297
+## 3 2020-10-01  0.01603812
+## 4 2020-07-01  0.08528480
+## 5 2020-04-01 -0.09328657
+## 6 2020-01-01 -0.00982237</code></pre>
 </div>
 </div>
 <div id="order" class="section level3">
@@ -868,12 +871,12 @@ Default is descending order by date.
 <div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="introduction-to-quandl.html#cb369-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;quarterly&quot;</span>)</span>
 <span id="cb369-2"><a href="introduction-to-quandl.html#cb369-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date    Value
-## 1 2020-12-31 21487.90
-## 2 2020-09-30 21170.25
-## 3 2020-06-30 19520.11
-## 4 2020-03-31 21561.14
-## 5 2019-12-31 21747.39
-## 6 2019-09-30 21540.33</code></pre>
+## 1 2021-06-30 22731.37
+## 2 2021-03-31 22038.23
+## 3 2020-12-31 21477.60
+## 4 2020-09-30 21138.57
+## 5 2020-06-30 19477.44
+## 6 2020-03-31 21481.37</code></pre>
 </div>
 <div id="slicing-data" class="section level3">
 <h3><span class="header-section-number">28.1.9</span> Slicing data</h3>
@@ -883,12 +886,12 @@ Default is descending order by date.
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="introduction-to-quandl.html#cb371-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">start_date=</span><span class="st">&quot;2001-12-31&quot;</span>, <span class="dt">end_date=</span><span class="st">&quot;2005-12-31&quot;</span>)</span>
 <span id="cb371-2"><a href="introduction-to-quandl.html#cb371-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date    Value
-## 1 2005-10-01 13332.32
-## 2 2005-07-01 13142.87
-## 3 2005-04-01 12910.02
-## 4 2005-01-01 12761.34
-## 5 2004-10-01 12522.42
-## 6 2004-07-01 12303.34</code></pre>
+## 1 2005-10-01 13324.20
+## 2 2005-07-01 13142.64
+## 3 2005-04-01 12922.66
+## 4 2005-01-01 12767.29
+## 5 2004-10-01 12527.21
+## 6 2004-07-01 12305.31</code></pre>
 </div>
 <div id="columns" class="section level4">
 <h4><span class="header-section-number">28.1.9.2</span> Columns</h4>
@@ -896,12 +899,12 @@ Default is descending order by date.
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="introduction-to-quandl.html#cb373-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="kw">c</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="st">&quot;FRED/DSPI&quot;</span>),<span class="dt">start_date=</span><span class="st">&quot;2001-12-31&quot;</span>, <span class="dt">end_date=</span><span class="st">&quot;2005-12-31&quot;</span>)</span>
 <span id="cb373-2"><a href="introduction-to-quandl.html#cb373-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date FRED.GDP - Value FRED.DSPI - Value
-## 1 2002-01-01         10788.95            7962.4
-## 2 2002-02-01               NA            7981.9
-## 3 2002-03-01               NA            8003.6
-## 4 2002-04-01         10893.21            8066.8
-## 5 2002-05-01               NA            8099.5
-## 6 2002-06-01               NA            8127.2</code></pre>
+## 1 2002-01-01         10783.50            7940.7
+## 2 2002-02-01               NA            7965.7
+## 3 2002-03-01               NA            7992.7
+## 4 2002-04-01         10887.46            8053.4
+## 5 2002-05-01               NA            8091.4
+## 6 2002-06-01               NA            8126.2</code></pre>
 </div>
 </div>
 <div id="finding-a-dataset-in-quandl" class="section level3">
@@ -929,24 +932,6 @@ silent = TRUE/FALSE)</p>
 ## Freq: daily
 ## Cols: DATE | VALUE
 ## 
-## NASDAQ Japan Retail JPY Index (NQJP5300JPY)
-## Code: NASDAQOMX/NQJP5300JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5300JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5300JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Media JPY Index (NQJP5500JPY)
-## Code: NASDAQOMX/NQJP5500JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Tech JPY Index (NQJP9000JPY)
-## Code: NASDAQOMX/NQJP9000JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
 ## NASDAQ Japan Telecom JPY Index (NQJP6000JPY)
 ## Code: NASDAQOMX/NQJP6000JPY
 ## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&lt;/a&gt;
@@ -965,9 +950,9 @@ silent = TRUE/FALSE)</p>
 ## Freq: daily
 ## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
 ## 
-## NASDAQ Japan Inds JPY Index (NQJP2000JPY)
-## Code: NASDAQOMX/NQJP2000JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&lt;/a&gt;
+## NASDAQ Japan Chemicals JPY Index (NQJP1300JPY)
+## Code: NASDAQOMX/NQJP1300JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP1300JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP1300JPY&lt;/a&gt;
 ## Freq: daily
 ## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
 ## 
@@ -980,6 +965,24 @@ silent = TRUE/FALSE)</p>
 ## NASDAQ Japan Financials JPY Index (NQJP8000JPY)
 ## Code: NASDAQOMX/NQJP8000JPY
 ## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Media JPY Index (NQJP5500JPY)
+## Code: NASDAQOMX/NQJP5500JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Tech JPY Index (NQJP9000JPY)
+## Code: NASDAQOMX/NQJP9000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## NASDAQ Japan Inds JPY Index (NQJP2000JPY)
+## Code: NASDAQOMX/NQJP2000JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&lt;/a&gt;
 ## Freq: daily
 ## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value</code></pre>
 <p>You can pick which data set to use from the search result.</p>
@@ -1040,6 +1043,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1060,6 +1064,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

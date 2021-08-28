@@ -73,9 +73,11 @@ library(dplyr)
 解压文件后，你可以把数据加载到R中通过readRDS()函数。
 
 ```r
-rds <- tempfile()
-download.file("http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip",rds)
-chicago <- readRDS(gzcon(unz(rds, "chicago.rds")))
+# Note: the file has already been downloaded to the resources folder
+# rds <- tempfile()
+# download.file("http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip",rds)
+# chicago <- readRDS(gzcon(unz(rds, "chicago.rds")))
+chicago <- readRDS("resources/dplyr_chinese/chicago_data.rds")
 ```
 
 你可以看到数据集的一些基础特点通过dim()和str()函数。
@@ -427,7 +429,7 @@ summarize(years, pm25 = mean(pm25, na.rm = TRUE),
 ```
 
 ```
-## # A tibble: 19 x 4
+## # A tibble: 19 × 4
 ##     year  pm25    o3   no2
 ##    <dbl> <dbl> <dbl> <dbl>
 ##  1  1987 NaN    63.0  23.5
@@ -476,7 +478,7 @@ summarize(quint, o3 = mean(o3tmean2, na.rm = TRUE),
 ```
 
 ```
-## # A tibble: 6 x 3
+## # A tibble: 6 × 3
 ##   pm25.quint     o3   no2
 ##   <fct>       <dbl> <dbl>
 ## 1 (1.7,8.7]    21.7  18.0
@@ -511,7 +513,7 @@ mutate(chicago, pm25.quint = cut(pm25, qq)) %>%
 ```
 
 ```
-## # A tibble: 6 x 3
+## # A tibble: 6 × 3
 ##   pm25.quint     o3   no2
 ##   <fct>       <dbl> <dbl>
 ## 1 (1.7,8.7]    21.7  18.0
@@ -537,7 +539,7 @@ mutate(chicago, month = as.POSIXlt(date)$mon + 1) %>%
 ```
 
 ```
-## # A tibble: 12 x 4
+## # A tibble: 12 × 4
 ##    month  pm25    o3   no2
 ##    <dbl> <dbl> <dbl> <dbl>
 ##  1     1  17.8  28.2  25.4

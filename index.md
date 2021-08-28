@@ -1,6 +1,6 @@
 ---
 title: "Spring 2021 EDAV Community Contributions"
-date: "2021-04-06"
+date: "2021-08-28"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -10,6 +10,8 @@ description: "This book contains community contributions for STAT GR5702 Spring 
 ---
 
 # Community contribution assignment
+
+GR5702
 
 This fairly open-ended assignment provides an opportunity to receive credit for contributing to the collective learning of the class, and perhaps beyond. It should reflect a minimum of 2-3 hours of work. To complete the assignment you must submit a short description of your contribution. If appropriate, attach relevant files.  
 

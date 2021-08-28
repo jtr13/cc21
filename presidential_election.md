@@ -82,7 +82,7 @@ Top_reason_for_each_county
 ```
 
 ```
-## # A tibble: 159 x 3
+## # A tibble: 159 × 3
 ## # Groups:   County [159]
 ##    County   Status_Reason                               Total_Number
 ##    <chr>    <chr>                                              <int>
@@ -112,7 +112,7 @@ Top_reason_for_each_county_new
 ```
 
 ```
-## # A tibble: 20 x 2
+## # A tibble: 20 × 2
 ##    Status_Reason                                 Total_Number
 ##    <chr>                                                <int>
 ##  1 "mailed ballot surrendered to vote in-person"           67
@@ -496,7 +496,7 @@ We also compute the total absentee ballot number by adding all non-accepted ball
 ```
 
 ```
-## # A tibble: 159 x 3
+## # A tibble: 159 × 3
 ##    County    Not_accepted_percent_state Total_absentee_number
 ##    <chr>                          <dbl>                 <int>
 ##  1 BALDWIN                        11.1                  16692

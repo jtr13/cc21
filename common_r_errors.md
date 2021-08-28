@@ -245,7 +245,8 @@ write_csv(as.data.frame(foo), path = 'the/long/road/to/nowhere.csv')
 ```
 
 ```
-## Error in open.connection(file, "wb"): cannot open the connection
+## Error: Cannot open file for writing:
+## * 'the/long/road/to/nowhere.csv'
 ```
 This one is pretty simple but can be quite annoying if you don't know what it means. Your path just doesn't exist, check for spelling or punctuation errors or look for another path. 
 

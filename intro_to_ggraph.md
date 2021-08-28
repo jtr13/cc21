@@ -88,7 +88,7 @@ attributes(layout)
 ## #
 ## # A directed multigraph with 1 component
 ## #
-## # Edge Data: 506 x 4 (active)
+## # Edge Data: 506 × 4 (active)
 ##    from    to  year direction
 ##   <int> <int> <dbl> <fct>    
 ## 1     1    13  1957 left     
@@ -99,7 +99,7 @@ attributes(layout)
 ## 6     2    20  1957 right    
 ## # … with 500 more rows
 ## #
-## # Node Data: 70 x 2
+## # Node Data: 70 × 2
 ##   name  .ggraph.orig_index
 ##   <chr>              <int>
 ## 1 1                      1
@@ -204,7 +204,7 @@ dolphin
 ## #
 ## # An undirected simple graph with 1 component
 ## #
-## # Node Data: 62 x 2 (active)
+## # Node Data: 62 × 2 (active)
 ##   name       sex  
 ##   <chr>      <chr>
 ## 1 Beak       M    
@@ -215,12 +215,12 @@ dolphin
 ## 6 DN16       F    
 ## # … with 56 more rows
 ## #
-## # Edge Data: 159 x 3
+## # Edge Data: 159 × 3
 ##    from    to type      
 ##   <int> <int> <chr>     
-## 1     4     9 friendship
-## 2     6    10 love      
-## 3     7    10 love      
+## 1     4     9 love      
+## 2     6    10 friendship
+## 3     7    10 friendship
 ## # … with 156 more rows
 ```
 

@@ -100,7 +100,7 @@ page %>%
 ```
 
 ```
-## [1] "Wisconsin"
+## character(0)
 ```
 
 It's similar to get three other texts.
@@ -113,7 +113,7 @@ page %>%
 ```
 
 ```
-## [1] "Doses distributed to state: 2,923,795"
+## character(0)
 ```
 
 ```r
@@ -123,7 +123,7 @@ page %>%
 ```
 
 ```
-## [1] "Doses administered: 2,576,727"
+## character(0)
 ```
 
 ```r
@@ -133,7 +133,7 @@ page %>%
 ```
 
 ```
-## [1] "Percentage of distributed vaccines that have been administered: 88.13"
+## character(0)
 ```
 
 

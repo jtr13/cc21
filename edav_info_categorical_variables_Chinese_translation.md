@@ -73,7 +73,7 @@ head(colors_female_hair)
 ```
 
 ```
-## # A tibble: 4 x 2
+## # A tibble: 4 × 2
 ##   Hair  Total
 ##   <fct> <dbl>
 ## 1 Black    52

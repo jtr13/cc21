@@ -4,6 +4,8 @@ Huaqing Fang
 
 
 
+*8/27/2021: Due to changes in the* **mschart** *package as well as the inclusion of commands that don't work within the* **bookdown** *format, such as opening PowerPoint, all code chunks have been set to `eval=FALSE`.*
+
 ## Overview
 
 The mschart package provides a framework for easily creating charts for ‘Microsoft PowerPoint’ documents. It has to be used with package officer that will produce the charts in new or existing PowerPoint or Word document
@@ -91,7 +93,7 @@ Note: read_pptx() opens a new powerpoint by default, to add graphs into an exist
 
 
 ```r
-barc <- mschart::ms_barchart	(data = iris, x = "Sepal.Length",
+barc <- mschart::ms_barchart(data = iris, x = "Sepal.Length",
                       y = "Sepal.Width", group = "Species")
 
 barc <- mschart::chart_ax_y(barc, num_fmt = "0.00", rotation = -90)
