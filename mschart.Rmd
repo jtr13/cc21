@@ -16,8 +16,8 @@ The mschart package provides a framework for easily creating charts for ‘Micro
 install the mschart package, first install devtools. Then use ‘devtools’ to install maschart from Github, as shown in the code below.
 
 ```{r}
-#install.packages("devtools")  ## install the package from github
-#devtools::install_github("ardata-fr/mschart")
+# install.packages("devtools")  ## install the package from github
+# devtools::install_github("ardata-fr/mschart")
 ```
 
 
