@@ -3,7 +3,7 @@
 Huaqing Fang
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE)
 ```
 
 *8/27/2021: Due to changes in the* **mschart** *package as well as the inclusion of commands that don't work within the* **bookdown** *format, such as opening PowerPoint, all code chunks have been set to `eval=FALSE`.*
