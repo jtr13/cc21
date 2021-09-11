@@ -127,6 +127,7 @@ Charts are generated with default values. Options are available to change charts
 Global chart settings can be specified with generic function chart_settings()
 The following stacks the bars for each group.
 
+
 ```r
 barc <- chart_settings(barc, grouping = "stacked", gap_width = 50, overlap = 100 )
 ```
@@ -157,6 +158,7 @@ chart_data_size(),\
 chart_data_symbol(),\
 chart_data_line_width() \
 and chart_labels_text()
+
 
 ```r
 barc <- chart_data_fill(barc,
