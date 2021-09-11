@@ -15,21 +15,21 @@ The mschart package provides a framework for easily creating charts for ‘Micro
 ## Setup
 install the mschart package, first install devtools. Then use ‘devtools’ to install maschart from Github, as shown in the code below.
 
-```{r}
+```{r, eval=FALSE}
 # install.packages("devtools")  ## install the package from github
 # devtools::install_github("ardata-fr/mschart")
 ```
 
 
 
-```{r}
+```{r, eval=FALSE}
 library(mschart)
 library(officer)
 ```
 
 Use the Iris Dataset
 
-```{r}
+```{r, eval=FALSE}
 library(datasets)
 data(iris)
 ```
@@ -48,7 +48,7 @@ Below are some commonly used parameters for num_fmt: \
 "0\%\%": display as percentages\
 "mm-dd-yy": display as date\
 
-```{r}
+```{r, eval=FALSE}
 
 linec <- mschart::ms_linechart(data = iris, x = "Sepal.Length",
                       y = "Sepal.Width", group = "Species")
@@ -62,7 +62,7 @@ linec <- mschart::chart_ax_y(linec, num_fmt = "0.00", rotation = -90)
 The officer package lets R users manipulate Word (.docx) and PowerPoint (*.pptx) documents. Therefore, we can use this package to send the object as a chart.
 
 
-```{r}
+```{r, eval=FALSE}
 doc <- read_pptx() 
 
 doc <- add_slide(doc, layout = "Title and Content", master = "Office Theme")
@@ -77,7 +77,7 @@ To view it online: <a target="_blank" href="https://drive.google.com/file/d/1TpR
 
 ## View the chart by opening the PowerPoint
 
-```{r}
+```{r, eval=FALSE}
 browseURL("example.pptx") # use browseURL to open the target ppt
 ```
 
@@ -91,7 +91,7 @@ ms_scatterchart(...)
 Note: read_pptx() opens a new powerpoint by default, to add graphs into an existing powerpoint, simply give the path of the existing document
 
 
-```{r}
+```{r, eval=FALSE}
 barc <- mschart::ms_barchart(data = iris, x = "Sepal.Length",
                       y = "Sepal.Width", group = "Species")
 
@@ -110,7 +110,7 @@ To view it online: <a target="_blank" href="https://drive.google.com/file/d/1PZl
 ## Write into a word document
 simply use read_docx() and body_add_chart functions where the chart parameter can be any ms_chart object, that is one of [barchart, linechart, scatterchart, areachart]
 
-```{r}
+```{r, eval=FALSE}
 doc <- read_docx() 
 
 doc <- body_add_chart(doc, chart = barc, style = "Normal")
@@ -124,14 +124,15 @@ To view it online: <a target="_blank" href="https://drive.google.com/file/d/1xxj
 Charts are generated with default values. Options are available to change charts properties.
 Global chart settings can be specified with generic function chart_settings()
 The following stacks the bars for each group.
-```{r}
+
+```{r, eval=FALSE}
 barc <- chart_settings(barc, grouping = "stacked", gap_width = 50, overlap = 100 )
 ```
 
 
 Axis properties are available with functions chart_ax_x() and chart_ax_y()
 
-```{r}
+```{r, eval=FALSE}
 barc <- chart_ax_x(barc, cross_between = 'between', 
   major_tick_mark = "in", minor_tick_mark = "none")
 barc <- chart_ax_y(barc, num_fmt = "0.00", rotation = -90)
@@ -139,7 +140,7 @@ barc <- chart_ax_y(barc, num_fmt = "0.00", rotation = -90)
 
 Titles (main title, axis labels) can be set with function chart_labels():
 
-```{r}
+```{r, eval=FALSE}
 barc <- chart_labels(barc, title = "A main title", 
   xlab = "x axis title", ylab = "y axis title")
 ```
@@ -152,13 +153,14 @@ chart_data_size(),\
 chart_data_symbol(),\
 chart_data_line_width() \
 and chart_labels_text()
-```{r}
+
+```{r, eval=FALSE}
 barc <- chart_data_fill(barc,
   values = c(setosa = "#003C63", versicolor = "#ED1F24", virginica = "#F2AA00") )
 barc <- chart_data_stroke(barc, values = "transparent" )
 ```
 
-```{r}
+```{r, eval=FALSE}
 doc <- read_docx() 
 
 doc <- body_add_chart(doc, chart = barc, style = "Normal")
