@@ -210,7 +210,7 @@ The 15th category is about "Insufficient/missing information", which has keyword
 insufficient_information_related <- c('insufficient',' missing')
 
 (Total_insufficient_information <- length(grep(paste(insufficient_information_related,collapse="|"),status_reason)))
-````
+```
 
 The 16th category is "Ineligible voter", which has keyword ineligible and has 16 counts. 
 
