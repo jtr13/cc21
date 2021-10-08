@@ -220,7 +220,7 @@ dolphin
 ##   <int> <int> <chr>     
 ## 1     4     9 love      
 ## 2     6    10 friendship
-## 3     7    10 friendship
+## 3     7    10 love      
 ## # … with 156 more rows
 ```
 

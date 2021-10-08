@@ -67,7 +67,7 @@ head(mydata)
 
 ```
 ##         Date    Value
-## 1 2021-04-01 22731.37
+## 1 2021-04-01 22740.96
 ## 2 2021-01-01 22038.23
 ## 3 2020-10-01 21477.60
 ## 4 2020-07-01 21138.57
@@ -84,12 +84,12 @@ head(mydata)
 
 ```
 ##         Date   Value
-## 1 2021-07-01 18048.1
-## 2 2021-06-01 17850.0
-## 3 2021-05-01 17850.9
-## 4 2021-04-01 18342.5
-## 5 2021-03-01 21698.9
-## 6 2021-02-01 17546.6
+## 1 2021-08-01 18123.9
+## 2 2021-07-01 18105.0
+## 3 2021-06-01 17903.0
+## 4 2021-05-01 17898.5
+## 5 2021-04-01 18379.5
+## 6 2021-03-01 21698.9
 ```
 
 ### Type
@@ -161,7 +161,7 @@ head(mydata)
 
 ```
 ##         Date       Value
-## 1 2021-04-01  0.03145185
+## 1 2021-04-01  0.03188700
 ## 2 2021-01-01  0.02610297
 ## 3 2020-10-01  0.01603812
 ## 4 2020-07-01  0.08528480
@@ -210,7 +210,7 @@ head(mydata)
 
 ```
 ##         Date    Value
-## 1 2021-06-30 22731.37
+## 1 2021-06-30 22740.96
 ## 2 2021-03-31 22038.23
 ## 3 2020-12-31 21477.60
 ## 4 2020-09-30 21138.57
@@ -294,6 +294,30 @@ Quandl.search(query = "Japan",
 ## Freq: daily
 ## Cols: DATE | VALUE
 ## 
+## Nasdaq Japan Energy JPY Index (NQJP60JPY)
+## Code: NASDAQOMX/NQJP60JPY
+## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP60JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP60JPY</a>
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## Nasdaq Japan Banks JPY Index (NQJP3010JPY)
+## Code: NASDAQOMX/NQJP3010JPY
+## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP3010JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP3010JPY</a>
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## Nasdaq Japan Chemicals JPY Index (NQJP5520JPY)
+## Code: NASDAQOMX/NQJP5520JPY
+## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5520JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP5520JPY</a>
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## Nasdaq Japan Industrials JPY Index (NQJP50JPY)
+## Code: NASDAQOMX/NQJP50JPY
+## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP50JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP50JPY</a>
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
 ## NASDAQ Japan Telecom JPY Index (NQJP6000JPY)
 ## Code: NASDAQOMX/NQJP6000JPY
 ## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY</a>
@@ -321,30 +345,6 @@ Quandl.search(query = "Japan",
 ## NASDAQ Japan Ins JPY Index (NQJP8500JPY)
 ## Code: NASDAQOMX/NQJP8500JPY
 ## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY</a>
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Financials JPY Index (NQJP8000JPY)
-## Code: NASDAQOMX/NQJP8000JPY
-## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY</a>
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Media JPY Index (NQJP5500JPY)
-## Code: NASDAQOMX/NQJP5500JPY
-## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY</a>
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Tech JPY Index (NQJP9000JPY)
-## Code: NASDAQOMX/NQJP9000JPY
-## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY</a>
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Inds JPY Index (NQJP2000JPY)
-## Code: NASDAQOMX/NQJP2000JPY
-## Desc: For detailed information, see <a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY>https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY</a>
 ## Freq: daily
 ## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
 ```

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-25" />
+<meta name="date" content="2021-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,7 @@
 <script>var lodash = _.noConflict();</script>
 <link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
 <script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -771,7 +771,7 @@ This dataset has 335,000+ time-series data.</p>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="introduction-to-quandl.html#cb355-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>)</span>
 <span id="cb355-2"><a href="introduction-to-quandl.html#cb355-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date    Value
-## 1 2021-04-01 22731.37
+## 1 2021-04-01 22740.96
 ## 2 2021-01-01 22038.23
 ## 3 2020-10-01 21477.60
 ## 4 2020-07-01 21138.57
@@ -781,12 +781,12 @@ This dataset has 335,000+ time-series data.</p>
 <div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="introduction-to-quandl.html#cb357-1"></a>mydata=<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/DSPI&quot;</span>)</span>
 <span id="cb357-2"><a href="introduction-to-quandl.html#cb357-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date   Value
-## 1 2021-07-01 18048.1
-## 2 2021-06-01 17850.0
-## 3 2021-05-01 17850.9
-## 4 2021-04-01 18342.5
-## 5 2021-03-01 21698.9
-## 6 2021-02-01 17546.6</code></pre>
+## 1 2021-08-01 18123.9
+## 2 2021-07-01 18105.0
+## 3 2021-06-01 17903.0
+## 4 2021-05-01 17898.5
+## 5 2021-04-01 18379.5
+## 6 2021-03-01 21698.9</code></pre>
 </div>
 </div>
 <div id="type" class="section level3">
@@ -833,7 +833,7 @@ The default of the data is data frame, which can have an argument type = â€œrawâ
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="introduction-to-quandl.html#cb365-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>,<span class="dt">transform =</span> <span class="st">&quot;rdiff&quot;</span> )</span>
 <span id="cb365-2"><a href="introduction-to-quandl.html#cb365-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date       Value
-## 1 2021-04-01  0.03145185
+## 1 2021-04-01  0.03188700
 ## 2 2021-01-01  0.02610297
 ## 3 2020-10-01  0.01603812
 ## 4 2020-07-01  0.08528480
@@ -871,7 +871,7 @@ Default is descending order by date.
 <div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="introduction-to-quandl.html#cb369-1"></a>mydata =<span class="st"> </span><span class="kw">Quandl</span>(<span class="st">&quot;FRED/GDP&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;quarterly&quot;</span>)</span>
 <span id="cb369-2"><a href="introduction-to-quandl.html#cb369-2"></a><span class="kw">head</span>(mydata)</span></code></pre></div>
 <pre><code>##         Date    Value
-## 1 2021-06-30 22731.37
+## 1 2021-06-30 22740.96
 ## 2 2021-03-31 22038.23
 ## 3 2020-12-31 21477.60
 ## 4 2020-09-30 21138.57
@@ -932,6 +932,30 @@ silent = TRUE/FALSE)</p>
 ## Freq: daily
 ## Cols: DATE | VALUE
 ## 
+## Nasdaq Japan Energy JPY Index (NQJP60JPY)
+## Code: NASDAQOMX/NQJP60JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP60JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP60JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## Nasdaq Japan Banks JPY Index (NQJP3010JPY)
+## Code: NASDAQOMX/NQJP3010JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP3010JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP3010JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## Nasdaq Japan Chemicals JPY Index (NQJP5520JPY)
+## Code: NASDAQOMX/NQJP5520JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5520JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5520JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
+## Nasdaq Japan Industrials JPY Index (NQJP50JPY)
+## Code: NASDAQOMX/NQJP50JPY
+## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP50JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP50JPY&lt;/a&gt;
+## Freq: daily
+## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
+## 
 ## NASDAQ Japan Telecom JPY Index (NQJP6000JPY)
 ## Code: NASDAQOMX/NQJP6000JPY
 ## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP6000JPY&lt;/a&gt;
@@ -959,30 +983,6 @@ silent = TRUE/FALSE)</p>
 ## NASDAQ Japan Ins JPY Index (NQJP8500JPY)
 ## Code: NASDAQOMX/NQJP8500JPY
 ## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8500JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Financials JPY Index (NQJP8000JPY)
-## Code: NASDAQOMX/NQJP8000JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP8000JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Media JPY Index (NQJP5500JPY)
-## Code: NASDAQOMX/NQJP5500JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP5500JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Tech JPY Index (NQJP9000JPY)
-## Code: NASDAQOMX/NQJP9000JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP9000JPY&lt;/a&gt;
-## Freq: daily
-## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value
-## 
-## NASDAQ Japan Inds JPY Index (NQJP2000JPY)
-## Code: NASDAQOMX/NQJP2000JPY
-## Desc: For detailed information, see &lt;a href=https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&gt;https://indexes.nasdaqomx.com/Index/Overview/NQJP2000JPY&lt;/a&gt;
 ## Freq: daily
 ## Cols: Trade Date | Index Value | High | Low | Total Market Value | Dividend Market Value</code></pre>
 <p>You can pick which data set to use from the search result.</p>
