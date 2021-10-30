@@ -1,6 +1,6 @@
 ---
 title: "Spring 2021 EDAV Community Contributions"
-date: "2021-10-23"
+date: "2021-10-30"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
